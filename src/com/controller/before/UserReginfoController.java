@@ -1,0 +1,19 @@
+package com.controller.before;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.service.before.UserReginfoService;
+
+@Controller
+@RequestMapping("/userReginfo")
+public class UserReginfoController extends BaseBeforeController {
+	@Autowired
+	UserReginfoService userReginfoService;
+	@RequestMapping("/userSelectTestinfo")
+	public String userSelectTestinfo(Model model) {
+		return userReginfoService.userSelectTestinfo(model);
+	}
+}

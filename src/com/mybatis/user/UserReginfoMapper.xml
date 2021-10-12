@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserReginfoDao">
+	<!-- 查询全部已发布考试 -->
+	<select id="userSelectTestinfo" resultType="Testinfo" >
+		select * from testinfotable, testtable where testinfotable.test_id = testtable.id
+	</select>
+</mapper>

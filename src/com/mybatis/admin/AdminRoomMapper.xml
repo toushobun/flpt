@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.AdminRoomDao">
+	<!-- 查询全部考场 -->
+	<select id="selectRoom" resultType="Room" >
+		select * from roomtable
+	</select>
+	<!-- 发布一个考场 -->
+	<insert id="addRoom" parameterType="Room">
+		insert into roomtable (id,rname,raddress,rtelnum,rpostcode) 
+		values (null,#{rname},#{raddress},#{rtelnum},#{rpostcode})
+	</insert>
+	<!-- 删除一个考场 -->
+	<delete id="deleteRoomById" parameterType="Integer">
+		delete from roomtable where id = #{id}
+	</delete>
+	<!-- 通过id查询一个考场 -->
+	<select id="selectARoomById" resultType="Room" parameterType="Integer">
+		select * from roomtable where id = #{id}
+	</select>
+	<!-- 通过rname查询一个考场 -->
+	<select id="selectARoomByRname" resultType="Room" parameterType="String">
+		select * from roomtable where rname = #{rname}
+	</select>
+	<!-- 通过rname和id查询一个考场 -->
+	<select id="selectARoomByRnameAndId" resultType="Room" parameterType="Room">
+		select * from roomtable where rname = #{rname} and id != #{id}
+	</select>
+	<!-- 修改一个考场 -->
+	<update id="updateRoom" parameterType="Room">
+	    update roomtable
+	    <set>
+	      <if test="rname != null">
+	        rname = #{rname},
+	      </if>
+	      <if test="raddress != null">
+	        raddress = #{raddress},
+	      </if>
+	      <if test="rtelnum != null">
+	        rtelnum = #{rtelnum},
+	      </if>
+	      <if test="rpostcode != null">
+	        rpostcode = #{rpostcode},
+	      </if>
+	    </set>
+    	where id = #{id}
+  	</update>
+</mapper>
