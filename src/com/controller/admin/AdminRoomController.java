@@ -13,7 +13,7 @@ import com.service.admin.AdminRoomService;
 @RequestMapping("/adminRoom")
 public class AdminRoomController extends BaseController {
 	@Autowired
-	AdminRoomService adminRoomService;
+	private AdminRoomService adminRoomService;
 	@RequestMapping("/selectRoom")
 	public String selectRoom(Model model) {
 		return adminRoomService.selectRoom(model);

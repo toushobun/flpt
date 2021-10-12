@@ -11,7 +11,7 @@ import com.service.admin.AdminTestinfoService;
 @RequestMapping("/adminTestinfo")
 public class AdminTestinfoController extends BaseController {
 	@Autowired
-	AdminTestinfoService adminTestinfoService;
+	private AdminTestinfoService adminTestinfoService;
 	@RequestMapping("/selectTestinfo")
 	public String selectTestinfo(Model model) {
 		return adminTestinfoService.selectTestinfo(model);
@@ -40,5 +40,9 @@ public class AdminTestinfoController extends BaseController {
 	@RequestMapping("/updateTestinfo")
 	public String updateTestinfo(Testinfo testinfo, Model model) {
 		return adminTestinfoService.updateTestinfo(testinfo, model);
+	}
+	@RequestMapping("/selectTestinfoRoom")
+	public String selectTestinfoRoom(Integer id, Model model) {
+		return adminTestinfoService.selectTestinfoRoomByTestinfo_id(id, model);
 	}
 }

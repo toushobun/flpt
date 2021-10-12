@@ -16,20 +16,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	window.onload=function(){
 		showDetail()
 	}
-	function showDetail() {
+	function showDetail(){
 	    var tbl = document.getElementById("testData"); // 先获取table
 	    var rows = tbl.getElementsByTagName("tr"); // 获取里面的行tr
 		var detailData = new Array();
 		for(i=0;i<rows.length;i++){
-			detailData[i*3] = rows[i].cells[0].innerHTML;
-			detailData[i*3+1] = rows[i].cells[1].innerHTML;
-			detailData[i*3+2] = rows[i].cells[2].innerHTML;
+			detailData[i*4] = rows[i].cells[0].innerHTML;
+			detailData[i*4+1] = rows[i].cells[1].innerHTML;
+			detailData[i*4+2] = rows[i].cells[2].innerHTML;
+			detailData[i*4+3] = rows[i].cells[3].innerHTML;
 		}
 		var myId = document.getElementById("test_id");
-		for(i=0;i<detailData.length;i=i+3){
+		for(i=0;i<detailData.length;i=i+4){
 			if(detailData[i] == myId.value){
 				document.getElementById('tsubject').value=detailData[i+1];
 				document.getElementById('torganizer').value=detailData[i+2];
+				document.getElementById('tname').value=detailData[i+3];
 			}
 		}
 	}
@@ -41,10 +43,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td>${test.id }</td>
 				<td>${test.tsubject }</td>
 				<td>${test.torganizer }</td>
+				<td>${test.tname }</td>
 			</tr>
 		</c:forEach>
 	</table>
 	<form:form action="adminTestinfo/toAddTestinfoAboutRoom" method="post" modelAttribute="testinfo">
+		<input type="hidden" id="tname" name="tname" value="${sessionScope.allTest.get(0).tname }">
 		<table>
 			<caption>发布考试</caption>
 			<tr>

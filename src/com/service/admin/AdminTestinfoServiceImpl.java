@@ -135,4 +135,11 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 		return "forward:/adminTestinfo/selectTestinfo";
 	}
 
+	@Override
+	public String selectTestinfoRoomByTestinfo_id(Integer id, Model model) {
+		// TODO Auto-generated method stub
+		model.addAttribute("allTestinfoRoom", adminTestinfoDao.selectDetailRoomByTestinfo_id());
+		return "admin/selectTestinfoRoom";
+	}
+
 }

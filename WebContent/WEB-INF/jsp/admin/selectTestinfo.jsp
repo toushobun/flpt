@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${testinfo.regist_end_time }</td>
 					<td>${testinfo.tprice }</td>
 					<td>
-						<a href="adminTestinfo/toSelectRoom?testinfoid=${testinfo.id }">考场详情</a>
+						<a href="adminTestinfo/selectTestinfoRoom?testinfoid=${testinfo.id }">考场详情</a>
 						<a href="adminTestinfo/toUpdateTestinfo?id=${testinfo.id }">修改</a>
 						<a onclick="return checkDel();" href="adminTestinfo/deleteTestinfo?id=${testinfo.id }">删除</a>
 					</td>

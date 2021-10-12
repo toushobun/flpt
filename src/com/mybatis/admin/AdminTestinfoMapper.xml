@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectATestinfoById" resultType="Testinfo" parameterType="Integer">
 		select * from testinfotable where id = #{id}
 	</select>
-	<!-- 通过testinfo_id搜索需要删除的关联 -->
+	<!-- 通过testinfo_id搜索关联 -->
 	<select id="selectTestinfo__RoomByTestinfo_id" resultType="Testinfo__Room" parameterType="Integer">
 		select * from testinfo__room where testinfo_id = #{testinfo_id}
 	</select>
@@ -53,4 +53,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    </set>
     	where id = #{id}
   	</update>
+	<!-- 通过考试id查考场 -->
+	<select id="selectDetailRoomByTestinfo_id" resultType="Room" parameterType="Integer">
+		select * from roomtable where id in (select room_id where testinfo__room where testinfo_id = #{testinfo_id})
+	</select>
 </mapper>

@@ -12,4 +12,5 @@ public interface AdminTestinfoService {
 	public String deleteTestinfoById(Integer id, Model model);		// 通过id删除已发布考试
 	public String toUpdateTestinfo(Integer id, Model model);		// 前往修改已发布考试页
 	public String updateTestinfo(Testinfo testinfo, Model model);		// 修改已发布考试
+	public String selectTestinfoRoomByTestinfo_id(Integer id, Model model);		// 前往详细考场页
 }

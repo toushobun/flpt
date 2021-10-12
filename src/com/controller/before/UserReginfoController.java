@@ -11,7 +11,7 @@ import com.service.before.UserReginfoService;
 @RequestMapping("/userReginfo")
 public class UserReginfoController extends BaseBeforeController {
 	@Autowired
-	UserReginfoService userReginfoService;
+	private UserReginfoService userReginfoService;
 	@RequestMapping("/userSelectTestinfo")
 	public String userSelectTestinfo(Model model) {
 		return userReginfoService.userSelectTestinfo(model);
