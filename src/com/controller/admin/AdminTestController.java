@@ -39,4 +39,8 @@ public class AdminTestController extends BaseController {
 	public String updateTest(Test test, Model model, HttpSession session) {
 		return adminTestService.updateTest(test, model, session);
 	}
+	@RequestMapping("/searchTest")
+	public String searchTest(String keyWord, Model model) {
+		return adminTestService.searchTest(keyWord, model);
+	}
 }

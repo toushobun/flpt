@@ -13,9 +13,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 	<c:if test="${allTest.size() == 0 }">
-		还没有登记考试。
+		未查询到结果
 	</c:if>
 	<c:if test="${allTest.size() != 0 }">
+		<form action="adminTest/searchTest" method="post">
+			<input type="text" name="keyWord"/>
+			<input type="submit" value="搜索"/>
+		</form>
 		<table border=1>
 			<tr>
 				<th style="display: none;">ID</th>
@@ -31,7 +35,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${test.tname }</td>
 					<td>${test.tsubject }</td>
 					<td>${test.torganizer }</td>
-					<td>${test.status }</td>
+					<c:if test="${test.status != 0 }"><td>是</td></c:if>
+					<c:if test="${test.status == 0 }"><td>否</td></c:if>
 					<td>
 						<a href="adminTest/toUpdateTest?id=${test.id }">修改</a>
 						<a onclick="return checkDel();" href="adminTest/deleteTest?id=${test.id }">删除</a>

@@ -77,4 +77,11 @@ public class AdminRoomServiceImpl implements AdminRoomService {
 		}
 		return "forward:/adminRoom/selectRoom";
 	}
+
+	@Override
+	public String searchRoom(String keyWord, Model model) {
+		// TODO Auto-generated method stub
+		model.addAttribute("allRoom", adminRoomDao.searchRoom(keyWord));
+		return "admin/selectRoom";
+	}
 }

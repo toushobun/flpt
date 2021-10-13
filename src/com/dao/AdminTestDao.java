@@ -17,4 +17,5 @@ public interface AdminTestDao {
 	public List<Test> selectATestByTname(String tname);		// 通过Tname搜索一个考试（为了新增时查重）
 	public List<Test> selectATestByTnameAndId(Test test);		// 通过Tname和Id搜索一个考试（为了查重）
 	public int updateTest(Test test);		//修改考试
+	public List<Test> searchTest(String keyWord);		// 模糊搜索
 }

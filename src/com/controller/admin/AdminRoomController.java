@@ -39,4 +39,8 @@ public class AdminRoomController extends BaseController {
 	public String updateRoom(Room room, Model model, HttpSession session) {
 		return adminRoomService.updateRoom(room, model, session);
 	}
+	@RequestMapping("/searchRoom")
+	public String searchRoom(String keyWord, Model model) {
+		return adminRoomService.searchRoom(keyWord, model);
+	}
 }

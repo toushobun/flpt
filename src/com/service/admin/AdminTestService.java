@@ -12,4 +12,5 @@ public interface AdminTestService {
 	public String deleteTestById(Integer id, Model model, HttpSession session);		// Í¨¹ıidÉ¾³ı¿¼ÊÔ
 	public String toUpdateTest(Integer id, Model model);		// Ç°ÍùĞŞ¸Ä¿¼ÊÔÒ³
 	public String updateTest(Test test, Model model, HttpSession session);		// ĞŞ¸Ä¿¼ÊÔ
+	public String searchTest(String keyWord, Model model);		// Ä£ºıËÑË÷
 }

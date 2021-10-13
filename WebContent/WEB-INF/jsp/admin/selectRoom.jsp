@@ -16,6 +16,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		还没有登记考场。
 	</c:if>
 	<c:if test="${allRoom.size() != 0 }">
+		<form action="adminRoom/searchRoom" method="post">
+			<input type="text" name="keyWord"/>
+			<input type="submit" value="搜索"/>
+		</form>
 		<table border=1>
 			<tr>
 				<th style="display: none;">ID</th>

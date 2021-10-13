@@ -77,4 +77,11 @@ public class AdminTestServiceImpl implements AdminTestService {
 		}
 		return "forward:/adminTest/selectTest";
 	}
+
+	@Override
+	public String searchTest(String keyWord, Model model) {
+		// TODO Auto-generated method stub
+		model.addAttribute("allTest", adminTestDao.searchTest(keyWord));
+		return "admin/selectTest";
+	}
 }

@@ -7,6 +7,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectTest" resultType="Test" >
 		select * from testtable
 	</select>
+	<!-- 模糊搜索考试 -->
+	<select id="searchTest" resultType="Test" parameterType="String">
+		select * from testtable where concat(tname, tsubject, torganizer) like concat('%',#{keyWord},'%')
+	</select>
 	<!-- 发布一个考试 -->
 	<insert id="addTest" parameterType="Test">
 		insert into testtable (id,tname,tsubject,torganizer,status) 

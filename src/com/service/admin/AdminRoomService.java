@@ -12,4 +12,5 @@ public interface AdminRoomService {
 	public String deleteRoomById(Integer id, Model model, HttpSession session);		// 通过id删除考场
 	public String toUpdateRoom(Integer id, Model model);		// 前往修改考场页
 	public String updateRoom(Room room, Model model, HttpSession session);		// 修改考场
+	public String searchRoom(String keyWord, Model model);		// 模糊查询
 }

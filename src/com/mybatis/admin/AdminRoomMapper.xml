@@ -7,6 +7,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectRoom" resultType="Room" >
 		select * from roomtable
 	</select>
+	<!-- 模糊搜索考场 -->
+	<select id="searchRoom" resultType="Room" parameterType="String">
+		select * from roomtable where concat(rname, raddress, rtelnum, rpostcode) like concat('%',#{keyWord},'%')
+	</select>
 	<!-- 发布一个考场 -->
 	<insert id="addRoom" parameterType="Room">
 		insert into roomtable (id,rname,raddress,rtelnum,rpostcode) 
