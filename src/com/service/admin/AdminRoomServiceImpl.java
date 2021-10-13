@@ -42,10 +42,10 @@ public class AdminRoomServiceImpl implements AdminRoomService {
 	@Override
 	public String deleteRoomById(Integer id, Model model, HttpSession session) {
 		// TODO Auto-generated method stub
-//		if(adminRoomDao.selectARoomById(id).getStatus() != 0) {
-//			model.addAttribute("msg", "该考场已被占用已发布，不允许删除！");
-//			return "forward:/adminRoom/selectRoom";
-//		}
+		if(adminRoomDao.selectATestinfo__RoomByRoom_id(id).size() > 0) {
+			model.addAttribute("msg", "该考点已作为考场发布，不允许删除！");
+			return "forward:/adminRoom/selectRoom";
+		}
 		if(adminRoomDao.deleteRoomById(id) > 0) {
 			session.setAttribute("allRoom", adminRoomDao.selectRoom());
 			model.addAttribute("msg", "删除成功！");

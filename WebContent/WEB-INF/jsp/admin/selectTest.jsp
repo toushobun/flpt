@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<c:if test="${allTest.size() != 0 }">
 		<table border=1>
 			<tr>
-				<th width="10%">ID</th>
+				<th style="display: none;">ID</th>
 				<th width="25%">考试名</th>
 				<th width="10%">考试科目</th>
 				<th width="25%">主考单位</th>
@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</tr>
 			<c:forEach items="${allTest }" var="test">
 				<tr>
-					<td>${test.id }</td>
+					<td style="display: none;">${test.id }</td>
 					<td>${test.tname }</td>
 					<td>${test.tsubject }</td>
 					<td>${test.torganizer }</td>

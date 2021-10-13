@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<c:if test="${allRoom.size() != 0 }">
 		<table border=1>
 			<tr>
-				<th width="10%">ID</th>
+				<th style="display: none;">ID</th>
 				<th width="25%">考场名</th>
 				<th width="10%">考场地址</th>
 				<th width="25%">考场联系电话</th>
@@ -27,7 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</tr>
 			<c:forEach items="${allRoom }" var="room">
 				<tr>
-					<td>${room.id }</td>
+					<td style="display: none;">${room.id }</td>
 					<td>${room.rname }</td>
 					<td>${room.raddress }</td>
 					<td>${room.rtelnum }</td>

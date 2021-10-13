@@ -47,4 +47,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    </set>
     	where id = #{id}
   	</update>
+	<!-- 通过id查询一个考场 -->
+	<select id="selectATestinfo__RoomByRoom_id" resultType="Room" parameterType="Integer">
+		select * from testinfo__room where room_id = #{room_id}
+	</select>
 </mapper>

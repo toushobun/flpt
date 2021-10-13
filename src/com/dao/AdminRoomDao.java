@@ -17,4 +17,5 @@ public interface AdminRoomDao {
 	public List<Room> selectARoomByRname(String rname);		// 通过Rname搜索一个考场（为了新增时查重）
 	public List<Room> selectARoomByRnameAndId(Room room);		// 通过Rname和Id搜索一个考场（为了查重）
 	public int updateRoom(Room room);		//修改考场
+	public List<Room> selectATestinfo__RoomByRoom_id(Integer room_id);		// 通过Room_id搜索关联
 }
