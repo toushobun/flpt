@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<!-- 通过testinfo_id搜索关联 -->
 	<select id="selectTestinfo__RoomByTestinfo_id" resultType="Testinfo__Room" parameterType="Integer">
-		select * from testinfo__room where testinfo_id = #{testinfo_id}
+		select * from testinfo__room, roomtable where testinfo_id = #{testinfo_id} and roomtable.id = testinfo__room.room_id
 	</select>
 	<!-- 通过test_id查询一个已发布考试 -->
 	<select id="selectATestinfoByTest_id" resultType="Testinfo" parameterType="Integer">
@@ -53,8 +53,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    </set>
     	where id = #{id}
   	</update>
-	<!-- 通过考试id查考场 -->
-	<select id="selectDetailRoomByTestinfo_id" resultType="Room" parameterType="Integer">
-		select * from roomtable where id in (select room_id where testinfo__room where testinfo_id = #{testinfo_id})
+	<!-- 通过考试id查考场考试对应关系 -->
+	<select id="selectTestinfo__RoomById" resultType="testinfo__room" parameterType="Integer">
+		select roomtable.id, rname, raddress, rtelnum, rpostcode, rquota from roomtable, testinfo__room where roomtable.id in (select room_id from testinfo__room where testinfo_id = #{id}) and roomtable.id = testinfo__room.room_id 
 	</select>
+	<!-- 修改一个考场名额 -->
+	<update id="updateRoomQuota" parameterType="Room">
+	    update testinfo__room
+	    <set>
+	      <if test="rquota != null">
+	        rquota = #{rquota},
+	      </if>
+	    </set>
+    	where id = #{id}
+  	</update>
 </mapper>

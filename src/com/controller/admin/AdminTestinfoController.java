@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.entity.Testinfo;
+import com.entity.Testinfo__Room;
 import com.service.admin.AdminTestinfoService;
 @Controller
 @RequestMapping("/adminTestinfo")
@@ -42,7 +43,15 @@ public class AdminTestinfoController extends BaseController {
 		return adminTestinfoService.updateTestinfo(testinfo, model);
 	}
 	@RequestMapping("/selectTestinfoRoom")
-	public String selectTestinfoRoom(Integer id, Model model) {
-		return adminTestinfoService.selectTestinfoRoomByTestinfo_id(id, model);
+	public String selectTestinfoRoom(Integer testinfo_id, Model model) {
+		return adminTestinfoService.selectTestinfoRoom(testinfo_id, model);
+	}
+	@RequestMapping("/updateRoomQuota")
+	public String updateRoomQuota(Testinfo__Room testinfo__Room, Model model) {
+		return adminTestinfoService.updateRoomQuota(testinfo__Room, model);
+	}
+	@RequestMapping("/cancelRoom")
+	public String cancelRoom(Testinfo__Room testinfo__Room, Model model) {
+		return adminTestinfoService.cancelRoom(testinfo__Room, model);
 	}
 }

@@ -136,9 +136,29 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 	}
 
 	@Override
-	public String selectTestinfoRoomByTestinfo_id(Integer id, Model model) {
+	public String selectTestinfoRoom(Integer testinfo_id, Model model) {
 		// TODO Auto-generated method stub
-		model.addAttribute("allTestinfoRoom", adminTestinfoDao.selectDetailRoomByTestinfo_id());
+		model.addAttribute("allTestinfo__Room", adminTestinfoDao.selectTestinfo__RoomByTestinfo_id(testinfo_id));
+		return "admin/selectTestinfoRoom";
+	}
+	
+	@Override
+	public String updateRoomQuota(Testinfo__Room testinfo__Room, Model model) {
+		// TODO Auto-generated method stub
+		if(adminTestinfoDao.updateRoomQuota(testinfo__Room) > 0) {
+			model.addAttribute("msg", "修改成功！");
+		}
+		model.addAttribute("allTestinfo__Room", adminTestinfoDao.selectTestinfo__RoomByTestinfo_id(testinfo__Room.getTestinfo_id()));
+		return "admin/selectTestinfoRoom";
+	}
+
+	@Override
+	public String cancelRoom(Testinfo__Room testinfo__Room, Model model) {
+		// TODO Auto-generated method stub
+		if(adminTestinfoDao.deleteTestinfo__RoomById(testinfo__Room.getId()) > 0) {
+			model.addAttribute("msg", "取消成功！");
+		}
+		model.addAttribute("allTestinfo__Room", adminTestinfoDao.selectTestinfo__RoomByTestinfo_id(testinfo__Room.getTestinfo_id()));
 		return "admin/selectTestinfoRoom";
 	}
 

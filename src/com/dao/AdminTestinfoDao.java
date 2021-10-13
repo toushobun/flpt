@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-import com.entity.Room;
 import com.entity.Testinfo;
 import com.entity.Testinfo__Room;
 
@@ -19,7 +18,7 @@ public interface AdminTestinfoDao {
 	public List<Testinfo__Room> selectTestinfo__RoomByTestinfo_id(Integer testinfo_id);		// 通过testinfo_id搜索关联
 	public int deleteTestinfo__RoomById(Integer id);		// 通过id删除关联
 	public Testinfo selectATestinfoById(Integer id);		// 通过id搜索一个已发布考试（为了前往已发布考试页）
-	public Testinfo selectATestinfoByTest_id(Integer test_id);		// 通过test_id搜索一个已发布考试
+	public Testinfo selectATestinfoByTest_id(Integer testinfo_id);		// 通过testinfo_id搜索一个已发布考试
 	public int updateTestinfo(Testinfo testinfo);		//修改已发布考试
-	public List<Room> selectDetailRoomByTestinfo_id();		// 通过考试id查考场
+	public int updateRoomQuota(Testinfo__Room testinfo__Room);		// 修改Room名额
 }
