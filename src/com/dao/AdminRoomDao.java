@@ -19,4 +19,5 @@ public interface AdminRoomDao {
 	public int updateRoom(Room room);		//修改考场
 	public List<Room> selectATestinfo__RoomByRoom_id(Integer room_id);		// 通过Room_id搜索关联
 	public List<Room> searchRoom(String keyWord);		// 模糊查询
+	public List<Room> selectRoomByTestinfo_id(Integer testinfo_id);		// 查询未被选的考场
 }

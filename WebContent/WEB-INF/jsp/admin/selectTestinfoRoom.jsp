@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -57,6 +58,27 @@ function cancelConfirm(id, testinfo_id, rname){
 			</tr>
 		</c:forEach>
 	</table>
+	<form:form action="adminTestinfo/toAddTestinfoNewRoom" method="post" modelAttribute="testinfo">
+		<input type="hidden" name="id" value="${allTestinfo__Room.get(0).testinfo_id }">
+		<table>
+			<caption>额外添加考场</caption>
+			<tr>
+				<td>
+					<c:forEach items="${notSelectedRoom }" var="room">
+						<tr>
+							<td><form:checkbox path="room_ids" value="${room.id }"/></td>
+							<td>${room.rname }</td>
+						</tr>
+					</c:forEach>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" style="text-align: right">
+					<input type="submit" value="前往为新考场配置名额"/>
+				</td>
+			</tr>
+		</table>
+	</form:form>
 	<c:if test="${msg != null }">
 		<script type="text/javascript">
 			alert("${msg}");

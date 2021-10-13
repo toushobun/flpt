@@ -55,4 +55,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectATestinfo__RoomByRoom_id" resultType="Room" parameterType="Integer">
 		select * from testinfo__room where room_id = #{room_id}
 	</select>
+	<!-- 查询未被选的考场 -->
+	<select id="selectRoomByTestinfo_id" resultType="testinfo__room" parameterType="Integer">
+		select * from roomtable where roomtable.id not in (select room_id from testinfo__room where testinfo_id=#{testinfo_id})
+	</select>
 </mapper>

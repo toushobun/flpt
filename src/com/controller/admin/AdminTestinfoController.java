@@ -22,13 +22,21 @@ public class AdminTestinfoController extends BaseController {
 	public String toAddTestinfo(Model model) {
 		return adminTestinfoService.toAddTestinfo(model);
 	}
-	@RequestMapping("/toAddTestinfoAboutRoom")
-	public String toAddTestinfoAboutRoom(Testinfo testinfo, Model model) {
-		return adminTestinfoService.toAddTestinfoAboutRoom(testinfo, model);
+	@RequestMapping("/toAddTestinfoRoom")
+	public String toAddTestinfoRoom(Testinfo testinfo, Model model) {
+		return adminTestinfoService.toAddTestinfoRoom(testinfo, model);
+	}
+	@RequestMapping("/toAddTestinfoNewRoom")
+	public String toAddTestinfoNewRoom(Testinfo testinfo, Model model) {
+		return adminTestinfoService.toAddTestinfoNewRoom(testinfo, model);
 	}
 	@RequestMapping("/addTestinfo")
 	public String addTestinfo(Testinfo testinfo, Model model) {
 		return adminTestinfoService.addTestinfo(testinfo, model);
+	}
+	@RequestMapping("/addTestinfoRoom")
+	public String addTestinfoRoom(Testinfo testinfo, Model model) {
+		return adminTestinfoService.addTestinfoRoom(testinfo, model);
 	}
 	@RequestMapping("/deleteTestinfo")
 	public String deleteTestinfo(Integer id, Model model) {

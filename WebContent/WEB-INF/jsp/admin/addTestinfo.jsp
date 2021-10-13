@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</tr>
 		</c:forEach>
 	</table>
-	<form:form action="adminTestinfo/toAddTestinfoAboutRoom" method="post" modelAttribute="testinfo">
+	<form:form action="adminTestinfo/toAddTestinfoRoom" method="post" modelAttribute="testinfo">
 		<input type="hidden" id="tname" name="tname" value="${sessionScope.allTest.get(0).tname }">
 		<table>
 			<caption>发布考试</caption>

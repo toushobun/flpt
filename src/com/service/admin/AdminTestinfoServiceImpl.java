@@ -43,7 +43,7 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 	}
 
 	@Override
-	public String toAddTestinfoAboutRoom(Testinfo testinfo, Model model) {
+	public String toAddTestinfoRoom(Testinfo testinfo, Model model) {
 		// TODO Auto-generated method stub
 		if(adminTestDao.selectATestById(testinfo.getTest_id()).getStatus()!=0) {
 			model.addAttribute("msg", "发布失败！该考试已发布！");
@@ -56,7 +56,28 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 			selectedRoom.add(adminRoomDao.selectARoomById(testinfo.getRoom_ids()[i]));
 		}
 		model.addAttribute("selectedRoom", selectedRoom);
-		return "admin/addTestinfoAboutRoom";
+		return "admin/addTestinfoRoom";
+	}
+
+	@Override
+	public String toAddTestinfoNewRoom(Testinfo testinfo, Model model) {
+		// TODO Auto-generated method stub
+		// 查询考试发布出来的信息
+		Testinfo testinfoDetail = adminTestinfoDao.selectATestinfoById(testinfo.getId());
+		// 查询考试详细信息
+		Test testDetail = adminTestDao.selectATestById(testinfoDetail.getTest_id());
+		testinfoDetail.setTname(testDetail.getTname());
+		testinfoDetail.setTname(testDetail.getTsubject());
+		testinfoDetail.setTname(testDetail.getTorganizer());
+		// 将完整的考试信息发出去
+		model.addAttribute("testinfo", testinfoDetail);
+		List<Room> selectedRoom = new ArrayList<Room>();
+		for (int i = 0; i < testinfo.getRoom_ids().length; i++) {
+			// 设置关联表里的room_id
+			selectedRoom.add(adminRoomDao.selectARoomById(testinfo.getRoom_ids()[i]));
+		}
+		model.addAttribute("selectedRoom", selectedRoom);
+		return "admin/addTestinfoNewRoom";
 	}
 	
 	@Override
@@ -86,6 +107,28 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 		}
 		// 这个指令将转到controller层验证
 		return "forward:/adminTestinfo/selectTestinfo";
+	}
+
+	@Override
+	public String addTestinfoRoom(Testinfo testinfo, Model model) {
+		// TODO Auto-generated method stub
+		// 要在testinfo表里，通过test_id获取testinfo_id
+		Integer testinfo_id = adminTestinfoDao.selectATestinfoByTest_id(testinfo.getTest_id()).getId();
+		// 新建一个空对象
+		Testinfo__Room testinfo__Room = new Testinfo__Room();
+		// 设置关联表里的testinfo_id
+		testinfo__Room.setTestinfo_id(testinfo_id);
+		// 遍历传过来的room_ids，并将其逐个添加到关联表里
+		for (int i = 0; i < testinfo.getRoom_ids().length; i++) {
+			// 设置关联表里的room_id
+			testinfo__Room.setRoom_id(testinfo.getRoom_ids()[i]);
+			testinfo__Room.setRquota(testinfo.getRoom_rquotas()[i]);
+			adminTestinfoDao.addTestinfo__room(testinfo__Room);
+		}
+		model.addAttribute("msg", "添加成功！");
+		model.addAttribute("notSelectedRoom", adminRoomDao.selectRoomByTestinfo_id(testinfo_id));
+		model.addAttribute("allTestinfo__Room", adminTestinfoDao.selectTestinfo__RoomByTestinfo_id(testinfo__Room.getTestinfo_id()));
+		return "admin/selectTestinfoRoom";
 	}
 
 	@Override
@@ -139,6 +182,8 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 	public String selectTestinfoRoom(Integer testinfo_id, Model model) {
 		// TODO Auto-generated method stub
 		model.addAttribute("allTestinfo__Room", adminTestinfoDao.selectTestinfo__RoomByTestinfo_id(testinfo_id));
+		model.addAttribute("notSelectedRoom", adminRoomDao.selectRoomByTestinfo_id(testinfo_id));
+		model.addAttribute("testinfo", adminTestinfoDao.selectATestinfoById(testinfo_id));
 		return "admin/selectTestinfoRoom";
 	}
 	
@@ -148,6 +193,7 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 		if(adminTestinfoDao.updateRoomQuota(testinfo__Room) > 0) {
 			model.addAttribute("msg", "修改成功！");
 		}
+		model.addAttribute("notSelectedRoom", adminRoomDao.selectRoomByTestinfo_id(testinfo__Room.getTestinfo_id()));
 		model.addAttribute("allTestinfo__Room", adminTestinfoDao.selectTestinfo__RoomByTestinfo_id(testinfo__Room.getTestinfo_id()));
 		return "admin/selectTestinfoRoom";
 	}
@@ -158,6 +204,7 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 		if(adminTestinfoDao.deleteTestinfo__RoomById(testinfo__Room.getId()) > 0) {
 			model.addAttribute("msg", "取消成功！");
 		}
+		model.addAttribute("notSelectedRoom", adminRoomDao.selectRoomByTestinfo_id(testinfo__Room.getTestinfo_id()));
 		model.addAttribute("allTestinfo__Room", adminTestinfoDao.selectTestinfo__RoomByTestinfo_id(testinfo__Room.getTestinfo_id()));
 		return "admin/selectTestinfoRoom";
 	}
