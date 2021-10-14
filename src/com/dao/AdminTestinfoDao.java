@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.entity.Reginfo;
+import com.entity.Room;
 import com.entity.Testinfo;
 import com.entity.Testinfo__Room;
 
