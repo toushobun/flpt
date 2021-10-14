@@ -27,9 +27,9 @@ function changeQuota(id, testinfo_id){
 		window.location.href="adminTestinfo/updateRoomQuota?id=" + id + "&rquota=" + quota + "&testinfo_id=" + testinfo_id
 	}
 }
-function cancelConfirm(id, testinfo_id, rname){
+function cancelConfirm(id, testinfo_id, rname, room_id){
 	if(confirm("确认要取消考场：" + rname + "？")){
-		window.location.href="adminTestinfo/cancelRoom?id=" + id + "&testinfo_id=" + testinfo_id
+		window.location.href="adminTestinfo/cancelRoom?id=" + id + "&testinfo_id=" + testinfo_id + "&room_id=" + room_id
 	}
 }
 </script>
@@ -44,7 +44,7 @@ function cancelConfirm(id, testinfo_id, rname){
 			<th width="10%">名额</th>
 			<th width="20%">操作</th>
 		</tr>
-		<c:forEach items="${allTestinfo__Room }" var="testinfo__room">
+		<c:forEach items="${sessionScope.allTestinfo__Room }" var="testinfo__room">
 			<tr>
 				<td>${testinfo__room.rname }</td>
 				<td>${testinfo__room.raddress }</td>
@@ -53,18 +53,18 @@ function cancelConfirm(id, testinfo_id, rname){
 				<td>${testinfo__room.rquota }</td>
 				<td>
 					<a href="javascript:changeQuota('${testinfo__room.id }', '${testinfo__room.testinfo_id }')">修改名额</a>
-					<a href="javascript:cancelConfirm('${testinfo__room.id }', '${testinfo__room.testinfo_id }', '${testinfo__room.rname }')">取消考场</a>
+					<a href="javascript:cancelConfirm('${testinfo__room.id }', '${testinfo__room.testinfo_id }', '${testinfo__room.rname }', '${testinfo__room.room_id }')">取消考场</a>
 				</td>
 			</tr>
 		</c:forEach>
 	</table>
 	<form:form action="adminTestinfo/toAddTestinfoNewRoom" method="post" modelAttribute="testinfo">
-		<input type="hidden" name="id" value="${allTestinfo__Room.get(0).testinfo_id }">
+		<input type="hidden" name="id" value="${sessionScope.allTestinfo__Room.get(0).testinfo_id }">
 		<table>
 			<caption>额外添加考场</caption>
 			<tr>
 				<td>
-					<c:forEach items="${notSelectedRoom }" var="room">
+					<c:forEach items="${sessionScope.notSelectedRoom }" var="room">
 						<tr>
 							<td><form:checkbox path="room_ids" value="${room.id }"/></td>
 							<td>${room.rname }</td>
