@@ -195,6 +195,7 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 		}
 		model.addAttribute("notSelectedRoom", adminRoomDao.selectRoomByTestinfo_id(testinfo__Room.getTestinfo_id()));
 		model.addAttribute("allTestinfo__Room", adminTestinfoDao.selectTestinfo__RoomByTestinfo_id(testinfo__Room.getTestinfo_id()));
+		model.addAttribute("testinfo", adminTestinfoDao.selectATestinfoById(testinfo__Room.getTestinfo_id()));
 		return "admin/selectTestinfoRoom";
 	}
 
@@ -204,8 +205,9 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 		if(adminTestinfoDao.deleteTestinfo__RoomById(testinfo__Room.getId()) > 0) {
 			model.addAttribute("msg", "取消成功！");
 		}
-		model.addAttribute("notSelectedRoom", adminRoomDao.selectRoomByTestinfo_id(testinfo__Room.getTestinfo_id()));
+        model.addAttribute("notSelectedRoom", adminRoomDao.selectRoomByTestinfo_id(testinfo__Room.getTestinfo_id()));
 		model.addAttribute("allTestinfo__Room", adminTestinfoDao.selectTestinfo__RoomByTestinfo_id(testinfo__Room.getTestinfo_id()));
+		model.addAttribute("testinfo", adminTestinfoDao.selectATestinfoById(testinfo__Room.getTestinfo_id()));
 		return "admin/selectTestinfoRoom";
 	}
 
