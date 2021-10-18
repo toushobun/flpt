@@ -1,16 +1,16 @@
 package com.entity;
 
 public class Buser {
-	private Integer id;			// 考生id
+	private Integer user_id;			// 考生id
 	private String uidnum;		// 身份证号码
 	private String upwd;		// 密码
 	private String uname;		// 考生姓名
 	private String uidphoto;	// 证件照片
-	public Integer getId() {
-		return id;
+	public Integer getUser_id() {
+		return user_id;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setUser_id(Integer user_id) {
+		this.user_id = user_id;
 	}
 	public String getUidnum() {
 		return uidnum;

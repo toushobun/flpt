@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<table style="display:none;" id="testData">
 		<c:forEach items="${sessionScope.allTest }" var="test">
 			<tr>
-				<td>${test.id }</td>
+				<td>${test.test_id }</td>
 				<td>${test.tsubject }</td>
 				<td>${test.torganizer }</td>
 				<td>${test.tname }</td>
@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td>
 					<c:forEach items="${selectedRoom }" var="room">
 						<tr>
-							<form:hidden path="room_ids" value="${room.id }"/>
+							<form:hidden path="room_ids" value="${room.room_id }"/>
 							<td>${room.rname }<font color="red">*</font></td>
 							<td><form:input path="room_rquotas" placeholder="请输入该考场可报名名额"/></td>
 						</tr>

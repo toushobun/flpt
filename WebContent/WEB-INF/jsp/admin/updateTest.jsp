@@ -17,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<form:form action="adminTest/updateTest" onsubmit="return doInputTest();" method="post" modelAttribute="test">
 		<table>
 			<caption>修改考试</caption>
-			<form:hidden path="id" value="${test.id}"/>
+			<form:hidden path="test_id" value="${test.test_id}"/>
 			<tr>
 				<td>考试名<font color="red">*</font></td>
 				<td>

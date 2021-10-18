@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<table style="display:none;" id="testData">
 		<c:forEach items="${sessionScope.allTest }" var="test">
 			<tr>
-				<td>${test.id }</td>
+				<td>${test.test_id }</td>
 				<td>${test.tsubject }</td>
 				<td>${test.torganizer }</td>
 				<td>${test.tname }</td>
@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td colspan="2">请选择您要发布的考试<font color="red">*</font></td>
 				<td>
 					<form:select path="test_id" onchange="showDetail()"><!-- 前台选择的内容，会给test_id变量传到后台，itemLabel控制展示数据，itemValue控制传输数据 -->
-         				<form:options items="${sessionScope.allTest }" itemLabel="tname" itemValue="id"/>
+         				<form:options items="${sessionScope.allTest }" itemLabel="tname" itemValue="test_id"/>
    					</form:select>
 				</td>
 			</tr>
@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td>
 					<c:forEach items="${sessionScope.allRoom }" var="room">
 						<tr>
-							<td><form:checkbox path="room_ids" value="${room.id }"/></td>
+							<td><form:checkbox path="room_ids" value="${room.room_id }"/></td>
 							<td>${room.rname }</td>
 						</tr>
 					</c:forEach>

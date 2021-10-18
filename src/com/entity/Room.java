@@ -1,19 +1,19 @@
 package com.entity;
 
 public class Room {
-	private Integer id;			// 考场id
+	private Integer room_id;			// 考场id
 	private String rname;		// 考场名
 	private String raddress;	// 考场地址
 	private String rtelnum;		// 考场联系电话
 	private String rpostcode;	// 邮编
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
 	public String getRname() {
 		return rname;
+	}
+	public Integer getRoom_id() {
+		return room_id;
+	}
+	public void setRoom_id(Integer room_id) {
+		this.room_id = room_id;
 	}
 	public void setRname(String rname) {
 		this.rname = rname;

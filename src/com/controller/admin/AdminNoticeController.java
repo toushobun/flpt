@@ -22,12 +22,12 @@ public class AdminNoticeController extends BaseController {
 		return adminNoticeService.addNotice(model, notice);
 	}
 	@RequestMapping("/selectANotice")
-	public String selectANotice(Model model, Integer id) {
-		return adminNoticeService.selectANoticeById(model, id);
+	public String selectANotice(Model model, Integer notice_id) {
+		return adminNoticeService.selectANoticeByNotice_id(model, notice_id);
 	}
 	@RequestMapping("/deleteNotice")
-	public String deleteNotice(Model model, Integer id) {
-		return adminNoticeService.deleteNoticeById(model, id);
+	public String deleteNotice(Model model, Integer notice_id) {
+		return adminNoticeService.deleteNoticeByNotice_id(model, notice_id);
 	}
 	@RequestMapping("/selectNotice")
 	public String selectNotice(Model model) {

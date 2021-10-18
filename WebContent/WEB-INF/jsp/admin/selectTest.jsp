@@ -12,14 +12,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="js/formCheck.js" type="text/javascript"></script>
 </head>
 <body>
+	<form action="adminTest/searchTest" method="post">
+		<input type="text" name="keyWord"/>
+		<input type="submit" value="搜索"/>
+	</form>
 	<c:if test="${allTest.size() == 0 }">
 		未查询到结果
 	</c:if>
 	<c:if test="${allTest.size() != 0 }">
-		<form action="adminTest/searchTest" method="post">
-			<input type="text" name="keyWord"/>
-			<input type="submit" value="搜索"/>
-		</form>
 		<table border=1>
 			<tr>
 				<th style="display: none;">ID</th>
@@ -31,15 +31,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</tr>
 			<c:forEach items="${allTest }" var="test">
 				<tr>
-					<td style="display: none;">${test.id }</td>
+					<td style="display: none;">${test.test_id }</td>
 					<td>${test.tname }</td>
 					<td>${test.tsubject }</td>
 					<td>${test.torganizer }</td>
 					<c:if test="${test.status != 0 }"><td>是</td></c:if>
 					<c:if test="${test.status == 0 }"><td>否</td></c:if>
 					<td>
-						<a href="adminTest/toUpdateTest?id=${test.id }">修改</a>
-						<a onclick="return checkDel();" href="adminTest/deleteTest?id=${test.id }">删除</a>
+						<a href="adminTest/toUpdateTest?test_id=${test.test_id }">修改</a>
+						<a onclick="return checkDel();" href="adminTest/deleteTest?test_id=${test.test_id }">删除</a>
 					</td>
 				</tr>
 			</c:forEach>

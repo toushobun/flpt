@@ -51,12 +51,12 @@ public class UserServiceImpl implements UserService {
 			model.addAttribute("msg", "验证码错误！");
 			return "before/register";
 		}
-		buser.setId(-1);
+		buser.setUser_id(-1);
 		if(userDao.selectBuserByUidnum(buser.getUidnum()).size()>0) {
 			model.addAttribute("msg", "注册失败！（该身份证号已被注册）");
 			return "before/register";
 		}
-		buser.setId(null);
+		buser.setUser_id(null);
 		if(userDao.register(buser) > 0) {
 			model.addAttribute("allNotices", adminNoticeDao.selectNotice());
 			model.addAttribute("msg", "注册成功！");
@@ -65,8 +65,8 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public String selectANotice(Model model, Integer id) {
-		Notice notice = adminNoticeDao.selectANoticeById(id);
+	public String selectANoticeByNotice_id(Model model, Integer notice_id) {
+		Notice notice = adminNoticeDao.selectANoticeByNotice_id(notice_id);
 		model.addAttribute("notice", notice);
 		return "admin/noticeDetail";
 	}

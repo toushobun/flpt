@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>Insert title here</title>
 <script src="js/formCheck.js" type="text/javascript"></script>
 <script type="text/javascript">
-function changeQuota(id, testinfo_id){
+function changeQuota(testinfo__room_id, testinfo_id){
 	var rquota = prompt("请输入更改的名额：")
 	if(rquota.indexOf(" ") >= 0 || rquota == "") {
 		alert('不能为空')
@@ -24,12 +24,12 @@ function changeQuota(id, testinfo_id){
 		return false
 	}
 	else{
-		window.location.href="adminTestinfo/updateRoomQuota?id=" + id + "&rquota=" + quota + "&testinfo_id=" + testinfo_id
+		window.location.href="adminTestinfo/updateRoomQuota?testinfo__room_id=" + testinfo__room_id + "&rquota=" + quota + "&testinfo_id=" + testinfo_id
 	}
 }
-function cancelConfirm(id, testinfo_id, rname, room_id){
+function cancelConfirm(testinfo__room_id, testinfo_id, rname, room_id){
 	if(confirm("确认要取消考场：" + rname + "？")){
-		window.location.href="adminTestinfo/cancelRoom?id=" + id + "&testinfo_id=" + testinfo_id + "&room_id=" + room_id
+		window.location.href="adminTestinfo/cancelRoom?testinfo__room_id=" + testinfo__room_id + "&testinfo_id=" + testinfo_id + "&room_id=" + room_id
 	}
 }
 </script>
@@ -52,21 +52,21 @@ function cancelConfirm(id, testinfo_id, rname, room_id){
 				<td>${testinfo__room.rpostcode }</td>
 				<td>${testinfo__room.rquota }</td>
 				<td>
-					<a href="javascript:changeQuota('${testinfo__room.id }', '${testinfo__room.testinfo_id }')">修改名额</a>
-					<a href="javascript:cancelConfirm('${testinfo__room.id }', '${testinfo__room.testinfo_id }', '${testinfo__room.rname }', '${testinfo__room.room_id }')">取消考场</a>
+					<a href="javascript:changeQuota('${testinfo__room.testinfo__room_id }', '${testinfo__room.testinfo_id }')">修改名额</a>
+					<a href="javascript:cancelConfirm('${testinfo__room.testinfo__room_id }', '${testinfo__room.testinfo_id }', '${testinfo__room.rname }', '${testinfo__room.room_id }')">取消考场</a>
 				</td>
 			</tr>
 		</c:forEach>
 	</table>
 	<form:form action="adminTestinfo/toAddTestinfoNewRoom" method="post" modelAttribute="testinfo">
-		<input type="hidden" name="id" value="${sessionScope.allTestinfo__Room.get(0).testinfo_id }">
+		<input type="hidden" name="testinfo_id" value="${sessionScope.allTestinfo__Room.get(0).testinfo_id }">
 		<table>
 			<caption>额外添加考场</caption>
 			<tr>
 				<td>
 					<c:forEach items="${sessionScope.notSelectedRoom }" var="room">
 						<tr>
-							<td><form:checkbox path="room_ids" value="${room.id }"/></td>
+							<td><form:checkbox path="room_ids" value="${room.room_id }"/></td>
 							<td>${room.rname }</td>
 						</tr>
 					</c:forEach>

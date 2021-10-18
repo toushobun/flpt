@@ -1,7 +1,7 @@
 package com.entity;
 
 public class Testinfo {
-	private Integer id;					// 已发布考试id
+	private Integer testinfo_id;					// 已发布考试id
 	private Integer test_id;				// 考试id
 	private String test_time;			// 考试时间
 	private String regist_start_time;	// 报名开始时间
@@ -16,14 +16,14 @@ public class Testinfo {
 	private String[] rooms;	// 考场名列表
 	private Integer[] room_ids;	// 考场id列表
 	private Integer[] room_rquotas; // 考场名额列表
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
 	public Integer getTest_id() {
 		return test_id;
+	}
+	public Integer getTestinfo_id() {
+		return testinfo_id;
+	}
+	public void setTestinfo_id(Integer testinfo_id) {
+		this.testinfo_id = testinfo_id;
 	}
 	public void setTest_id(Integer test_id) {
 		this.test_id = test_id;

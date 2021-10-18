@@ -21,15 +21,15 @@ public class AdminNoticeServiceImpl implements AdminNoticeService{
 		return "forward:/adminNotice/selectNotice";
 	}
 	@Override
-	public String selectANoticeById(Model model, Integer id) {
+	public String selectANoticeByNotice_id(Model model, Integer notice_id) {
 		// TODO Auto-generated method stub
-		model.addAttribute("notice", adminNoticeDao.selectANoticeById(id));
+		model.addAttribute("notice", adminNoticeDao.selectANoticeByNotice_id(notice_id));
 		return "admin/noticeDetail";
 	}
 	@Override
-	public String deleteNoticeById(Model model, Integer id) {
+	public String deleteNoticeByNotice_id(Model model, Integer notice_id) {
 		// TODO Auto-generated method stub
-		adminNoticeDao.deleteNoticeById(id);
+		adminNoticeDao.deleteNoticeByNotice_id(notice_id);
 		model.addAttribute("msg", "É¾³ý³É¹¦£¡");
 		return "forward:/adminNotice/selectNotice";
 	}

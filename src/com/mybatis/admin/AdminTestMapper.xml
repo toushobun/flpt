@@ -13,24 +13,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	<!-- 发布一个考试 -->
 	<insert id="addTest" parameterType="Test">
-		insert into testtable (id,tname,tsubject,torganizer,status) 
+		insert into testtable (test_id,tname,tsubject,torganizer,status) 
 		values (null,#{tname},#{tsubject},#{torganizer},0)
 	</insert>
 	<!-- 删除一个考试 -->
-	<delete id="deleteTestById" parameterType="Integer">
-		delete from testtable where id = #{id}
+	<delete id="deleteTestByTest_id" parameterType="Integer">
+		delete from testtable where test_id = #{test_id}
 	</delete>
 	<!-- 通过id查询一个考试 -->
-	<select id="selectATestById" resultType="Test" parameterType="Integer">
-		select * from testtable where id = #{id}
+	<select id="selectATestByTest_id" resultType="Test" parameterType="Integer">
+		select * from testtable where test_id = #{test_id}
 	</select>
 	<!-- 通过tname查询一个考试 -->
 	<select id="selectATestByTname" resultType="Test" parameterType="String">
 		select * from testtable where tname = #{tname}
 	</select>
 	<!-- 通过tname和id查询一个考试 -->
-	<select id="selectATestByTnameAndId" resultType="Test" parameterType="Test">
-		select * from testtable where tname = #{tname} and id != #{id}
+	<select id="selectATestByTnameAndTest_id" resultType="Test" parameterType="Test">
+		select * from testtable where tname = #{tname} and test_id != #{test_id}
 	</select>
 	<!-- 修改一个考试 -->
 	<update id="updateTest" parameterType="Test">
@@ -49,6 +49,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	        status = #{status},
 	      </if>
 	    </set>
-    	where id = #{id}
+    	where test_id = #{test_id}
   	</update>
 </mapper>

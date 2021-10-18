@@ -1,21 +1,21 @@
 package com.entity;
 
 public class Reginfo {
-	private Integer id;				// 报名信息id
+	private Integer reginfo_id;				// 报名信息id
 	private Integer user_id;			// 用户id
 	private Integer testinfo_id;		// 已发布考试id
 	private Integer room_id;		// 考场id
 	private String ticketnum;		// 准考证号
 	private Integer status;			// 状态（0为未支付，1为已支付，2为考生主动取消，3为支付超时取消）
 	private String submit_time;		// 提交时间
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
 	public Integer getUser_id() {
 		return user_id;
+	}
+	public Integer getReginfo_id() {
+		return reginfo_id;
+	}
+	public void setReginfo_id(Integer reginfo_id) {
+		this.reginfo_id = reginfo_id;
 	}
 	public void setUser_id(Integer user_id) {
 		this.user_id = user_id;

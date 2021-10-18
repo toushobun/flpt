@@ -25,8 +25,8 @@ public class UserController {
 		return userService.login(buser, model, session, code);
 	}
 	@RequestMapping("/selectANotice")
-	public String selectANotice(Model model, Integer id) {
-		return userService.selectANotice(model, id);
+	public String selectANotice(Model model, Integer notice_id) {
+		return userService.selectANoticeByNotice_id(model, notice_id);
 	}
 	@RequestMapping("/toRegister")
 	public String toRegister(Buser buser) {

@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.UserReginfoDao">
 	<!-- 查询全部已发布考试 -->
-	<select id="userSelectTestinfo" resultType="Testinfo" >
-		select * from testinfotable, testtable where testinfotable.test_id = testtable.id
+	<select id="userSelectTestinfo" resultType="Testinfo__room" >
+		select * from testinfo__room, roomtable, testinfotable, testtable where testinfo__room.testinfo__room_id and testinfotable.test_id = testtable.test_id
 	</select>
 </mapper>

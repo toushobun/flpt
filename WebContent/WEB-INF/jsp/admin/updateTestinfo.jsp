@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<table style="display:none;" id="testData">
 		<c:forEach items="${sessionScope.allTest }" var="test">
 			<tr>
-				<td>${test.id }</td>
+				<td>${test.test_id }</td>
 				<td>${test.tsubject }</td>
 				<td>${test.torganizer }</td>
 				<td>${test.tname }</td>
@@ -49,14 +49,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</c:forEach>
 	</table>
 	<form:form action="adminTestinfo/updateTestinfo" method="post" modelAttribute="testinfo">
-		<form:hidden path="id" readonly="readonly"/>
+		<form:hidden path="testinfo_id" readonly="readonly"/>
 		<table>
 			<caption>修改考试信息</caption>
 			<tr>
 				<td colspan="2">请选择您要发布的考试<font color="red">*</font></td>
 				<td>
-					<form:select path="test_id" onchange="showDetail()"><!-- 前台选择的内容，会给test_id变量传到后台，itemLabel控制展示数据，itemValue控制传输数据 -->
-         				<form:options items="${sessionScope.allTest }" itemLabel="tname" itemValue="id"/>
+					<form:select path="test_id" onfocus="this.defaultIndex=this.selectedIndex;" onchange="this.selectedIndex=this.defaultIndex;"><!-- 前台选择的内容，会给test_id变量传到后台，itemLabel控制展示数据，itemValue控制传输数据 -->
+         				<form:options items="${sessionScope.allTest }" itemLabel="tname" itemValue="test_id"/>
    					</form:select>
 				</td>
 			</tr>

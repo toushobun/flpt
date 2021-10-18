@@ -28,12 +28,12 @@ public class AdminTestController extends BaseController {
 		return adminTestService.addTest(test, model, session);
 	}
 	@RequestMapping("/deleteTest")
-	public String deleteTest(Integer id, Model model, HttpSession session) {
-		return adminTestService.deleteTestById(id, model, session);
+	public String deleteTest(Integer test_id, Model model, HttpSession session) {
+		return adminTestService.deleteTestByTest_id(test_id, model, session);
 	}
 	@RequestMapping("/toUpdateTest")
-	public String toUpdateTest(Integer id, Model model) {
-		return adminTestService.toUpdateTest(id, model);
+	public String toUpdateTest(Integer test_id, Model model) {
+		return adminTestService.toUpdateTest(test_id, model);
 	}
 	@RequestMapping("/updateTest")
 	public String updateTest(Test test, Model model, HttpSession session) {

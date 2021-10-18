@@ -26,12 +26,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</tr>
 			<c:forEach items="${allNotices }" var="notice">
 				<tr>
-					<td style="display: none;">${notice.id }</td>
+					<td style="display: none;">${notice.notice_id }</td>
 					<td>${notice.ntitle }</td>
 					<td>${notice.ntime }</td>
-					<td><a href="adminNotice/selectANotice?id=${notice.id }">详情</a></td>
+					<td><a href="adminNotice/selectANotice?notice_id=${notice.notice_id }">详情</a></td>
 					<td>
-						<a onclick="return checkDel();" href="adminNotice/deleteNotice?id=${notice.id }">删除</a>
+						<a onclick="return checkDel();" href="adminNotice/deleteNotice?notice_id=${notice.notice_id }">删除</a>
 					</td>
 				</tr>
 			</c:forEach>

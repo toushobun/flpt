@@ -5,16 +5,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.dao.AdminNoticeDao">
 	<!-- 发布一个公告 -->
 	<insert id="addNotice" parameterType="Notice">
-		insert into noticetable (id,ntitle,ncontent,ntime) 
+		insert into noticetable (notice_id,ntitle,ncontent,ntime) 
 		values (null,#{ntitle},#{ncontent},now())
 	</insert>
 	<!-- 删除一个公告 -->
-	<delete id="deleteNoticeById" parameterType="Integer">
-		delete from noticetable where id = #{id}
+	<delete id="deleteNoticeByNotice_id" parameterType="Integer">
+		delete from noticetable where notice_id = #{notice_id}
 	</delete>
 	<!-- 查询一个公告 -->
-	<select id="selectANoticeById"  resultType="Notice" parameterType="Integer">
-		select * from noticetable where id = #{id}
+	<select id="selectANoticeByNotice_id"  resultType="Notice" parameterType="Integer">
+		select * from noticetable where notice_id = #{notice_id}
 	</select>
 	<!-- 查询全部公告 -->
 	<select id="selectNotice"  resultType="Notice" >

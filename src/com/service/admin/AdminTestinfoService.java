@@ -13,8 +13,8 @@ public interface AdminTestinfoService {
 	public String toAddTestinfoRoom(Testinfo testinfo, Model model);		// 前往选择考场页
 	public String toAddTestinfoNewRoom(Testinfo testinfo, Model model);		// 前往选择新考场页
 	public String addTestinfo(Testinfo testinfo, Model model, HttpSession session);		// 添加已发布考试
-	public String deleteTestinfoById(Integer id, Model model, HttpSession session);		// 通过id删除已发布考试
-	public String toUpdateTestinfo(Integer id, Model model);		// 前往修改已发布考试页
+	public String deleteTestinfoByTestinfo_id(Integer testinfo_id, Model model, HttpSession session);		// 通过id删除已发布考试
+	public String toUpdateTestinfo(Integer testinfo_id, Model model);		// 前往修改已发布考试页
 	public String updateTestinfo(Testinfo testinfo, Model model, HttpSession session);		// 修改已发布考试
 	public String selectTestinfoRoom(Integer testinfo_id, Model model, HttpSession session);		// 前往详细考场页
 	public String updateRoomQuota(Testinfo__Room testinfo__Room, Model model, HttpSession session);		// 更新考场名额

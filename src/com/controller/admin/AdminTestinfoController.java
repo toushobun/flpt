@@ -41,12 +41,12 @@ public class AdminTestinfoController extends BaseController {
 		return adminTestinfoService.addTestinfoRoom(testinfo, model, session);
 	}
 	@RequestMapping("/deleteTestinfo")
-	public String deleteTestinfo(Integer id, Model model, HttpSession session) {
-		return adminTestinfoService.deleteTestinfoById(id, model, session);
+	public String deleteTestinfo(Integer testinfo_id, Model model, HttpSession session) {
+		return adminTestinfoService.deleteTestinfoByTestinfo_id(testinfo_id, model, session);
 	}
 	@RequestMapping("/toUpdateTestinfo")
-	public String toUpdateTestinfo(Integer id, Model model) {
-		return adminTestinfoService.toUpdateTestinfo(id, model);
+	public String toUpdateTestinfo(Integer testinfo_id, Model model) {
+		return adminTestinfoService.toUpdateTestinfo(testinfo_id, model);
 	}
 	@RequestMapping("/updateTestinfo")
 	public String updateTestinfo(Testinfo testinfo, Model model, HttpSession session) {

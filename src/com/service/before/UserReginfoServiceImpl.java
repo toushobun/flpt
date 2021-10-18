@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 
 import com.dao.UserReginfoDao;
 import com.entity.Testinfo;
+import com.entity.Testinfo__Room;
 import com.util.MyUtil;
 
 @Service("userReginfoService")
@@ -23,18 +24,18 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 	public String userSelectTestinfo(Model model) {
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
-		List<Testinfo> testinfoList = userReginfoDao.userSelectTestinfo();
+		List<Testinfo__Room> testinfo__RoomList = userReginfoDao.userSelectTestinfo__Room();
 		boolean ifInTime;			// ②是否在报名时间内
 		boolean ifHaveQuota;		// ①名额是否足够
-		Testinfo testinfo;			// 每个考试信息
-		for(int i=0;i<testinfoList.size();i++) {
-			testinfo = testinfoList.get(i);
+		Testinfo__Room testinfo__Room;			// 每个考试信息
+		for(int i=0;i<testinfo__RoomList.size();i++) {
+			testinfo__Room = testinfo__RoomList.get(i);
 			SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd H:m:s");
 			Date date1 = null;
 			Date date2 = null;
 			try {
-				date1 = sf.parse(testinfo.getRegist_start_time());			// 获取报名开始时间
-				date2 = sf.parse(testinfo.getRegist_end_time());		// 获取报名截止时间
+				date1 = sf.parse(testinfo__Room.getRegist_start_time());			// 获取报名开始时间
+				date2 = sf.parse(testinfo__Room.getRegist_end_time());		// 获取报名截止时间
 			} catch (ParseException e) {e.printStackTrace();}		
 			Date date = new Date();		// 获取当前系统时间
 			ifInTime = MyUtil.isEffectiveDate(date, date1, date2);		// 判断是否在报名时间内
@@ -50,7 +51,7 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 //			}
 		}
 		
-		model.addAttribute("allTestinfo", userReginfoDao.userSelectTestinfo());
+//		model.addAttribute("allTestinfo", userReginfoDao.userSelectTestinfo());
 		// 这个指令将转到本地文件层验证
 		return "before/userSelectTestinfo";
 	}

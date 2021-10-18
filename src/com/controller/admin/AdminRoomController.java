@@ -28,12 +28,12 @@ public class AdminRoomController extends BaseController {
 		return adminRoomService.addRoom(room, model, session);
 	}
 	@RequestMapping("/deleteRoom")
-	public String deleteRoom(Integer id, Model model, HttpSession session) {
-		return adminRoomService.deleteRoomById(id, model, session);
+	public String deleteRoom(Integer room_id, Model model, HttpSession session) {
+		return adminRoomService.deleteRoomByRoom_id(room_id, model, session);
 	}
 	@RequestMapping("/toUpdateRoom")
-	public String toUpdateRoom(Integer id, Model model) {
-		return adminRoomService.toUpdateRoom(id, model);
+	public String toUpdateRoom(Integer room_id, Model model) {
+		return adminRoomService.toUpdateRoom(room_id, model);
 	}
 	@RequestMapping("/updateRoom")
 	public String updateRoom(Room room, Model model, HttpSession session) {

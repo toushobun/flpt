@@ -14,28 +14,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 	<ul>
-		<li><img src="img/logo.png" width="15px" alt="">&nbsp;&nbsp;欢迎光临中国外国语能力考试报名网</li>
+		<li>欢迎光临中国外国语能力考试报名网</li>
 		<li><a href="userReginfo/userSelectTestinfo" target="center">报名考试</a></li>
         <li><a href="selectNotice" target="center">查看公告</a></li>
         <c:if test="${sessionScope.buser != null }">
-        <li><a>考生：${sessionScope.buser.uname }</a>
-        	<ul>
-        		<li><a href="userCenter/center" target="center">个人中心</a></li>
-        		<li><a href="before/exit">安全退出</a></li>
-			</ul>
-		</li>
+	        <li><a>考生：${sessionScope.buser.uname }</a>
+	        	<ul>
+	        		<li><a href="userCenter/center" target="center">个人中心</a></li>
+	        		<li><a href="before/exit">安全退出</a></li>
+				</ul>
+			</li>
         </c:if>
         <c:if test="${sessionScope.buser == null }">
 	        <li><a href="toRegister">注册</a></li>
 	        <li><a href="before/toLogin">登录</a></li>
         </c:if>
 	</ul>
-		<c:if test="${sessionScope.buser != null }">
-			<iframe src="userCenter/center" name="center" frameborder="0"></iframe>
-		</c:if>
-		<c:if test="${sessionScope.buser == null }">
-			<iframe src="selectNotice" name="center" frameborder="0"></iframe>
-		</c:if>
+	<%-- <c:if test="${sessionScope.buser != null }">
+		<iframe src="userCenter/center" name="center" frameborder="0"></iframe>
+	</c:if>
+	<c:if test="${sessionScope.buser == null }">
+		<iframe src="selectNotice" name="center" frameborder="0"></iframe>
+	</c:if> --%>
 	©版权属于大连外国语大学18级软件7班邓淞文
 </body>
 </html>
