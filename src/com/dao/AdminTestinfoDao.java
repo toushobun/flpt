@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import com.entity.Reginfo;
-import com.entity.Room;
 import com.entity.Testinfo;
 import com.entity.Testinfo__Room;
 
@@ -24,5 +23,6 @@ public interface AdminTestinfoDao {
 	public int updateTestinfo(Testinfo testinfo);		//修改已发布考试
 	public int updateRoomQuota(Testinfo__Room testinfo__Room);		// 修改Room名额
 	public List<Reginfo> selectAReginfoByRoom_id(Integer room_id);		// 查询是否有学生已经报名此考场
+	public List<Reginfo> selectAReginfoByTestinfo_id(Integer testinfo_id);		//查询是否有学生已经报名此考试
 	public List<Testinfo> searchTestinfo(String keyWord);		// 模糊查询
 }

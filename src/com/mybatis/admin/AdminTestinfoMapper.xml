@@ -45,14 +45,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateTestinfo" parameterType="Testinfo">
 	    update testinfotable
 	    <set>
-	      <if test="tname != null">
-	        tname = #{tname},
+	      <if test="test_id != null">
+	        test_id = #{test_id},
 	      </if>
-	      <if test="tsubject != null">
-	        tsubject = #{tsubject},
+	      <if test="test_time != null">
+	        test_time = #{test_time},
 	      </if>
-	      <if test="torganizer != null">
-	        torganizer = #{torganizer},
+	      <if test="regist_start_time != null">
+	        regist_start_time = #{regist_start_time},
+	      </if>
+	      <if test="regist_end_time != null">
+	        regist_end_time = #{regist_end_time},
+	      </if>
+	      <if test="tprice != null">
+	        tprice = #{tprice},
 	      </if>
 	    </set>
     	where id = #{id}
@@ -70,6 +76,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 查询是否有学生已经报名此考场 -->
 	<select id="selectAReginfoByRoom_id" resultType="Reginfo" parameterType="Integer">
 		select * from reginfotable where room_id = #{room_id}
+	</select>
+	<!-- 查询是否有学生已经报名此考试 -->
+	<select id="selectAReginfoByTestinfo_id" resultType="Reginfo" parameterType="Integer">
+		select * from reginfotable where room_id in (select room_id from testinfo__room where testinfo_id = #{testinfo_id})
 	</select>
 	<!-- 查询该考试绑定的考场数量 -->
 	<select id="selectTestinfo__RoomById" resultType="Testinfo" parameterType="Integer">

@@ -136,10 +136,10 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 	@Override
 	public String deleteTestinfoById(Integer id, Model model, HttpSession session) {
 		// TODO 通过id删除考试信息，删除前确认是否有学生报名，删除后更新到session
-//		if(adminTestinfoDao.selectATestinfoById(id).getStatus() != 0) {
-//			model.addAttribute("msg", "该考试已有考生报名，若要删除，请先删除对应准考证！");
-//			return "forward:/adminTestinfo/selectTestinfo";
-//		}
+		if(adminTestinfoDao.selectAReginfoByTestinfo_id(id).size() > 0) {
+			model.addAttribute("msg", "该考试已有考生报名，若要删除，请先删除对应准考证！");
+			return "forward:/adminTestinfo/selectTestinfo";
+		}
 		Integer test_id = adminTestinfoDao.selectATestinfoById(id).getTest_id();
 		List<Testinfo__Room> toDeleteList = adminTestinfoDao.selectTestinfo__RoomByTestinfo_id(id);
 		for(int i=0;i<toDeleteList.size();i++) {
