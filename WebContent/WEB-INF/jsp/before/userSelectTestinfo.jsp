@@ -10,6 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <base href="<%=basePath%>">
 <title>Insert title here</title>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
 </head>
 <body>
 	<c:if test="${allTestinfo.size() == 0 }">
@@ -23,30 +24,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</form>
 		<table border=1>
 			<tr>
-				<th width="26%">考试名</th>
+				<th width="25%">考试名</th>
 				<th width="5%">科目</th>
-				<th width="18%">考试时间</th>
-				<th width="18%">报名开始时间</th>
-				<th width="18%">报名截止时间</th>
+				<th width="25%">考试时间</th>
 				<th width="5%">报名费</th>
-				<th width="10%">操作</th>
+				<th width="25%">考场名</th>
+				<th width="15%">操作</th>
 			</tr>
-			<c:forEach items="${allTestinfo }" var="testinfo">
+			<c:forEach items="${allTestinfo__Room }" var="testinfo__room">
 				<tr>
-					<td>${testinfo.tname }</td>
-					<td>${testinfo.tsubject }</td>
-					<td>${testinfo.test_time }</td>
-					<td>${testinfo.regist_start_time }</td>
-					<td>${testinfo.regist_end_time }</td>
-					<td>${testinfo.tprice }</td>
+					<td>${testinfo__room.tname }</td>
+					<td>${testinfo__room.tsubject }</td>
+					<td>${testinfo__room.test_time }</td>
+					<td>${testinfo__room.tprice }</td>
+					<td>${testinfo__room.rname }</td>
 					<td>
-						<c:if test="${testinfo.status == 1 }">
-							<a href="userTicket/toAddTicket?i_id=${testinfo.testinfo_id }">报名</a>
+						<c:if test="${testinfo__room.status == 1 }">
+							<a href="userTicket/toAddTicket?i_id=${testinfo__room.testinfo__room_id }">报名</a>
 						</c:if>
-						<c:if test="${testinfo.status == 0 }">
+						<c:if test="${testinfo__room.status == 0 }">
 							名额已满
 						</c:if>
-						<c:if test="${testinfo.status == -1 }">
+						<c:if test="${testinfo__room.status == -1 }">
 							不在报名时间
 						</c:if>
 					</td>

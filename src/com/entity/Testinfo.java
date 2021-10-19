@@ -7,8 +7,6 @@ public class Testinfo {
 	private String regist_start_time;	// 报名开始时间
 	private String regist_end_time;		// 报名截止时间
 	private Double tprice;				// 报名费用
-	// ----------报名用----------
-	private Integer status;				// 状态，1可报名，0名额已满，-1不在报名时间，-2名额已满且不在报名时间
 	// ----------查询用----------
 	private String tname;		// 考试名
 	private String tsubject;	// 考试科目
@@ -51,13 +49,6 @@ public class Testinfo {
 	}
 	public void setTprice(Double tprice) {
 		this.tprice = tprice;
-	}
-	// ----------报名用----------
-	public Integer getStatus() {
-		return status;
-	}
-	public void setStatus(Integer status) {
-		this.status = status;
 	}
 	// ----------查询用----------
 	public String getTname() {

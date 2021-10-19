@@ -5,6 +5,8 @@ public class Testinfo__Room {
 	private Integer testinfo_id;				// 已发布考试id
 	private Integer room_id;				// 考场id
 	private Integer rquota;				// 考试名额
+	// ----------报名用----------
+	private Integer status;				// 状态，1可报名，0名额已满，-1不在报名时间，-2名额已满且不在报名时间
 	// ----------查询用----------
 	private String rname;		// 考场名
 	private String raddress;	// 考场地址
@@ -41,6 +43,12 @@ public class Testinfo__Room {
 	}
 	public void setRquota(Integer rquota) {
 		this.rquota = rquota;
+	}
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 	public String getRname() {
 		return rname;
