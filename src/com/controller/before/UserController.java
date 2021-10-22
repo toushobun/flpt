@@ -24,9 +24,9 @@ public class UserController {
 	public String login(Buser buser, Model model, HttpSession session, String code) {
 		return userService.login(buser, model, session, code);
 	}
-	@RequestMapping("/selectANotice")
-	public String selectANotice(Model model, Integer notice_id) {
-		return userService.selectANoticeByNotice_id(model, notice_id);
+	@RequestMapping("/userSelectANotice")
+	public String userSelectANotice(Model model, Integer notice_id) {
+		return userService.userSelectANoticeByNotice_id(model, notice_id);
 	}
 	@RequestMapping("/toRegister")
 	public String toRegister(Buser buser) {
@@ -41,8 +41,8 @@ public class UserController {
 		session.invalidate();
 		return "forward:/before";
 	}
-	@RequestMapping("selectNotice")
-	public String selectNotice(Model model) {
-		return userService.selectNotice(model);
+	@RequestMapping("userSelectNotice")
+	public String userSelectNotice(Model model) {
+		return userService.userSelectNotice(model);
 	}
 }

@@ -16,4 +16,8 @@ public class UserReginfoController extends BaseBeforeController {
 	public String userSelectTestinfo(Model model) {
 		return userReginfoService.userSelectTestinfo(model);
 	}
+	@RequestMapping("/userSelectTestinfoRoom")
+	public String toAddReginfo(Integer testinfo_id, Model model) {
+		return userReginfoService.userSelectTestinfoRoom(testinfo_id, model);
+	}
 }

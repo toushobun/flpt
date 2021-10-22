@@ -4,12 +4,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.UserReginfoDao">
 	<!-- 查询全部已发布考试 -->
-	<select id="userSelectTestinfo__Room" resultType="Testinfo__room" >
-		select testinfo__room.testinfo__room_id, testinfo__room.rquota, testinfo__room.room_id, testinfo__room.testinfo_id, testinfotable.test_id, 
-			roomtable.rname, roomtable.raddress, roomtable.rtelnum, roomtable.rpostcode, 
-			testinfotable.test_time, testinfotable.regist_start_time, testinfotable.regist_end_time, testinfotable.tprice, 
-			testtable.tname, testtable.tsubject, testtable.torganizer, testtable.status 
-		from testinfo__room, roomtable, testinfotable, testtable 
-		where testinfo__room.room_id = roomtable.room_id and testinfo__room.testinfo_id = testinfotable.testinfo_id and testinfotable.test_id = testtable.test_id
+	<select id="userSelectTestinfo" resultType="Testinfo" >
+		select * from testinfotable, testtable where testinfotable.test_id = testtable.test_id
+	</select>
+	<!-- 查询该考试的考场 -->
+	<select id="userSelectTestinfo__Room" resultType="Testinfo__room" parameterType="Integer">
+		select * from testinfo__room, roomtable, testinfotable, testtable where testinfo__room.room_id = roomtable.room_id and testinfo__room.testinfo_id = testinfotable.testinfo_id and testinfotable.test_id = testtable.test_id and testinfotable.testinfo_id = #{testinfo_id}
 	</select>
 </mapper>

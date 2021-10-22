@@ -65,16 +65,16 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public String selectANoticeByNotice_id(Model model, Integer notice_id) {
+	public String userSelectANoticeByNotice_id(Model model, Integer notice_id) {
 		Notice notice = adminNoticeDao.selectANoticeByNotice_id(notice_id);
 		model.addAttribute("notice", notice);
-		return "admin/noticeDetail";
+		return "before/noticeDetail";
 	}
 
 	@Override
-	public String selectNotice(Model model) {
+	public String userSelectNotice(Model model) {
 		// TODO Auto-generated method stub
 		model.addAttribute("allNotices", adminNoticeDao.selectNotice());
-		return "before/selectNotice";
+		return "before/userSelectNotice";
 	}
 }

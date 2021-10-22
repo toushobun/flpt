@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<c:forEach items="${allNotices }" var="notice">
 				<tr>
 					<td>${notice.ntitle }</td>
-					<td><a href="selectANotice?notice_id=${notice.notice_id }" target="center">详情</a></td>
+					<td><a href="userSelectANotice?notice_id=${notice.notice_id }" target="center">详情</a></td>
 				</tr>
 			</c:forEach>
 		</table>

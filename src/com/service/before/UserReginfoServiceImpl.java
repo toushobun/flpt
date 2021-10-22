@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import com.dao.UserReginfoDao;
+import com.entity.Testinfo;
 import com.entity.Testinfo__Room;
 import com.util.MyUtil;
 
@@ -21,9 +22,16 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 	private UserReginfoDao userReginfoDao;
 	@Override
 	public String userSelectTestinfo(Model model) {
-		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
-		List<Testinfo__Room> testinfo__RoomList = userReginfoDao.userSelectTestinfo__Room();
+		// TODO 考生选择想要报名的考试
+		List<Testinfo> testinfoList = userReginfoDao.userSelectTestinfo();		
+		model.addAttribute("allTestinfo", testinfoList);
+		// 这个指令将转到本地文件层验证
+		return "before/userSelectTestinfo";
+	}
+	@Override
+	public String userSelectTestinfoRoom(Integer testinfo_id, Model model) {
+		// TODO 考生选择该考试的考场
+		List<Testinfo__Room> testinfo__RoomList = userReginfoDao.userSelectTestinfo__Room(testinfo_id);
 		boolean ifInTime;			// ②是否在报名时间内
 		boolean ifHaveQuota;		// ①名额是否足够
 		Testinfo__Room testinfo__Room;			// 每个考试信息
@@ -51,10 +59,8 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 			}
 			testinfo__RoomList.set(i, testinfo__Room);		// 将处理好的数据传回list
 		}
-		
 		model.addAttribute("allTestinfo__Room", testinfo__RoomList);
-		// 这个指令将转到本地文件层验证
-		return "before/userSelectTestinfo";
+		return "before/userSelectTestinfoRoom";
 	}
 
 }
