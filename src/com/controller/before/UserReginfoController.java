@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.entity.Reginfo;
 import com.service.before.UserReginfoService;
 
 @Controller
@@ -19,5 +20,9 @@ public class UserReginfoController extends BaseBeforeController {
 	@RequestMapping("/userSelectTestinfoRoom")
 	public String toAddReginfo(Integer testinfo_id, Model model) {
 		return userReginfoService.userSelectTestinfoRoom(testinfo_id, model);
+	}
+	@RequestMapping("/userAddReginfo")
+	public String userAddReginfo(Reginfo reginfo, Model model) {
+		return userReginfoService.userAddReginfo(reginfo, model);
 	}
 }
