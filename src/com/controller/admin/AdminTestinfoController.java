@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.entity.Testinfo;
-import com.entity.Testinfo__Room;
+import com.entity.Testinfo__room;
 import com.service.admin.AdminTestinfoService;
 @Controller
 @RequestMapping("/adminTestinfo")
@@ -57,12 +57,12 @@ public class AdminTestinfoController extends BaseController {
 		return adminTestinfoService.selectTestinfoRoom(testinfo_id, model, session);
 	}
 	@RequestMapping("/updateRoomQuota")
-	public String updateRoomQuota(Testinfo__Room testinfo__Room, Model model, HttpSession session) {
-		return adminTestinfoService.updateRoomQuota(testinfo__Room, model, session);
+	public String updateRoomQuota(Testinfo__room testinfo__room, Model model, HttpSession session) {
+		return adminTestinfoService.updateRoomQuota(testinfo__room, model, session);
 	}
 	@RequestMapping("/cancelRoom")
-	public String cancelRoom(Testinfo__Room testinfo__Room, Model model, HttpSession session) {
-		return adminTestinfoService.cancelRoom(testinfo__Room, model, session);
+	public String cancelRoom(Testinfo__room testinfo__room, Model model, HttpSession session) {
+		return adminTestinfoService.cancelRoom(testinfo__room, model, session);
 	}
 	@RequestMapping("/searchTestinfo")
 	public String searchTestinfo(String keyWord, HttpSession session) {

@@ -8,6 +8,8 @@ public class Reginfo {
 	private String ticketnum;		// 准考证号
 	private Integer status;			// 状态（0为未支付，1为已支付，2为考生主动取消，3为支付超时取消）
 	private String submit_time;		// 提交时间
+	// ----------查询用----------
+	private Integer testinfo__room_id;	
 	public Integer getUser_id() {
 		return user_id;
 	}
@@ -49,6 +51,12 @@ public class Reginfo {
 	}
 	public void setSubmit_time(String submit_time) {
 		this.submit_time = submit_time;
+	}
+	public Integer getTestinfo__room_id() {
+		return testinfo__room_id;
+	}
+	public void setTestinfo__room_id(Integer testinfo__room_id) {
+		this.testinfo__room_id = testinfo__room_id;
 	}
 	
 }

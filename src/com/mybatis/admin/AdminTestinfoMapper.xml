@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (null,#{test_id},#{test_time},#{regist_start_time},#{regist_end_time},#{tprice})
 	</insert>
 	<!-- 添加对应考试的考场 -->
-	<insert id="addTestinfo__room" parameterType="Testinfo__Room">
+	<insert id="addTestinfo__room" parameterType="Testinfo__room">
 		insert into testinfo__room (testinfo__room_id,testinfo_id,room_id,rquota)
 		values (null,#{testinfo_id},#{room_id},#{rquota})
 	</insert>
@@ -26,7 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from testinfotable where testinfo_id = #{testinfo_id}
 	</delete>
 	<!-- 通过id删除关联 -->
-	<delete id="deleteTestinfo__RoomByTestinfo__room_id" parameterType="Integer">
+	<delete id="deleteTestinfo__roomByTestinfo__room_id" parameterType="Integer">
 		delete from testinfo__room where testinfo__room_id = #{testinfo__room_id}
 	</delete>
 	<!-- 通过id查询一个已发布考试 -->
@@ -34,7 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from testinfotable where testinfo_id = #{testinfo_id}
 	</select>
 	<!-- 通过testinfo_id搜索关联 -->
-	<select id="selectTestinfo__RoomByTestinfo_id" resultType="Testinfo__Room" parameterType="Integer">
+	<select id="selectTestinfo__roomByTestinfo_id" resultType="Testinfo__room" parameterType="Integer">
 		select * from testinfo__room, roomtable where testinfo_id = #{testinfo_id} and roomtable.room_id = testinfo__room.room_id
 	</select>
 	<!-- 通过test_id查询一个已发布考试 -->

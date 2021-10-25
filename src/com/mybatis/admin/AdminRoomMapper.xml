@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from roomtable where rname = #{rname}
 	</select>
 	<!-- 通过rname和id查询一个考场 -->
-	<select id="selectARoomByRnameAndId" resultType="Room" parameterType="Room">
+	<select id="selectARoomByRnameAndRoom_id" resultType="Room" parameterType="Room">
 		select * from roomtable where rname = #{rname} and room_id != #{room_id}
 	</select>
 	<!-- 修改一个考场 -->
@@ -52,7 +52,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	where room_id = #{room_id}
   	</update>
 	<!-- 通过id查询一个考场 -->
-	<select id="selectATestinfo__RoomByRoom_id" resultType="Room" parameterType="Integer">
+	<select id="selectATestinfo__roomByRoom_id" resultType="Room" parameterType="Integer">
 		select * from testinfo__room where room_id = #{room_id}
 	</select>
 	<!-- 查询未被选的考场 -->

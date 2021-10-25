@@ -29,14 +29,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th width="10%">报名费</th>
 				<th width="20%">操作</th>
 			</tr>
-			<c:forEach items="${allTestinfo }" var="testinfo">
+			<c:forEach items="${sessionScope.allTestinfo }" var="testinfo">
 				<tr>
 					<td>${testinfo.tname }</td>
 					<td>${testinfo.tsubject }</td>
 					<td>${testinfo.test_time }</td>
 					<td>${testinfo.tprice }</td>
 					<td>
-						<a href="userReginfo/userSelectTestinfoRoom?testinfo_id=${testinfo.testinfo_id }">前往报名</a>
+						<c:if test="${testinfo.status == 1 }">
+							<a href="userReginfo/userSelectTestinfoRoom?testinfo_id=${testinfo.testinfo_id }">前往报名</a>
+						</c:if>
+						<c:if test="${testinfo.status == 0 }">
+							已报名，<a href="#">查看准考证</a>
+						</c:if>
 					</td>
 				</tr>
 			</c:forEach>

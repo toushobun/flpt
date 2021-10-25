@@ -14,6 +14,8 @@ public class Testinfo {
 	private String[] rooms;	// 考场名列表
 	private Integer[] room_ids;	// 考场id列表
 	private Integer[] room_rquotas; // 考场名额列表
+	// ----------报名用----------
+	private Integer status; // 考生选择考场时判断是否已报名该考试
 	public Integer getTest_id() {
 		return test_id;
 	}
@@ -86,6 +88,12 @@ public class Testinfo {
 	}
 	public void setRoom_rquotas(Integer[] room_rquotas) {
 		this.room_rquotas = room_rquotas;
+	}
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 	
 }

@@ -20,14 +20,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<th width="25%">考场联系电话</th>
 			<th width="10%">操作</th>
 		</tr>
-		<c:forEach items="${allTestinfo__Room }" var="testinfo__room">
+		<c:forEach items="${allTestinfo__room }" var="testinfo__room">
 			<tr>
 				<td>${testinfo__room.rname }</td>
 				<td>${testinfo__room.raddress }</td>
 				<td>${testinfo__room.rtelnum }</td>
 				<td>
 					<c:if test="${testinfo__room.status == 1 }">
-						<a href="userReginfo/userAddReginfo?user_id=${sessionScope.buser.user_id }&testinfo_id=${testinfo__room.testinfo_id }&room_id=${testinfo__room.room_id}">报名</a>
+						<a href="userReginfo/userAddReginfo?testinfo__room_id=${testinfo__room.testinfo__room_id }&user_id=${sessionScope.buser.user_id }&testinfo_id=${testinfo__room.testinfo_id }&room_id=${testinfo__room.room_id}">报名</a>
 					</c:if>
 					<c:if test="${testinfo__room.status == 0 }">
 						名额已满

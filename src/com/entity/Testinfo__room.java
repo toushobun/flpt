@@ -1,6 +1,6 @@
 package com.entity;
 
-public class Testinfo__Room {
+public class Testinfo__room {
 	private Integer testinfo__room_id;					// 关联id
 	private Integer testinfo_id;				// 已发布考试id
 	private Integer room_id;				// 考场id

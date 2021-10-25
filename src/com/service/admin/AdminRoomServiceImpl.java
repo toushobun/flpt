@@ -42,7 +42,7 @@ public class AdminRoomServiceImpl implements AdminRoomService {
 	@Override
 	public String deleteRoomByRoom_id(Integer room_id, Model model, HttpSession session) {
 		// TODO Auto-generated method stub
-		if(adminRoomDao.selectATestinfo__RoomByRoom_id(room_id).size() > 0) {
+		if(adminRoomDao.selectATestinfo__roomByRoom_id(room_id).size() > 0) {
 			model.addAttribute("msg", "该考点已作为考场发布，不允许删除！");
 			return "forward:/adminRoom/selectRoom";
 		}
@@ -64,7 +64,7 @@ public class AdminRoomServiceImpl implements AdminRoomService {
 	@Override
 	public String updateRoom(Room room, Model model, HttpSession session) {
 		// TODO Auto-generated method stub
-		if(adminRoomDao.selectARoomByRnameAndId(room).size() > 0) {
+		if(adminRoomDao.selectARoomByRnameAndRoom_id(room).size() > 0) {
 			model.addAttribute("msg", "修改失败！该考场名已存在！");
 			// 把原来的Rname传回前端
 			room.setRname(adminRoomDao.selectARoomByRoom_id(room.getRoom_id()).getRname());

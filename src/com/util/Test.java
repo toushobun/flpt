@@ -14,6 +14,7 @@ public class Test {
 		Date date2 = sf.parse("2021-12-06 16:09:00.0");
 		Date date = new Date();
 		System.out.println(MyUtil.isEffectiveDate(date, date1, date2));
+		System.out.println(String.format("%04d", Math.round(Math.random()*9999+1)));
 	}
 
 }
