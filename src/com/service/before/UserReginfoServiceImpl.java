@@ -94,8 +94,6 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 		if(userReginfoDao.userAddReginfo(reginfo) > 0){
 			model.addAttribute("msg", "报名成功！");
 		}
-//		List<Testinfo> testinfoList = userReginfoDao.userSelectTestinfo();		
-//		session.setAttribute("allTestinfo", testinfoList);
 		return "forward:/userReginfo/userSelectTestinfo";
 	}
 
