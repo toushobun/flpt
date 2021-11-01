@@ -9,6 +9,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <base href="<%=basePath%>">
 <title>Insert title here</title>
+<script type="text/javascript">
+function cancelConfirm(reginfo_id){
+	if(confirm("确认要取消报名？")){
+		window.location.href="userReginfo/userCancelReginfo?reginfo_id=" + reginfo_id
+	}
+}
+</script>
 </head>
 <body>
 	<table border=1>
@@ -37,10 +44,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<tr>
 			<td>操作</td>
 			<td>
-				<c:if test="${reginfo.status == 0 }"><a href="userReginfo/userToPay">前往付款</a>&nbsp;<a href="#">取消报名</a></c:if>
-				<c:if test="${reginfo.status == 1 }"><a href="#">生成准考证</a>&nbsp;</c:if>
+				<c:if test="${reginfo.status == 0 }">
+					<a href="userReginfo/userToPay?reginfo_id=${reginfo.reginfo_id }&tname=${reginfo.tname }">前往付款</a>&nbsp;
+					<a href="javascript:cancelConfirm('${reginfo.reginfo_id}')">取消报名</a>
+				</c:if>
+				<c:if test="${reginfo.status == 1 }">
+					<a href="#">修改考场</a>&nbsp;
+					<a href="#">生成准考证</a>
+				</c:if>
 			</td>
 		</tr>
 	</table>
+	<c:if test="${msg != null }">
+		<script type="text/javascript">
+			alert("${msg}");
+		</script>
+	</c:if>
 </body>
 </html>

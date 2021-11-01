@@ -17,7 +17,7 @@ public interface AdminTestinfoService {
 	public String toUpdateTestinfo(Integer testinfo_id, Model model);		// 前往修改已发布考试页
 	public String updateTestinfo(Testinfo testinfo, Model model, HttpSession session);		// 修改已发布考试
 	public String selectTestinfoRoom(Integer testinfo_id, Model model, HttpSession session);		// 前往详细考场页
-	public String updateRoomQuota(Testinfo__room testinfo__room, Model model, HttpSession session);		// 更新考场名额
+	public String updateRoomQuota(Testinfo__room testinfo__room, Model model, HttpSession session);		// 更新关联（考场名额）
 	public String cancelRoom(Testinfo__room testinfo__room, Model model, HttpSession session);		// 取消考场
 	public String addTestinfoRoom(Testinfo testinfo, Model model, HttpSession session);		// 为一个考试新增考场
 	public String searchTestinfo(String keyWord, HttpSession session);		// 模糊查询

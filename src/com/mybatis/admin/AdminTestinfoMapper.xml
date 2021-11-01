@@ -64,7 +64,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	where testinfo_id = #{testinfo_id}
   	</update>
 	<!-- 修改一个考场名额 -->
-	<update id="updateRoomQuota" parameterType="Room">
+	<update id="updateTestinfo__room" parameterType="Testinfo__room">
 	    update testinfo__room
 	    <set>
 	      <if test="rquota != null">

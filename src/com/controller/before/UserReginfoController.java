@@ -31,4 +31,16 @@ public class UserReginfoController extends BaseBeforeController {
 	public String userSelectAReginfo(Reginfo reginfo, Model model) {
 		return userReginfoService.userSelectAReginfoByUser_idAndTestinfo_id(reginfo, model);
 	}
+	@RequestMapping("/userToPay")
+	public String userToPay(Reginfo reginfo, Model model) {
+		return userReginfoService.userToPay(reginfo, model);
+	}
+	@RequestMapping("/userPayDone")
+	public String userPayDone(Integer reginfo_id, Model model) {
+		return userReginfoService.userPay(reginfo_id, model);
+	}
+	@RequestMapping("userCancelReginfo")
+	public String userCancelReginfo(Integer reginfo_id, Model model) {
+		return userReginfoService.userCancelReginfo(reginfo_id, model);
+	}
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
+import com.dao.AdminTestinfoDao;
 import com.dao.UserReginfoDao;
 import com.entity.Reginfo;
 import com.entity.Testinfo;
@@ -23,6 +24,8 @@ import com.util.MyUtil;
 public class UserReginfoServiceImpl implements UserReginfoService {
 	@Autowired
 	private UserReginfoDao userReginfoDao;
+	@Autowired
+	private AdminTestinfoDao adminTestinfoDao;
 	@Override
 	public String userSelectTestinfo(HttpSession session) {
 		// TODO 考生选择想要报名的考试
@@ -91,7 +94,8 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 		}
 		while(userReginfoDao.userSelectReginfoByTicketnum(ticketnum).size() > 0) ;
 		reginfo.setTicketnum(ticketnum);
-		if(userReginfoDao.userAddReginfo(reginfo) > 0){
+		testinfo__room.setRquota(testinfo__room.getRquota() - 1);
+		if(adminTestinfoDao.updateTestinfo__room(testinfo__room) > 0 && userReginfoDao.userAddReginfo(reginfo) > 0){
 			model.addAttribute("msg", "报名成功！");
 		}
 		return "forward:/userReginfo/userSelectTestinfo";
@@ -101,6 +105,34 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 		// TODO Auto-generated method stub
 		model.addAttribute("reginfo", userReginfoDao.userSelectAReginfoByUser_idAndTestinfo_id(reginfo));
 		return "before/userSelectAReginfo";
+	}
+	@Override
+	public String userToPay(Reginfo reginfo, Model model) {
+		// TODO Auto-generated method stub
+		model.addAttribute("reginfo", reginfo);
+		return "before/userPay";
+	}
+	@Override
+	public String userPay(Integer reginfo_id, Model model) {
+		// TODO Auto-generated method stub
+		Reginfo reginfo = new Reginfo();
+		reginfo.setStatus(1);
+		reginfo.setReginfo_id(reginfo_id);
+		if(userReginfoDao.userUpdateReginfo(reginfo) > 0) {
+			model.addAttribute("reginfo", userReginfoDao.userSelectAReginfoByReginfo_id(reginfo_id));
+			model.addAttribute("msg", "支付成功！");
+		}
+		return "before/userSelectAReginfo";
+	}
+	@Override
+	public String userCancelReginfo(Integer reginfo_id, Model model) {
+		// TODO Auto-generated method stub
+//		userReginfoDao.userSelectTestinfo__roomByTestinfo__room_id(testinfo__room_id)
+//		testinfo__room.setRquota(testinfo__room.getRquota() - 1);
+//		if(adminTestinfoDao.updateTestinfo__room(testinfo__room) > 0 && userReginfoDao.userDeleteReginfoByReginfo_id(reginfo_id) > 0) {
+//			model.addAttribute("msg", "取消成功！");
+//		}
+		return "forward:/userReginfo/userSelectTestinfo";
 	}
 
 }

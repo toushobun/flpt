@@ -188,7 +188,7 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 	@Override
 	public String updateRoomQuota(Testinfo__room testinfo__room, Model model, HttpSession session) {
 		// TODO 更新某个已发布考试的考场名额，并将数据更新到session
-		if(adminTestinfoDao.updateRoomQuota(testinfo__room) > 0) {
+		if(adminTestinfoDao.updateTestinfo__room(testinfo__room) > 0) {
 			model.addAttribute("msg", "修改成功！");
 		}
 		session.setAttribute("notSelectedRoom", adminRoomDao.selectRoomByTestinfo_id(testinfo__room.getTestinfo_id()));
