@@ -127,11 +127,12 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 	@Override
 	public String userCancelReginfo(Integer reginfo_id, Model model) {
 		// TODO Auto-generated method stub
-//		userReginfoDao.userSelectTestinfo__roomByTestinfo__room_id(testinfo__room_id)
-//		testinfo__room.setRquota(testinfo__room.getRquota() - 1);
-//		if(adminTestinfoDao.updateTestinfo__room(testinfo__room) > 0 && userReginfoDao.userDeleteReginfoByReginfo_id(reginfo_id) > 0) {
-//			model.addAttribute("msg", "取消成功！");
-//		}
+		Reginfo reginfo = userReginfoDao.userSelectAReginfoByReginfo_id(reginfo_id);
+		Testinfo__room testinfo__room = userReginfoDao.userSelectTestinfo__roomByTestinfo__room_id(reginfo.getTestinfo__room_id());
+		testinfo__room.setRquota(testinfo__room.getRquota() + 1);
+		if(adminTestinfoDao.updateTestinfo__room(testinfo__room) > 0 && userReginfoDao.userDeleteReginfoByReginfo_id(reginfo_id) > 0) {
+			model.addAttribute("msg", "取消成功！");
+		}
 		return "forward:/userReginfo/userSelectTestinfo";
 	}
 
