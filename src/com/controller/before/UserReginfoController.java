@@ -20,11 +20,15 @@ public class UserReginfoController extends BaseBeforeController {
 		return userReginfoService.userSelectTestinfo(session);
 	}
 	@RequestMapping("/userSelectTestinfoRoom")
-	public String toAddReginfo(Integer testinfo_id, Model model) {
+	public String userSelectTestinfoRoom(Integer testinfo_id, Model model) {
 		return userReginfoService.userSelectTestinfoRoom(testinfo_id, model);
 	}
 	@RequestMapping("/userAddReginfo")
 	public String userAddReginfo(Reginfo reginfo, Model model, HttpSession session) {
 		return userReginfoService.userAddReginfo(reginfo, model, session);
+	}
+	@RequestMapping("/userSelectAReginfo")
+	public String userSelectAReginfo(Reginfo reginfo, Model model) {
+		return userReginfoService.userSelectAReginfoByUser_idAndTestinfo_id(reginfo, model);
 	}
 }

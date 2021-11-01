@@ -11,5 +11,6 @@ public interface UserReginfoService {
 	public String userSelectTestinfo(HttpSession session);
 	public String userSelectTestinfoRoom(Integer testinfo_id, Model model);
 	public String userAddReginfo(Reginfo reginfo, Model model, HttpSession session);
+	public String userSelectAReginfoByUser_idAndTestinfo_id(Reginfo reginfo, Model model);
 	
 }

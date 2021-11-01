@@ -20,12 +20,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into reginfotable (reginfo_id,user_id,testinfo_id,room_id,ticketnum,status,submit_time) 
 		values (null,#{user_id},#{testinfo_id},#{room_id},#{ticketnum},0,now())
 	</insert>
-	<!-- 搜索是否有重复准考证 -->
+	<!-- 通过testinfo_id查找一个考场关联表 -->
 	<select id="userSelectTestinfo__roomByTestinfo__room_id" resultType="Testinfo__room" parameterType="Integer">
 		select * from testinfo__room, roomtable, testinfotable, testtable where testinfo__room.room_id = roomtable.room_id and testinfo__room.testinfo_id = testinfotable.testinfo_id and testinfotable.test_id = testtable.test_id and testinfo__room.testinfo__room_id=#{testinfo__room_id}
 	</select>
 	<!-- 搜索是否有重复准考证 -->
 	<select id="userSelectReginfoByTicketnum" resultType="Reginfo" parameterType="String">
 		select * from reginfotable where ticketnum=#{ticketnum}
+	</select>
+	<!-- 搜索一个准考证 -->
+	<select id="userSelectAReginfoByUser_idAndTestinfo_id" resultType="Reginfo" parameterType="Reginfo">
+		select * from reginfotable, roomtable, testinfotable, testtable where reginfotable.room_id = roomtable.room_id and reginfotable.testinfo_id = testinfotable.testinfo_id and testinfotable.test_id = testtable.test_id and testinfotable.testinfo_id = #{testinfo_id}
 	</select>
 </mapper>

@@ -37,12 +37,12 @@ function cancelConfirm(testinfo__room_id, testinfo_id, rname, room_id){
 <body>
 	<table border=1>
 		<tr>
-			<th width="25%">考场名</th>
-			<th width="10%">考场地址</th>
-			<th width="25%">考场联系电话</th>
-			<th width="10%">邮编</th>
-			<th width="10%">名额</th>
-			<th width="20%">操作</th>
+			<th width="19%">考场名</th>
+			<th width="39%">考场地址</th>
+			<th width="19%">考场联系电话</th>
+			<th width="6%">邮编</th>
+			<th width="5%">名额</th>
+			<th width="12%">操作</th>
 		</tr>
 		<c:forEach items="${sessionScope.allTestinfo__room }" var="testinfo__room">
 			<tr>

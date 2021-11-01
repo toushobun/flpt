@@ -9,7 +9,11 @@ public class Reginfo {
 	private Integer status;			// 状态（0为未支付，1为已支付，2为考生主动取消，3为支付超时取消）
 	private String submit_time;		// 提交时间
 	// ----------查询用----------
-	private Integer testinfo__room_id;	
+	private Integer testinfo__room_id;		// 关联id
+	private String tname;		// 考试名
+	private String test_time;			// 考试时间
+	private String rname;		// 考场名
+	private String raddress;	// 考场地址
 	public Integer getUser_id() {
 		return user_id;
 	}
@@ -57,6 +61,30 @@ public class Reginfo {
 	}
 	public void setTestinfo__room_id(Integer testinfo__room_id) {
 		this.testinfo__room_id = testinfo__room_id;
+	}
+	public String getTname() {
+		return tname;
+	}
+	public void setTname(String tname) {
+		this.tname = tname;
+	}
+	public String getTest_time() {
+		return test_time;
+	}
+	public void setTest_time(String test_time) {
+		this.test_time = test_time;
+	}
+	public String getRname() {
+		return rname;
+	}
+	public void setRname(String rname) {
+		this.rname = rname;
+	}
+	public String getRaddress() {
+		return raddress;
+	}
+	public void setRaddress(String raddress) {
+		this.raddress = raddress;
 	}
 	
 }

@@ -96,5 +96,11 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 		}
 		return "forward:/userReginfo/userSelectTestinfo";
 	}
+	@Override
+	public String userSelectAReginfoByUser_idAndTestinfo_id(Reginfo reginfo, Model model) {
+		// TODO Auto-generated method stub
+		model.addAttribute("reginfo", userReginfoDao.userSelectAReginfoByUser_idAndTestinfo_id(reginfo));
+		return "before/userSelectAReginfo";
+	}
 
 }

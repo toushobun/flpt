@@ -15,10 +15,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 	<table border=1>
 		<tr>
-			<th width="30%">考场名</th>
-			<th width="35%">考场地址</th>
-			<th width="25%">考场联系电话</th>
-			<th width="10%">操作</th>
+			<th width="25%">考场名</th>
+			<th width="40%">考场地址</th>
+			<th width="20%">考场联系电话</th>
+			<th width="15%">操作</th>
 		</tr>
 		<c:forEach items="${allTestinfo__room }" var="testinfo__room">
 			<tr>

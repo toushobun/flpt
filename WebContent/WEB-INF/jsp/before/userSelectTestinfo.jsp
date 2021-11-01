@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="userReginfo/userSelectTestinfoRoom?testinfo_id=${testinfo.testinfo_id }">前往报名</a>
 						</c:if>
 						<c:if test="${testinfo.status == 0 }">
-							已报名，<a href="#">查看准考证</a>
+							已报名，<a href="userReginfo/userSelectAReginfo?user_id=${sessionScope.buser.user_id }&testinfo_id=${testinfo.testinfo_id }">查看准考证</a>
 						</c:if>
 					</td>
 				</tr>
