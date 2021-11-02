@@ -43,11 +43,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	      <if test="user_id != null">
 	        user_id = #{user_id},
 	      </if>
-	      <if test="testinfo_id != null">
-	        testinfo_id = #{testinfo_id},
-	      </if>
-	      <if test="room_id != null">
-	        room_id = #{room_id},
+	      <if test="testinfo__room_id != null">
+	        testinfo__room_id = #{testinfo__room_id},
 	      </if>
 	      <if test="ticketnum != null">
 	        ticketnum = #{ticketnum},

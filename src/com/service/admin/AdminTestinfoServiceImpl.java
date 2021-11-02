@@ -162,7 +162,7 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 	public String toUpdateTestinfo(Integer testinfo_id, Model model) {
 		// TODO 前往更新考试信息页
 		Testinfo testinfo = adminTestinfoDao.selectATestinfoByTestinfo_id(testinfo_id); 
-		model.addAttribute(testinfo);
+		model.addAttribute("testinfo", testinfo);
 		return "admin/updateTestinfo";
 	}
 

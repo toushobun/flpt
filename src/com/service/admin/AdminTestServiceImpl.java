@@ -57,7 +57,7 @@ public class AdminTestServiceImpl implements AdminTestService {
 	public String toUpdateTest(Integer test_id, Model model) {
 		// TODO Auto-generated method stub
 		Test test = adminTestDao.selectATestByTest_id(test_id); 
-		model.addAttribute(test);
+		model.addAttribute("test", test);
 		return "admin/updateTest";
 	}
 

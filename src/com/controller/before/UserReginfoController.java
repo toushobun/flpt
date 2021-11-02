@@ -24,8 +24,8 @@ public class UserReginfoController extends BaseBeforeController {
 		return userReginfoService.userSelectTestinfoRoom(testinfo_id, model);
 	}
 	@RequestMapping("/userAddReginfo")
-	public String userAddReginfo(Reginfo reginfo, Model model, HttpSession session) {
-		return userReginfoService.userAddReginfo(reginfo, model, session);
+	public String userAddReginfo(Reginfo reginfo, Model model) {
+		return userReginfoService.userAddReginfo(reginfo, model);
 	}
 	@RequestMapping("/userSelectAReginfo")
 	public String userSelectAReginfo(Reginfo reginfo, Model model) {
@@ -42,5 +42,13 @@ public class UserReginfoController extends BaseBeforeController {
 	@RequestMapping("userCancelReginfo")
 	public String userCancelReginfo(Integer reginfo_id, Model model) {
 		return userReginfoService.userCancelReginfo(reginfo_id, model);
+	}
+	@RequestMapping("userToChangeRoom")
+	public String userToChangeRoom(Reginfo reginfo, Model model) {
+		return userReginfoService.userToChangeRoom(reginfo, model);
+	}
+	@RequestMapping("userChangeRoom")
+	public String userChangeRoom(Reginfo reginfo, Model model) {
+		return userReginfoService.userChangeRoom(reginfo, model);
 	}
 }

@@ -1,8 +1,5 @@
 package com.service.before;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -49,37 +46,12 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 	public String userSelectTestinfoRoom(Integer testinfo_id, Model model) {
 		// TODO 考生选择该考试的考场
 		List<Testinfo__room> testinfo__roomList = userReginfoDao.userSelectTestinfo__room(testinfo_id);
-		boolean ifInTime;			// ②是否在报名时间内
-		boolean ifHaveQuota;		// ①名额是否足够
-		Testinfo__room testinfo__room;			// 每个考试信息
-		for(int i=0;i<testinfo__roomList.size();i++) {
-			testinfo__room = testinfo__roomList.get(i);
-			SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd H:m:s");
-			Date date1 = null;
-			Date date2 = null;
-			try {
-				date1 = sf.parse(testinfo__room.getRegist_start_time());			// 获取报名开始时间
-				date2 = sf.parse(testinfo__room.getRegist_end_time());		// 获取报名截止时间
-			} catch (ParseException e) {e.printStackTrace();}		
-			Date date = new Date();		// 获取当前系统时间
-			ifInTime = MyUtil.isEffectiveDate(date, date1, date2);		// 判断是否在报名时间内
-			ifHaveQuota = testinfo__room.getRquota() > 0;						// 判断名额是否足够
-			// 状态，1可报名，0名额已满，-1不在报名时间，-2名额已满且不在报名时间
-			if(ifInTime && ifHaveQuota){
-				testinfo__room.setStatus(1);
-			}
-			else if(ifInTime && !ifHaveQuota) {
-				testinfo__room.setStatus(0);
-			}
-			else {
-				testinfo__room.setStatus(-1);
-			}
-		}
+		testinfo__roomList = MyUtil.pushTestinfo__roomToBuser(testinfo__roomList);
 		model.addAttribute("allTestinfo__room", testinfo__roomList);
 		return "before/userSelectTestinfoRoom";
 	}
 	@Override
-	public String userAddReginfo(Reginfo reginfo, Model model, HttpSession session) {
+	public String userAddReginfo(Reginfo reginfo, Model model) {
 		// TODO 将考生提交的准考证信息写入数据库
 		Testinfo__room testinfo__room = userReginfoDao.userSelectTestinfo__roomByTestinfo__room_id(reginfo.getTestinfo__room_id());
 		// 准考证的组成：1~2位是年份，3~4位是考试编号后两位，5~6位是考场编号后两位，
@@ -102,19 +74,19 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 	}
 	@Override
 	public String userSelectAReginfoByUser_idAndTestinfo_id(Reginfo reginfo, Model model) {
-		// TODO Auto-generated method stub
+		// TODO 通过考生id和考试信息搜索一个准考证
 		model.addAttribute("reginfo", userReginfoDao.userSelectAReginfoByUser_idAndTestinfo_id(reginfo));
 		return "before/userSelectAReginfo";
 	}
 	@Override
 	public String userToPay(Reginfo reginfo, Model model) {
-		// TODO Auto-generated method stub
+		// TODO 考生前往支付页
 		model.addAttribute("reginfo", reginfo);
 		return "before/userPay";
 	}
 	@Override
 	public String userPay(Integer reginfo_id, Model model) {
-		// TODO Auto-generated method stub
+		// TODO 考生支付考试
 		Reginfo reginfo = new Reginfo();
 		reginfo.setStatus(1);
 		reginfo.setReginfo_id(reginfo_id);
@@ -126,12 +98,41 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 	}
 	@Override
 	public String userCancelReginfo(Integer reginfo_id, Model model) {
-		// TODO Auto-generated method stub
+		// TODO 考生取消报名考试
 		Reginfo reginfo = userReginfoDao.userSelectAReginfoByReginfo_id(reginfo_id);
 		Testinfo__room testinfo__room = userReginfoDao.userSelectTestinfo__roomByTestinfo__room_id(reginfo.getTestinfo__room_id());
 		testinfo__room.setRquota(testinfo__room.getRquota() + 1);
 		if(adminTestinfoDao.updateTestinfo__room(testinfo__room) > 0 && userReginfoDao.userDeleteReginfoByReginfo_id(reginfo_id) > 0) {
 			model.addAttribute("msg", "取消成功！");
+		}
+		return "forward:/userReginfo/userSelectTestinfo";
+	}
+	@Override
+	public String userToChangeRoom(Reginfo reginfo, Model model) {
+		// TODO 考生前往更换报名的考场
+		// 通过考试信息考场关联表，找到对应考场的考试信息id
+		Testinfo__room oldTestinfo__room = userReginfoDao.userSelectTestinfo__roomByTestinfo__room_id(reginfo.getTestinfo__room_id());
+		List<Testinfo__room> testinfo__roomList = userReginfoDao.userSelectTestinfo__room(oldTestinfo__room.getTestinfo_id());
+		testinfo__roomList = MyUtil.pushTestinfo__roomToBuser(testinfo__roomList);
+		model.addAttribute("oldTestinfo__room", oldTestinfo__room);
+		model.addAttribute("allTestinfo__room", testinfo__roomList);
+		model.addAttribute("reginfo", reginfo);
+		return "before/userChangeRoom";
+	}
+	@Override
+	public String userChangeRoom(Reginfo reginfo, Model model) {
+		// TODO 用户提交修改考场
+		// 旧考场的名额+1
+		Testinfo__room oldTestinfo__room = userReginfoDao.userSelectTestinfo__roomByTestinfo__room_id(reginfo.getOldTestinfo__room_id());
+		oldTestinfo__room.setRquota(oldTestinfo__room.getRquota() + 1);
+		// 新考场的名额-1
+		Testinfo__room testinfo__room = userReginfoDao.userSelectTestinfo__roomByTestinfo__room_id(reginfo.getTestinfo__room_id());
+		testinfo__room.setRquota(testinfo__room.getRquota() - 1);
+		if(userReginfoDao.userSelectTestinfo__roomByTestinfo__room_id(reginfo.getTestinfo__room_id()).getRquota() <= 0) {
+			model.addAttribute("msg", "修改失败！，名额已满！");
+		}
+		else if(userReginfoDao.userUpdateReginfo(reginfo) > 0 && adminTestinfoDao.updateTestinfo__room(testinfo__room) > 0 && adminTestinfoDao.updateTestinfo__room(oldTestinfo__room) > 0) {
+			model.addAttribute("msg", "修改成功！");
 		}
 		return "forward:/userReginfo/userSelectTestinfo";
 	}

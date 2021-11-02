@@ -17,10 +17,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</c:if>
 	<c:if test="${allTestinfo.size() != 0 }">
 		请选择要报名的考试
-		<form action="userReginfo/userSearchTestinfo" method="post">
-			<input type="text" name="keyWord"/>
-			<input type="submit" value="搜索"/>
-		</form>
 		<table border=1 id="user_testinfo_table">
 			<tr>
 				<th width="30%">考试名</th>

@@ -14,6 +14,8 @@ public class Reginfo {
 	private String test_time;			// 考试时间
 	private String rname;		// 考场名
 	private String raddress;	// 考场地址
+	// ----------换考场用----------
+	private Integer oldTestinfo__room_id;		// 旧考场的id
 	public Integer getReginfo_id() {
 		return reginfo_id;
 	}
@@ -85,6 +87,12 @@ public class Reginfo {
 	}
 	public void setRaddress(String raddress) {
 		this.raddress = raddress;
+	}
+	public Integer getOldTestinfo__room_id() {
+		return oldTestinfo__room_id;
+	}
+	public void setOldTestinfo__room_id(Integer oldTestinfo__room_id) {
+		this.oldTestinfo__room_id = oldTestinfo__room_id;
 	}
 	
 }

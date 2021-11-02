@@ -49,7 +49,7 @@ function cancelConfirm(reginfo_id){
 					<a href="javascript:cancelConfirm('${reginfo.reginfo_id}')">取消报名</a>
 				</c:if>
 				<c:if test="${reginfo.status == 1 }">
-					<a href="#">修改考场</a>&nbsp;
+					<a href="userReginfo/userToChangeRoom?testinfo__room_id=${reginfo.testinfo__room_id }&reginfo_id=${reginfo.reginfo_id }">修改考场</a>&nbsp;
 					<a href="#">生成准考证</a>
 				</c:if>
 			</td>

@@ -57,7 +57,7 @@ public class AdminRoomServiceImpl implements AdminRoomService {
 	public String toUpdateRoom(Integer room_id, Model model) {
 		// TODO Auto-generated method stub
 		Room room = adminRoomDao.selectARoomByRoom_id(room_id); 
-		model.addAttribute(room);
+		model.addAttribute("room", room);
 		return "admin/updateRoom";
 	}
 
