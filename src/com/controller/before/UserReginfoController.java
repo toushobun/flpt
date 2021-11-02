@@ -51,4 +51,8 @@ public class UserReginfoController extends BaseBeforeController {
 	public String userChangeRoom(Reginfo reginfo, Model model) {
 		return userReginfoService.userChangeRoom(reginfo, model);
 	}
+	@RequestMapping("userGetTicket")
+	public String userGetTicket(Reginfo reginfo, Model model) {
+		return userReginfoService.userGetTicket(reginfo, model);
+	}
 }

@@ -67,6 +67,9 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 		while(userReginfoDao.userSelectReginfoByTicketnum(ticketnum).size() > 0) ;
 		reginfo.setTicketnum(ticketnum);
 		testinfo__room.setRquota(testinfo__room.getRquota() - 1);
+		if(userReginfoDao.userSelectTestinfo__roomByTestinfo__room_id(reginfo.getTestinfo__room_id()).getRquota() <= 0) {
+			model.addAttribute("msg", "报名失败！，名额已满！");
+		}
 		if(adminTestinfoDao.updateTestinfo__room(testinfo__room) > 0 && userReginfoDao.userAddReginfo(reginfo) > 0){
 			model.addAttribute("msg", "报名成功！");
 		}
@@ -135,6 +138,12 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 			model.addAttribute("msg", "修改成功！");
 		}
 		return "forward:/userReginfo/userSelectTestinfo";
+	}
+	@Override
+	public String userGetTicket(Reginfo reginfo, Model model) {
+		// TODO 生成准考证
+		model.addAttribute("reginfo", userReginfoDao.userSelectAReginfoByUser_idAndTestinfo_id(reginfo));
+		return "before/userGetTicket";
 	}
 
 }

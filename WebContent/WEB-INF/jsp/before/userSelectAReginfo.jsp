@@ -50,7 +50,7 @@ function cancelConfirm(reginfo_id){
 				</c:if>
 				<c:if test="${reginfo.status == 1 }">
 					<a href="userReginfo/userToChangeRoom?testinfo__room_id=${reginfo.testinfo__room_id }&reginfo_id=${reginfo.reginfo_id }">修改考场</a>&nbsp;
-					<a href="#">生成准考证</a>
+					<a href="userReginfo/userGetTicket?user_id=${sessionScope.buser.user_id }&testinfo_id=${reginfo.testinfo_id }">生成准考证</a>
 				</c:if>
 			</td>
 		</tr>
