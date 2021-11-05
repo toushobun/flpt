@@ -14,32 +14,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="css/before.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<table id="table" style="width: 60%; padding-top: 60px; " >
+	<table>
 		<tr>
-			<th width="200px">考生编号</th>
-			<td>${sessionScope.buser.id }</td>
+			<td>${sessionScope.buser.uidphoto }</td>
 		</tr>
 		<tr>
-			<th width="200px">手机号</th>
-			<td>${sessionScope.buser.uphonenumber }</td>
-		</tr>
-		<tr>
-			<th width="200px">考生姓名</th>
+			<th>考生姓名</th>
 			<td>${sessionScope.buser.uname }</td>
 		</tr>
 		<tr>
-			<th width="200px">是否已报名</th>
-			<td>
-				<c:if test="${sessionScope.buser.status == 0 }">否，<a href="userCenter/toChooseExaminfo?id=${sessionScope.buser.id}&status=${sessionScope.buser.status}" target="center">立即报名</a></c:if>
-				<c:if test="${sessionScope.buser.status == 1 }">是，<a href="userCenter/toChooseExaminfo?id=${sessionScope.buser.id}&status=${sessionScope.buser.status}" target="center">立即查看准考证</a></c:if>
-			</td>
+			<th>身份证号</th>
+			<td>${sessionScope.buser.uidnum }</td>
 		</tr>
 		<tr>
-			<th width="100px">操作</th>
+			<th>操作</th>
 			<td>
-				<a href="userCenter/toUpdateBuser">修改信息</a>
+				<a href="userCenter/userSelectReginfo">查看全部准考证</a>
+				<c:if test="${sessionScope.buser.uidphoto == null }">
+					<a href="userCenter/toUpdatePwd">上传照片</a>
+				</c:if>
+				<c:if test="${sessionScope.buser.uidphoto != null }">
+					<a href="userCenter/toUpdatePwd">修改照片</a>
+				</c:if>
 				<a href="userCenter/toUpdatePwd">修改密码</a>
-				<a onclick="return checkDel2();" href="userCenter/deleteUser?id=${sessionScope.buser.id }">销毁用户</a>
+				<a onclick="return checkDelDouble();" href="userCenter/deleteUser?id=${sessionScope.buser.user_id }">销毁用户</a>
 			</td>
 		</tr>
 	</table>

@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		还没有发布公告通知。
 	</c:if>
 	<c:if test="${allNotices.size() != 0 }">
-		<table id="table">
+		<table>
 			<tr>
 				<th width="300px">标题</th>
 				<th width="100px">详情</th>

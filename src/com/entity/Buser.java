@@ -6,6 +6,8 @@ public class Buser {
 	private String upwd;		// 密码
 	private String uname;		// 考生姓名
 	private String uidphoto;	// 证件照片
+	// ----------修改密码用----------
+	private String newUpwd;		// 新密码
 	public Integer getUser_id() {
 		return user_id;
 	}
@@ -35,6 +37,12 @@ public class Buser {
 	}
 	public void setUidphoto(String uidphoto) {
 		this.uidphoto = uidphoto;
+	}
+	public String getNewUpwd() {
+		return newUpwd;
+	}
+	public void setNewUpwd(String newUpwd) {
+		this.newUpwd = newUpwd;
 	}
 	
 }
