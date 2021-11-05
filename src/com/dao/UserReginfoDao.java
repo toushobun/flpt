@@ -22,4 +22,5 @@ public interface UserReginfoDao {
 	public Reginfo userSelectAReginfoByReginfo_id(Integer reginfo_id);		// 搜索一个准考证
 	public int userUpdateReginfo(Reginfo reginfo);		// 修改准考证（状态）
 	public int userDeleteReginfoByReginfo_id(Integer reginfo_id);		// 取消报名
+	public List<Reginfo> userSelectReginfoByUser_id(Integer user_id);		// 用户查看准考证表
 }

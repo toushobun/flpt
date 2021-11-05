@@ -143,7 +143,13 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 	public String userGetTicket(Reginfo reginfo, Model model) {
 		// TODO 生成准考证
 		model.addAttribute("reginfo", userReginfoDao.userSelectAReginfoByUser_idAndTestinfo_id(reginfo));
-		return "before/userGetTicket";
+		return "before/userSelectTicket";
+	}
+	@Override
+	public String userSelectReginfoByUser_id(Integer user_id, Model model) {
+		// TODO 用户查找自己的准考证
+		model.addAttribute("allReginfo", userReginfoDao.userSelectReginfoByUser_id(user_id));
+		return "before/userSelectReginfo";
 	}
 
 }

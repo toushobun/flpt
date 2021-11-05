@@ -59,4 +59,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="userDeleteReginfoByReginfo_id" parameterType="Integer">
 		delete from reginfotable where reginfo_id = #{reginfo_id}
 	</delete>
+	<!-- 查询全部已发布考试 -->
+	<select id="userSelectReginfoByUser_id" resultType="Reginfo" >
+		select * from reginfotable, roomtable, testinfotable, testtable, testinfo__room where reginfotable.testinfo__room_id = testinfo__room.testinfo__room_id and testinfo__room.room_id = roomtable.room_id and testinfo__room.testinfo_id = testinfotable.testinfo_id and testinfotable.test_id = testtable.test_id and reginfotable.user_id = #{user_id}
+	</select>
 </mapper>

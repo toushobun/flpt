@@ -18,5 +18,6 @@ public interface UserReginfoService {
 	public String userToChangeRoom(Reginfo reginfo, Model model);
 	public String userChangeRoom(Reginfo reginfo, Model model);
 	public String userGetTicket(Reginfo reginfo, Model model);
+	public String userSelectReginfoByUser_id(Integer user_id, Model model);
 	
 }
