@@ -42,6 +42,7 @@ public class AdminRoomServiceImpl implements AdminRoomService {
 		// TODO Auto-generated method stub
 		if(adminRoomDao.selectATestinfo__roomByRoom_id(room_id).size() > 0) {
 			model.addAttribute("msg", "该考点已作为考场发布，不允许删除！");
+			return "forward:/adminRoom/selectRoom";
 		}
 		if(adminRoomDao.deleteRoomByRoom_id(room_id) > 0) {
 			model.addAttribute("msg", "删除成功！");

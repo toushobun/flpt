@@ -42,6 +42,7 @@ public class AdminTestServiceImpl implements AdminTestService {
 		// TODO Auto-generated method stub
 		if(adminTestDao.selectATestByTest_id(test_id).getStatus() != 0) {
 			model.addAttribute("msg", "该考试已发布，不允许删除！");
+			return "forward:/adminTest/selectTest";
 		}
 		if(adminTestDao.deleteTestByTest_id(test_id) > 0) {
 			model.addAttribute("msg", "删除成功！");
