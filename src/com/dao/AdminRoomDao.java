@@ -9,7 +9,9 @@ import com.entity.Room;
 
 @Repository("adminRoomDao")
 @Mapper
+
 public interface AdminRoomDao {
+	
 	public List<Room> selectRoom();		// 查询全部考场
 	public int addRoom(Room room);		// 添加考场
 	public int deleteRoomByRoom_id(Integer room_id);		// 通过id删除考场
@@ -20,4 +22,5 @@ public interface AdminRoomDao {
 	public List<Room> selectATestinfo__roomByRoom_id(Integer room_id);		// 通过Room_id搜索关联
 	public List<Room> searchRoom(String keyWord);		// 模糊查询
 	public List<Room> selectRoomByTestinfo_id(Integer testinfo_id);		// 查询未被选的考场
+	
 }

@@ -12,6 +12,7 @@ import com.entity.Testinfo__room;
 @Repository("adminTestinfoDao")
 @Mapper
 public interface AdminTestinfoDao {
+	
 	public List<Testinfo> selectTestinfo();		// 查询全部已发布考试
 	public int addTestinfo(Testinfo testinfo);		// 发布考试
 	public int addTestinfo__room(Testinfo__room testinfo__room);	//添加对应考试的考场
@@ -25,4 +26,5 @@ public interface AdminTestinfoDao {
 	public List<Reginfo> selectAReginfoByRoom_id(Integer room_id);		// 查询是否有学生已经报名此考场
 	public List<Reginfo> selectAReginfoByTestinfo_id(Integer testinfo_id);		//查询是否有学生已经报名此考试
 	public List<Testinfo> searchTestinfo(String keyWord);		// 模糊查询
+	
 }

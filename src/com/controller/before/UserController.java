@@ -1,4 +1,5 @@
 package com.controller.before;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.entity.Buser;
 import com.service.before.UserService;
+
 @Controller
 public class UserController {
+	
 	@Autowired
 	private UserService userService;
+	
 	@RequestMapping("/before")
 	public String before() {
 		return "before/index";
@@ -45,4 +49,5 @@ public class UserController {
 	public String userSelectNotice(Model model) {
 		return userService.userSelectNotice(model);
 	}
+	
 }

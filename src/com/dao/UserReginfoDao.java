@@ -12,6 +12,7 @@ import com.entity.Testinfo__room;
 @Repository("UserReginfoDao")
 @Mapper
 public interface UserReginfoDao {
+	
 	public List<Testinfo> userSelectTestinfo();		// 查询全部已发布考试
 	public List<Testinfo> userSelectReginfoByTestinfo_id(Integer testinfo__id);		// 查看该考生是否已报名此考试
 	public List<Testinfo__room> userSelectTestinfo__room(Integer testinfo_id);		// 查询该考试的考场
@@ -23,4 +24,5 @@ public interface UserReginfoDao {
 	public int userUpdateReginfo(Reginfo reginfo);		// 修改准考证（状态）
 	public int userDeleteReginfoByReginfo_id(Integer reginfo_id);		// 取消报名
 	public List<Reginfo> userSelectReginfoByUser_id(Integer user_id);		// 用户查看准考证表
+	
 }

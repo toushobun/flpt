@@ -19,10 +19,12 @@ import com.util.MyUtil;
 @Service("userReginfoService")
 @Transactional
 public class UserReginfoServiceImpl implements UserReginfoService {
+	
 	@Autowired
 	private UserReginfoDao userReginfoDao;
 	@Autowired
 	private AdminTestinfoDao adminTestinfoDao;
+	
 	@Override
 	public String userSelectTestinfo(HttpSession session) {
 		// TODO 考生选择想要报名的考试
@@ -42,6 +44,7 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 		// 这个指令将转到本地文件层验证
 		return "before/userSelectTestinfo";
 	}
+	
 	@Override
 	public String userSelectTestinfoRoom(Integer testinfo_id, Model model) {
 		// TODO 考生选择该考试的考场
@@ -50,6 +53,7 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 		model.addAttribute("allTestinfo__room", testinfo__roomList);
 		return "before/userSelectTestinfoRoom";
 	}
+	
 	@Override
 	public String userAddReginfo(Reginfo reginfo, Model model) {
 		// TODO 将考生提交的准考证信息写入数据库
@@ -75,6 +79,7 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 		}
 		return "forward:/userReginfo/userSelectTestinfo";
 	}
+	
 	@Override
 	public String userSelectAReginfoByUser_idAndTestinfo_id(Reginfo reginfo, Model model) {
 		// TODO 通过考生id和考试信息搜索一个准考证
@@ -87,6 +92,7 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 		model.addAttribute("reginfo", reginfo);
 		return "before/userPay";
 	}
+	
 	@Override
 	public String userPay(Integer reginfo_id, Model model) {
 		// TODO 考生支付考试
@@ -99,6 +105,7 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 		}
 		return "before/userSelectAReginfo";
 	}
+	
 	@Override
 	public String userCancelReginfo(Integer reginfo_id, Model model) {
 		// TODO 考生取消报名考试
@@ -110,6 +117,7 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 		}
 		return "before/userCenter";
 	}
+	
 	@Override
 	public String userToChangeRoom(Reginfo reginfo, Model model) {
 		// TODO 考生前往更换报名的考场
@@ -122,6 +130,7 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 		model.addAttribute("reginfo", reginfo);
 		return "before/userChangeRoom";
 	}
+	
 	@Override
 	public String userChangeRoom(Reginfo reginfo, Model model) {
 		// TODO 用户提交修改考场
@@ -140,12 +149,14 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 		}
 		return "before/userSelectAReginfo";
 	}
+	
 	@Override
 	public String userGetTicket(Reginfo reginfo, Model model) {
 		// TODO 生成准考证
 		model.addAttribute("reginfo", userReginfoDao.userSelectAReginfoByUser_idAndTestinfo_id(reginfo));
 		return "before/userSelectTicket";
 	}
+	
 	@Override
 	public String userSelectReginfoByUser_id(Integer user_id, Model model) {
 		// TODO 用户查找自己的准考证

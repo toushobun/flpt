@@ -8,6 +8,7 @@ import com.entity.Testinfo;
 import com.entity.Testinfo__room;
 
 public interface AdminTestinfoService {
+	
 	public String selectTestinfo(HttpSession session);		// 查询全部已发布考试
 	public String toAddTestinfo(Model model);		// 前往发布考试页
 	public String toAddTestinfoRoom(Testinfo testinfo, Model model);		// 前往选择考场页
@@ -21,4 +22,5 @@ public interface AdminTestinfoService {
 	public String cancelRoom(Testinfo__room testinfo__room, Model model, HttpSession session);		// 取消考场
 	public String addTestinfoRoom(Testinfo testinfo, Model model, HttpSession session);		// 为一个考试新增考场
 	public String searchTestinfo(String keyWord, HttpSession session);		// 模糊查询
+	
 }

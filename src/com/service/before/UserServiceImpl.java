@@ -13,6 +13,7 @@ import com.dao.AdminNoticeDao;
 import com.dao.UserDao;
 import com.entity.Buser;
 import com.entity.Notice;
+
 @Service("userService")
 @Transactional
 public class UserServiceImpl implements UserService {
@@ -77,4 +78,5 @@ public class UserServiceImpl implements UserService {
 		model.addAttribute("allNotices", adminNoticeDao.selectNotice());
 		return "before/userSelectNotice";
 	}
+	
 }

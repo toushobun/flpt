@@ -21,6 +21,7 @@ import com.entity.Testinfo__room;
 @Service("adminTestinfoService")
 @Transactional
 public class AdminTestinfoServiceImpl implements AdminTestinfoService {
+	
 	@Autowired
 	private AdminTestinfoDao adminTestinfoDao;
 	@Autowired

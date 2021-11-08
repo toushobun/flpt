@@ -17,6 +17,7 @@ public class UserCenterController extends BaseBeforeController {
 	
 	@Autowired
 	private UserCenterService userCenterService;
+	
 	@RequestMapping("/center")
 	public String center() {
 		return "before/userCenter";
@@ -33,4 +34,5 @@ public class UserCenterController extends BaseBeforeController {
 	public String deleteUser(Integer id, Model model) {
 		return userCenterService.deleteUserByUser_id(id, model);
 	}
+	
 }

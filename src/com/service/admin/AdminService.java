@@ -7,5 +7,7 @@ import org.springframework.ui.Model;
 import com.entity.Auser;
 
 public interface AdminService {
+	
 	public String login(Auser auser, Model model, HttpSession session);
+	
 }

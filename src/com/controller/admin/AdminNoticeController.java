@@ -1,4 +1,5 @@
 package com.controller.admin;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,11 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.entity.Notice;
 import com.service.admin.AdminNoticeService;
+
 @Controller
 @RequestMapping("/adminNotice")
 public class AdminNoticeController extends BaseController {
+	
 	@Autowired
 	private AdminNoticeService adminNoticeService;
+	
 	@RequestMapping("/toAddNotice")
 	public String toAddNotice(Model model) {
 		model.addAttribute("notice", new Notice());
@@ -33,4 +37,5 @@ public class AdminNoticeController extends BaseController {
 	public String selectNotice(Model model) {
 		return adminNoticeService.selectNotice(model);
 	}
+	
 }

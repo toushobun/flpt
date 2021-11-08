@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.entity.Testinfo;
 import com.entity.Testinfo__room;
 import com.service.admin.AdminTestinfoService;
+
 @Controller
 @RequestMapping("/adminTestinfo")
 public class AdminTestinfoController extends BaseController {
+	
 	@Autowired
 	private AdminTestinfoService adminTestinfoService;
+	
 	@RequestMapping("/selectTestinfo")
 	public String selectTestinfo(HttpSession session) {
 		return adminTestinfoService.selectTestinfo(session);
@@ -68,4 +71,5 @@ public class AdminTestinfoController extends BaseController {
 	public String searchTestinfo(String keyWord, HttpSession session) {
 		return adminTestinfoService.searchTestinfo(keyWord, session);
 	}
+	
 }

@@ -1,4 +1,5 @@
 package com.controller.admin;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.entity.Auser;
 import com.service.admin.AdminService;
+
 @Controller
 public class AdminController {
+	
 	@Autowired
 	private AdminService adminService;
+	
 	@RequestMapping("/admin")
 	public String toLogin() {
 		return "admin/login";

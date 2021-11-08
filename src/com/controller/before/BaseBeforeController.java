@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.exception.UserLoginNoException;
+
 @Controller
 public class BaseBeforeController {
 	/**
@@ -14,9 +15,10 @@ public class BaseBeforeController {
 	 * @throws UserLoginNoException 
 	 */
 	@ModelAttribute  
-    public void isLogin(HttpSession session, HttpServletRequest request) throws UserLoginNoException {      
-       if(session.getAttribute("buser") == null){  
-            throw new UserLoginNoException("没有登录");
-       }  
-    } 
+	public void isLogin(HttpSession session, HttpServletRequest request) throws UserLoginNoException {      
+		if(session.getAttribute("buser") == null){  
+			throw new UserLoginNoException("没有登录");
+		}
+	}
+	
 }

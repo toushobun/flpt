@@ -59,4 +59,5 @@ public class UserReginfoController extends BaseBeforeController {
 	public String userSelectReginfo(Integer user_id, Model model) {
 		return userReginfoService.userSelectReginfoByUser_id(user_id, model);
 	}
+	
 }

@@ -13,6 +13,7 @@ import com.entity.Test;
 @Service("adminTestService")
 @Transactional
 public class AdminTestServiceImpl implements AdminTestService {
+	
 	@Autowired
 	private AdminTestDao adminTestDao;
 
@@ -84,4 +85,5 @@ public class AdminTestServiceImpl implements AdminTestService {
 		model.addAttribute("allTest", adminTestDao.searchTest(keyWord));
 		return "admin/selectTest";
 	}
+	
 }

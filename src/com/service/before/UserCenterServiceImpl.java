@@ -13,8 +13,10 @@ import com.entity.Buser;
 @Service("UserCenterService")
 @Transactional
 public class UserCenterServiceImpl implements UserCenterService {
+	
 	@Autowired
 	UserCenterDao userCenterDao;
+	
 	@Override
 	public String updatePwd(Buser buser, Model model, HttpSession session) {
 		// 用户提交修改密码
@@ -31,6 +33,7 @@ public class UserCenterServiceImpl implements UserCenterService {
 			return "before/userUpdatePwd";
 		}
 	}
+	
 	@Override
 	public String deleteUserByUser_id(Integer id, Model model) {
 		// TODO 销毁用户
