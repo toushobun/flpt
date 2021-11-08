@@ -108,7 +108,7 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 		if(adminTestinfoDao.updateTestinfo__room(testinfo__room) > 0 && userReginfoDao.userDeleteReginfoByReginfo_id(reginfo_id) > 0) {
 			model.addAttribute("msg", "取消成功！");
 		}
-		return "forward:/userReginfo/userSelectTestinfo";
+		return "before/userCenter";
 	}
 	@Override
 	public String userToChangeRoom(Reginfo reginfo, Model model) {
@@ -135,9 +135,10 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 			model.addAttribute("msg", "修改失败！，名额已满！");
 		}
 		else if(userReginfoDao.userUpdateReginfo(reginfo) > 0 && adminTestinfoDao.updateTestinfo__room(testinfo__room) > 0 && adminTestinfoDao.updateTestinfo__room(oldTestinfo__room) > 0) {
+			model.addAttribute("reginfo", userReginfoDao.userSelectAReginfoByReginfo_id(reginfo.getReginfo_id()));
 			model.addAttribute("msg", "修改成功！");
 		}
-		return "forward:/userReginfo/userSelectTestinfo";
+		return "before/userSelectAReginfo";
 	}
 	@Override
 	public String userGetTicket(Reginfo reginfo, Model model) {
