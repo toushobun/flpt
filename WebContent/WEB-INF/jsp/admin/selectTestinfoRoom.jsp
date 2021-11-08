@@ -44,7 +44,7 @@ function cancelConfirm(testinfo__room_id, testinfo_id, rname, room_id){
 			<th width="5%">名额</th>
 			<th width="12%">操作</th>
 		</tr>
-		<c:forEach items="${sessionScope.allTestinfo__room }" var="testinfo__room">
+		<c:forEach items="${allTestinfo__room }" var="testinfo__room">
 			<tr>
 				<td>${testinfo__room.rname }</td>
 				<td>${testinfo__room.raddress }</td>
@@ -59,12 +59,12 @@ function cancelConfirm(testinfo__room_id, testinfo_id, rname, room_id){
 		</c:forEach>
 	</table>
 	<form:form action="adminTestinfo/toAddTestinfoNewRoom" method="post" modelAttribute="testinfo">
-		<input type="hidden" name="testinfo_id" value="${sessionScope.allTestinfo__room.get(0).testinfo_id }">
+		<input type="hidden" name="testinfo_id" value="${allTestinfo__room.get(0).testinfo_id }">
 		<table>
 			<caption>额外添加考场</caption>
 			<tr>
 				<td>
-					<c:forEach items="${sessionScope.notSelectedRoom }" var="room">
+					<c:forEach items="${notSelectedRoom }" var="room">
 						<tr>
 							<td><form:checkbox path="room_ids" value="${room.room_id }"/></td>
 							<td>${room.rname }</td>

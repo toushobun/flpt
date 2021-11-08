@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 <body>
 	<table style="display:none;" id="testData">
-		<c:forEach items="${sessionScope.allTest }" var="test">
+		<c:forEach items="${allTest }" var="test">
 			<tr>
 				<td>${test.test_id }</td>
 				<td>${test.tsubject }</td>

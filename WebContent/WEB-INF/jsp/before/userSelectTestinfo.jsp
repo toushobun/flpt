@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th width="10%">报名费</th>
 				<th width="20%">操作</th>
 			</tr>
-			<c:forEach items="${sessionScope.allTestinfo }" var="testinfo">
+			<c:forEach items="${allTestinfo }" var="testinfo">
 				<tr>
 					<td>${testinfo.tname }</td>
 					<td>${testinfo.tsubject }</td>

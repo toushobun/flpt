@@ -1,7 +1,5 @@
 package com.controller.before;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +14,8 @@ public class UserReginfoController extends BaseBeforeController {
 	@Autowired
 	private UserReginfoService userReginfoService;
 	@RequestMapping("/userSelectTestinfo")
-	public String userSelectTestinfo(HttpSession session) {
-		return userReginfoService.userSelectTestinfo(session);
+	public String userSelectTestinfo(Model model) {
+		return userReginfoService.userSelectTestinfo(model);
 	}
 	@RequestMapping("/userSelectTestinfoRoom")
 	public String userSelectTestinfoRoom(Integer testinfo_id, Model model) {

@@ -75,10 +75,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	</update>
 	<!-- 查询是否有学生已经报名此考场 -->
 	<select id="selectAReginfoByRoom_id" resultType="Reginfo" parameterType="Integer">
-		select * from reginfotable where room_id = #{room_id}
+		select * from reginfotable where testinfo__room_id = #{testinfo__room_id}
 	</select>
 	<!-- 查询是否有学生已经报名此考试 -->
 	<select id="selectAReginfoByTestinfo_id" resultType="Reginfo" parameterType="Integer">
-		select * from reginfotable where room_id in (select room_id from testinfo__room where testinfo_id = #{testinfo_id})
+		select * from reginfotable where testinfo__room_id in (select testinfo__room_id from testinfo__room where testinfo_id = #{testinfo_id})
 	</select>
 </mapper>

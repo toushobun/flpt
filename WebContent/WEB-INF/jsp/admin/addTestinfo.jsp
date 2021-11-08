@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 <body>
 	<table style="display:none;" id="testData">
-		<c:forEach items="${sessionScope.allTest }" var="test">
+		<c:forEach items="${allTest }" var="test">
 			<tr>
 				<td>${test.test_id }</td>
 				<td>${test.tsubject }</td>
@@ -48,21 +48,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</c:forEach>
 	</table>
 	<form:form action="adminTestinfo/toAddTestinfoRoom" method="post" modelAttribute="testinfo">
-		<input type="hidden" id="tname" name="tname" value="${sessionScope.allTest.get(0).tname }">
+		<input type="hidden" id="tname" name="tname" value="${allTest.get(0).tname }">
 		<table>
 			<caption>发布考试</caption>
 			<tr>
 				<td colspan="2">请选择您要发布的考试<font color="red">*</font></td>
 				<td>
 					<form:select path="test_id" onchange="showDetail()"><!-- 前台选择的内容，会给test_id变量传到后台，itemLabel控制展示数据，itemValue控制传输数据 -->
-         				<form:options items="${sessionScope.allTest }" itemLabel="tname" itemValue="test_id"/>
+         				<form:options items="${allTest }" itemLabel="tname" itemValue="test_id"/>
    					</form:select>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">请选择考场<font color="red">*</font></td>
 				<td>
-					<c:forEach items="${sessionScope.allRoom }" var="room">
+					<c:forEach items="${allRoom }" var="room">
 						<tr>
 							<td><form:checkbox path="room_ids" value="${room.room_id }"/></td>
 							<td>${room.rname }</td>

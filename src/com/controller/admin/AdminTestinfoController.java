@@ -1,7 +1,5 @@
 package com.controller.admin;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,8 +17,8 @@ public class AdminTestinfoController extends BaseController {
 	private AdminTestinfoService adminTestinfoService;
 	
 	@RequestMapping("/selectTestinfo")
-	public String selectTestinfo(HttpSession session) {
-		return adminTestinfoService.selectTestinfo(session);
+	public String selectTestinfo(Model model) {
+		return adminTestinfoService.selectTestinfo(model);
 	}
 	@RequestMapping("/toAddTestinfo")
 	// 需要传一个空的Testinfo对象，不然前端显示的时候会报错
@@ -36,40 +34,40 @@ public class AdminTestinfoController extends BaseController {
 		return adminTestinfoService.toAddTestinfoNewRoom(testinfo, model);
 	}
 	@RequestMapping("/addTestinfo")
-	public String addTestinfo(Testinfo testinfo, Model model, HttpSession session) {
-		return adminTestinfoService.addTestinfo(testinfo, model, session);
+	public String addTestinfo(Testinfo testinfo, Model model) {
+		return adminTestinfoService.addTestinfo(testinfo, model);
 	}
 	@RequestMapping("/addTestinfoRoom")
-	public String addTestinfoRoom(Testinfo testinfo, Model model, HttpSession session) {
-		return adminTestinfoService.addTestinfoRoom(testinfo, model, session);
+	public String addTestinfoRoom(Testinfo testinfo, Model model) {
+		return adminTestinfoService.addTestinfoRoom(testinfo, model);
 	}
 	@RequestMapping("/deleteTestinfo")
-	public String deleteTestinfo(Integer testinfo_id, Model model, HttpSession session) {
-		return adminTestinfoService.deleteTestinfoByTestinfo_id(testinfo_id, model, session);
+	public String deleteTestinfo(Integer testinfo_id, Model model) {
+		return adminTestinfoService.deleteTestinfoByTestinfo_id(testinfo_id, model);
 	}
 	@RequestMapping("/toUpdateTestinfo")
 	public String toUpdateTestinfo(Integer testinfo_id, Model model) {
 		return adminTestinfoService.toUpdateTestinfo(testinfo_id, model);
 	}
 	@RequestMapping("/updateTestinfo")
-	public String updateTestinfo(Testinfo testinfo, Model model, HttpSession session) {
-		return adminTestinfoService.updateTestinfo(testinfo, model, session);
+	public String updateTestinfo(Testinfo testinfo, Model model) {
+		return adminTestinfoService.updateTestinfo(testinfo, model);
 	}
 	@RequestMapping("/selectTestinfoRoom")
-	public String selectTestinfoRoom(Integer testinfo_id, Model model, HttpSession session) {
-		return adminTestinfoService.selectTestinfoRoom(testinfo_id, model, session);
+	public String selectTestinfoRoom(Integer testinfo_id, Model model) {
+		return adminTestinfoService.selectTestinfoRoom(testinfo_id, model);
 	}
 	@RequestMapping("/updateRoomQuota")
-	public String updateRoomQuota(Testinfo__room testinfo__room, Model model, HttpSession session) {
-		return adminTestinfoService.updateRoomQuota(testinfo__room, model, session);
+	public String updateRoomQuota(Testinfo__room testinfo__room, Model model) {
+		return adminTestinfoService.updateRoomQuota(testinfo__room, model);
 	}
 	@RequestMapping("/cancelRoom")
-	public String cancelRoom(Testinfo__room testinfo__room, Model model, HttpSession session) {
-		return adminTestinfoService.cancelRoom(testinfo__room, model, session);
+	public String cancelRoom(Testinfo__room testinfo__room, Model model) {
+		return adminTestinfoService.cancelRoom(testinfo__room, model);
 	}
 	@RequestMapping("/searchTestinfo")
-	public String searchTestinfo(String keyWord, HttpSession session) {
-		return adminTestinfoService.searchTestinfo(keyWord, session);
+	public String searchTestinfo(String keyWord, Model model) {
+		return adminTestinfoService.searchTestinfo(keyWord, model);
 	}
 	
 }

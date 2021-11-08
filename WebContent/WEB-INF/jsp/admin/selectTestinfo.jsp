@@ -12,10 +12,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="js/formCheck.js" type="text/javascript"></script>
 </head>
 <body>
-	<c:if test="${sessionScope.allTestinfo.size() == 0 }">
+	<c:if test="${allTestinfo.size() == 0 }">
 		未查询到结果
 	</c:if>
-	<c:if test="${sessionScope.allTestinfo.size() != 0 }">
+	<c:if test="${allTestinfo.size() != 0 }">
 		<form action="adminTestinfo/searchTestinfo" method="post">
 			<input type="text" name="keyWord"/>
 			<input type="submit" value="搜索"/>
@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<th width="5%">报名费</th>
 				<th width="15%">操作</th>
 			</tr>
-			<c:forEach items="${sessionScope.allTestinfo }" var="testinfo">
+			<c:forEach items="${allTestinfo }" var="testinfo">
 				<tr>
 					<td>${testinfo.tname }</td>
 					<td>${testinfo.tsubject }</td>
