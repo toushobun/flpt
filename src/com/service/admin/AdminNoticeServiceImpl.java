@@ -11,10 +11,10 @@ import com.entity.Notice;
 @Service("adminNoticeService")
 @Transactional
 public class AdminNoticeServiceImpl implements AdminNoticeService {
-	
+
 	@Autowired
 	private AdminNoticeDao adminNoticeDao;
-	
+
 	@Override
 	public String addNotice(Model model, Notice notice) {
 		// TODO Auto-generated method stub
@@ -22,14 +22,14 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 		model.addAttribute("msg", "添加成功！");
 		return "forward:/adminNotice/selectNotice";
 	}
-	
+
 	@Override
 	public String selectANoticeByNotice_id(Model model, Integer notice_id) {
 		// TODO Auto-generated method stub
 		model.addAttribute("notice", adminNoticeDao.selectANoticeByNotice_id(notice_id));
 		return "admin/noticeDetail";
 	}
-	
+
 	@Override
 	public String deleteNoticeByNotice_id(Model model, Integer notice_id) {
 		// TODO Auto-generated method stub
@@ -37,7 +37,7 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 		model.addAttribute("msg", "删除成功！");
 		return "forward:/adminNotice/selectNotice";
 	}
-	
+
 	@Override
 	public String selectNotice(Model model) {
 		// TODO Auto-generated method stub

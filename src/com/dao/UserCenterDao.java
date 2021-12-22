@@ -10,6 +10,7 @@ import com.entity.Buser;
 public interface UserCenterDao {
 
 	public Buser selectABuserByUser_id(Integer integer);
+
 	public int updateBuser(Buser buser);
 
 }

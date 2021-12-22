@@ -9,7 +9,7 @@ import com.entity.Auser;
 @Repository("adminDao")
 @Mapper
 public interface AdminDao {
-	
-	public List<Auser> login(Auser auser);		// 验证管理员登录信息
-	
+
+	public List<Auser> login(Auser auser); // 验证管理员登录信息
+
 }

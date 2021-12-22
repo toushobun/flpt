@@ -13,14 +13,14 @@ import com.entity.Auser;
 @Service("adminService")
 @Transactional
 public class AdminServiceImpl implements AdminService {
-	
+
 	@Autowired
 	private AdminDao adminDao;
-	
+
 	@Override
 	public String login(Auser auser, Model model, HttpSession session) {
 		// TODO Auto-generated method stub
-		if(adminDao.login(auser) != null && adminDao.login(auser).size() > 0) {
+		if (adminDao.login(auser) != null && adminDao.login(auser).size() > 0) {
 			session.setAttribute("auser", auser);
 			return "admin/index";
 		}

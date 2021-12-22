@@ -12,13 +12,14 @@ import com.exception.UserLoginNoException;
 public class BaseBeforeController {
 	/**
 	 * 前台用户登录权限控制，处理方法执行前执行该方法
-	 * @throws UserLoginNoException 
+	 * 
+	 * @throws UserLoginNoException
 	 */
-	@ModelAttribute  
-	public void isLogin(HttpSession session, HttpServletRequest request) throws UserLoginNoException {      
-		if(session.getAttribute("buser") == null){  
+	@ModelAttribute
+	public void isLogin(HttpSession session, HttpServletRequest request) throws UserLoginNoException {
+		if (session.getAttribute("buser") == null) {
 			throw new UserLoginNoException("没有登录");
 		}
 	}
-	
+
 }

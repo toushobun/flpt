@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<tr>
 			<th>操作</th>
 			<td>
-				<a href="userReginfo/userSelectReginfo?user_id=${sessionScope.buser.user_id }">查看全部准考证</a>
+				<a href="userReginfo/userSelectReginfo?user_id=${sessionScope.buser.user_id }">查看全部报名信息</a>
 				<c:if test="${sessionScope.buser.uidphoto == null }">
 					<a href="userCenter/toUpdatePwd">上传照片</a>
 				</c:if>

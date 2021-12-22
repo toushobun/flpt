@@ -9,6 +9,7 @@ import com.entity.Buser;
 public interface UserCenterService {
 
 	public String updatePwd(Buser buser, Model model, HttpSession session);
+
 	public String deleteUserByUser_id(Integer id, Model model);
-	
+
 }
