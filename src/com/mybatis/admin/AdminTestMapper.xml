@@ -3,5 +3,58 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.AdminTestDao">
-
+	<select id="selectTestByKwargs" resultType="Test"
+		parameterType="Test">
+		select * from testtable where ""=""
+		<if test="test_id != null">
+			and test_id = #{test_id}
+		</if>
+		<if test="tname != null">
+			and tname = #{tname}
+		</if>
+		<if test="tsubject != null">
+			and tsubject = #{tsubject}
+		</if>
+		<if test="torganizer != null">
+			and torganizer = #{torganizer}
+		</if>
+		<if test="status != null">
+			and status = #{status}
+		</if>
+	</select>
+	<insert id="addTest" parameterType="Test">
+		insert into testtable
+		(test_id,tname,tsubject,torganizer,status)
+		values
+		(null,#{tname},#{tsubject},#{torganizer},0)
+	</insert>
+	<delete id="deleteTestByTest_id" parameterType="Integer">
+		delete from
+		testtable where test_id = #{test_id}
+	</delete>
+	<update id="updateTest" parameterType="Test">
+		update testtable
+		<set>
+			<if test="tname != null">
+				tname = #{tname}
+			</if>
+			<if test="tsubject != null">
+				tsubject = #{tsubject}
+			</if>
+			<if test="torganizer != null">
+				torganizer = #{torganizer}
+			</if>
+			<if test="status != null">
+				status = #{status}
+			</if>
+		</set>
+		where test_id = #{test_id}
+	</update>
+	<select id="selectRepeatedTest" resultType="Test"
+		parameterType="Test">
+		select * from testtable where tname = #{tname}
+		<if test="test_id != null">
+			and test_id != #{test_id}
+		</if>
+	</select>
 </mapper>

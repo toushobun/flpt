@@ -1,4 +1,4 @@
-package com.controller.before;
+package com.controller.user;
 
 import java.awt.Color;
 import java.awt.Font;
