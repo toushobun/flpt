@@ -3,21 +3,5 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.AdminNoticeDao">
-	<!-- 发布一个公告 -->
-	<insert id="addNotice" parameterType="Notice">
-		insert into noticetable (notice_id,ntitle,ncontent,ntime) 
-		values (null,#{ntitle},#{ncontent},now())
-	</insert>
-	<!-- 删除一个公告 -->
-	<delete id="deleteNoticeByNotice_id" parameterType="Integer">
-		delete from noticetable where notice_id = #{notice_id}
-	</delete>
-	<!-- 查询一个公告 -->
-	<select id="selectANoticeByNotice_id"  resultType="Notice" parameterType="Integer">
-		select * from noticetable where notice_id = #{notice_id}
-	</select>
-	<!-- 查询全部公告 -->
-	<select id="selectNotice"  resultType="Notice" >
-		select * from noticetable
-	</select> 
+
 </mapper>

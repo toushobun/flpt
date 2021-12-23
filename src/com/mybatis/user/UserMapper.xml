@@ -2,19 +2,6 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- com.dao.userDao对应Dao接口 -->
 <mapper namespace="com.dao.UserDao">
-	<!-- 查询用户登录信息 -->
-	<select id="login" resultType="Buser" parameterType="Buser">
-		select * from busertable where uidnum=#{uidnum} AND  upwd=#{upwd}
-	</select>
-	<!-- 用户注册 -->
-	<insert id="register" parameterType="Buser">
-		insert into busertable (id,uidnum,uname,upwd,uidphoto) 
-		values (null,#{uidnum},#{uname},#{upwd},uidphoto)
-	</insert>
-	<!-- 查看该身份证号是否已注册 -->
-	<select id="selectBuserByUpnum" resultType="Buser" parameterType="Buser">
-		select * from busertable where uidnum = #{uidnum} and id != #{id}
-	</select>
+
 </mapper>
