@@ -13,9 +13,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 	<c:if test="${allTestinfo.size() == 0 }">
-		还没有发布考试。
+		未查询到结果
 	</c:if>
 	<c:if test="${allTestinfo.size() != 0 }">
+		<form action="adminTestinfo/searchTestinfo" method="post">
+			<input type="text" name="keyWord"/>
+			<input type="submit" value="搜索"/>
+		</form>
 		<table border=1>
 			<tr>
 				<th width="20%">考试名</th>
@@ -37,9 +41,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${testinfo.regist_end_time }</td>
 					<td>${testinfo.tprice }</td>
 					<td>
-						<a href="adminTestinfo/toSelectRoom?testinfoid=${testinfo.id }">考场详情</a>
-						<a href="adminTestinfo/toUpdateTestinfo?id=${testinfo.id }">修改</a>
-						<a onclick="return checkDel();" href="adminTestinfo/deleteTestinfo?id=${testinfo.id }">删除</a>
+						<a href="adminTestinfo/selectTestinfoRoom?testinfo_id=${testinfo.testinfo_id }">考场详情</a>
+						<a href="adminTestinfo/toUpdateTestinfo?testinfo_id=${testinfo.testinfo_id }">修改</a>
+						<a onclick="return checkDel();" href="adminTestinfo/deleteTestinfo?testinfo_id=${testinfo.testinfo_id }">删除</a>
 					</td>
 				</tr>
 			</c:forEach>

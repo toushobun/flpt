@@ -14,19 +14,30 @@ window.onload=function() {
     }
 }
 
+function testinfoConfirm(){
+	var info="请最后确认信息：\n1.aaa\n2.bbb\n3.ccc"
+	if(!confirm(info)){
+		window.event.returnValue = false;
+	}
+	else{
+		
+	}
+	document.forms[0].submit();
+}
+
 function checkDel(){
-  if(!confirm("确认要删除？")){
-	window.event.returnValue = false;
-  }
+	if(!confirm("确认要删除？")){
+	  	window.event.returnValue = false;
+	}
 }
 
 function checkDelDouble(){
-  if(!confirm("确认要彻底删除？")){
-	window.event.returnValue = false;
-  }
-  else{
-	  checkDel();
-  }
+	if(!confirm("确认要彻底删除？")){
+		window.event.returnValue = false;
+	}
+	else{
+		checkDel();
+	}
 }
 
 //function doInputTest(){

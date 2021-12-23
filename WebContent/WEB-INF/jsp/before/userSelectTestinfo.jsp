@@ -16,28 +16,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		还没有发布考试。
 	</c:if>
 	<c:if test="${allTestinfo.size() != 0 }">
+		请选择要报名的考试
 		<table border=1>
-			<caption>请选择要报名的考试</caption>
 			<tr>
-				<th width="20%">考试名</th>
-				<th width="20%">考试时间</th>
-				<th width="20%">报名费用</th>
-				<th width="10%">操作</th>
+				<th width="30%">考试名</th>
+				<th width="10%">科目</th>
+				<th width="30%">考试时间</th>
+				<th width="10%">报名费</th>
+				<th width="20%">操作</th>
 			</tr>
 			<c:forEach items="${allTestinfo }" var="testinfo">
 				<tr>
 					<td>${testinfo.tname }</td>
-					<td><script>document.write("${testinfo.test_time}".substring(0, 19));</script></td>
+					<td>${testinfo.tsubject }</td>
+					<td>${testinfo.test_time }</td>
 					<td>${testinfo.tprice }</td>
 					<td>
 						<c:if test="${testinfo.status == 1 }">
-							<a href="userTicket/toAddTicket?i_id=${testinfo.id }">报名</a>
+							<a href="userReginfo/userSelectTestinfoRoom?testinfo_id=${testinfo.testinfo_id }">前往报名</a>
 						</c:if>
 						<c:if test="${testinfo.status == 0 }">
-							名额已满
-						</c:if>
-						<c:if test="${testinfo.status == -1 }">
-							不在报名时间
+							已报名，<a href="userReginfo/userSelectAReginfo?user_id=${sessionScope.buser.user_id }&testinfo_id=${testinfo.testinfo_id }">查看报名信息</a>
 						</c:if>
 					</td>
 				</tr>

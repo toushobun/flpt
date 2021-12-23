@@ -11,22 +11,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${allNotices.size() == 0 }">
-		还没有发布公告通知。
-	</c:if>
-	<c:if test="${allNotices.size() != 0 }">
-		<table id="table">
-			<tr>
-				<th width="300px">标题</th>
-				<th width="100px">详情</th>
-			</tr>
-			<c:forEach items="${allNotices }" var="notice">
-				<tr>
-					<td>${notice.ntitle }</td>
-					<td><a href="selectANotice?id=${notice.id }" target="center">详情</a></td>
-				</tr>
-			</c:forEach>
-		</table>
-	</c:if>
+	<h3 align="center">${notice.ntitle }</h3>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;${notice.ncontent }</p>		
+	<p align="right">${notice.ntime }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>				
 </body>
 </html>

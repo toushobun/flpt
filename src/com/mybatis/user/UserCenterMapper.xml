@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- com.dao.userDao对应Dao接口 -->
+<mapper namespace="com.dao.UserCenterDao">
+	<!-- 通过id查询一个考生 -->
+	<select id="selectABuserByUser_id" resultType="Buser" parameterType="Integer">
+		select * from busertable where user_id=#{user_id}
+	</select>
+	<!-- 修改一个考生的信息 -->
+	<update id="updateBuser" parameterType="Buser">
+	    update busertable
+	    <set>
+	      <if test="upwd != null">
+	        upwd = #{upwd},
+	      </if>
+	      <if test="uidphoto != null">
+	        uidphoto = #{uidphoto},
+	      </if>
+	    </set>
+	    where user_id = #{user_id}
+  	</update>
+</mapper>

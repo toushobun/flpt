@@ -11,100 +11,89 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <base href="<%=basePath%>">
 <title>Insert title here</title>
 <script src="js/formCheck.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="css/admin.css">
 </head>
 <script type="text/javascript">
 	window.onload=function(){
 		showDetail()
 	}
-	function showDetail() {
+	function showDetail(){
 	    var tbl = document.getElementById("testData"); // 先获取table
 	    var rows = tbl.getElementsByTagName("tr"); // 获取里面的行tr
 		var detailData = new Array();
 		for(i=0;i<rows.length;i++){
-			detailData[i*3] = rows[i].cells[0].innerHTML;
-			detailData[i*3+1] = rows[i].cells[1].innerHTML;
-			detailData[i*3+2] = rows[i].cells[2].innerHTML;
+			detailData[i*4] = rows[i].cells[0].innerHTML;
+			detailData[i*4+1] = rows[i].cells[1].innerHTML;
+			detailData[i*4+2] = rows[i].cells[2].innerHTML;
+			detailData[i*4+3] = rows[i].cells[3].innerHTML;
 		}
 		var myId = document.getElementById("test_id");
-		for(i=0;i<detailData.length;i=i+3){
+		for(i=0;i<detailData.length;i=i+4){
 			if(detailData[i] == myId.value){
 				document.getElementById('tsubject').value=detailData[i+1];
 				document.getElementById('torganizer').value=detailData[i+2];
+				document.getElementById('tname').value=detailData[i+3];
 			}
 		}
 	}
 </script>
 <body>
 	<table style="display:none;" id="testData">
-		<c:forEach items="${sessionScope.allTest }" var="test">
+		<c:forEach items="${allTest }" var="test">
 			<tr>
-				<td>${test.id }</td>
+				<td>${test.test_id }</td>
 				<td>${test.tsubject }</td>
 				<td>${test.torganizer }</td>
+				<td>${test.tname }</td>
 			</tr>
 		</c:forEach>
 	</table>
-	<form:form action="adminTestinfo/addTestinfo" method="post" modelAttribute="testinfo">
+	<form:form action="adminTestinfo/updateTestinfo" method="post" modelAttribute="testinfo">
+		<form:hidden path="testinfo_id" readonly="readonly"/>
 		<table>
-			<caption>考场名额配置 and 信息确认</caption>
+			<caption>修改考试信息</caption>
 			<tr>
-				<td>您要发布的考试<font color="red">*</font></td>
+				<td colspan="2">请选择您要发布的考试<font color="red">*</font></td>
 				<td>
-					<form:select path="test_id" onfocus="this.defaultIndex=this.selectedIndex;" onchange="this.selectedIndex=this.defaultIndex;">
-         				<form:options items="${sessionScope.allTest }" itemLabel="tname" itemValue="id"/>
+					<form:select path="test_id" onfocus="this.defaultIndex=this.selectedIndex;" onchange="this.selectedIndex=this.defaultIndex;"><!-- 前台选择的内容，会给test_id变量传到后台，itemLabel控制展示数据，itemValue控制传输数据 -->
+         				<form:options items="${allTest }" itemLabel="tname" itemValue="test_id"/>
    					</form:select>
 				</td>
 			</tr>
 			<tr>
-				<td>考试科目</td>
+				<td colspan="2">考试科目</td>
 				<td><input type="text" id="tsubject" readonly="readonly"></td>
 			</tr>
 			<tr>
-				<td>主考单位</td>
+				<td colspan="2">主考单位</td>
 				<td><input type="text" id="torganizer" readonly="readonly"></td>
 			</tr>
 			<tr>
-				<td>考试时间<font color="red">*</font></td>
+				<td colspan="2">考试时间<font color="red">*</font></td>
 				<td>
-					<input type="text" name="test_time" readonly="readonly" value="${testinfo.test_time }"/>
+					<form:input path="test_time" placeholder="请输入考试时间"/>
 				</td>
 			</tr>
 			<tr>
-				<td>报名开始时间<font color="red">*</font></td>
+				<td colspan="2">报名开始时间<font color="red">*</font></td>
 				<td>
-					<input type="text" name="regist_start_time" readonly="readonly" value="${testinfo.regist_start_time }"/>
+					<form:input path="regist_start_time" placeholder="请输入报名开始时间"/>
 				</td>
 			</tr>
 			<tr>
-				<td>报名截止时间<font color="red">*</font></td>
+				<td colspan="2">报名截止时间<font color="red">*</font></td>
 				<td>
-					<input type="text" name="regist_end_time" readonly="readonly" value="${testinfo.regist_end_time }"/>
+					<form:input path="regist_end_time" placeholder="请输入报名截止时间"/>
 				</td>
 			</tr>
 			<tr>
-				<td>报名费用<font color="red">*</font></td>
+				<td colspan="2">报名费用<font color="red">*</font></td>
 				<td>
-					<input type="text" name="tprice" readonly="readonly" value="${testinfo.tprice }"/>
+					<form:input path="tprice" placeholder="请输入报名费用"/>
 				</td>
 			</tr>
 			<tr>
-				<td><br></td>
-				<td><br></td>
-			</tr>
-			<tr>
-				<td>请配置考场名额</td>
-				<td>
-					<c:forEach items="${selectedRoom }" var="room">
-						<tr>
-							<form:hidden path="room_ids" value="${room.id }"/>
-							<td>${room.rname }<font color="red">*</font></td>
-							<td><form:input path="room_rquotas" placeholder="请输入该考场可报名名额"/></td>
-						</tr>
-					</c:forEach>
-				</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
+				<td colspan="2">&nbsp;</td>
 				<td style="text-align: right">
 					<input type="submit" value="提交"/>
 				</td>

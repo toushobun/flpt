@@ -2,6 +2,30 @@ package com.service.before;
 
 import org.springframework.ui.Model;
 
+import com.entity.Reginfo;
+
 public interface UserReginfoService {
+
 	public String userSelectTestinfo(Model model);
+
+	public String userSelectTestinfoRoom(Integer testinfo_id, Model model);
+
+	public String userAddReginfo(Reginfo reginfo, Model model);
+
+	public String userSelectAReginfoByUser_idAndTestinfo_id(Reginfo reginfo, Model model);
+
+	public String userToPay(Reginfo reginfo, Model model);
+
+	public String userPay(Integer reginfo_id, Model model);
+
+	public String userCancelReginfo(Integer reginfo_id, Model model);
+
+	public String userToChangeRoom(Reginfo reginfo, Model model);
+
+	public String userChangeRoom(Reginfo reginfo, Model model);
+
+	public String userGetTicket(Reginfo reginfo, Model model);
+
+	public String userSelectReginfoByUser_id(Integer user_id, Model model);
+
 }

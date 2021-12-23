@@ -18,7 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<c:if test="${allNotices.size() != 0 }">
 		<table border=1>
 			<tr>
-				<th width="10%">ID</th>
+				<th style="display: none;">ID</th>
 				<th width="30%">标题</th>
 				<th width="30%">时间</th>
 				<th width="10%">详情</th>
@@ -26,12 +26,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</tr>
 			<c:forEach items="${allNotices }" var="notice">
 				<tr>
-					<td>${notice.id }</td>
+					<td style="display: none;">${notice.notice_id }</td>
 					<td>${notice.ntitle }</td>
 					<td>${notice.ntime }</td>
-					<td><a href="adminNotice/selectANotice?id=${notice.id }">详情</a></td>
+					<td><a href="adminNotice/selectANotice?notice_id=${notice.notice_id }">详情</a></td>
 					<td>
-						<a onclick="return checkDel();" href="adminNotice/deleteNotice?id=${notice.id }">删除</a>
+						<a onclick="return checkDel();" href="adminNotice/deleteNotice?notice_id=${notice.notice_id }">删除</a>
 					</td>
 				</tr>
 			</c:forEach>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.AdminUserDao">
+	<!-- 查询全部考生 -->
+	<select id="selectUser" resultType="Buser" >
+		select * from busertable
+	</select>
+	<!-- 模糊搜索考生 -->
+	<select id="searchUser" resultType="Buser" parameterType="String">
+		select * from busertable where concat(uidnum, upwd, uname) like concat('%',#{keyWord},'%')
+	</select>
+	<!-- 删除一个考生 -->
+	<delete id="deleteUserByUser_id" parameterType="Integer">
+		delete from busertable where user_id = #{user_id}
+	</delete>
+	<!-- 搜索此考生是否已报名 -->
+	<select id="selectReginfoByUser_id" resultType="Buser" parameterType="Integer">
+		select * from reginfotable where user_id = #{user_id}
+	</select>
+</mapper>
