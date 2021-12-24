@@ -19,7 +19,6 @@ public class AdminTestServiceImpl implements AdminTestService {
 
 	@Override
 	public String selectTest(Model model) {
-		// TODO Auto-generated method stub
 		List<Test> testList = adminTestDao.selectTestByKwargs(null);
 		model.addAttribute("testList", testList);
 		return "admin/selectTest";
@@ -27,7 +26,6 @@ public class AdminTestServiceImpl implements AdminTestService {
 
 	@Override
 	public String addTest(Test test, Model model) {
-		// TODO Auto-generated method stub
 		try {
 			Test testToSelect = new Test();
 			testToSelect.setTname(test.getTname());
@@ -47,7 +45,6 @@ public class AdminTestServiceImpl implements AdminTestService {
 
 	@Override
 	public String deleteTest(Integer test_id, Model model) {
-		// TODO Auto-generated method stub
 		try {
 			Test testToSelect = new Test();
 			testToSelect.setTest_id(test_id);
@@ -67,7 +64,6 @@ public class AdminTestServiceImpl implements AdminTestService {
 
 	@Override
 	public String toUpdateTest(Integer test_id, Model model) {
-		// TODO Auto-generated method stub
 		Test testToSelect = new Test();
 		testToSelect.setTest_id(test_id);
 		Test test = adminTestDao.selectTestByKwargs(testToSelect).get(0);

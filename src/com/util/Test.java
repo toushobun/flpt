@@ -7,7 +7,6 @@ import java.util.Date;
 public class Test {
 
 	public static void main(String[] args) throws ParseException {
-		// TODO Auto-generated method stub
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd H:m:s");
 		// 使用SimpleDateFormat的parse()方法生成Date
 		Date date1 = sf.parse("2020-01-03 12:00:00.0");

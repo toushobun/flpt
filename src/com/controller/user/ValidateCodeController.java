@@ -31,7 +31,6 @@ public class ValidateCodeController {
 	@RequestMapping("/validateCode")
 	public void validateCode(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		// 设置响应报头信息
 		response.setHeader("Pragma", "No-cache");
 		response.setHeader("Cache-Control", "no-cache");

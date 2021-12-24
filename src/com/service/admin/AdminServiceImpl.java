@@ -21,7 +21,6 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public String login(Auser auser, Model model, HttpSession session) {
-		// TODO Auto-generated method stub
 		List<Auser> auserList = adminDao.selectAuserByKwargs(auser);
 		if (auserList.size() > 0) {
 			session.setAttribute("auser", auser);
