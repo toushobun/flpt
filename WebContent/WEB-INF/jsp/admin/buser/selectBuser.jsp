@@ -1,0 +1,60 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<base href="<%=basePath%>">
+<title>Insert title here</title>
+<link href="css/admin.css" type="text/css" rel="stylesheet">
+<script src="js/formCheck.js" type="text/javascript"></script>
+</head>
+<body>
+	<form:form id="searchForm" action="adminBuser/searchBuser"
+		method="post" modelAttribute="buser">
+		<form:input path="uname" placeholder="输入考生姓名" value="${buser.uname }" />
+		<form:input path="uidnum" placeholder="输入考生证件"
+			value="${buser.uidnum }" />
+		<input type="submit" value="搜索" />
+		<input type="button" value="清空" onclick="emptyInput('searchForm');" />
+	</form:form>
+	<c:if test="${buserList.size() == 0 }">
+		未查询到结果
+	</c:if>
+	<c:if test="${buserList.size() != 0 }">
+		<table border=1>
+			<tr>
+				<th width="30%">照片</th>
+				<th width="20%">考生姓名</th>
+				<th width="20%">身份证号</th>
+				<th width="20%">密码</th>
+				<th width="10%">操作</th>
+			</tr>
+			<c:forEach items="${buserList }" var="buser">
+				<tr>
+					<td><c:if test="${buser.uidphoto != '' }">
+							<img alt="" width="100" height="100"
+								src="logos/${buser.uidphoto}" />
+						</c:if></td>
+					<td>${buser.uname }</td>
+					<td>${buser.uidnum }</td>
+					<td>${buser.upwd }</td>
+					<td><a onclick="return checkDel();"
+						href="adminBuser/deleteBuser?user_id=${buser.user_id }">删除</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</c:if>
+	<c:if test="${msg != null }">
+		<script type="text/javascript">
+			alert("${msg}");
+		</script>
+	</c:if>
+</body>
+</html>

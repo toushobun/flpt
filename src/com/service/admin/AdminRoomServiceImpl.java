@@ -46,20 +46,12 @@ public class AdminRoomServiceImpl implements AdminRoomService {
 
 	@Override
 	public String deleteRoom(Integer room_id, Model model) {
-		// TODO 检查考场是否已被发布
 		try {
-			Room roomToSelect = new Room();
-			roomToSelect.setRoom_id(room_id);
-//			Room room = adminRoomDao.selectRoomByKwargs(roomToSelect).get(0);
-//			if (room.getStatus() != 0) {
-//				model.addAttribute("msg", "删除失败！该考场已发布！");
-//				return "forward:/adminRoom/selectRoom";
-//			}
 			adminRoomDao.deleteRoomByRoom_id(room_id);
 			model.addAttribute("msg", "删除成功！");
 			return "forward:/adminRoom/selectRoom";
 		} catch (Exception e) {
-			model.addAttribute("msg", "删除失败！");
+			model.addAttribute("msg", "删除失败！该考场已发布！请先删除对应发布的考试！");
 			return "forward:/adminRoom/selectRoom";
 		}
 	}

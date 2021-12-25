@@ -22,7 +22,6 @@
 	<c:if test="${noticeList.size() != 0 }">
 		<table>
 			<tr>
-				<th style="display: none;">ID</th>
 				<th width="30%">标题</th>
 				<th width="30%">时间</th>
 				<th width="10%">详情</th>
@@ -30,7 +29,6 @@
 			</tr>
 			<c:forEach items="${noticeList }" var="notice">
 				<tr>
-					<td style="display: none;">${notice.notice_id }</td>
 					<td>${notice.ntitle }</td>
 					<td>${notice.ntime }</td>
 					<td><a

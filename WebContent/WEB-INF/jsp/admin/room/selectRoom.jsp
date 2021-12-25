@@ -21,8 +21,7 @@
 		<form:input path="rname" placeholder="输入考试名" value="${room.rname }" />
 		<form:input path="raddress" placeholder="输入考试地址"
 			value="${room.raddress }" />
-		<form:input path="rtelnum" placeholder="联系电话"
-			value="${room.rtelnum }" />
+		<form:input path="rtelnum" placeholder="联系电话" value="${room.rtelnum }" />
 		<form:input path="rpostcode" placeholder="邮编"
 			value="${room.rpostcode }" />
 		<input type="submit" value="搜索" />
@@ -34,7 +33,6 @@
 	<c:if test="${roomList.size() != 0 }">
 		<table border=1>
 			<tr>
-				<th style="display: none;">ID</th>
 				<th width="25%">考场名</th>
 				<th width="40%">考场地址</th>
 				<th width="20%">考场联系电话</th>
@@ -43,7 +41,6 @@
 			</tr>
 			<c:forEach items="${roomList }" var="room">
 				<tr>
-					<td style="display: none;">${room.room_id }</td>
 					<td>${room.rname }</td>
 					<td>${room.raddress }</td>
 					<td>${room.rtelnum }</td>
