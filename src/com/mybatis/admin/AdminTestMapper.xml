@@ -36,16 +36,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update testtable
 		<set>
 			<if test="tname != null">
-				tname = #{tname}
+				tname = #{tname},
 			</if>
 			<if test="tsubject != null">
-				tsubject = #{tsubject}
+				tsubject = #{tsubject},
 			</if>
 			<if test="torganizer != null">
-				torganizer = #{torganizer}
+				torganizer = #{torganizer},
 			</if>
 			<if test="status != null">
-				status = #{status}
+				status = #{status},
 			</if>
 		</set>
 		where test_id = #{test_id}
@@ -55,6 +55,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from testtable where tname = #{tname}
 		<if test="test_id != null">
 			and test_id != #{test_id}
+		</if>
+	</select>
+	<select id="selectTestFuzzily" resultType="Test"
+		parameterType="Test">
+		select * from testtable where ""=""
+		<if test="test_id != null">
+			and concat(test_id) like concat('%',#{test_id},'%')
+		</if>
+		<if test="tname != null">
+			and concat(tname) like concat('%',#{tname},'%')
+		</if>
+		<if test="tsubject != null">
+			and concat(tsubject) like concat('%',#{tsubject},'%')
+		</if>
+		<if test="torganizer != null">
+			and concat(torganizer) like concat('%',#{torganizer},'%')
+		</if>
+		<if test="status != null">
+			and concat(status) like concat('%',#{status},'%')
 		</if>
 	</select>
 </mapper>

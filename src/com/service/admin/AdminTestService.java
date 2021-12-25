@@ -16,6 +16,6 @@ public interface AdminTestService {
 
 	public String updateTest(Test test, Model model); // ĞŞ¸Ä¿¼ÊÔ
 
-	public String searchTest(String keyWord, Model model); // Ä£ºıËÑË÷
+	public String searchTest(Test test, Model model); // Ä£ºıËÑË÷
 
 }

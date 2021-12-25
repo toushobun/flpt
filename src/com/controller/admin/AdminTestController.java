@@ -22,7 +22,7 @@ public class AdminTestController extends BaseController {
 
 	@RequestMapping("/toAddTest")
 	public String toAddTest(Test test) {
-		return "admin/addTest";
+		return "admin/test/addTest";
 	}
 
 	@RequestMapping("/addTest")
@@ -46,8 +46,8 @@ public class AdminTestController extends BaseController {
 	}
 
 	@RequestMapping("/searchTest")
-	public String searchTest(String keyWord, Model model) {
-		return adminTestService.searchTest(keyWord, model);
+	public String searchTest(Test test, Model model) {
+		return adminTestService.searchTest(test, model);
 	}
 
 }

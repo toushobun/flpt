@@ -21,4 +21,6 @@ public interface AdminTestDao {
 	
 	public List<Test> selectRepeatedTest(Test test); // 查询重复的考试
 
+	public List<Test> selectTestFuzzily(Test test); // 模糊查询考试
+
 }

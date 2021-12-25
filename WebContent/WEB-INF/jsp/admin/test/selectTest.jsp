@@ -7,17 +7,29 @@
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <base href="<%=basePath%>">
 <title>Insert title here</title>
+<link href="css/admin.css" type="text/css" rel="stylesheet">
 <script src="js/formCheck.js" type="text/javascript"></script>
 </head>
 <body>
-	<form action="adminTest/searchTest" method="post">
-		<input type="text" name="keyWord" /> <input type="submit" value="搜索" />
-	</form>
+	<form:form id="searchForm" action="adminTest/searchTest" method="post"
+		modelAttribute="test">
+		<form:input path="tname" placeholder="输入考试名" value="${test.tname }" />
+		<form:input path="tsubject" placeholder="输入考试科目"
+			value="${test.tsubject }" />
+		<form:input path="torganizer" placeholder="主考单位"
+			value="${test.torganizer }" />
+		<form:select path="status">
+			<form:option value="1" label="是"/>
+			<form:option value="0" label="否"/>
+		</form:select>
+		<input type="submit" value="搜索" />
+		<input type="button" value="清空" onclick="emptyInput('searchForm');" />
+	</form:form>
 	<c:if test="${testList.size() == 0 }">
 		未查询到结果
 	</c:if>

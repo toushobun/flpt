@@ -7,28 +7,30 @@
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <base href="<%=basePath%>">
 <title>Insert title here</title>
 </head>
 <body>
-	<form:form action="adminTest/addTest" method="post"
+	<form:form action="adminTest/updateTest" method="post"
 		modelAttribute="test">
 		<table>
-			<caption>添加考试</caption>
+			<caption>修改考试</caption>
+			<form:hidden path="test_id" value="${test.test_id}" />
 			<tr>
 				<td>考试名<font color="red">*</font></td>
-				<td><form:input path="tname" placeholder="请填入考试名" /></td>
+				<td><form:input path="tname" value="${test.tname}" /></td>
 			</tr>
 			<tr>
 				<td>考试科目<font color="red">*</font></td>
-				<td><form:input path="tsubject" placeholder="请填入考试科目" /></td>
+				<td><form:input path="tsubject" value="${test.tsubject}" /></td>
 			</tr>
 			<tr>
 				<td>主考单位<font color="red">*</font></td>
-				<td><form:input path="torganizer" placeholder="请输入主考单位" /></td>
+				<td><form:input path="torganizer" value="${test.torganizer}" />
+				</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>

@@ -20,8 +20,9 @@ public class AdminTestServiceImpl implements AdminTestService {
 	@Override
 	public String selectTest(Model model) {
 		List<Test> testList = adminTestDao.selectTestByKwargs(null);
+		model.addAttribute("test", new Test());
 		model.addAttribute("testList", testList);
-		return "admin/selectTest";
+		return "admin/test/selectTest";
 	}
 
 	@Override
@@ -32,14 +33,14 @@ public class AdminTestServiceImpl implements AdminTestService {
 			List<Test> testList = adminTestDao.selectRepeatedTest(testToSelect);
 			if (testList.size() > 0) {
 				model.addAttribute("msg", "添加失败！该考试已存在！");
-				return "admin/addTest";
+				return "admin/test/addTest";
 			}
 			adminTestDao.addTest(test);
 			model.addAttribute("msg", "添加成功！");
 			return "forward:/adminTest/selectTest";
 		} catch (Exception e) {
 			model.addAttribute("msg", "添加失败！");
-			return "admin/addTest";
+			return "admin/test/addTest";
 		}
 	}
 
@@ -68,12 +69,11 @@ public class AdminTestServiceImpl implements AdminTestService {
 		testToSelect.setTest_id(test_id);
 		Test test = adminTestDao.selectTestByKwargs(testToSelect).get(0);
 		model.addAttribute("test", test);
-		return "admin/updateTest";
+		return "admin/test/updateTest";
 	}
 
 	@Override
 	public String updateTest(Test test, Model model) {
-		// TODO Auto-generated method stub
 		try {
 			Test testToSelect = new Test();
 			testToSelect.setTest_id(test.getTest_id());
@@ -81,21 +81,23 @@ public class AdminTestServiceImpl implements AdminTestService {
 			List<Test> testList = adminTestDao.selectRepeatedTest(testToSelect);
 			if (testList.size() > 0) {
 				model.addAttribute("msg", "修改失败！该考试已存在！");
-				return "admin/updateTest";
+				return "admin/test/updateTest";
 			}
 			adminTestDao.updateTest(test);
 			model.addAttribute("msg", "修改成功！");
 			return "forward:/adminTest/selectTest";
 		} catch (Exception e) {
 			model.addAttribute("msg", "修改失败！");
-			return "admin/updateTest";
+			return "admin/test/updateTest";
 		}
 	}
 
 	@Override
-	public String searchTest(String keyWord, Model model) {
-		// TODO Auto-generated method stub
-		return null;
+	public String searchTest(Test test, Model model) {
+		List<Test> testList = adminTestDao.selectTestFuzzily(test);
+		model.addAttribute("test", test);
+		model.addAttribute("testList", testList);
+		return "admin/test/selectTest";
 	}
 
 }
