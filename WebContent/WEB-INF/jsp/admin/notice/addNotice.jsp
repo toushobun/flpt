@@ -12,6 +12,7 @@
 <head>
 <base href="<%=basePath%>">
 <title>Insert title here</title>
+<link href="css/admin.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 	<form:form action="adminNotice/addNotice" method="post"

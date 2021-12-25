@@ -3,5 +3,77 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.AdminTestinfoDao">
-	
+	<select id="selectTestinfoByKwargs" resultType="Testinfo"
+		parameterType="Testinfo">
+		select * from testinfotable,testtable where ""="" and
+		testinfotable.test_id=testtable.test_id
+		<if test="testinfo_id != null">
+			and testinfo_id = #{testinfo_id}
+		</if>
+		<if test="tname != null">
+			and tname = #{tname}
+		</if>
+		<if test="tsubject != null">
+			and tsubject = #{tsubject}
+		</if>
+		<if test="torganizer != null">
+			and torganizer = #{torganizer}
+		</if>
+		<if test="status != null">
+			and status = #{status}
+		</if>
+	</select>
+	<insert id="addTestinfo" parameterType="Testinfo">
+		insert into testinfotable
+		(testinfo_id,tname,tsubject,torganizer,status)
+		values
+		(null,#{tname},#{tsubject},#{torganizer},0)
+	</insert>
+	<delete id="deleteTestinfoByTestinfo_id" parameterType="Integer">
+		delete
+		from
+		testinfotable where testinfo_id = #{testinfo_id}
+	</delete>
+	<update id="updateTestinfo" parameterType="Testinfo">
+		update testinfotable
+		<set>
+			<if test="test_id != null">
+				test_id = #{test_id},
+			</if>
+			<if test="test_time != null">
+				test_time = #{test_time},
+			</if>
+			<if test="regist_start_time != null">
+				regist_start_time = #{regist_start_time},
+			</if>
+			<if test="regist_end_time != null">
+				regist_end_time = #{regist_end_time},
+			</if>
+			<if test="tprice != null">
+				tprice = #{tprice},
+			</if>
+		</set>
+		where testinfo_id = #{testinfo_id}
+	</update>
+	<select id="selectTestinfoFuzzily" resultType="Testinfo"
+		parameterType="Testinfo">
+		select * from testinfotable,testtable where ""="" and
+		testinfotable.test_id=testtable.test_id
+		<if test="testinfo_id != null">
+			and concat(testinfo_id) like
+			concat('%',#{testinfo_id},'%')
+		</if>
+		<if test="tname != null">
+			and concat(tname) like concat('%',#{tname},'%')
+		</if>
+		<if test="tsubject != null">
+			and concat(tsubject) like concat('%',#{tsubject},'%')
+		</if>
+		<if test="torganizer != null">
+			and concat(torganizer) like concat('%',#{torganizer},'%')
+		</if>
+		<if test="status != null">
+			and concat(status) like concat('%',#{status},'%')
+		</if>
+	</select>
 </mapper>

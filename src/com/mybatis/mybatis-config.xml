@@ -19,6 +19,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="com/mybatis/admin/AdminTestMapper.xml" />
 		<mapper resource="com/mybatis/admin/AdminRoomMapper.xml" />
 		<mapper resource="com/mybatis/admin/AdminTestinfoMapper.xml" />
+		<mapper resource="com/mybatis/admin/AdminTestinfoRoomMapper.xml" />
 		<mapper resource="com/mybatis/admin/AdminNoticeMapper.xml" />
 		<mapper resource="com/mybatis/admin/AdminBuserMapper.xml" />
 		<mapper resource="com/mybatis/admin/AdminReginfoMapper.xml" />

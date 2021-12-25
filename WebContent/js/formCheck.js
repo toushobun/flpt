@@ -1,6 +1,6 @@
 // JavaScript Document
 
-emptyInput = function(id) {
+function emptyInput(id) {
 	var myForm = document.getElementById(id);
 	if (myForm == undefined) {
 		return;
@@ -16,14 +16,32 @@ emptyInput = function(id) {
 	}
 }
 
-function testinfoConfirm() {
-	var info = "请最后确认信息：\n1.aaa\n2.bbb\n3.ccc"
-	if (!confirm(info)) {
-		window.event.returnValue = false;
-	} else {
-
+function changeQuota(testinfo__room_id, testinfo_id) {
+	var rquota = prompt("请输入更改的名额：")
+	if (rquota.indexOf(" ") >= 0 || rquota == "") {
+		alert('不能为空')
+		return false
 	}
-	document.forms[0].submit();
+	var quota = Number(rquota)
+	if (isNaN(quota) || quota < 0 || parseInt(quota) - quota != 0) {
+		alert("请输入一个非负整数！")
+		return false
+	} else {
+		window.location.href = "adminTestinfo/updateRoomQuota?testinfo__room_id="
+				+ testinfo__room_id
+				+ "&rquota="
+				+ quota
+				+ "&testinfo_id="
+				+ testinfo_id
+	}
+}
+
+function cancelConfirm(testinfo__room_id, testinfo_id, rname, room_id) {
+	if (confirm("确认要取消考场：" + rname + "？")) {
+		window.location.href = "adminTestinfo/cancelRoom?testinfo__room_id="
+				+ testinfo__room_id + "&testinfo_id=" + testinfo_id
+				+ "&room_id=" + room_id
+	}
 }
 
 function checkDel() {

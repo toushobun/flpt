@@ -14,6 +14,7 @@
 <title>Insert title here</title>
 <link href="css/admin.css" type="text/css" rel="stylesheet">
 <script src="js/formCheck.js" type="text/javascript"></script>
+<script src="js/colorControl.js" type="text/javascript"></script>
 </head>
 <body>
 	<form:form id="searchForm" action="adminTest/searchTest" method="post"
@@ -34,9 +35,8 @@
 		未查询到结果
 	</c:if>
 	<c:if test="${testList.size() != 0 }">
-		<table border=1>
+		<table id="table">
 			<tr>
-				<th style="display: none;">ID</th>
 				<th width="25%">考试名</th>
 				<th width="10%">考试科目</th>
 				<th width="25%">主考单位</th>
@@ -45,7 +45,6 @@
 			</tr>
 			<c:forEach items="${testList }" var="test">
 				<tr>
-					<td style="display: none;">${test.test_id }</td>
 					<td>${test.tname }</td>
 					<td>${test.tsubject }</td>
 					<td>${test.torganizer }</td>

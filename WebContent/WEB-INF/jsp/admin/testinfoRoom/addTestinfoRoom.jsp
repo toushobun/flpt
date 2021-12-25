@@ -12,29 +12,23 @@
 <head>
 <base href="<%=basePath%>">
 <title>Insert title here</title>
-<link href="css/admin.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-	<form:form action="adminRoom/updateRoom"
-		onsubmit="return doInputTest();" method="post" modelAttribute="room">
+	<form:form action="adminTest/addTest" method="post"
+		modelAttribute="test">
 		<table>
-			<caption>修改考场</caption>
-			<form:hidden path="room_id" value="${room.room_id}" />
+			<caption>添加考试</caption>
 			<tr>
-				<td>考场名<font color="red">*</font></td>
-				<td><form:input path="rname" value="${room.rname}" /></td>
+				<td>考试名<font color="red">*</font></td>
+				<td><form:input path="tname" placeholder="请填入考试名" /></td>
 			</tr>
 			<tr>
-				<td>考场地址<font color="red">*</font></td>
-				<td><form:input path="raddress" value="${room.raddress}" /></td>
+				<td>考试科目<font color="red">*</font></td>
+				<td><form:input path="tsubject" placeholder="请填入考试科目" /></td>
 			</tr>
 			<tr>
-				<td>考场联系电话<font color="red">*</font></td>
-				<td><form:input path="rtelnum" value="${room.rtelnum}" /></td>
-			</tr>
-			<tr>
-				<td>邮编<font color="red">*</font></td>
-				<td><form:input path="rpostcode" value="${room.rpostcode}" /></td>
+				<td>主考单位<font color="red">*</font></td>
+				<td><form:input path="torganizer" placeholder="请输入主考单位" /></td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>

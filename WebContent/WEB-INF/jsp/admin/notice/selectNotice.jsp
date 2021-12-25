@@ -13,6 +13,7 @@
 <base href="<%=basePath%>">
 <title>Insert title here</title>
 <link href="css/admin.css" type="text/css" rel="stylesheet">
+<script src="js/colorControl.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
 </head>
 <body>
@@ -20,7 +21,7 @@
 		未查询到结果
 	</c:if>
 	<c:if test="${noticeList.size() != 0 }">
-		<table>
+		<table id="table">
 			<tr>
 				<th width="30%">标题</th>
 				<th width="30%">时间</th>

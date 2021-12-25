@@ -13,6 +13,7 @@
 <base href="<%=basePath%>">
 <title>Insert title here</title>
 <link href="css/admin.css" type="text/css" rel="stylesheet">
+<script src="js/colorControl.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
 </head>
 <body>
@@ -31,7 +32,7 @@
 		未查询到结果
 	</c:if>
 	<c:if test="${roomList.size() != 0 }">
-		<table border=1>
+		<table id="table">
 			<tr>
 				<th width="25%">考场名</th>
 				<th width="40%">考场地址</th>

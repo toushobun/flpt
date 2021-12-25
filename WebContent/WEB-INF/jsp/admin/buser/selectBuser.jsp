@@ -13,6 +13,7 @@
 <base href="<%=basePath%>">
 <title>Insert title here</title>
 <link href="css/admin.css" type="text/css" rel="stylesheet">
+<script src="js/colorControl.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
 </head>
 <body>
@@ -28,7 +29,7 @@
 		未查询到结果
 	</c:if>
 	<c:if test="${buserList.size() != 0 }">
-		<table border=1>
+		<table id="table">
 			<tr>
 				<th width="30%">照片</th>
 				<th width="20%">考生姓名</th>
