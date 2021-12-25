@@ -3,5 +3,30 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.AdminNoticeDao">
-
+	<select id="selectNoticeByKwargs" resultType="Notice"
+		parameterType="Notice">
+		select * from noticetable where ""=""
+		<if test="notice_id != null">
+			and notice_id = #{notice_id}
+		</if>
+		<if test="ntitle != null">
+			and ntitle = #{ntitle}
+		</if>
+		<if test="ncontent != null">
+			and ncontent = #{ncontent}
+		</if>
+		<if test="ntime != null">
+			and ntime = #{ntime}
+		</if>
+	</select>
+	<insert id="addNotice" parameterType="Notice">
+		insert into noticetable
+		(notice_id,ntitle,ncontent,ntime)
+		values
+		(null,#{ntitle},#{ncontent},now())
+	</insert>
+	<delete id="deleteNoticeByNotice_id" parameterType="Integer">
+		delete from
+		noticetable where notice_id = #{notice_id}
+	</delete>
 </mapper>
