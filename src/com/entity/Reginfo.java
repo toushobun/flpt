@@ -11,6 +11,7 @@ public class Reginfo {
 	private String submit_time; // 提交时间
 	// ----------查询用----------
 	private String uname; // 考生名
+	private String uidnum; // 考生身份证号
 	private Integer testinfo_id; // 已发布考试id
 	private String tname; // 考试名
 	private String test_time; // 考试时间
@@ -81,6 +82,14 @@ public class Reginfo {
 
 	public void setUname(String uname) {
 		this.uname = uname;
+	}
+
+	public String getUidnum() {
+		return uidnum;
+	}
+
+	public void setUidnum(String uidnum) {
+		this.uidnum = uidnum;
 	}
 
 	public Integer getTestinfo_id() {

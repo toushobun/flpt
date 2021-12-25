@@ -27,7 +27,6 @@ public class AdminBuserServiceImpl implements AdminBuserService {
 
 	@Override
 	public String deleteBuser(Integer user_id, Model model) {
-		// TODO 删除前确认考生是否已报名考试
 		try {
 			adminBuserDao.deleteBuserByUser_id(user_id);
 			model.addAttribute("msg", "删除成功！");
