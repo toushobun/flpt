@@ -15,7 +15,7 @@
 </head>
 <body>
 	欢迎${auser.aname}进入后台管理系统！
-	<a href="exit">安全退出</a>
+	<a href="admin/exit">安全退出</a>
 	<p>管理员：${auser.aname}</p>
 	<ul>
 		<li><label>考试管理</label>

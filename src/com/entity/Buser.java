@@ -1,5 +1,7 @@
 package com.entity;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class Buser {
 
 	private Integer user_id; // 考生id
@@ -7,6 +9,8 @@ public class Buser {
 	private String upwd; // 密码
 	private String uname; // 考生姓名
 	private String uidphoto; // 证件照片
+	// ----------查看照片用----------
+	private MultipartFile logoImage;
 	// ----------修改密码用----------
 	private String newUpwd; // 新密码
 
@@ -46,8 +50,16 @@ public class Buser {
 		return uidphoto;
 	}
 
-	public void setUidphoto(String uidphoto) {
-		this.uidphoto = uidphoto;
+	public void setUidphoto(String newFileName) {
+		this.uidphoto = newFileName;
+	}
+
+	public MultipartFile getLogoImage() {
+		return logoImage;
+	}
+
+	public void setLogoImage(MultipartFile logoImage) {
+		this.logoImage = logoImage;
 	}
 
 	public String getNewUpwd() {

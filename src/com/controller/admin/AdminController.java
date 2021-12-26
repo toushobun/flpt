@@ -26,7 +26,7 @@ public class AdminController {
 		return adminService.login(auser, model, session);
 	}
 
-	@RequestMapping("/exit")
+	@RequestMapping("/admin/exit")
 	public String exit(Auser auser, HttpSession session) {
 		session.invalidate();
 		return "admin/login";

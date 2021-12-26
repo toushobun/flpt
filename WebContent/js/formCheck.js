@@ -68,6 +68,10 @@ function checkDelDouble() {
 	}
 }
 
+function refreshCode() {
+	document.getElementById("code").src = "validateCode?" + Math.random();
+}
+
 // function doInputTest(){
 // var rname = document.getElementById("rname").value;
 // var location = document.getElementById("location").value;

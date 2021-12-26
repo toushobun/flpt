@@ -6,7 +6,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectAuserByKwargs" resultType="Auser"
 		parameterType="Auser">
 		select *
-		from ausertable where aname=#{aname} AND
-		apwd=#{apwd}
+		from ausertable where ""=""
+		<if test="aname != null">
+			and aname = #{aname}
+		</if>
+		<if test="apwd != null">
+			and apwd = #{apwd}
+		</if>
 	</select>
 </mapper>

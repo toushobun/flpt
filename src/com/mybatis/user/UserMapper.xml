@@ -3,5 +3,35 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.UserDao">
-
+	<select id="selectBuserByKwargs" resultType="Buser"
+		parameterType="Buser">
+		select *
+		from busertable where ""=""
+		<if test="uidnum != null">
+			and uidnum = #{uidnum}
+		</if>
+		<if test="upwd != null">
+			and upwd = #{upwd}
+		</if>
+	</select>
+	<insert id="register" parameterType="Buser">
+		insert into busertable (user_id,uidnum,uname,upwd,uidphoto)
+		values (null,#{uidnum},#{uname},#{upwd},#{uidphoto})
+	</insert>
+	<select id="selectNoticeByKwargs" resultType="Notice"
+		parameterType="Notice">
+		select * from noticetable where ""=""
+		<if test="notice_id != null">
+			and notice_id = #{notice_id}
+		</if>
+		<if test="ntitle != null">
+			and ntitle = #{ntitle}
+		</if>
+		<if test="ncontent != null">
+			and ncontent = #{ncontent}
+		</if>
+		<if test="ntime != null">
+			and ntime = #{ntime}
+		</if>
+	</select>
 </mapper>

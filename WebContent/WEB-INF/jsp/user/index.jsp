@@ -1,0 +1,44 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<base href="<%=basePath%>">
+<title>Insert title here</title>
+<link href="css/admin.css" type="text/css" rel="stylesheet">
+<script src="js/formCheck.js" type="text/javascript"></script>
+</head>
+<body>
+	<ul>
+		<li>欢迎光临中国外国语能力考试报名网</li>
+		<li><a href="user/Reginfo/userSelectTestinfo" target="center">报名考试</a></li>
+        <li><a href="user/SelectNotice" target="center">查看公告</a></li>
+        <c:if test="${sessionScope.buser != null }">
+	        <li><a>考生：${sessionScope.buser.uname }</a>
+	        	<ul>
+	        		<li><a href="userCenter/center" target="center">个人中心</a></li>
+	        		<li><a href="user/exit">安全退出</a></li>
+				</ul>
+			</li>
+        </c:if>
+        <c:if test="${sessionScope.buser == null }">
+	        <li><a href="user/toRegister">注册</a></li>
+	        <li><a href="user/toLogin">登录</a></li>
+        </c:if>
+	</ul>
+	<%-- <c:if test="${sessionScope.buser != null }">
+		<iframe src="userCenter/center" name="center" frameborder="0"></iframe>
+	</c:if>
+	<c:if test="${sessionScope.buser == null }">
+		<iframe src="selectNotice" name="center" frameborder="0"></iframe>
+	</c:if> --%>
+	©版权属于大连外国语大学18级软件7班邓淞文
+</body>
+</html>
