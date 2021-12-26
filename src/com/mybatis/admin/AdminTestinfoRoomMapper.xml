@@ -5,22 +5,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.dao.AdminTestinfoRoomDao">
 	<select id="selectTestinfoRoomByKwargs"
 		resultType="TestinfoRoom" parameterType="TestinfoRoom">
-		select * from testinfoRoom, roomtable where roomtable.room_id =
-		testinfoRoom.room_id and ""=""
+		select * from testinfoRoom, roomtable, testinfotable, testtable where
+		roomtable.room_id=testinfoRoom.room_id and
+		testinfotable.testinfo_id=testinfoRoom.testinfo_id and
+		testtable.test_id=testinfotable.test_id and ""=""
 		<if test="testinfo_id != null">
-			and testinfo_id = #{testinfo_id}
+			and testinfoRoom.testinfo_id = #{testinfo_id}
 		</if>
 	</select>
 	<insert id="addTestinfoRoom" parameterType="TestinfoRoom">
-		insert into testinfoRoom
+		insert into
+		testinfoRoom
 		(testinfoRoom_id,testinfo_id,room_id,rquota)
 		values
 		(null,#{testinfo_id},#{room_id},#{rquota})
 	</insert>
-	<delete id="deleteTestinfoRoomByTestinfoRoom_id" parameterType="Integer">
+	<delete id="deleteTestinfoRoomByTestinfoRoom_id"
+		parameterType="Integer">
 		delete
 		from
-		testinfoRoom where testinfoRoom_id = #{testinfoRoom_id}
+		testinfoRoom where testinfoRoom_id =
+		#{testinfoRoom_id}
 	</delete>
 	<update id="updateTestinfoRoom" parameterType="Testinfo">
 		update testinfoRoom

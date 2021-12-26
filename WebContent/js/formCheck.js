@@ -28,10 +28,7 @@ function changeQuota(testinfoRoom_id, testinfo_id) {
 		return false
 	} else {
 		window.location.href = "adminTestinfoRoom/changeQuota?testinfoRoom_id="
-				+ testinfoRoom_id
-				+ "&rquota="
-				+ quota
-				+ "&testinfo_id="
+				+ testinfoRoom_id + "&rquota=" + quota + "&testinfo_id="
 				+ testinfo_id
 	}
 }
@@ -39,9 +36,22 @@ function changeQuota(testinfoRoom_id, testinfo_id) {
 function cancelConfirm(testinfoRoom_id, testinfo_id, rname, room_id) {
 	if (confirm("确认要取消考场：" + rname + "？")) {
 		window.location.href = "adminTestinfoRoom/cancelRoom?testinfoRoom_id="
-				+ testinfoRoom_id + "&testinfo_id=" + testinfo_id
-				+ "&room_id=" + room_id
+				+ testinfoRoom_id + "&testinfo_id=" + testinfo_id + "&room_id="
+				+ room_id
 	}
+}
+
+function testinfoCheck() {
+	var tb = document.getElementById("testData"); // 先获取table
+	var rows = tb.getElementsByTagName("tr"); // 获取里面的行tr
+	var mssg = "请最终确认您要新增考场的考试\n考试名：" + rows[0].cells[1].innerHTML + "\n考试科目："
+			+ rows[0].cells[2].innerHTML + "\n主考单位："
+			+ rows[0].cells[3].innerHTML + "\n考试时间："
+			+ rows[0].cells[4].innerHTML + "\n报名开始时间："
+			+ rows[0].cells[5].innerHTML + "\n报名截止时间："
+			+ rows[0].cells[6].innerHTML + "\n报名费用："
+			+ rows[0].cells[7].innerHTML + "元\n"
+	return confirm(mssg)
 }
 
 function checkDel() {

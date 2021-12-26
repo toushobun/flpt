@@ -12,13 +12,27 @@
 <head>
 <base href="<%=basePath%>">
 <title>Insert title here</title>
+<link href="css/admin.css" type="text/css" rel="stylesheet">
+<script src="js/colorControl.js" type="text/javascript"></script>
+<script src="js/formCheck.js" type="text/javascript"></script>
 <body>
 	<form:form action="adminTestinfoRoom/addTestinfoRoom" method="post"
-		modelAttribute="testinfoRoom">
-
-		<input type="text" name="testinfo_id"
+		onsubmit="return testinfoCheck();" modelAttribute="testinfoRoom">
+		<input type="hidden" name="testinfo_id"
 			value="${testinfoRoom.testinfo_id }">
-		<table>
+		<table style="display: none;" id="testData">
+			<tr>
+				<td>${testinfoRoom.testinfo_id }</td>
+				<td>${testinfoRoom.tname }</td>
+				<td>${testinfoRoom.tsubject }</td>
+				<td>${testinfoRoom.torganizer }</td>
+				<td>${testinfoRoom.test_time }</td>
+				<td>${testinfoRoom.regist_start_time }</td>
+				<td>${testinfoRoom.regist_end_time }</td>
+				<td>${testinfoRoom.tprice }</td>
+			</tr>
+		</table>
+		<table id="table">
 			<caption>考场名额配置</caption>
 			<tr>
 				<td><c:forEach items="${selectedRoomList }" var="room">

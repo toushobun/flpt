@@ -15,8 +15,8 @@
 <link href="css/admin.css" type="text/css" rel="stylesheet">
 </head>
 <body>
-	<form:form action="adminRoom/updateRoom"
-		onsubmit="return doInputTest();" method="post" modelAttribute="room">
+	<form:form action="adminRoom/updateRoom" method="post"
+		onsubmit="return doInputTest();" modelAttribute="room">
 		<table>
 			<caption>修改考场</caption>
 			<form:hidden path="room_id" value="${room.room_id}" />

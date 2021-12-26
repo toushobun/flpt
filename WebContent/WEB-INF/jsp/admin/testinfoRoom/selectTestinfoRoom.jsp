@@ -47,10 +47,26 @@
 	<c:if test="${notSelectedRoom.size() != 0 }">
 		<form:form action="adminTestinfoRoom/toAddTestinfoRoom" method="post"
 			modelAttribute="testinfoRoom">
-			<input type="hidden" name="testinfo_id"
-				value="${allTestinfoRoom.get(0).testinfo_id }">
 			<table id="table">
 				<caption>额外添加考场</caption>
+				<tr>
+					<td><input type="hidden" name="testinfo_id"
+						value="${testinfoRoomList.get(0).testinfo_id }"></td>
+					<td><input type="hidden" name="tname"
+						value="${testinfoRoomList.get(0).tname }"></td>
+					<td><input type="hidden" name="tsubject"
+						value="${testinfoRoomList.get(0).tsubject }"></td>
+					<td><input type="hidden" name="torganizer"
+						value="${testinfoRoomList.get(0).torganizer }"></td>
+					<td><input type="hidden" name="test_time"
+						value="${testinfoRoomList.get(0).test_time }"></td>
+					<td><input type="hidden" name="regist_start_time"
+						value="${testinfoRoomList.get(0).regist_start_time }"></td>
+					<td><input type="hidden" name="regist_end_time"
+						value="${testinfoRoomList.get(0).regist_end_time }"></td>
+					<td><input type="hidden" name="tprice"
+						value="${testinfoRoomList.get(0).tprice }"></td>
+				</tr>
 				<tr>
 					<td><c:forEach items="${notSelectedRoom }" var="room">
 							<tr>
