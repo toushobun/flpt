@@ -23,4 +23,6 @@ public interface AdminRoomDao {
 
 	public List<Room> selectRoomFuzzily(Room room); // 模糊查询考场
 
+	public List<Room> selectNotSelectedRoom(Integer testinfo_id); // 查询未被选择的考场
+
 }

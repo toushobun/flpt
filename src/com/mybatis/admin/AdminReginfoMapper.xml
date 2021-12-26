@@ -6,11 +6,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectReginfoByKwargs" resultType="Reginfo"
 		parameterType="Reginfo">
 		select * from
-		reginfotable,busertable,testinfo__room,roomtable,testinfotable,testtable
+		reginfotable,busertable,testinfoRoom,roomtable,testinfotable,testtable
 		where reginfotable.user_id=busertable.user_id and
-		reginfotable.testinfo__room_id=testinfo__room.testinfo__room_id and
-		testinfo__room.room_id=roomtable.room_id and
-		testinfo__room.testinfo_id = testinfotable.testinfo_id and
+		reginfotable.testinfoRoom_id=testinfoRoom.testinfoRoom_id and
+		testinfoRoom.room_id=roomtable.room_id and
+		testinfoRoom.testinfo_id = testinfotable.testinfo_id and
 		testinfotable.test_id = testtable.test_id and ""=""
 		<if test="reginfo_id != null">
 			and reginfo_id = #{reginfo_id}
@@ -32,11 +32,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectReginfoFuzzily" resultType="Reginfo"
 		parameterType="Reginfo">
 		select * from
-		reginfotable,busertable,testinfo__room,roomtable,testinfotable,testtable
+		reginfotable,busertable,testinfoRoom,roomtable,testinfotable,testtable
 		where reginfotable.user_id=busertable.user_id and
-		reginfotable.testinfo__room_id=testinfo__room.testinfo__room_id and
-		testinfo__room.room_id=roomtable.room_id and
-		testinfo__room.testinfo_id = testinfotable.testinfo_id and
+		reginfotable.testinfoRoom_id=testinfoRoom.testinfoRoom_id and
+		testinfoRoom.room_id=roomtable.room_id and
+		testinfoRoom.testinfo_id = testinfotable.testinfo_id and
 		testinfotable.test_id = testtable.test_id and ""=""
 		<if test="reginfo_id != null">
 			and concat(reginfo_id) like concat('%',#{reginfo_id},'%')

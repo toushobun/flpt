@@ -76,4 +76,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			and concat(rpostcode) like concat('%',#{rpostcode},'%')
 		</if>
 	</select>
+	<select id="selectNotSelectedRoom" resultType="Room" parameterType="Integer">
+		select * from roomtable where roomtable.room_id not in (select room_id from testinfoRoom where testinfo_id=#{testinfo_id})
+	</select>
 </mapper>

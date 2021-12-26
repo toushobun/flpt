@@ -12,35 +12,31 @@
 <head>
 <base href="<%=basePath%>">
 <title>Insert title here</title>
-</head>
 <body>
-	<form:form action="adminTest/addTest" method="post"
-		modelAttribute="test">
+	<form:form action="adminTestinfoRoom/addTestinfoRoom" method="post"
+		modelAttribute="testinfoRoom">
+
+		<input type="text" name="testinfo_id"
+			value="${testinfoRoom.testinfo_id }">
 		<table>
-			<caption>添加考试</caption>
+			<caption>考场名额配置</caption>
 			<tr>
-				<td>考试名<font color="red">*</font></td>
-				<td><form:input path="tname" placeholder="请填入考试名" /></td>
+				<td><c:forEach items="${selectedRoomList }" var="room">
+						<tr>
+							<form:hidden path="room_ids" value="${room.room_id }" />
+							<td>${room.rname }<font color="red">*</font></td>
+							<td><form:input path="room_rquotas"
+									placeholder="请输入该考场可报名名额" /></td>
+						</tr>
+					</c:forEach></td>
 			</tr>
 			<tr>
-				<td>考试科目<font color="red">*</font></td>
-				<td><form:input path="tsubject" placeholder="请填入考试科目" /></td>
-			</tr>
-			<tr>
-				<td>主考单位<font color="red">*</font></td>
-				<td><form:input path="torganizer" placeholder="请输入主考单位" /></td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
+				<td style="text-align: left"><input type="button"
+					onclick="window.history.back()" value="返回" /></td>
 				<td style="text-align: right"><input type="submit" value="提交" />
 				</td>
 			</tr>
 		</table>
-		<c:if test="${msg != null }">
-			<script type="text/javascript">
-				alert("${msg}");
-			</script>
-		</c:if>
 	</form:form>
 </body>
 </html>

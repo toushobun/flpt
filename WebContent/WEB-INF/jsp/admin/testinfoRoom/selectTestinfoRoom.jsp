@@ -17,7 +17,7 @@
 <script src="js/formCheck.js" type="text/javascript"></script>
 </head>
 <body>
-	<table border=1>
+	<table id="table">
 		<tr>
 			<th width="19%">考场名</th>
 			<th width="39%">考场地址</th>
@@ -34,33 +34,38 @@
 				<td>${testinfoRoom.rpostcode }</td>
 				<td>${testinfoRoom.rquota }</td>
 				<td><a
-					href="javascript:changeQuota('${testinfoRoom.testinfo__room_id }', '${testinfoRoom.testinfo_id }')">修改名额</a>
+					href="javascript:changeQuota('${testinfoRoom.testinfoRoom_id }', '${testinfoRoom.testinfo_id }')">修改名额</a>
 					<a
-					href="javascript:cancelConfirm('${testinfoRoom.testinfo__room_id }', '${testinfoRoom.testinfo_id }', '${testinfoRoom.rname }', '${testinfoRoom.room_id }')">取消考场</a>
+					href="javascript:cancelConfirm('${testinfoRoom.testinfoRoom_id }', '${testinfoRoom.testinfo_id }', '${testinfoRoom.rname }', '${testinfoRoom.room_id }')">取消考场</a>
 				</td>
 			</tr>
 		</c:forEach>
 	</table>
-	<form:form action="adminTestinfo/toAddTestinfoNewRoom" method="post"
-		modelAttribute="testinfo">
-		<input type="hidden" name="testinfo_id"
-			value="${allTestinfo__room.get(0).testinfo_id }">
-		<table>
-			<caption>额外添加考场</caption>
-			<tr>
-				<td><c:forEach items="${notSelectedRoom }" var="room">
-						<tr>
-							<td><form:checkbox path="room_ids" value="${room.room_id }" /></td>
-							<td>${room.rname }</td>
-						</tr>
-					</c:forEach></td>
-			</tr>
-			<tr>
-				<td colspan="2" style="text-align: right"><input type="submit"
-					value="前往为新考场配置名额" /></td>
-			</tr>
-		</table>
-	</form:form>
+	<c:if test="${notSelectedRoom.size() == 0 }">
+			已配置全部考场
+		</c:if>
+	<c:if test="${notSelectedRoom.size() != 0 }">
+		<form:form action="adminTestinfoRoom/toAddTestinfoRoom" method="post"
+			modelAttribute="testinfoRoom">
+			<input type="hidden" name="testinfo_id"
+				value="${allTestinfoRoom.get(0).testinfo_id }">
+			<table id="table">
+				<caption>额外添加考场</caption>
+				<tr>
+					<td><c:forEach items="${notSelectedRoom }" var="room">
+							<tr>
+								<td><form:checkbox path="room_ids" value="${room.room_id }" /></td>
+								<td>${room.rname }</td>
+							</tr>
+						</c:forEach></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td><input type="submit" value="前往为新考场配置名额" /></td>
+				</tr>
+			</table>
+		</form:form>
+	</c:if>
 	<c:if test="${msg != null }">
 		<script type="text/javascript">
 			alert("${msg}");

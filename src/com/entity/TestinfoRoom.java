@@ -1,8 +1,8 @@
 package com.entity;
 
-public class Testinfo__room {
+public class TestinfoRoom {
 
-	private Integer testinfo__room_id; // 关联id
+	private Integer testinfoRoom_id; // 关联id
 	private Integer testinfo_id; // 已发布考试id
 	private Integer room_id; // 考场id
 	private Integer rquota; // 考试名额
@@ -22,16 +22,20 @@ public class Testinfo__room {
 	private String tsubject; // 考试科目
 	private String torganizer; // 主考单位
 
+	private String[] rooms; // 考场名列表
+	private Integer[] room_ids; // 考场id列表
+	private Integer[] room_rquotas; // 考场名额列表
+
 	public Integer getTestinfo_id() {
 		return testinfo_id;
 	}
 
-	public Integer getTestinfo__room_id() {
-		return testinfo__room_id;
+	public Integer getTestinfoRoom_id() {
+		return testinfoRoom_id;
 	}
 
-	public void setTestinfo__room_id(Integer testinfo__room_id) {
-		this.testinfo__room_id = testinfo__room_id;
+	public void setTestinfoRoom_id(Integer testinfoRoom_id) {
+		this.testinfoRoom_id = testinfoRoom_id;
 	}
 
 	public void setTestinfo_id(Integer testinfo_id) {
@@ -156,6 +160,30 @@ public class Testinfo__room {
 
 	public void setTorganizer(String torganizer) {
 		this.torganizer = torganizer;
+	}
+
+	public String[] getRooms() {
+		return rooms;
+	}
+
+	public void setRooms(String[] rooms) {
+		this.rooms = rooms;
+	}
+
+	public Integer[] getRoom_ids() {
+		return room_ids;
+	}
+
+	public void setRoom_ids(Integer[] room_ids) {
+		this.room_ids = room_ids;
+	}
+
+	public Integer[] getRoom_rquotas() {
+		return room_rquotas;
+	}
+
+	public void setRoom_rquotas(Integer[] room_rquotas) {
+		this.room_rquotas = room_rquotas;
 	}
 
 }

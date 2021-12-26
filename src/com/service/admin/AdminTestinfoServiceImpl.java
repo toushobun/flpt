@@ -32,6 +32,7 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 
 	@Override
 	public String addTestinfo(Testinfo testinfo, Model model) {
+		// TODO 发布前要处理考场
 		try {
 			adminTestinfoDao.addTestinfo(testinfo);
 			model.addAttribute("msg", "添加成功！");
@@ -57,10 +58,10 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 	@Override
 	public String toUpdateTestinfo(Integer testinfo_id, Model model) {
 		List<Test> testList = adminTestDao.selectTestByKwargs(null);
-		model.addAttribute("testList", testList);
 		Testinfo testinfoToSelect = new Testinfo();
 		testinfoToSelect.setTestinfo_id(testinfo_id);
 		Testinfo testinfo = adminTestinfoDao.selectTestinfoByKwargs(testinfoToSelect).get(0);
+		model.addAttribute("testList", testList);
 		model.addAttribute("testinfo", testinfo);
 		return "admin/testinfo/updateTestinfo";
 	}

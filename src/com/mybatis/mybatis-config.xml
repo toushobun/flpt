@@ -10,8 +10,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="Reginfo" type="com.entity.Reginfo" />
 		<typeAlias alias="Room" type="com.entity.Room" />
 		<typeAlias alias="Test" type="com.entity.Test" />
-		<typeAlias alias="Testinfo__room"
-			type="com.entity.Testinfo__room" />
+		<typeAlias alias="TestinfoRoom"
+			type="com.entity.TestinfoRoom" />
 		<typeAlias alias="Testinfo" type="com.entity.Testinfo" />
 	</typeAliases>
 	<mappers>

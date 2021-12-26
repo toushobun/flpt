@@ -16,7 +16,7 @@ function emptyInput(id) {
 	}
 }
 
-function changeQuota(testinfo__room_id, testinfo_id) {
+function changeQuota(testinfoRoom_id, testinfo_id) {
 	var rquota = prompt("请输入更改的名额：")
 	if (rquota.indexOf(" ") >= 0 || rquota == "") {
 		alert('不能为空')
@@ -27,8 +27,8 @@ function changeQuota(testinfo__room_id, testinfo_id) {
 		alert("请输入一个非负整数！")
 		return false
 	} else {
-		window.location.href = "adminTestinfo/updateRoomQuota?testinfo__room_id="
-				+ testinfo__room_id
+		window.location.href = "adminTestinfoRoom/changeQuota?testinfoRoom_id="
+				+ testinfoRoom_id
 				+ "&rquota="
 				+ quota
 				+ "&testinfo_id="
@@ -36,10 +36,10 @@ function changeQuota(testinfo__room_id, testinfo_id) {
 	}
 }
 
-function cancelConfirm(testinfo__room_id, testinfo_id, rname, room_id) {
+function cancelConfirm(testinfoRoom_id, testinfo_id, rname, room_id) {
 	if (confirm("确认要取消考场：" + rname + "？")) {
-		window.location.href = "adminTestinfo/cancelRoom?testinfo__room_id="
-				+ testinfo__room_id + "&testinfo_id=" + testinfo_id
+		window.location.href = "adminTestinfoRoom/cancelRoom?testinfoRoom_id="
+				+ testinfoRoom_id + "&testinfo_id=" + testinfo_id
 				+ "&room_id=" + room_id
 	}
 }
