@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.entity.Testinfo;
+import com.entity.TestinfoRoom;
 import com.service.admin.AdminTestinfoService;
 
 @Controller
@@ -21,13 +22,18 @@ public class AdminTestinfoController extends BaseController {
 	}
 
 	@RequestMapping("/toAddTestinfo")
-	public String toAddTestinfo(Testinfo testinfo) {
-		return "admin/testinfo/addTestinfo";
+	public String toAddTestinfo(Testinfo testinfo, Model model) {
+		return adminTestinfoService.toAddTestinfo(testinfo, model);
+	}
+
+	@RequestMapping("/toAddTestinfoRoom")
+	public String toAddTestinfoRoom(TestinfoRoom testinfoRoom, Model model) {
+		return adminTestinfoService.toAddTestinfoRoom(testinfoRoom, model);
 	}
 
 	@RequestMapping("/addTestinfo")
-	public String addTestinfo(Testinfo testinfo, Model model) {
-		return adminTestinfoService.addTestinfo(testinfo, model);
+	public String addTestinfo(TestinfoRoom testinfoRoom, Model model) {
+		return adminTestinfoService.addTestinfo(testinfoRoom, model);
 	}
 
 	@RequestMapping("/deleteTestinfo")

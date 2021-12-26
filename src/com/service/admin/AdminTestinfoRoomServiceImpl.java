@@ -34,30 +34,6 @@ public class AdminTestinfoRoomServiceImpl implements AdminTestinfoRoomService {
 	}
 
 	@Override
-	public String changeQuota(TestinfoRoom testinfoRoom, Model model) {
-		try {
-			adminTestinfoRoomDao.updateTestinfoRoom(testinfoRoom);
-			model.addAttribute("msg", "修改成功！");
-			return "forward:/adminTestinfoRoom/selectTestinfoRoom?testinfo_id=" + testinfoRoom.getTestinfo_id();
-		} catch (Exception e) {
-			model.addAttribute("msg", "修改失败！");
-			return "forward:/adminTestinfoRoom/selectTestinfoRoom?testinfo_id=" + testinfoRoom.getTestinfo_id();
-		}
-	}
-
-	@Override
-	public String cancelRoom(TestinfoRoom testinfoRoom, Model model) {
-		try {
-			adminTestinfoRoomDao.deleteTestinfoRoomByTestinfoRoom_id(testinfoRoom.getTestinfoRoom_id());
-			model.addAttribute("msg", "取消成功！");
-			return "forward:/adminTestinfoRoom/selectTestinfoRoom?testinfo_id=" + testinfoRoom.getTestinfo_id();
-		} catch (Exception e) {
-			model.addAttribute("msg", "取消失败！已有考生报名此考场，请先删除对应报名信息！");
-			return "forward:/adminTestinfoRoom/selectTestinfoRoom?testinfo_id=" + testinfoRoom.getTestinfo_id();
-		}
-	}
-
-	@Override
 	public String toAddTestinfoRoom(TestinfoRoom testinfoRoom, Model model) {
 		List<Room> selectedRoomList = new ArrayList<Room>();
 		Room roomToSelect = new Room();
@@ -84,6 +60,30 @@ public class AdminTestinfoRoomServiceImpl implements AdminTestinfoRoomService {
 			return "forward:/adminTestinfoRoom/selectTestinfoRoom?testinfo_id=" + testinfoRoom.getTestinfo_id();
 		} catch (Exception e) {
 			model.addAttribute("msg", "添加失败！");
+			return "forward:/adminTestinfoRoom/selectTestinfoRoom?testinfo_id=" + testinfoRoom.getTestinfo_id();
+		}
+	}
+
+	@Override
+	public String cancelRoom(TestinfoRoom testinfoRoom, Model model) {
+		try {
+			adminTestinfoRoomDao.deleteTestinfoRoomByTestinfoRoom_id(testinfoRoom.getTestinfoRoom_id());
+			model.addAttribute("msg", "取消成功！");
+			return "forward:/adminTestinfoRoom/selectTestinfoRoom?testinfo_id=" + testinfoRoom.getTestinfo_id();
+		} catch (Exception e) {
+			model.addAttribute("msg", "取消失败！已有考生报名此考场，请先删除对应报名信息！");
+			return "forward:/adminTestinfoRoom/selectTestinfoRoom?testinfo_id=" + testinfoRoom.getTestinfo_id();
+		}
+	}
+
+	@Override
+	public String changeQuota(TestinfoRoom testinfoRoom, Model model) {
+		try {
+			adminTestinfoRoomDao.updateTestinfoRoom(testinfoRoom);
+			model.addAttribute("msg", "修改成功！");
+			return "forward:/adminTestinfoRoom/selectTestinfoRoom?testinfo_id=" + testinfoRoom.getTestinfo_id();
+		} catch (Exception e) {
+			model.addAttribute("msg", "修改失败！");
 			return "forward:/adminTestinfoRoom/selectTestinfoRoom?testinfo_id=" + testinfoRoom.getTestinfo_id();
 		}
 	}

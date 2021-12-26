@@ -20,16 +20,6 @@ public class AdminTestinfoRoomController extends BaseController {
 		return adminTestinfoRoomService.selectTestinfoRoom(testinfoRoom, model);
 	}
 
-	@RequestMapping("/changeQuota")
-	public String changeQuota(TestinfoRoom testinfoRoom, Model model) {
-		return adminTestinfoRoomService.changeQuota(testinfoRoom, model);
-	}
-
-	@RequestMapping("/cancelRoom")
-	public String cancelRoom(TestinfoRoom testinfoRoom, Model model) {
-		return adminTestinfoRoomService.cancelRoom(testinfoRoom, model);
-	}
-
 	@RequestMapping("/toAddTestinfoRoom")
 	public String toAddTestinfoRoom(TestinfoRoom testinfoRoom, Model model) {
 		return adminTestinfoRoomService.toAddTestinfoRoom(testinfoRoom, model);
@@ -38,6 +28,16 @@ public class AdminTestinfoRoomController extends BaseController {
 	@RequestMapping("/addTestinfoRoom")
 	public String addTestinfoRoom(TestinfoRoom testinfoRoom, Model model) {
 		return adminTestinfoRoomService.addTestinfoRoom(testinfoRoom, model);
+	}
+
+	@RequestMapping("/cancelRoom")
+	public String cancelRoom(TestinfoRoom testinfoRoom, Model model) {
+		return adminTestinfoRoomService.cancelRoom(testinfoRoom, model);
+	}
+
+	@RequestMapping("/changeQuota")
+	public String changeQuota(TestinfoRoom testinfoRoom, Model model) {
+		return adminTestinfoRoomService.changeQuota(testinfoRoom, model);
 	}
 
 }

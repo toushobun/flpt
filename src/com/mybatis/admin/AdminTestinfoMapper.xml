@@ -10,24 +10,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="testinfo_id != null">
 			and testinfo_id = #{testinfo_id}
 		</if>
-		<if test="tname != null">
-			and tname = #{tname}
+		<if test="test_id != null">
+			and testinfotable.test_id = #{test_id}
 		</if>
-		<if test="tsubject != null">
-			and tsubject = #{tsubject}
+		<if test="test_time != null">
+			and test_time = #{test_time}
 		</if>
-		<if test="torganizer != null">
-			and torganizer = #{torganizer}
+		<if test="regist_start_time != null">
+			and regist_start_time = #{regist_start_time}
 		</if>
-		<if test="status != null">
-			and status = #{status}
+		<if test="regist_end_time != null">
+			and regist_end_time = #{regist_end_time}
+		</if>
+		<if test="tprice != null">
+			and tprice = #{tprice}
 		</if>
 	</select>
 	<insert id="addTestinfo" parameterType="Testinfo">
 		insert into testinfotable
-		(testinfo_id,tname,tsubject,torganizer,status)
+		(testinfo_id,test_id,test_time,regist_start_time,regist_end_time,tprice)
 		values
-		(null,#{tname},#{tsubject},#{torganizer},0)
+		(null,#{test_id},#{test_time},#{regist_start_time},#{regist_end_time},#{tprice})
 	</insert>
 	<delete id="deleteTestinfoByTestinfo_id" parameterType="Integer">
 		delete
