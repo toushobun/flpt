@@ -54,7 +54,7 @@
 					<td>
 						<a href="adminTestinfoRoom/selectTestinfoRoom?testinfo_id=${testinfo.testinfo_id }">考场详情</a>
 						<a href="adminTestinfo/toUpdateTestinfo?testinfo_id=${testinfo.testinfo_id }">修改</a>
-						<a onclick="return checkDel();" href="adminTestinfo/deleteTestinfo?testinfo_id=${testinfo.testinfo_id }">删除</a>
+						<a onclick="return checkDelTestinfo();" href="adminTestinfo/deleteTestinfo?testinfo_id=${testinfo.testinfo_id }">删除</a>
 					</td>
 				</tr>
 			</c:forEach>

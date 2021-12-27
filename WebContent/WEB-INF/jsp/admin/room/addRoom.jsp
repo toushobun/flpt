@@ -13,6 +13,8 @@
 <base href="<%=basePath%>">
 <title>Insert title here</title>
 <link href="css/admin.css" type="text/css" rel="stylesheet">
+<link href="css/admin.css" type="text/css" rel="stylesheet">
+<script src="js/formCheck.js" type="text/javascript"></script>
 </head>
 <body>
 	<form:form action="adminRoom/addRoom" method="post"

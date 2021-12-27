@@ -12,6 +12,8 @@
 <head>
 <base href="<%=basePath%>">
 <title>Insert title here</title>
+<link href="css/admin.css" type="text/css" rel="stylesheet">
+<script src="js/formCheck.js" type="text/javascript"></script>
 </head>
 <script type="text/javascript">
 	window.onload = function() {
@@ -49,7 +51,7 @@
 		</c:forEach>
 	</table>
 	<form:form action="adminTestinfo/toAddTestinfoRoom" method="post"
-		modelAttribute="testinfoRoom">
+		onsubmit="return testinfoCheck(this);" modelAttribute="testinfoRoom">
 		<input type="hidden" id="tname" name="tname"
 			value="${testList.get(0).tname }">
 		<table>
@@ -64,13 +66,12 @@
 			</tr>
 			<tr>
 				<td colspan="2">考试科目</td>
-				<td><form:input path="tsubject" id="tsubject"
-						readonly="readonly" /></td>
+				<td><input name="tsubject" id="tsubject" readonly="readonly" /></td>
 			</tr>
 			<tr>
 				<td colspan="2">主考单位</td>
-				<td><form:input path="torganizer" id="torganizer"
-						readonly="readonly" /></td>
+				<td><input name="torganizer" id="torganizer"
+					readonly="readonly" /></td>
 			</tr>
 			<tr>
 				<td colspan="2">考试时间<font color="red">*</font></td>

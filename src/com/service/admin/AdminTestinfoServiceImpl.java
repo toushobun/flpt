@@ -8,10 +8,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
+import com.dao.AdminReginfoDao;
 import com.dao.AdminRoomDao;
 import com.dao.AdminTestDao;
 import com.dao.AdminTestinfoDao;
 import com.dao.AdminTestinfoRoomDao;
+import com.entity.Reginfo;
 import com.entity.Room;
 import com.entity.Test;
 import com.entity.Testinfo;
@@ -32,6 +34,9 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 
 	@Autowired
 	private AdminRoomDao adminRoomDao;
+
+	@Autowired
+	private AdminReginfoDao adminReginfoDao;
 
 	@Override
 	public String selectTestinfo(Model model) {
@@ -101,21 +106,49 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 				adminTestinfoRoomDao.addTestinfoRoom(testinfoRoom);
 			}
 			model.addAttribute("msg", "添加成功！");
-			return "forward:/adminTestinfoRoom/selectTestinfoRoom?testinfo_id=" + testinfoRoom.getTestinfo_id();
+			return "forward:/adminTestinfo/selectTestinfo";
 		} catch (Exception e) {
 			model.addAttribute("msg", "添加失败！");
-			return "forward:/adminTestinfoRoom/selectTestinfoRoom?testinfo_id=" + testinfoRoom.getTestinfo_id();
+			return "forward:/adminTestinfo/selectTestinfo";
 		}
 	}
 
 	@Override
 	public String deleteTestinfo(Integer testinfo_id, Model model) {
 		try {
+			// 先取出所有该考试即将要删除的绑定的考场
+			TestinfoRoom testinfoRoomToSelect = new TestinfoRoom();
+			testinfoRoomToSelect.setTestinfo_id(testinfo_id);
+			List<TestinfoRoom> testinfoRoomList = adminTestinfoRoomDao.selectTestinfoRoomByKwargs(testinfoRoomToSelect);
+			// 遍历查看该绑定信息是否被考生报名绑定
+			Reginfo reginfoToSelect = new Reginfo();
+			List<Reginfo> reginfoList = new ArrayList<Reginfo>();
+			// 遍历绑定的所有考场
+			for (int i = 0; i < testinfoRoomList.size(); i++) {
+				reginfoToSelect.setTestinfoRoom_id(testinfoRoomList.get(i).getTestinfoRoom_id());
+				reginfoList = adminReginfoDao.selectReginfoByKwargs(reginfoToSelect);
+				// 先遍历删除所有准考证
+				for (int j = 0; j < reginfoList.size(); j++) {
+					adminReginfoDao.deleteReginfoByReginfo_id(reginfoList.get(j).getReginfo_id());
+				}
+				// 再删除对应考场
+				adminTestinfoRoomDao.deleteTestinfoRoomByTestinfoRoom_id(testinfoRoomList.get(i).getTestinfoRoom_id());
+			}
+			// 先得到该考试的id
+			Testinfo testinfoToSelect = new Testinfo();
+			testinfoToSelect.setTestinfo_id(testinfo_id);
+			Integer test_id = adminTestinfoDao.selectTestinfoByKwargs(testinfoToSelect).get(0).getTest_id();
+			// 设置该考试的status为0
+			Test testToUpdate = new Test();
+			testToUpdate.setTest_id(test_id);
+			testToUpdate.setStatus(1);
+			adminTestDao.updateTest(testToUpdate);
+			// 最后删除考试信息
 			adminTestinfoDao.deleteTestinfoByTestinfo_id(testinfo_id);
 			model.addAttribute("msg", "删除成功！");
 			return "forward:/adminTestinfo/selectTestinfo";
 		} catch (Exception e) {
-			model.addAttribute("msg", "删除失败！该考试已发布考场，请先删除对应考场！");
+			model.addAttribute("msg", "删除失败！");
 			return "forward:/adminTestinfo/selectTestinfo";
 		}
 	}

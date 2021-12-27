@@ -17,7 +17,7 @@
 <script src="js/formCheck.js" type="text/javascript"></script>
 <body>
 	<form:form action="adminTestinfo/addTestinfo" method="post"
-		onsubmit="return testinfoCheck();" modelAttribute="testinfoRoom">
+		modelAttribute="testinfoRoom">
 		<div style="display: none">
 			<form:input path="test_id" value="${testinfoRoom.test_id }"></form:input>
 			<form:input path="tname" value="${testinfoRoom.tname }"></form:input>
@@ -30,17 +30,6 @@
 				value="${testinfoRoom.regist_end_time }"></form:input>
 			<form:input path="tprice" value="${testinfoRoom.tprice }"></form:input>
 		</div>
-		<table style="display: none;" id="testData">
-			<tr>
-				<td>${testinfoRoom.tname }</td>
-				<td>${testinfoRoom.tsubject }</td>
-				<td>${testinfoRoom.torganizer }</td>
-				<td>${testinfoRoom.test_time }</td>
-				<td>${testinfoRoom.regist_start_time }</td>
-				<td>${testinfoRoom.regist_end_time }</td>
-				<td>${testinfoRoom.tprice }</td>
-			</tr>
-		</table>
 		<table id="table">
 			<caption>考场名额配置</caption>
 			<tr>

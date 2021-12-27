@@ -41,16 +41,12 @@ function cancelConfirm(testinfoRoom_id, testinfo_id, rname, room_id) {
 	}
 }
 
-function testinfoCheck() {
-	var tb = document.getElementById("testData"); // 先获取table
-	var rows = tb.getElementsByTagName("tr"); // 获取里面的行tr
-	var mssg = "请最终确认您要新增考场的考试\n考试名：" + rows[0].cells[1].innerHTML + "\n考试科目："
-			+ rows[0].cells[2].innerHTML + "\n主考单位："
-			+ rows[0].cells[3].innerHTML + "\n考试时间："
-			+ rows[0].cells[4].innerHTML + "\n报名开始时间："
-			+ rows[0].cells[5].innerHTML + "\n报名截止时间："
-			+ rows[0].cells[6].innerHTML + "\n报名费用："
-			+ rows[0].cells[7].innerHTML + "元\n"
+function testinfoCheck(f) {
+	var mssg = "请确认您要新增考场的考试\n考试名：" + f.tname.value + "\n考试科目："
+			+ f.tsubject.value + "\n主考单位：" + f.torganizer.value + "\n考试时间："
+			+ f.test_time.value + "\n报名开始时间：" + f.regist_start_time.value
+			+ "\n报名截止时间：" + f.regist_end_time.value + "\n报名费用："
+			+ f.tprice.value + "元\n"
 	return confirm(mssg)
 }
 
@@ -62,6 +58,14 @@ function checkDel() {
 
 function checkDelDouble() {
 	if (!confirm("确认要彻底删除？")) {
+		window.event.returnValue = false;
+	} else {
+		checkDel();
+	}
+}
+
+function checkDelTestinfo() {
+	if (!confirm("该操作会删除所有发布考场以及考生报名信息，是否继续？")) {
 		window.event.returnValue = false;
 	} else {
 		checkDel();

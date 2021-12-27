@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
+import com.dao.AdminReginfoDao;
 import com.dao.AdminRoomDao;
 import com.dao.AdminTestinfoRoomDao;
+import com.entity.Reginfo;
 import com.entity.Room;
 import com.entity.TestinfoRoom;
 
@@ -22,6 +24,9 @@ public class AdminTestinfoRoomServiceImpl implements AdminTestinfoRoomService {
 
 	@Autowired
 	private AdminRoomDao adminRoomDao;
+
+	@Autowired
+	private AdminReginfoDao adminReginfoDao;
 
 	@Override
 	public String selectTestinfoRoom(TestinfoRoom testinfoRoom, Model model) {
@@ -67,11 +72,19 @@ public class AdminTestinfoRoomServiceImpl implements AdminTestinfoRoomService {
 	@Override
 	public String cancelRoom(TestinfoRoom testinfoRoom, Model model) {
 		try {
+			Reginfo reginfoToSelect = new Reginfo();
+			reginfoToSelect.setTestinfoRoom_id(testinfoRoom.getTestinfoRoom_id());
+			List<Reginfo> reginfoList = adminReginfoDao.selectReginfoByKwargs(reginfoToSelect);
+			// 先遍历删除所有准考证
+			for (int i = 0; i < reginfoList.size(); i++) {
+				adminReginfoDao.deleteReginfoByReginfo_id(reginfoList.get(i).getReginfo_id());
+			}
+			// 再遍历删除所有考场
 			adminTestinfoRoomDao.deleteTestinfoRoomByTestinfoRoom_id(testinfoRoom.getTestinfoRoom_id());
 			model.addAttribute("msg", "取消成功！");
 			return "forward:/adminTestinfoRoom/selectTestinfoRoom?testinfo_id=" + testinfoRoom.getTestinfo_id();
 		} catch (Exception e) {
-			model.addAttribute("msg", "取消失败！已有考生报名此考场，请先删除对应报名信息！");
+			model.addAttribute("msg", "取消失败！");
 			return "forward:/adminTestinfoRoom/selectTestinfoRoom?testinfo_id=" + testinfoRoom.getTestinfo_id();
 		}
 	}
