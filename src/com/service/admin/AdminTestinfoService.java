@@ -9,7 +9,7 @@ public interface AdminTestinfoService {
 
 	public String selectTestinfo(Model model); // 查询全部考试信息
 
-	public String toAddTestinfo(Testinfo testinfo, Model model);// 前往添加考试信息页
+	public String toAddTestinfo(TestinfoRoom testinfoRoom, Model model);// 前往添加考试信息页
 
 	public String toAddTestinfoRoom(TestinfoRoom testinfoRoom, Model model); // 前往配置考场
 

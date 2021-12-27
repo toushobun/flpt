@@ -22,8 +22,8 @@ public class AdminTestinfoController extends BaseController {
 	}
 
 	@RequestMapping("/toAddTestinfo")
-	public String toAddTestinfo(Testinfo testinfo, Model model) {
-		return adminTestinfoService.toAddTestinfo(testinfo, model);
+	public String toAddTestinfo(TestinfoRoom testinfoRoom, Model model) {
+		return adminTestinfoService.toAddTestinfo(testinfoRoom, model);
 	}
 
 	@RequestMapping("/toAddTestinfoRoom")

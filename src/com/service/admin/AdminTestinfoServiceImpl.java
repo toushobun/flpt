@@ -47,9 +47,9 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 	}
 
 	@Override
-	public String toAddTestinfo(Testinfo testinfo, Model model) {
+	public String toAddTestinfo(TestinfoRoom testinfoRoom, Model model) {
 		// TODO Auto-generated method stub
-		model.addAttribute("testinfoRoom", new TestinfoRoom());
+		model.addAttribute("testinfoRoom", testinfoRoom);
 		model.addAttribute("testList", adminTestDao.selectTestByKwargs(null));
 		model.addAttribute("roomList", adminRoomDao.selectRoomByKwargs(null));
 		return "admin/testinfo/addTestinfo";
