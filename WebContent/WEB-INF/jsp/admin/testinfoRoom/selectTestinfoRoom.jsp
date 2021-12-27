@@ -14,7 +14,9 @@
 <title>Insert title here</title>
 <link href="css/admin.css" type="text/css" rel="stylesheet">
 <script src="js/colorControl.js" type="text/javascript"></script>
+<script src="js/buttonAction.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
+<script src="js/postConfirm.js" type="text/javascript"></script>
 </head>
 <body>
 	<table id="table">
@@ -36,7 +38,7 @@
 				<td><a
 					href="javascript:changeQuota('${testinfoRoom.testinfoRoom_id }', '${testinfoRoom.testinfo_id }')">修改名额</a>
 					<a
-					href="javascript:cancelConfirm('${testinfoRoom.testinfoRoom_id }', '${testinfoRoom.testinfo_id }', '${testinfoRoom.rname }', '${testinfoRoom.room_id }')">取消考场</a>
+					href="javascript:confirmCancel('${testinfoRoom.testinfoRoom_id }', '${testinfoRoom.testinfo_id }', '${testinfoRoom.rname }', '${testinfoRoom.room_id }')">取消考场</a>
 				</td>
 			</tr>
 		</c:forEach>

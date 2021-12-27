@@ -13,10 +13,13 @@
 <base href="<%=basePath%>">
 <title>Insert title here</title>
 <link href="css/admin.css" type="text/css" rel="stylesheet">
+<script src="js/buttonAction.js" type="text/javascript"></script>
+<script src="js/formCheck.js" type="text/javascript"></script>
+<script src="js/postConfirm.js" type="text/javascript"></script>
 </head>
 <body>
 	<form:form action="adminRoom/updateRoom" method="post"
-		onsubmit="return doInputTest();" modelAttribute="room">
+		modelAttribute="room">
 		<table>
 			<caption>修改考场</caption>
 			<form:hidden path="room_id" value="${room.room_id}" />

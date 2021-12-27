@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import com.exception.UserLoginNoException;
 
 @Controller
-public class BaseBeforeController {
+public class BaseUserController {
 	/**
 	 * 前台用户登录权限控制，处理方法执行前执行该方法
 	 * 

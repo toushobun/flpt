@@ -11,7 +11,7 @@ import com.service.admin.AdminTestinfoService;
 
 @Controller
 @RequestMapping("/adminTestinfo")
-public class AdminTestinfoController extends BaseController {
+public class AdminTestinfoController extends BaseAdminController {
 
 	@Autowired
 	AdminTestinfoService adminTestinfoService;

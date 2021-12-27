@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
-import org.springframework.ui.Model;
 
 import com.entity.Testinfo;
 
@@ -22,7 +21,4 @@ public interface AdminTestinfoDao {
 
 	public List<Testinfo> selectTestinfoFuzzily(Testinfo testinfo); // 模糊查询考试信息
 
-	// 以下为操作考试发布信息中的考场信息
-
-	public String selectTestinfoRoom(String testinfo_id, Model model); // 查询该考试信息的全部考场
 }

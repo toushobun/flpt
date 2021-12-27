@@ -13,11 +13,12 @@
 <base href="<%=basePath%>">
 <title>Insert title here</title>
 <link href="css/admin.css" type="text/css" rel="stylesheet">
-<script src="js/colorControl.js" type="text/javascript"></script>
+<script src="js/buttonAction.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
+<script src="js/postConfirm.js" type="text/javascript"></script>
 <body>
 	<form:form action="adminTestinfoRoom/addTestinfoRoom" method="post"
-		onsubmit="return testinfoCheck();" modelAttribute="testinfoRoom">
+		onsubmit="return checkTestinfo();" modelAttribute="testinfoRoom">
 		<input type="hidden" name="testinfo_id"
 			value="${testinfoRoom.testinfo_id }">
 		<table style="display: none;" id="testData">
@@ -32,7 +33,7 @@
 				<td>${testinfoRoom.tprice }</td>
 			</tr>
 		</table>
-		<table id="table">
+		<table>
 			<caption>考场名额配置</caption>
 			<tr>
 				<td><c:forEach items="${selectedRoomList }" var="room">

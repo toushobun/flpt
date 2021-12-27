@@ -14,7 +14,9 @@
 <title>Insert title here</title>
 <link href="css/admin.css" type="text/css" rel="stylesheet">
 <script src="js/colorControl.js" type="text/javascript"></script>
+<script src="js/buttonAction.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
+<script src="js/postConfirm.js" type="text/javascript"></script>
 </head>
 <body>
 	<form:form id="searchForm" action="adminTestinfo/searchTestinfo" method="post"
@@ -54,7 +56,7 @@
 					<td>
 						<a href="adminTestinfoRoom/selectTestinfoRoom?testinfo_id=${testinfo.testinfo_id }">考场详情</a>
 						<a href="adminTestinfo/toUpdateTestinfo?testinfo_id=${testinfo.testinfo_id }">修改</a>
-						<a onclick="return checkDelTestinfo();" href="adminTestinfo/deleteTestinfo?testinfo_id=${testinfo.testinfo_id }">删除</a>
+						<a onclick="return confirmDelTestinfo();" href="adminTestinfo/deleteTestinfo?testinfo_id=${testinfo.testinfo_id }">删除</a>
 					</td>
 				</tr>
 			</c:forEach>

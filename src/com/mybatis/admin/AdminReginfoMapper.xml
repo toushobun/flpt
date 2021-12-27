@@ -15,6 +15,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="reginfo_id != null">
 			and reginfo_id = #{reginfo_id}
 		</if>
+		<if test="testinfo_id != null">
+			and testinfotable.testinfo_id = #{testinfo_id}
+		</if>
 		<if test="tname != null">
 			and tname = #{tname}
 		</if>

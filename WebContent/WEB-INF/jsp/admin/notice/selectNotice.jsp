@@ -13,8 +13,9 @@
 <base href="<%=basePath%>">
 <title>Insert title here</title>
 <link href="css/admin.css" type="text/css" rel="stylesheet">
-<script src="js/colorControl.js" type="text/javascript"></script>
+<script src="js/buttonAction.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
+<script src="js/postConfirm.js" type="text/javascript"></script>
 </head>
 <body>
 	<c:if test="${noticeList.size() == 0 }">
@@ -34,7 +35,7 @@
 					<td>${notice.ntime }</td>
 					<td><a
 						href="adminNotice/selectANotice?notice_id=${notice.notice_id }">详情</a></td>
-					<td><a onclick="return checkDel();"
+					<td><a onclick="return confirmDel();"
 						href="adminNotice/deleteNotice?notice_id=${notice.notice_id }">删除</a>
 					</td>
 				</tr>

@@ -27,7 +27,8 @@ public class AdminController {
 	}
 
 	@RequestMapping("/admin/exit")
-	public String exit(Auser auser, HttpSession session) {
+	public String exit(Auser auser, Model model, HttpSession session) {
+		model.addAttribute("msg", "µÇ³ö³É¹¦£¡");
 		session.invalidate();
 		return "admin/login";
 	}

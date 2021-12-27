@@ -1,47 +1,32 @@
 // JavaScript Document
 
-function emptyInput(id) {
-	var myForm = document.getElementById(id);
-	if (myForm == undefined) {
-		return;
-	}
-	for (var i = 0; i < myForm.elements.length; i++) {
-		if (myForm.elements[i].type == "text") {
-			myForm.elements[i].value = "";
-		} else if (myForm.elements[i].type == "password") {
-			myForm.elements[i].value = "";
-		} else if (myForm.elements[i].type == "select-one") {
-			myForm.elements[i].options[0].selected = true;
-		}
-	}
+function checkTestinfo(f) {
+	var mssg = "请确认您要新增考场的考试\n考试名：" + f.tname.value + "\n考试科目："
+			+ f.tsubject.value + "\n主考单位：" + f.torganizer.value + "\n考试时间："
+			+ f.test_time.value + "\n报名开始时间：" + f.regist_start_time.value
+			+ "\n报名截止时间：" + f.regist_end_time.value + "\n报名费用："
+			+ f.tprice.value + "元\n";
+	return confirm(mssg)
 }
 
-function changeQuota(testinfoRoom_id, testinfo_id) {
-	var rquota = prompt("请输入更改的名额：")
-	if (rquota.indexOf(" ") >= 0 || rquota == "") {
-		alert('不能为空')
-		return false
+function checkBuser(f) {
+	if (f.uidnum.value == "") {
+		alert("身份证号码不能为空！");
+		return false;
+	} else if (f.uname.value == "") {
+		alert("考生姓名不能为空！");
+		return false;
+	} else if (f.upwd.value == "" || f.upwd2.value == "") {
+		alert("密码不能为空！");
+		return false;
+	} else if (f.logoImage.value == "") {
+		alert("请上传您的照片！");
+		return false;
+	} else if (!/\.(gif|jpg|jpeg|png|GIF|JPG|PNG)$/.test(f.logoImage.value)) {
+		alert("图片类型必须是.gif,jpeg,jpg,png中的一种");
+		return false;
 	}
-	var quota = Number(rquota)
-	if (isNaN(quota) || quota < 0 || parseInt(quota) - quota != 0) {
-		alert("请输入一个非负整数！")
-		return false
-	} else {
-		window.location.href = "adminTestinfoRoom/changeQuota?testinfoRoom_id="
-				+ testinfoRoom_id + "&rquota=" + quota + "&testinfo_id="
-				+ testinfo_id
-	}
-}
 
-function cancelConfirm(testinfoRoom_id, testinfo_id, rname, room_id) {
-	if (confirm("确认要取消考场：" + rname + "？")) {
-		window.location.href = "adminTestinfoRoom/cancelRoom?testinfoRoom_id="
-				+ testinfoRoom_id + "&testinfo_id=" + testinfo_id + "&room_id="
-				+ room_id
-	}
-}
-
-function testinfoCheck(f) {
 	var mssg = "请确认您要新增考场的考试\n考试名：" + f.tname.value + "\n考试科目："
 			+ f.tsubject.value + "\n主考单位：" + f.torganizer.value + "\n考试时间："
 			+ f.test_time.value + "\n报名开始时间：" + f.regist_start_time.value
@@ -49,74 +34,3 @@ function testinfoCheck(f) {
 			+ f.tprice.value + "元\n"
 	return confirm(mssg)
 }
-
-function checkDel() {
-	if (!confirm("确认要删除？")) {
-		window.event.returnValue = false;
-	}
-}
-
-function checkDelDouble() {
-	if (!confirm("确认要彻底删除？")) {
-		window.event.returnValue = false;
-	} else {
-		checkDel();
-	}
-}
-
-function checkDelTestinfo() {
-	if (!confirm("该操作会删除所有发布考场以及考生报名信息，是否继续？")) {
-		window.event.returnValue = false;
-	} else {
-		checkDel();
-	}
-}
-
-function refreshCode() {
-	document.getElementById("code").src = "validateCode?" + Math.random();
-}
-
-// function doInputTest(){
-// var rname = document.getElementById("rname").value;
-// var location = document.getElementById("location").value;
-// var itime = document.getElementById("itime").value;
-// var istime = document.getElementById("istime").value;
-// var ietime = document.getElementById("ietime").value;
-// var quota = document.getElementById("quota").value;
-// var rphonenumber = document.getElementById("rphonenumber").value;
-// var postcode = document.getElementById("postcode").value;
-// if(rname == "" || location == "" || itime == "" || istime == "" || ietime ==
-// "" || quota == "" || rphonenumber == "" || postcode == ""){
-// alert("带有*的内容不能为空");
-// return false;
-// }
-// else if(!isDate(itime) || !isDate(istime) || !isDate(ietime)){
-// alert("请输入正确的时间格式（如 2020-07-05 10:00:01）");
-// return false;
-// }
-// else if(!isInteger(quota)){
-// alert("请输入一个正整数名额");
-// return false;
-// }
-// return true;
-// }
-
-// function doInputBuser(){
-// var uphonenumber = document.getElementById("uphonenumber").value;
-// var uname = document.getElementById("uname").value;
-// var upwd = document.getElementById("upwd").value;
-// var upwd2 = document.getElementById("upwd2").value;
-// if(upwd!=upwd2){
-// alert("两次输入的密码不一致");
-// return false;
-// }
-// else if(uphonenumber == "" || uname == "" || upwd == "" || upwd2 == ""){
-// alert("带有*的内容不能为空");
-// return false;
-// }
-// else if(uphonenumber.length!=11){
-// alert("请输入正确的11位手机号");
-// return false;
-// }
-// return true;
-// }

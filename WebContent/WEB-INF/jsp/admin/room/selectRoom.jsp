@@ -14,7 +14,9 @@
 <title>Insert title here</title>
 <link href="css/admin.css" type="text/css" rel="stylesheet">
 <script src="js/colorControl.js" type="text/javascript"></script>
+<script src="js/buttonAction.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
+<script src="js/postConfirm.js" type="text/javascript"></script>
 </head>
 <body>
 	<form:form id="searchForm" action="adminRoom/searchRoom" method="post"
@@ -47,7 +49,7 @@
 					<td>${room.rtelnum }</td>
 					<td>${room.rpostcode }</td>
 					<td><a href="adminRoom/toUpdateRoom?room_id=${room.room_id }">修改</a>
-						<a onclick="return checkDel();"
+						<a onclick="return confirmDel();"
 						href="adminRoom/deleteRoom?room_id=${room.room_id }">删除</a></td>
 				</tr>
 			</c:forEach>

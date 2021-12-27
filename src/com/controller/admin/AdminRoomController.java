@@ -10,7 +10,7 @@ import com.service.admin.AdminRoomService;
 
 @Controller
 @RequestMapping("/adminRoom")
-public class AdminRoomController extends BaseController {
+public class AdminRoomController extends BaseAdminController {
 
 	@Autowired
 	AdminRoomService adminRoomService;

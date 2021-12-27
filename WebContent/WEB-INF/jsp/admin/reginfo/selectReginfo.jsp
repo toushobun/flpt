@@ -14,7 +14,9 @@
 <title>Insert title here</title>
 <link href="css/admin.css" type="text/css" rel="stylesheet">
 <script src="js/colorControl.js" type="text/javascript"></script>
+<script src="js/buttonAction.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
+<script src="js/postConfirm.js" type="text/javascript"></script>
 </head>
 <body>
 	<form:form id="searchForm" action="adminReginfo/searchReginfo"
@@ -47,7 +49,7 @@
 					<td>${reginfo.uidnum }</td>
 					<td>${reginfo.rname }</td>
 					<td>${reginfo.test_time }</td>
-					<td><a onclick="return checkDel();"
+					<td><a onclick="return confirmDel();"
 						href="adminReginfo/deleteReginfo?reginfo_id=${reginfo.reginfo_id }">删除</a></td>
 				</tr>
 			</c:forEach>

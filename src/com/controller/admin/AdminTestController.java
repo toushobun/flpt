@@ -10,7 +10,7 @@ import com.service.admin.AdminTestService;
 
 @Controller
 @RequestMapping("/adminTest")
-public class AdminTestController extends BaseController {
+public class AdminTestController extends BaseAdminController {
 
 	@Autowired
 	AdminTestService adminTestService;

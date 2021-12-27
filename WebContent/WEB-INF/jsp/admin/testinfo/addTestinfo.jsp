@@ -13,7 +13,9 @@
 <base href="<%=basePath%>">
 <title>Insert title here</title>
 <link href="css/admin.css" type="text/css" rel="stylesheet">
+<script src="js/buttonAction.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
+<script src="js/postConfirm.js" type="text/javascript"></script>
 </head>
 <script type="text/javascript">
 	window.onload = function() {
@@ -51,7 +53,7 @@
 		</c:forEach>
 	</table>
 	<form:form action="adminTestinfo/toAddTestinfoRoom" method="post"
-		onsubmit="return testinfoCheck(this);" modelAttribute="testinfoRoom">
+		onsubmit="return checkTestinfo(this);" modelAttribute="testinfoRoom">
 		<input type="hidden" id="tname" name="tname"
 			value="${testList.get(0).tname }">
 		<table>

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import com.exception.AdminLoginNoException;
 
 @Controller
-public class BaseController {
+public class BaseAdminController {
 	/**
 	 * 登录权限控制，处理方法执行前执行该方法
 	 * 

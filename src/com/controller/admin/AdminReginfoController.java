@@ -10,7 +10,7 @@ import com.service.admin.AdminReginfoService;
 
 @Controller
 @RequestMapping("/adminReginfo")
-public class AdminReginfoController extends BaseController {
+public class AdminReginfoController extends BaseAdminController {
 
 	@Autowired
 	AdminReginfoService adminReginfoService;

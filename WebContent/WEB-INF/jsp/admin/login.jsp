@@ -13,6 +13,10 @@
 <base href="<%=basePath%>">
 <meta charset="UTF-8">
 <title>后台登录</title>
+<link href="css/admin.css" type="text/css" rel="stylesheet">
+<script src="js/buttonAction.js" type="text/javascript"></script>
+<script src="js/formCheck.js" type="text/javascript"></script>
+<script src="js/postConfirm.js" type="text/javascript"></script>
 </head>
 <body>
 	<h1>登录到后台管理界面</h1>
@@ -24,11 +28,13 @@
 			密码：<input type="password" name="apwd" />
 		</p>
 		<p>
-			<label>${msg }</label>
-		</p>
-		<p>
 			<input type="submit" value="登录">
 		</p>
 	</form:form>
+	<c:if test="${msg != null }">
+		<script type="text/javascript">
+			alert("${msg}");
+		</script>
+	</c:if>
 </body>
 </html>

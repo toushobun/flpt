@@ -7,7 +7,7 @@ public class TestinfoRoom {
 	private Integer room_id; // 考场id
 	private Integer rquota; // 考试名额
 	// ----------报名用----------
-	private Integer status; // 状态，1可报名，0名额已满，-1不在报名时间，-2名额已满且不在报名时间
+	private Integer status; // 状态，1可报名，-1名额已满，-2不在报名时间，0名额已满且不在报名时间
 	// ----------查询用----------
 	private String rname; // 考场名
 	private String raddress; // 考场地址

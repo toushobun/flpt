@@ -10,7 +10,7 @@ import com.service.admin.AdminNoticeService;
 
 @Controller
 @RequestMapping("/adminNotice")
-public class AdminNoticeController extends BaseController {
+public class AdminNoticeController extends BaseAdminController {
 
 	@Autowired
 	AdminNoticeService adminNoticeService;

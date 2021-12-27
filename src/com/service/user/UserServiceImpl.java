@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
+import com.dao.AdminNoticeDao;
 import com.dao.UserDao;
 import com.entity.Buser;
 import com.util.MyUtil;
@@ -21,6 +22,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao userDao;
+
+	@Autowired
+	private AdminNoticeDao adminNoticeDao;
 
 	@Override
 	public String login(Buser buser, Model model, HttpSession session) {
@@ -76,7 +80,7 @@ public class UserServiceImpl implements UserService {
 				}
 			}
 			userDao.register(buser);
-			model.addAttribute("noticeList", userDao.selectNoticeByKwargs(null));
+			model.addAttribute("noticeList", adminNoticeDao.selectNoticeByKwargs(null));
 			model.addAttribute("msg", "×¢²á³É¹¦£¡");
 			return "user/login";
 		} catch (Exception e) {

@@ -53,9 +53,10 @@ public class UserController {
 	}
 
 	@RequestMapping("/user/exit")
-	public String exit(Buser buser, HttpSession session) {
+	public String exit(Buser buser, Model model, HttpSession session) {
+		model.addAttribute("msg", "µÇ³ö³É¹¦£¡");
 		session.invalidate();
-		return "user/login";
+		return "user/index";
 	}
 
 }

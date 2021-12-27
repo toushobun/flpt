@@ -10,7 +10,7 @@ import com.service.admin.AdminBuserService;
 
 @Controller
 @RequestMapping("/adminBuser")
-public class AdminBuserController extends BaseController {
+public class AdminBuserController extends BaseAdminController {
 
 	@Autowired
 	AdminBuserService adminBuserService;

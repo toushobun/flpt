@@ -12,6 +12,10 @@
 <head>
 <base href="<%=basePath%>">
 <title>后台主页面</title>
+<link href="css/admin.css" type="text/css" rel="stylesheet">
+<script src="js/buttonAction.js" type="text/javascript"></script>
+<script src="js/formCheck.js" type="text/javascript"></script>
+<script src="js/postConfirm.js" type="text/javascript"></script>
 </head>
 <body>
 	欢迎${auser.aname}进入后台管理系统！
@@ -49,5 +53,10 @@
 	</ul>
 	<!-- <iframe src="adminExaminfo/selectExaminfo" name="center" frameborder="0"></iframe> -->
 	©版权属于大连外国语大学18级软件7班邓淞文
+	<c:if test="${msg != null }">
+		<script type="text/javascript">
+			alert("${msg}");
+		</script>
+	</c:if>
 </body>
 </html>

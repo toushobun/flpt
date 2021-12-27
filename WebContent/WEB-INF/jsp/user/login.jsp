@@ -13,7 +13,10 @@
 <base href="<%=basePath%>">
 <meta charset="UTF-8">
 <title>考生登录</title>
+<link href="css/user.css" type="text/css" rel="stylesheet">
+<script src="js/buttonAction.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
+<script src="js/postConfirm.js" type="text/javascript"></script>
 </head>
 <script type="text/javascript">
 	if (window.top.location.href != location.href) {

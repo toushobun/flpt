@@ -13,8 +13,9 @@
 <base href="<%=basePath%>">
 <title>Insert title here</title>
 <link href="css/admin.css" type="text/css" rel="stylesheet">
-<script src="js/colorControl.js" type="text/javascript"></script>
+<script src="js/buttonAction.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
+<script src="js/postConfirm.js" type="text/javascript"></script>
 <body>
 	<form:form action="adminTestinfo/addTestinfo" method="post"
 		modelAttribute="testinfoRoom">
@@ -30,7 +31,7 @@
 				value="${testinfoRoom.regist_end_time }"></form:input>
 			<form:input path="tprice" value="${testinfoRoom.tprice }"></form:input>
 		</div>
-		<table id="table">
+		<table>
 			<caption>考场名额配置</caption>
 			<tr>
 				<td><c:forEach items="${selectedRoomList }" var="room">
