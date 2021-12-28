@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dao.AdminTestDao">
+<mapper namespace="com.dao.TestDao">
 	<select id="selectTestByKwargs" resultType="Test"
 		parameterType="Test">
 		select * from testtable where ""=""

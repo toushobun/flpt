@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import com.entity.Testinfo;
 
-@Repository("adminTestinfoDao")
+@Repository("testinfoDao")
 @Mapper
-public interface AdminTestinfoDao {
+public interface TestinfoDao {
 
 	public List<Testinfo> selectTestinfoByKwargs(Testinfo testinfo); // ≤È—Øøº ‘–≈œ¢
 

@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import com.entity.Room;
 
-@Repository("adminRoomDao")
+@Repository("roomDao")
 @Mapper
-public interface AdminRoomDao {
+public interface RoomDao {
 
 	public List<Room> selectRoomByKwargs(Room room); // ²éÑ¯¿¼³¡
 

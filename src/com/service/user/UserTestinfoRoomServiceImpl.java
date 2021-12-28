@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
-import com.dao.AdminTestinfoRoomDao;
+import com.dao.TestinfoRoomDao;
 import com.entity.TestinfoRoom;
 import com.util.MyUtil;
 
@@ -19,11 +19,11 @@ import com.util.MyUtil;
 public class UserTestinfoRoomServiceImpl implements UserTestinfoRoomService {
 
 	@Autowired
-	private AdminTestinfoRoomDao adminTestinfoRoomDao;
+	private TestinfoRoomDao testinfoRoomDao;
 
 	@Override
 	public String selectTestinfoRoom(TestinfoRoom testinfoRoom, Model model) {
-		List<TestinfoRoom> testinfoRoomList = adminTestinfoRoomDao.selectTestinfoRoomByKwargs(testinfoRoom);
+		List<TestinfoRoom> testinfoRoomList = testinfoRoomDao.selectTestinfoRoomByKwargs(testinfoRoom);
 		boolean ifInTime; // ②是否在报名时间内
 		boolean ifHaveQuota; // ①名额是否足够
 		for (int i = 0; i < testinfoRoomList.size(); i++) {

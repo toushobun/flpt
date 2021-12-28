@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import com.entity.TestinfoRoom;
 
-@Repository("adminTestinfoRoomDao")
+@Repository("testinfoRoomDao")
 @Mapper
-public interface AdminTestinfoRoomDao {
+public interface TestinfoRoomDao {
 
 	List<TestinfoRoom> selectTestinfoRoomByKwargs(TestinfoRoom TestinfoRoom); // 查询某个已发布考试的具体考场
 

@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import com.entity.Buser;
 
-@Repository("adminBuserDao")
+@Repository("buserDao")
 @Mapper
-public interface AdminBuserDao {
+public interface BuserDao {
 
 	public List<Buser> selectBuserByKwargs(Buser buser); // ²éÑ¯¿¼Éú
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
-import com.dao.AdminNoticeDao;
+import com.dao.NoticeDao;
 import com.entity.Notice;
 
 @Service("adminNoticeService")
@@ -15,11 +15,11 @@ import com.entity.Notice;
 public class AdminNoticeServiceImpl implements AdminNoticeService {
 
 	@Autowired
-	private AdminNoticeDao adminNoticeDao;
+	private NoticeDao noticeDao;
 
 	@Override
 	public String selectNotice(Model model) {
-		List<Notice> noticeList = adminNoticeDao.selectNoticeByKwargs(null);
+		List<Notice> noticeList = noticeDao.selectNoticeByKwargs(null);
 		model.addAttribute("notice", new Notice());
 		model.addAttribute("noticeList", noticeList);
 		return "admin/notice/selectNotice";
@@ -28,7 +28,7 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 	@Override
 	public String addNotice(Notice notice, Model model) {
 		try {
-			adminNoticeDao.addNotice(notice);
+			noticeDao.addNotice(notice);
 			model.addAttribute("msg", "添加成功！");
 			return "forward:/adminNotice/selectNotice";
 		} catch (Exception e) {
@@ -40,7 +40,7 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 	@Override
 	public String deleteNotice(Integer notice_id, Model model) {
 		try {
-			adminNoticeDao.deleteNoticeByNotice_id(notice_id);
+			noticeDao.deleteNoticeByNotice_id(notice_id);
 			model.addAttribute("msg", "删除成功！");
 			return "forward:/adminNotice/selectNotice";
 		} catch (Exception e) {
@@ -53,7 +53,7 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 	public String selectANotice(Integer notice_id, Model model) {
 		Notice noticeToSelect = new Notice();
 		noticeToSelect.setNotice_id(notice_id);
-		Notice notice = adminNoticeDao.selectNoticeByKwargs(noticeToSelect).get(0);
+		Notice notice = noticeDao.selectNoticeByKwargs(noticeToSelect).get(0);
 		model.addAttribute("notice", notice);
 		return "admin/notice/noticeDetail";
 	}

@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
-import com.dao.AdminReginfoDao;
-import com.dao.AdminTestinfoDao;
+import com.dao.ReginfoDao;
+import com.dao.TestinfoDao;
 import com.entity.Reginfo;
 import com.entity.Testinfo;
 
@@ -17,18 +17,18 @@ import com.entity.Testinfo;
 public class UserTestinfoServiceImpl implements UserTestinfoService {
 
 	@Autowired
-	private AdminTestinfoDao adminTestinfoDao;
+	private TestinfoDao testinfoDao;
 	@Autowired
-	private AdminReginfoDao adminReginfoDao;
+	private ReginfoDao reginfoDao;
 
 	@Override
 	public String selectTestinfo(Model model) {
-		List<Testinfo> testinfoList = adminTestinfoDao.selectTestinfoByKwargs(null);
+		List<Testinfo> testinfoList = testinfoDao.selectTestinfoByKwargs(null);
 		Reginfo reginfoToSelect = new Reginfo();
 		for (int i = 0; i < testinfoList.size(); i++) {
 			reginfoToSelect.setTestinfo_id((testinfoList.get(i).getTestinfo_id()));
 			// 如果该考生已报名此考试，则为0，否则为1
-			if (adminReginfoDao.selectReginfoByKwargs(reginfoToSelect).size() > 0) {
+			if (reginfoDao.selectReginfoByKwargs(reginfoToSelect).size() > 0) {
 				testinfoList.get(i).setStatus(0);
 			} else {
 				testinfoList.get(i).setStatus(1);
@@ -41,7 +41,7 @@ public class UserTestinfoServiceImpl implements UserTestinfoService {
 
 	@Override
 	public String searchTestinfo(Testinfo testinfo, Model model) {
-		List<Testinfo> testinfoList = adminTestinfoDao.selectTestinfoFuzzily(testinfo);
+		List<Testinfo> testinfoList = testinfoDao.selectTestinfoFuzzily(testinfo);
 		model.addAttribute("testinfo", testinfo);
 		model.addAttribute("testinfoList", testinfoList);
 		return "user/testinfo/selectTestinfo";

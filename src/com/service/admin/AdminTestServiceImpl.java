@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
-import com.dao.AdminTestDao;
+import com.dao.TestDao;
 import com.entity.Test;
 
 @Service("adminTestService")
@@ -15,11 +15,11 @@ import com.entity.Test;
 public class AdminTestServiceImpl implements AdminTestService {
 
 	@Autowired
-	private AdminTestDao adminTestDao;
+	private TestDao testDao;
 
 	@Override
 	public String selectTest(Model model) {
-		List<Test> testList = adminTestDao.selectTestByKwargs(null);
+		List<Test> testList = testDao.selectTestByKwargs(null);
 		model.addAttribute("test", new Test());
 		model.addAttribute("testList", testList);
 		return "admin/test/selectTest";
@@ -30,12 +30,12 @@ public class AdminTestServiceImpl implements AdminTestService {
 		try {
 			Test testToSelect = new Test();
 			testToSelect.setTname(test.getTname());
-			List<Test> testList = adminTestDao.selectRepeatedTest(testToSelect);
+			List<Test> testList = testDao.selectRepeatedTest(testToSelect);
 			if (testList.size() > 0) {
 				model.addAttribute("msg", "添加失败！该考试已存在！");
 				return "admin/test/addTest";
 			}
-			adminTestDao.addTest(test);
+			testDao.addTest(test);
 			model.addAttribute("msg", "添加成功！");
 			return "forward:/adminTest/selectTest";
 		} catch (Exception e) {
@@ -49,12 +49,12 @@ public class AdminTestServiceImpl implements AdminTestService {
 		try {
 			Test testToSelect = new Test();
 			testToSelect.setTest_id(test_id);
-			Test test = adminTestDao.selectTestByKwargs(testToSelect).get(0);
+			Test test = testDao.selectTestByKwargs(testToSelect).get(0);
 			if (test.getStatus() != 0) {
 				model.addAttribute("msg", "删除失败！该考试已发布！");
 				return "forward:/adminTest/selectTest";
 			}
-			adminTestDao.deleteTestByTest_id(test_id);
+			testDao.deleteTestByTest_id(test_id);
 			model.addAttribute("msg", "删除成功！");
 			return "forward:/adminTest/selectTest";
 		} catch (Exception e) {
@@ -67,7 +67,7 @@ public class AdminTestServiceImpl implements AdminTestService {
 	public String toUpdateTest(Integer test_id, Model model) {
 		Test testToSelect = new Test();
 		testToSelect.setTest_id(test_id);
-		Test test = adminTestDao.selectTestByKwargs(testToSelect).get(0);
+		Test test = testDao.selectTestByKwargs(testToSelect).get(0);
 		model.addAttribute("test", test);
 		return "admin/test/updateTest";
 	}
@@ -78,12 +78,12 @@ public class AdminTestServiceImpl implements AdminTestService {
 			Test testToSelect = new Test();
 			testToSelect.setTest_id(test.getTest_id());
 			testToSelect.setTname(test.getTname());
-			List<Test> testList = adminTestDao.selectRepeatedTest(testToSelect);
+			List<Test> testList = testDao.selectRepeatedTest(testToSelect);
 			if (testList.size() > 0) {
 				model.addAttribute("msg", "修改失败！该考试已存在！");
 				return "admin/test/updateTest";
 			}
-			adminTestDao.updateTest(test);
+			testDao.updateTest(test);
 			model.addAttribute("msg", "修改成功！");
 			return "forward:/adminTest/selectTest";
 		} catch (Exception e) {
@@ -94,7 +94,7 @@ public class AdminTestServiceImpl implements AdminTestService {
 
 	@Override
 	public String searchTest(Test test, Model model) {
-		List<Test> testList = adminTestDao.selectTestFuzzily(test);
+		List<Test> testList = testDao.selectTestFuzzily(test);
 		model.addAttribute("test", test);
 		model.addAttribute("testList", testList);
 		return "admin/test/selectTest";

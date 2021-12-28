@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dao.AdminBuserDao">
+<mapper namespace="com.dao.BuserDao">
 	<select id="selectBuserByKwargs" resultType="Buser"
 		parameterType="Buser">
 		select * from busertable where ""=""

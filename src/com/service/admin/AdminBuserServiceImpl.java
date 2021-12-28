@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
-import com.dao.AdminBuserDao;
+import com.dao.BuserDao;
 import com.entity.Buser;
 
 @Service("adminBuserService")
@@ -15,11 +15,11 @@ import com.entity.Buser;
 public class AdminBuserServiceImpl implements AdminBuserService {
 
 	@Autowired
-	private AdminBuserDao adminBuserDao;
+	private BuserDao buserDao;
 
 	@Override
 	public String selectBuser(Model model) {
-		List<Buser> buserList = adminBuserDao.selectBuserByKwargs(null);
+		List<Buser> buserList = buserDao.selectBuserByKwargs(null);
 		model.addAttribute("buser", new Buser());
 		model.addAttribute("buserList", buserList);
 		return "admin/buser/selectBuser";
@@ -28,7 +28,7 @@ public class AdminBuserServiceImpl implements AdminBuserService {
 	@Override
 	public String deleteBuser(Integer user_id, Model model) {
 		try {
-			adminBuserDao.deleteBuserByUser_id(user_id);
+			buserDao.deleteBuserByUser_id(user_id);
 			model.addAttribute("msg", "É¾³ý³É¹¦£¡");
 			return "forward:/adminBuser/selectBuser";
 		} catch (Exception e) {
@@ -39,7 +39,7 @@ public class AdminBuserServiceImpl implements AdminBuserService {
 
 	@Override
 	public String searchBuser(Buser buser, Model model) {
-		List<Buser> buserList = adminBuserDao.selectBuserFuzzily(buser);
+		List<Buser> buserList = buserDao.selectBuserFuzzily(buser);
 		model.addAttribute("buser", buser);
 		model.addAttribute("buserList", buserList);
 		return "admin/buser/selectBuser";

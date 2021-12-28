@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
-import com.dao.AdminRoomDao;
+import com.dao.RoomDao;
 import com.entity.Room;
 
 @Service("adminRoomService")
@@ -15,11 +15,11 @@ import com.entity.Room;
 public class AdminRoomServiceImpl implements AdminRoomService {
 
 	@Autowired
-	private AdminRoomDao adminRoomDao;
+	private RoomDao roomDao;
 
 	@Override
 	public String selectRoom(Model model) {
-		List<Room> roomList = adminRoomDao.selectRoomByKwargs(null);
+		List<Room> roomList = roomDao.selectRoomByKwargs(null);
 		model.addAttribute("room", new Room());
 		model.addAttribute("roomList", roomList);
 		return "admin/room/selectRoom";
@@ -30,12 +30,12 @@ public class AdminRoomServiceImpl implements AdminRoomService {
 		try {
 			Room roomToSelect = new Room();
 			roomToSelect.setRname(room.getRname());
-			List<Room> roomList = adminRoomDao.selectRepeatedRoom(roomToSelect);
+			List<Room> roomList = roomDao.selectRepeatedRoom(roomToSelect);
 			if (roomList.size() > 0) {
 				model.addAttribute("msg", "添加失败！该考场已存在！");
 				return "admin/room/addRoom";
 			}
-			adminRoomDao.addRoom(room);
+			roomDao.addRoom(room);
 			model.addAttribute("msg", "添加成功！");
 			return "forward:/adminRoom/selectRoom";
 		} catch (Exception e) {
@@ -48,7 +48,7 @@ public class AdminRoomServiceImpl implements AdminRoomService {
 	public String deleteRoom(Integer room_id, Model model) {
 		// TODO 删除考场前确认至少要留一个考场
 		try {
-			adminRoomDao.deleteRoomByRoom_id(room_id);
+			roomDao.deleteRoomByRoom_id(room_id);
 			model.addAttribute("msg", "删除成功！");
 			return "forward:/adminRoom/selectRoom";
 		} catch (Exception e) {
@@ -61,7 +61,7 @@ public class AdminRoomServiceImpl implements AdminRoomService {
 	public String toUpdateRoom(Integer room_id, Model model) {
 		Room roomToSelect = new Room();
 		roomToSelect.setRoom_id(room_id);
-		Room room = adminRoomDao.selectRoomByKwargs(roomToSelect).get(0);
+		Room room = roomDao.selectRoomByKwargs(roomToSelect).get(0);
 		model.addAttribute("room", room);
 		return "admin/room/updateRoom";
 	}
@@ -72,12 +72,12 @@ public class AdminRoomServiceImpl implements AdminRoomService {
 			Room roomToSelect = new Room();
 			roomToSelect.setRoom_id(room.getRoom_id());
 			roomToSelect.setRname(room.getRname());
-			List<Room> roomList = adminRoomDao.selectRepeatedRoom(roomToSelect);
+			List<Room> roomList = roomDao.selectRepeatedRoom(roomToSelect);
 			if (roomList.size() > 0) {
 				model.addAttribute("msg", "修改失败！该考场已存在！");
 				return "admin/room/updateRoom";
 			}
-			adminRoomDao.updateRoom(room);
+			roomDao.updateRoom(room);
 			model.addAttribute("msg", "修改成功！");
 			return "forward:/adminRoom/selectRoom";
 		} catch (Exception e) {
@@ -88,7 +88,7 @@ public class AdminRoomServiceImpl implements AdminRoomService {
 
 	@Override
 	public String searchRoom(Room room, Model model) {
-		List<Room> roomList = adminRoomDao.selectRoomFuzzily(room);
+		List<Room> roomList = roomDao.selectRoomFuzzily(room);
 		model.addAttribute("room", room);
 		model.addAttribute("roomList", roomList);
 		return "admin/room/selectRoom";

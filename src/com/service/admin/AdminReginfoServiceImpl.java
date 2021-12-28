@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
-import com.dao.AdminReginfoDao;
+import com.dao.ReginfoDao;
 import com.entity.Reginfo;
 
 @Service("adminReginfoService")
@@ -15,11 +15,11 @@ import com.entity.Reginfo;
 public class AdminReginfoServiceImpl implements AdminReginfoService {
 
 	@Autowired
-	private AdminReginfoDao adminReginfoDao;
+	private ReginfoDao reginfoDao;
 
 	@Override
 	public String selectReginfo(Model model) {
-		List<Reginfo> reginfoList = adminReginfoDao.selectReginfoByKwargs(null);
+		List<Reginfo> reginfoList = reginfoDao.selectReginfoByKwargs(null);
 		model.addAttribute("reginfo", new Reginfo());
 		model.addAttribute("reginfoList", reginfoList);
 		return "admin/reginfo/selectReginfo";
@@ -28,7 +28,7 @@ public class AdminReginfoServiceImpl implements AdminReginfoService {
 	@Override
 	public String deleteReginfo(Integer reginfo_id, Model model) {
 		try {
-			adminReginfoDao.deleteReginfoByReginfo_id(reginfo_id);
+			reginfoDao.deleteReginfoByReginfo_id(reginfo_id);
 			model.addAttribute("msg", "É¾³ý³É¹¦£¡");
 			return "forward:/adminReginfo/selectReginfo";
 		} catch (Exception e) {
@@ -39,7 +39,7 @@ public class AdminReginfoServiceImpl implements AdminReginfoService {
 
 	@Override
 	public String searchReginfo(Reginfo reginfo, Model model) {
-		List<Reginfo> reginfoList = adminReginfoDao.selectReginfoFuzzily(reginfo);
+		List<Reginfo> reginfoList = reginfoDao.selectReginfoFuzzily(reginfo);
 		model.addAttribute("reginfo", reginfo);
 		model.addAttribute("reginfoList", reginfoList);
 		return "admin/reginfo/selectReginfo";

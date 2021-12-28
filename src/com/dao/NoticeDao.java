@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import com.entity.Notice;
 
-@Repository("adminNoticeDao")
+@Repository("noticeDao")
 @Mapper
-public interface AdminNoticeDao {
+public interface NoticeDao {
 
 	public List<Notice> selectNoticeByKwargs(Notice notice); // ²éÑ¯¹«¸æ
 

@@ -10,22 +10,21 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="Reginfo" type="com.entity.Reginfo" />
 		<typeAlias alias="Room" type="com.entity.Room" />
 		<typeAlias alias="Test" type="com.entity.Test" />
+		<typeAlias alias="Testinfo" type="com.entity.Testinfo" />
 		<typeAlias alias="TestinfoRoom"
 			type="com.entity.TestinfoRoom" />
-		<typeAlias alias="Testinfo" type="com.entity.Testinfo" />
 	</typeAliases>
 	<mappers>
-		<mapper resource="com/mybatis/admin/AdminMapper.xml" />
-		<mapper resource="com/mybatis/admin/AdminTestMapper.xml" />
-		<mapper resource="com/mybatis/admin/AdminRoomMapper.xml" />
-		<mapper resource="com/mybatis/admin/AdminTestinfoMapper.xml" />
-		<mapper resource="com/mybatis/admin/AdminTestinfoRoomMapper.xml" />
-		<mapper resource="com/mybatis/admin/AdminNoticeMapper.xml" />
-		<mapper resource="com/mybatis/admin/AdminBuserMapper.xml" />
-		<mapper resource="com/mybatis/admin/AdminReginfoMapper.xml" />
-		<mapper resource="com/mybatis/user/UserMapper.xml" />
-		<mapper resource="com/mybatis/user/UserReginfoMapper.xml" />
-		<mapper resource="com/mybatis/user/UserCenterMapper.xml" />
+		<mapper resource="com/mybatis/AdminMapper.xml" />
+		<mapper resource="com/mybatis/BuserMapper.xml" />
+		<mapper resource="com/mybatis/CenterMapper.xml" />
+		<mapper resource="com/mybatis/NoticeMapper.xml" />
+		<mapper resource="com/mybatis/ReginfoMapper.xml" />
+		<mapper resource="com/mybatis/RoomMapper.xml" />
+		<mapper resource="com/mybatis/TestinfoMapper.xml" />
+		<mapper resource="com/mybatis/TestinfoRoomMapper.xml" />
+		<mapper resource="com/mybatis/TestMapper.xml" />
+		<mapper resource="com/mybatis/UserMapper.xml" />
 	</mappers>
 </configuration>
 

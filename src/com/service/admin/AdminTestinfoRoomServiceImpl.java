@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
-import com.dao.AdminReginfoDao;
-import com.dao.AdminRoomDao;
-import com.dao.AdminTestinfoRoomDao;
+import com.dao.ReginfoDao;
+import com.dao.RoomDao;
+import com.dao.TestinfoRoomDao;
 import com.entity.Reginfo;
 import com.entity.Room;
 import com.entity.TestinfoRoom;
@@ -20,18 +20,18 @@ import com.entity.TestinfoRoom;
 public class AdminTestinfoRoomServiceImpl implements AdminTestinfoRoomService {
 
 	@Autowired
-	private AdminTestinfoRoomDao adminTestinfoRoomDao;
+	private TestinfoRoomDao testinfoRoomDao;
 
 	@Autowired
-	private AdminRoomDao adminRoomDao;
+	private RoomDao roomDao;
 
 	@Autowired
-	private AdminReginfoDao adminReginfoDao;
+	private ReginfoDao reginfoDao;
 
 	@Override
 	public String selectTestinfoRoom(TestinfoRoom testinfoRoom, Model model) {
-		List<TestinfoRoom> testinfoRoomList = adminTestinfoRoomDao.selectTestinfoRoomByKwargs(testinfoRoom);
-		List<Room> notSelectedRoom = adminRoomDao.selectNotSelectedRoom(testinfoRoom.getTestinfo_id());
+		List<TestinfoRoom> testinfoRoomList = testinfoRoomDao.selectTestinfoRoomByKwargs(testinfoRoom);
+		List<Room> notSelectedRoom = roomDao.selectNotSelectedRoom(testinfoRoom.getTestinfo_id());
 		model.addAttribute("testinfoRoom", new TestinfoRoom());
 		model.addAttribute("testinfoRoomList", testinfoRoomList);
 		model.addAttribute("notSelectedRoom", notSelectedRoom);
@@ -45,7 +45,7 @@ public class AdminTestinfoRoomServiceImpl implements AdminTestinfoRoomService {
 		for (int i = 0; i < testinfoRoom.getRoom_ids().length; i++) {
 			// 设置关联表里的room_id
 			roomToSelect.setRoom_id(testinfoRoom.getRoom_ids()[i]);
-			selectedRoomList.add(adminRoomDao.selectRoomByKwargs(roomToSelect).get(0));
+			selectedRoomList.add(roomDao.selectRoomByKwargs(roomToSelect).get(0));
 		}
 		model.addAttribute("testinfoRoom", testinfoRoom);
 		model.addAttribute("selectedRoomList", selectedRoomList);
@@ -59,7 +59,7 @@ public class AdminTestinfoRoomServiceImpl implements AdminTestinfoRoomService {
 				// 设置关联表里的room_id
 				testinfoRoom.setRoom_id(testinfoRoom.getRoom_ids()[i]);
 				testinfoRoom.setRquota(testinfoRoom.getRoom_rquotas()[i]);
-				adminTestinfoRoomDao.addTestinfoRoom(testinfoRoom);
+				testinfoRoomDao.addTestinfoRoom(testinfoRoom);
 			}
 			model.addAttribute("msg", "添加成功！");
 			return "forward:/adminTestinfoRoom/selectTestinfoRoom?testinfo_id=" + testinfoRoom.getTestinfo_id();
@@ -74,13 +74,13 @@ public class AdminTestinfoRoomServiceImpl implements AdminTestinfoRoomService {
 		try {
 			Reginfo reginfoToSelect = new Reginfo();
 			reginfoToSelect.setTestinfoRoom_id(testinfoRoom.getTestinfoRoom_id());
-			List<Reginfo> reginfoList = adminReginfoDao.selectReginfoByKwargs(reginfoToSelect);
+			List<Reginfo> reginfoList = reginfoDao.selectReginfoByKwargs(reginfoToSelect);
 			// 先遍历删除所有准考证
 			for (int i = 0; i < reginfoList.size(); i++) {
-				adminReginfoDao.deleteReginfoByReginfo_id(reginfoList.get(i).getReginfo_id());
+				reginfoDao.deleteReginfoByReginfo_id(reginfoList.get(i).getReginfo_id());
 			}
 			// 再遍历删除所有考场
-			adminTestinfoRoomDao.deleteTestinfoRoomByTestinfoRoom_id(testinfoRoom.getTestinfoRoom_id());
+			testinfoRoomDao.deleteTestinfoRoomByTestinfoRoom_id(testinfoRoom.getTestinfoRoom_id());
 			model.addAttribute("msg", "取消成功！");
 			return "forward:/adminTestinfoRoom/selectTestinfoRoom?testinfo_id=" + testinfoRoom.getTestinfo_id();
 		} catch (Exception e) {
@@ -92,7 +92,7 @@ public class AdminTestinfoRoomServiceImpl implements AdminTestinfoRoomService {
 	@Override
 	public String changeQuota(TestinfoRoom testinfoRoom, Model model) {
 		try {
-			adminTestinfoRoomDao.updateTestinfoRoom(testinfoRoom);
+			testinfoRoomDao.updateTestinfoRoom(testinfoRoom);
 			model.addAttribute("msg", "修改成功！");
 			return "forward:/adminTestinfoRoom/selectTestinfoRoom?testinfo_id=" + testinfoRoom.getTestinfo_id();
 		} catch (Exception e) {

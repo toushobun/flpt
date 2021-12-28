@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dao.AdminTestinfoRoomDao">
+<mapper namespace="com.dao.TestinfoRoomDao">
 	<select id="selectTestinfoRoomByKwargs"
 		resultType="TestinfoRoom" parameterType="TestinfoRoom">
 		select * from testinfoRoom, roomtable, testinfotable, testtable where

@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import com.entity.Reginfo;
 
-@Repository("adminReginfoDao")
+@Repository("reginfoDao")
 @Mapper
-public interface AdminReginfoDao {
+public interface ReginfoDao {
 
 	public List<Reginfo> selectReginfoByKwargs(Reginfo reginfo); // ²éÑ¯×¼¿¼Ö¤
 
