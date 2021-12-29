@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import com.dao.NoticeDao;
 import com.dao.UserDao;
 import com.entity.Buser;
+import com.entity.Notice;
 import com.util.MyUtil;
 
 @Service("userService")
@@ -96,7 +97,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String userSelectANotice(Integer notice_id, Model model) {
+	public String userSelectANotice(Notice notice, Model model) {
 		// TODO Auto-generated method stub
 		return null;
 	}

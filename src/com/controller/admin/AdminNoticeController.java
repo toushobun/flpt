@@ -36,8 +36,8 @@ public class AdminNoticeController extends BaseAdminController {
 	}
 
 	@RequestMapping("/selectANotice")
-	public String selectANotice(Integer notice_id, Model model) {
-		return adminNoticeService.selectANotice(notice_id, model);
+	public String selectANotice(Notice notice, Model model) {
+		return adminNoticeService.selectANotice(notice, model);
 	}
 
 }

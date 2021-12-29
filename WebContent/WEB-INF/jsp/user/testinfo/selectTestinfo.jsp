@@ -51,7 +51,7 @@
 							<a href="userTestinfoRoom/selectTestinfoRoom?testinfo_id=${testinfo.testinfo_id }">前往报名</a>
 						</c:if>
 						<c:if test="${testinfo.status == 0 }">
-							已报名，<a href="userReginfo/userSelectAReginfo?user_id=${sessionScope.buser.user_id }&testinfo_id=${testinfo.testinfo_id }">查看报名信息</a>
+							已报名，<a href="userReginfo/selectAReginfo?user_id=${sessionScope.buser.user_id }&testinfo_id=${testinfo.testinfo_id }">查看报名信息</a>
 						</c:if>
 					</td>
 				</tr>

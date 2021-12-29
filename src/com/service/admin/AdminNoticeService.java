@@ -12,6 +12,6 @@ public interface AdminNoticeService {
 
 	public String deleteNotice(Integer notice_id, Model model); // 通过id删除公告
 
-	public String selectANotice(Integer notice_id, Model model); // 查询一个公告
+	public String selectANotice(Notice notice, Model model); // 查询一个公告
 
 }

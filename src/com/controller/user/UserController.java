@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.entity.Buser;
+import com.entity.Notice;
 import com.service.user.UserService;
 
 @Controller
@@ -48,8 +49,8 @@ public class UserController {
 	}
 
 	@RequestMapping("/user/selectANotice")
-	public String userSelectANotice(Integer notice_id, Model model) {
-		return userService.userSelectANotice(notice_id, model);
+	public String userSelectANotice(Notice notice, Model model) {
+		return userService.userSelectANotice(notice, model);
 	}
 
 	@RequestMapping("/user/exit")

@@ -20,4 +20,9 @@ public class UserReginfoController extends BaseUserController {
 		return userReginfoService.addReginfo(reginfo, model);
 	}
 
+	@RequestMapping("/selectAReginfo")
+	public String selectAReginfo(Reginfo reginfo, Model model) {
+		return userReginfoService.selectAReginfo(reginfo, model);
+	}
+
 }

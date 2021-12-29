@@ -37,8 +37,8 @@
 				<td>${testinfoRoom.rquota }</td>
 				<td><a
 					href="javascript:changeQuota('${testinfoRoom.testinfoRoom_id }', '${testinfoRoom.testinfo_id }')">修改名额</a>
-					<a
-					href="javascript:confirmCancel('${testinfoRoom.testinfoRoom_id }', '${testinfoRoom.testinfo_id }', '${testinfoRoom.rname }', '${testinfoRoom.room_id }')">取消考场</a>
+					<a onclick="return confirmCancel('${testinfoRoom.rname }');"
+					href="adminTestinfoRoom/cancelRoom?testinfoRoom_id=${testinfoRoom.testinfoRoom_id }&testinfo_id=${testinfoRoom.testinfo_id }&room_id=${testinfoRoom.room_id }">取消考场</a>
 				</td>
 			</tr>
 		</c:forEach>

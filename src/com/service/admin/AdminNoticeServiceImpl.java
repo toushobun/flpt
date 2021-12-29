@@ -50,10 +50,8 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 	}
 
 	@Override
-	public String selectANotice(Integer notice_id, Model model) {
-		Notice noticeToSelect = new Notice();
-		noticeToSelect.setNotice_id(notice_id);
-		Notice notice = noticeDao.selectNoticeByKwargs(noticeToSelect).get(0);
+	public String selectANotice(Notice notice, Model model) {
+		notice = noticeDao.selectNoticeByKwargs(notice).get(0);
 		model.addAttribute("notice", notice);
 		return "admin/notice/noticeDetail";
 	}

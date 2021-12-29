@@ -29,9 +29,11 @@ public class AdminTestinfoRoomServiceImpl implements AdminTestinfoRoomService {
 	private ReginfoDao reginfoDao;
 
 	@Override
-	public String selectTestinfoRoom(TestinfoRoom testinfoRoom, Model model) {
-		List<TestinfoRoom> testinfoRoomList = testinfoRoomDao.selectTestinfoRoomByKwargs(testinfoRoom);
-		List<Room> notSelectedRoom = roomDao.selectNotSelectedRoom(testinfoRoom.getTestinfo_id());
+	public String selectTestinfoRoom(Integer testinfo_id, Model model) {
+		TestinfoRoom testinfoRoomToSelect = new TestinfoRoom();
+		testinfoRoomToSelect.setTestinfo_id(testinfo_id);
+		List<TestinfoRoom> testinfoRoomList = testinfoRoomDao.selectTestinfoRoomByKwargs(testinfoRoomToSelect);
+		List<Room> notSelectedRoom = roomDao.selectNotSelectedRoom(testinfo_id);
 		model.addAttribute("testinfoRoom", new TestinfoRoom());
 		model.addAttribute("testinfoRoomList", testinfoRoomList);
 		model.addAttribute("notSelectedRoom", notSelectedRoom);

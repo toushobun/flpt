@@ -19,9 +19,10 @@
 <script src="js/postConfirm.js" type="text/javascript"></script>
 </head>
 <body>
-	<form:form id="searchForm" action="adminTestinfo/searchTestinfo" method="post"
-		modelAttribute="testinfo">
-		<form:input path="tname" placeholder="输入考试名" value="${testinfo.tname }" />
+	<form:form id="searchForm" action="adminTestinfo/searchTestinfo"
+		method="post" modelAttribute="testinfo">
+		<form:input path="tname" placeholder="输入考试名"
+			value="${testinfo.tname }" />
 		<form:input path="tsubject" placeholder="输入考试科目"
 			value="${testinfo.tsubject }" />
 		<form:input path="torganizer" placeholder="主考单位"
@@ -53,10 +54,12 @@
 					<td>${testinfo.regist_start_time }</td>
 					<td>${testinfo.regist_end_time }</td>
 					<td>${testinfo.tprice }</td>
-					<td>
-						<a href="adminTestinfoRoom/selectTestinfoRoom?testinfo_id=${testinfo.testinfo_id }">考场详情</a>
-						<a href="adminTestinfo/toUpdateTestinfo?testinfo_id=${testinfo.testinfo_id }">修改</a>
-						<a onclick="return confirmDelTestinfo();" href="adminTestinfo/deleteTestinfo?testinfo_id=${testinfo.testinfo_id }">删除</a>
+					<td><a
+						href="adminTestinfoRoom/selectTestinfoRoom?testinfo_id=${testinfo.testinfo_id }">考场详情</a>
+						<a
+						href="adminTestinfo/toUpdateTestinfo?testinfo_id=${testinfo.testinfo_id }">修改</a>
+						<a onclick="return confirmDelTestinfo();"
+						href="adminTestinfo/deleteTestinfo?testinfo_id=${testinfo.testinfo_id }">删除</a>
 					</td>
 				</tr>
 			</c:forEach>

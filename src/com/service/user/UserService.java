@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 
 import com.entity.Buser;
+import com.entity.Notice;
 
 public interface UserService {
 
@@ -15,6 +16,6 @@ public interface UserService {
 
 	public String userSelectNotice(Model model);
 
-	public String userSelectANotice(Integer notice_id, Model model);
+	public String userSelectANotice(Notice notice, Model model);
 
 }

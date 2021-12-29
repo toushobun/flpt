@@ -67,4 +67,12 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 		}
 	}
 
+	@Override
+	public String selectAReginfo(Reginfo reginfo, Model model) {
+		// TODO Auto-generated method stub
+		reginfo = reginfoDao.selectReginfoByKwargs(reginfo).get(0);
+		model.addAttribute("reginfo", reginfo);
+		return "user/reginfo/selectAReginfo";
+	}
+
 }

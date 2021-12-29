@@ -16,8 +16,8 @@ public class AdminTestinfoRoomController extends BaseAdminController {
 	AdminTestinfoRoomService adminTestinfoRoomService;
 
 	@RequestMapping("/selectTestinfoRoom")
-	public String selectTestinfoRoom(TestinfoRoom testinfoRoom, Model model) {
-		return adminTestinfoRoomService.selectTestinfoRoom(testinfoRoom, model);
+	public String selectTestinfoRoom(Integer testinfo_id, Model model) {
+		return adminTestinfoRoomService.selectTestinfoRoom(testinfo_id, model);
 	}
 
 	@RequestMapping("/toAddTestinfoRoom")
