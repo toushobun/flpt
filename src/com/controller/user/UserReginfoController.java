@@ -15,14 +15,29 @@ public class UserReginfoController extends BaseUserController {
 	@Autowired
 	UserReginfoService userReginfoService;
 
+	@RequestMapping("/selectReginfo")
+	public String selectReginfo(Integer user_id, Model model) {
+		return userReginfoService.selectReginfo(user_id, model);
+	}
+
 	@RequestMapping("/addReginfo")
 	public String addReginfo(Reginfo reginfo, Model model) {
 		return userReginfoService.addReginfo(reginfo, model);
 	}
 
+	@RequestMapping("/deleteReginfo")
+	public String deleteReginfo(Integer reginfo_id, Model model) {
+		return userReginfoService.deleteReginfo(reginfo_id, model);
+	}
+
 	@RequestMapping("/selectAReginfo")
 	public String selectAReginfo(Reginfo reginfo, Model model) {
 		return userReginfoService.selectAReginfo(reginfo, model);
+	}
+
+	@RequestMapping("/searchReginfo")
+	public String searchReginfo(Reginfo reginfo, Model model) {
+		return userReginfoService.searchReginfo(reginfo, model);
 	}
 
 }

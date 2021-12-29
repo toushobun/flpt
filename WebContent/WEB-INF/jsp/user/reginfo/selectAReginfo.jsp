@@ -47,8 +47,8 @@
 			<c:if test="${reginfo.status == 0 }">
 				<td><a
 					href="userReginfo/userToPay?reginfo_id=${reginfo.reginfo_id }&tname=${reginfo.tname }">前往付款</a>&nbsp;
-					<a onclick="return comfirmCancel();"
-					href="userReginfo/deleteReginfo?reginfo_id=${reginfo.reginfo_id}')">取消报名</a>
+					<a onclick="return confirmCancelReg();"
+					href="userReginfo/deleteReginfo?reginfo_id=${reginfo.reginfo_id}">取消报名</a>
 				</td>
 			</c:if>
 			<c:if test="${reginfo.status == 1 }">

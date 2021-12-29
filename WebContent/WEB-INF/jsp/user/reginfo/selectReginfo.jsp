@@ -32,24 +32,34 @@
 	<c:if test="${reginfoList.size() != 0 }">
 		<table id="table">
 			<tr>
-				<th width="15%">考试名称</th>
-				<th width="10%">准考证号</th>
-				<th width="25%">考点名称</th>
-				<th width="25%">考试时间</th>
-				<th width="10%">支付状态</th>
+				<th width="20%">考试名称</th>
+				<th width="15%">准考证号</th>
+				<th width="20%">考点名称</th>
+				<th width="20%">考试时间</th>
+				<th width="10%">报名状态</th>
 				<th width="15%">操作</th>
 			</tr>
 			<c:forEach items="${reginfoList }" var="reginfo">
 				<tr>
 					<td>${reginfo.tname }</td>
-					<td>${reginfo.uname }</td>
 					<td>${reginfo.ticketnum }</td>
-					<td>${reginfo.uidnum }</td>
 					<td>${reginfo.rname }</td>
 					<td>${reginfo.test_time }</td>
+					<c:if test="${reginfo.status==0 }">
+						<td>未支付</td>
+					</c:if>
+					<c:if test="${reginfo.status==1 }">
+						<td>已支付</td>
+					</c:if>
+					<c:if test="${reginfo.status==2 }">
+						<td>已取消</td>
+					</c:if>
+					<c:if test="${reginfo.status==3 }">
+						<td>支付超时</td>
+					</c:if>
 					<td><a onclick="return confirmDel();"
-						href="userReginfo/deleteReginfo?reginfo_id=${reginfo.reginfo_id }">查看详情</a><a
-						onclick="return confirmDel();"
+						href="userReginfo/deleteReginfo?reginfo_id=${reginfo.reginfo_id }">查看详情</a>&nbsp;
+						<a onclick="return confirmDel();"
 						href="userReginfo/deleteReginfo?reginfo_id=${reginfo.reginfo_id }">删除</a></td>
 				</tr>
 			</c:forEach>
