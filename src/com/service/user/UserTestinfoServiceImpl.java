@@ -23,6 +23,7 @@ public class UserTestinfoServiceImpl implements UserTestinfoService {
 
 	@Override
 	public String selectTestinfo(Model model) {
+		// TODO 判断考生是否报名了此考试，要改为判断是否存在且status不为取消状态，而不是仅仅判断是否存在
 		List<Testinfo> testinfoList = testinfoDao.selectTestinfoByKwargs(null);
 		Reginfo reginfoToSelect = new Reginfo();
 		for (int i = 0; i < testinfoList.size(); i++) {

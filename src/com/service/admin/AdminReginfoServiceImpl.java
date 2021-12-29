@@ -19,6 +19,7 @@ public class AdminReginfoServiceImpl implements AdminReginfoService {
 
 	@Override
 	public String selectReginfo(Model model) {
+		// TODO 对报名信息状态进行处理
 		List<Reginfo> reginfoList = reginfoDao.selectReginfoByKwargs(null);
 		model.addAttribute("reginfo", new Reginfo());
 		model.addAttribute("reginfoList", reginfoList);
@@ -27,6 +28,7 @@ public class AdminReginfoServiceImpl implements AdminReginfoService {
 
 	@Override
 	public String deleteReginfo(Integer reginfo_id, Model model) {
+		// TODO 如果删除的是考生取消以外状态的报名信息，则需要增加对应考场的名额
 		try {
 			reginfoDao.deleteReginfoByReginfo_id(reginfo_id);
 			model.addAttribute("msg", "删除成功！");

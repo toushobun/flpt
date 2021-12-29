@@ -36,6 +36,7 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 
 	@Override
 	public String addReginfo(Reginfo reginfo, Model model) {
+		// TODO 判断考生是否报名了此考试，要改为判断是否存在且status不为取消状态，而不是仅仅判断是否存在
 		try {
 			// 如果该考生已报名此考试，则为0，否则为1
 			Reginfo reginfoToSelect = new Reginfo();
@@ -81,12 +82,13 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 
 	@Override
 	public String deleteReginfo(Integer reginfo_id, Model model) {
+		// TODO 要新增一个取消报名功能，取消报名要做的是将status设置为2，而不删除报名信息
 		try {
 			reginfoDao.deleteReginfoByReginfo_id(reginfo_id);
-			model.addAttribute("msg", "取消成功！");
+			model.addAttribute("msg", "删除成功！");
 			return "forward:/userCenter/center";
 		} catch (Exception e) {
-			model.addAttribute("msg", "取消失败！");
+			model.addAttribute("msg", "删除失败！");
 			return "forward:/userCenter/center";
 		}
 	}
