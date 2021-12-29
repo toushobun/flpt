@@ -13,7 +13,7 @@ import com.entity.Auser;
 import com.entity.Buser;
 
 public class MyExceptionHandler implements HandlerExceptionResolver {
-	
+
 	@Override
 	public ModelAndView resolveException(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2,
 			Exception arg3) {
@@ -28,10 +28,10 @@ public class MyExceptionHandler implements HandlerExceptionResolver {
 		} else if (arg3 instanceof UserLoginNoException) {
 			arg0.setAttribute("buser", new Buser());
 			arg0.setAttribute("msg", "Ã»ÓÐµÇÂ¼£¬ÇëµÇÂ¼£¡");
-			return new ModelAndView("/before/login", model);
+			return new ModelAndView("/user/login", model);
 		} else {
 			return new ModelAndView("/error/error", model);
 		}
 	}
-	
+
 }
