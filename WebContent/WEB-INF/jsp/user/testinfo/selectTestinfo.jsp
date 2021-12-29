@@ -63,10 +63,5 @@
 			</script>
 		</c:if>
 	</c:if>
-	<c:if test="${msg != null }">
-		<script type="text/javascript">
-			alert("${msg}");
-		</script>
-	</c:if>
 </body>
 </html>

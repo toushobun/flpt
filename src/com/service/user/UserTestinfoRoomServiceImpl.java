@@ -51,7 +51,7 @@ public class UserTestinfoRoomServiceImpl implements UserTestinfoRoomService {
 			} else {
 				testinfoRoom.setStatus(0);
 			}
-			testinfoRoomList.set(0, testinfoRoom);
+			testinfoRoomList.set(i, testinfoRoom);
 		}
 		model.addAttribute("testinfoRoomList", testinfoRoomList);
 		return "user/testinfoRoom/selectTestinfoRoom";

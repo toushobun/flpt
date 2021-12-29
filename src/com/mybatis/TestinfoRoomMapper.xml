@@ -9,8 +9,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		roomtable.room_id=testinfoRoom.room_id and
 		testinfotable.testinfo_id=testinfoRoom.testinfo_id and
 		testtable.test_id=testinfotable.test_id and ""=""
+		<if test="testinfoRoom_id != null">
+			and testinfoRoom.testinfoRoom_id = #{testinfoRoom_id}
+		</if>
 		<if test="testinfo_id != null">
 			and testinfoRoom.testinfo_id = #{testinfo_id}
+		</if>
+		<if test="room_id != null">
+			and testinfoRoom.room_id = #{room_id}
+		</if>
+		<if test="rquota != null">
+			and rquota = #{rquota}
 		</if>
 	</select>
 	<insert id="addTestinfoRoom" parameterType="TestinfoRoom">

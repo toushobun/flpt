@@ -141,7 +141,7 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 			// 设置该考试的status为0
 			Test testToUpdate = new Test();
 			testToUpdate.setTest_id(test_id);
-			testToUpdate.setStatus(1);
+			testToUpdate.setStatus(0);
 			testDao.updateTest(testToUpdate);
 			// 最后删除考试信息
 			testinfoDao.deleteTestinfoByTestinfo_id(testinfo_id);

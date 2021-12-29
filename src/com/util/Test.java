@@ -14,6 +14,7 @@ public class Test {
 		Date date = new Date();
 		System.out.println(MyUtil.isEffectiveDate(date, date1, date2));
 		System.out.println(String.format("%04d", Math.round(Math.random() * 9999 + 1)));
+		System.out.println(MyUtil.getStringID().substring(0, 4));
 	}
 
 }
