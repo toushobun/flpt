@@ -12,6 +12,8 @@ public interface UserReginfoService {
 
 	public String deleteReginfo(Integer reginfo_id, Model model); // 通过id删除准考证
 
+	public String cancelReg(Integer reginfo_id, Model model); // 取消报名
+
 	public String selectAReginfo(Reginfo reginfo, Model model); // 查询一个准考证
 
 	public String searchReginfo(Reginfo reginfo, Model model); // 模糊搜索

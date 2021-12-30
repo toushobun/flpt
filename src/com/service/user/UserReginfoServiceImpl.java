@@ -84,7 +84,6 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 
 	@Override
 	public String deleteReginfo(Integer reginfo_id, Model model) {
-		// TODO 要新增一个取消报名功能，取消报名要做的是将status设置为2，而不删除报名信息
 		try {
 			reginfoDao.deleteReginfoByReginfo_id(reginfo_id);
 			model.addAttribute("msg", "删除成功！");
@@ -92,6 +91,22 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 		} catch (Exception e) {
 			model.addAttribute("msg", "删除失败！");
 			return "forward:/userCenter/center";
+		}
+	}
+
+	@Override
+	public String cancelReg(Integer reginfo_id, Model model) {
+		// TODO Auto-generated method stub
+		try {
+			Reginfo reginfoToUpdate = new Reginfo();
+			reginfoToUpdate.setReginfo_id(reginfo_id);
+			reginfoToUpdate.setStatus(2);
+			reginfoDao.updateReginfo(reginfoToUpdate);
+			model.addAttribute("msg", "取消成功！");
+			return "forward:/userReginfo/selectAReginfo?reginfo_id=" + reginfo_id;
+		} catch (Exception e) {
+			model.addAttribute("msg", "取消失败！");
+			return "forward:/userReginfo/selectAReginfo?reginfo_id=" + reginfo_id;
 		}
 	}
 

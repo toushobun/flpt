@@ -48,14 +48,19 @@
 				<td><a
 					href="userReginfo/userToPay?reginfo_id=${reginfo.reginfo_id }&tname=${reginfo.tname }">前往付款</a>&nbsp;
 					<a onclick="return confirmCancelReg();"
-					href="userReginfo/deleteReginfo?reginfo_id=${reginfo.reginfo_id}">取消报名</a>
+					href="userReginfo/cancelReg?reginfo_id=${reginfo.reginfo_id}">取消报名</a>
 				</td>
 			</c:if>
 			<c:if test="${reginfo.status == 1 }">
 				<td><a
-					href="userReginfo/userToChangeRoom?testinfo__room_id=${reginfo.testinfo__room_id }&reginfo_id=${reginfo.reginfo_id }">修改考场</a>&nbsp;
+					href="userReginfo/userToChangeRoom?testinfoRoom_id=${reginfo.testinfoRoom_id }&reginfo_id=${reginfo.reginfo_id }">修改考场</a>&nbsp;
 					<a
 					href="userReginfo/userGetTicket?user_id=${sessionScope.buser.user_id }&testinfo_id=${reginfo.testinfo_id }">生成准考证</a>
+				</td>
+			</c:if>
+			<c:if test="${reginfo.status == 2 }">
+				<td>您已取消该考试的报名，点击此处<a onclick="return confirmDel();"
+					href="userReginfo/deleteReginfo?reginfo_id=${reginfo.reginfo_id }">删除</a>！
 				</td>
 			</c:if>
 		</tr>

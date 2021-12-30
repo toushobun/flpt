@@ -60,8 +60,8 @@
 					<c:if test="${reginfo.status==3 }">
 						<td>支付超时</td>
 					</c:if>
-					<td><a onclick="return confirmDel();"
-						href="userReginfo/deleteReginfo?reginfo_id=${reginfo.reginfo_id }">查看详情</a>&nbsp;
+					<td><a
+						href="userReginfo/selectAReginfo?user_id=${sessionScope.buser.user_id }&testinfo_id=${testinfo.testinfo_id }">查看详情</a>&nbsp;
 						<a onclick="return confirmDel();"
 						href="userReginfo/deleteReginfo?reginfo_id=${reginfo.reginfo_id }">删除</a></td>
 				</tr>

@@ -35,6 +35,11 @@ public class UserReginfoController extends BaseUserController {
 		return userReginfoService.selectAReginfo(reginfo, model);
 	}
 
+	@RequestMapping("/cancelReg")
+	public String cancelReg(Integer reginfo_id, Model model) {
+		return userReginfoService.cancelReg(reginfo_id, model);
+	}
+
 	@RequestMapping("/searchReginfo")
 	public String searchReginfo(Reginfo reginfo, Model model) {
 		return userReginfoService.searchReginfo(reginfo, model);
