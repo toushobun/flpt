@@ -22,17 +22,22 @@ public class UserTestinfoServiceImpl implements UserTestinfoService {
 	private ReginfoDao reginfoDao;
 
 	@Override
-	public String selectTestinfo(Model model) {
-		// TODO 判断考生是否报名了此考试，要改为判断是否存在且status不为取消状态，而不是仅仅判断是否存在
+	public String selectTestinfo(Integer user_id, Model model) {
 		List<Testinfo> testinfoList = testinfoDao.selectTestinfoByKwargs(null);
 		Reginfo reginfoToSelect = new Reginfo();
 		for (int i = 0; i < testinfoList.size(); i++) {
+			// 已报名未支付为0，已报名已支付为1，被取消或未报名等情况为2
+			testinfoList.get(i).setStatus(2);
+			reginfoToSelect.setUser_id(user_id);
 			reginfoToSelect.setTestinfo_id((testinfoList.get(i).getTestinfo_id()));
-			// 如果该考生已报名此考试，则为0，否则为1
-			if (reginfoDao.selectReginfoByKwargs(reginfoToSelect).size() > 0) {
-				testinfoList.get(i).setStatus(0);
-			} else {
-				testinfoList.get(i).setStatus(1);
+			List<Reginfo> reginfoList = reginfoDao.selectReginfoByKwargs(reginfoToSelect);
+			Integer status;
+			for (int j = 0; j < reginfoList.size(); j++) {
+				status = reginfoList.get(j).getStatus();
+				if (status == 0 || status == 1) {
+					testinfoList.get(i).setStatus(status);
+					break;
+				}
 			}
 		}
 		model.addAttribute("testinfo", new Testinfo());
@@ -45,12 +50,18 @@ public class UserTestinfoServiceImpl implements UserTestinfoService {
 		List<Testinfo> testinfoList = testinfoDao.selectTestinfoFuzzily(testinfo);
 		Reginfo reginfoToSelect = new Reginfo();
 		for (int i = 0; i < testinfoList.size(); i++) {
+			// 已报名未支付为0，已报名已支付为1，被取消或未报名等情况为2
+			testinfoList.get(i).setStatus(1);
+			reginfoToSelect.setUser_id(testinfo.getUser_id());
 			reginfoToSelect.setTestinfo_id((testinfoList.get(i).getTestinfo_id()));
-			// 如果该考生已报名此考试，则为0，否则为1
-			if (reginfoDao.selectReginfoByKwargs(reginfoToSelect).size() > 0) {
-				testinfoList.get(i).setStatus(0);
-			} else {
-				testinfoList.get(i).setStatus(1);
+			List<Reginfo> reginfoList = reginfoDao.selectReginfoByKwargs(reginfoToSelect);
+			Integer status;
+			for (int j = 0; j < reginfoList.size(); j++) {
+				status = reginfoList.get(j).getStatus();
+				if (status == 0 || status == 1) {
+					testinfoList.get(i).setStatus(status);
+					break;
+				}
 			}
 		}
 		model.addAttribute("testinfo", testinfo);

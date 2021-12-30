@@ -47,11 +47,11 @@
 					<td>${testinfo.test_time }</td>
 					<td>${testinfo.tprice }</td>
 					<td>
-						<c:if test="${testinfo.status == 1 }">
-							<a href="userTestinfoRoom/selectTestinfoRoom?testinfo_id=${testinfo.testinfo_id }">前往报名</a>
+						<c:if test="${testinfo.status == 0 || testinfo.status == 1}">
+							已报名，<a href="userReginfo/selectAReginfo?user_id=${sessionScope.buser.user_id }&testinfo_id=${testinfo.testinfo_id }&status=${testinfo.status }">查看报名信息</a>
 						</c:if>
-						<c:if test="${testinfo.status == 0 }">
-							已报名，<a href="userReginfo/selectAReginfo?user_id=${sessionScope.buser.user_id }&testinfo_id=${testinfo.testinfo_id }">查看报名信息</a>
+						<c:if test="${testinfo.status == 2 }">
+							<a href="userTestinfoRoom/selectTestinfoRoom?testinfo_id=${testinfo.testinfo_id }">前往报名</a>
 						</c:if>
 					</td>
 				</tr>

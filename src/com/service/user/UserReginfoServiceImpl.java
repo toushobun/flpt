@@ -38,15 +38,18 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 
 	@Override
 	public String addReginfo(Reginfo reginfo, Model model) {
-		// TODO 判断考生是否报名了此考试，要改为判断是否存在且status不为取消状态，而不是仅仅判断是否存在
 		try {
-			// 如果该考生已报名此考试，则为0，否则为1
 			Reginfo reginfoToSelect = new Reginfo();
 			reginfoToSelect.setUser_id(reginfo.getUser_id());
 			reginfoToSelect.setTestinfo_id(reginfo.getTestinfo_id());
-			if (reginfoDao.selectReginfoByKwargs(reginfoToSelect).size() > 0) {
-				model.addAttribute("msg", "您已报名！请勿重复操作！");
-				return "forward:/userTestinfo/selectTestinfo";
+			List<Reginfo> reginfoList = reginfoDao.selectReginfoByKwargs(reginfoToSelect);
+			Integer status;
+			for (int i = 0; i < reginfoList.size(); i++) {
+				status = reginfoList.get(i).getStatus();
+				if (status == 0 || status == 1) {
+					model.addAttribute("msg", "您已报名！请勿重复操作！");
+					return "forward:/userTestinfo/selectTestinfo";
+				}
 			}
 			// 年份后两位+绑定ID后三位+考生ID后三位+随机数四位
 			String ticketnum = "";
@@ -75,7 +78,7 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 			reginfo.setStatus(0);
 			reginfoDao.addReginfo(reginfo);
 			model.addAttribute("msg", "报名成功！");
-			return "forward:/userTestinfo/selectTestinfo";
+			return "forward:/userReginfo/selectReginfo?user_id=" + reginfo.getUser_id();
 		} catch (Exception e) {
 			model.addAttribute("msg", "报名失败！");
 			return "forward:/userTestinfo/selectTestinfo";
@@ -83,30 +86,29 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 	}
 
 	@Override
-	public String deleteReginfo(Integer reginfo_id, Model model) {
+	public String deleteReginfo(Reginfo reginfo, Model model) {
+		// TODO 删除时如果该报名信息可用，需要增加对应考场名额
 		try {
-			reginfoDao.deleteReginfoByReginfo_id(reginfo_id);
+			reginfoDao.deleteReginfoByReginfo_id(reginfo.getReginfo_id());
 			model.addAttribute("msg", "删除成功！");
-			return "forward:/userCenter/center";
+			return "forward:/userReginfo/selectReginfo?user_id=" + reginfo.getUser_id();
 		} catch (Exception e) {
 			model.addAttribute("msg", "删除失败！");
-			return "forward:/userCenter/center";
+			return "forward:/userReginfo/selectReginfo?user_id=" + reginfo.getUser_id();
 		}
 	}
 
 	@Override
-	public String cancelReg(Integer reginfo_id, Model model) {
-		// TODO Auto-generated method stub
+	public String cancelReg(Reginfo reginfo, Model model) {
+		// TODO 取消报名要增加对应考场名额
 		try {
-			Reginfo reginfoToUpdate = new Reginfo();
-			reginfoToUpdate.setReginfo_id(reginfo_id);
-			reginfoToUpdate.setStatus(2);
-			reginfoDao.updateReginfo(reginfoToUpdate);
+			reginfo.setStatus(2);
+			reginfoDao.updateReginfo(reginfo);
 			model.addAttribute("msg", "取消成功！");
-			return "forward:/userReginfo/selectAReginfo?reginfo_id=" + reginfo_id;
+			return "forward:/userReginfo/selectReginfo?user_id=" + reginfo.getUser_id();
 		} catch (Exception e) {
 			model.addAttribute("msg", "取消失败！");
-			return "forward:/userReginfo/selectAReginfo?reginfo_id=" + reginfo_id;
+			return "forward:/userReginfo/selectReginfo?user_id=" + reginfo.getUser_id();
 		}
 	}
 

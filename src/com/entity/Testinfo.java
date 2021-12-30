@@ -12,6 +12,7 @@ public class Testinfo {
 	private String tname; // 考试名
 	private String tsubject; // 考试科目
 	private String torganizer; // 主考单位
+	private Integer user_id; // 考生id
 	// ----------报名用----------
 	private Integer status; // 考生选择考场时判断是否已报名该考试
 
@@ -86,6 +87,14 @@ public class Testinfo {
 
 	public void setTorganizer(String torganizer) {
 		this.torganizer = torganizer;
+	}
+
+	public Integer getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(Integer user_id) {
+		this.user_id = user_id;
 	}
 
 	public Integer getStatus() {

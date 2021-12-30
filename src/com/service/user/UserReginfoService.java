@@ -10,9 +10,9 @@ public interface UserReginfoService {
 
 	public String addReginfo(Reginfo reginfo, Model model); // 查询全部考试信息
 
-	public String deleteReginfo(Integer reginfo_id, Model model); // 通过id删除准考证
+	public String deleteReginfo(Reginfo reginfo, Model model); // 通过id删除准考证
 
-	public String cancelReg(Integer reginfo_id, Model model); // 取消报名
+	public String cancelReg(Reginfo reginfo, Model model); // 取消报名
 
 	public String selectAReginfo(Reginfo reginfo, Model model); // 查询一个准考证
 

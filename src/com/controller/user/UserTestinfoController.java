@@ -16,8 +16,8 @@ public class UserTestinfoController extends BaseUserController {
 	UserTestinfoService userTestinfoService;
 
 	@RequestMapping("/selectTestinfo")
-	public String selectTestinfo(Model model) {
-		return userTestinfoService.selectTestinfo(model);
+	public String selectTestinfo(Integer user_id, Model model) {
+		return userTestinfoService.selectTestinfo(user_id, model);
 	}
 
 	@RequestMapping("/searchTestinfo")

@@ -48,7 +48,7 @@
 				<td><a
 					href="userReginfo/userToPay?reginfo_id=${reginfo.reginfo_id }&tname=${reginfo.tname }">前往付款</a>&nbsp;
 					<a onclick="return confirmCancelReg();"
-					href="userReginfo/cancelReg?reginfo_id=${reginfo.reginfo_id}">取消报名</a>
+					href="userReginfo/cancelReg?reginfo_id=${reginfo.reginfo_id }&user_id=${sessionScope.buser.user_id }">取消报名</a>
 				</td>
 			</c:if>
 			<c:if test="${reginfo.status == 1 }">

@@ -26,8 +26,8 @@ public class UserReginfoController extends BaseUserController {
 	}
 
 	@RequestMapping("/deleteReginfo")
-	public String deleteReginfo(Integer reginfo_id, Model model) {
-		return userReginfoService.deleteReginfo(reginfo_id, model);
+	public String deleteReginfo(Reginfo reginfo, Model model) {
+		return userReginfoService.deleteReginfo(reginfo, model);
 	}
 
 	@RequestMapping("/selectAReginfo")
@@ -36,8 +36,8 @@ public class UserReginfoController extends BaseUserController {
 	}
 
 	@RequestMapping("/cancelReg")
-	public String cancelReg(Integer reginfo_id, Model model) {
-		return userReginfoService.cancelReg(reginfo_id, model);
+	public String cancelReg(Reginfo reginfo, Model model) {
+		return userReginfoService.cancelReg(reginfo, model);
 	}
 
 	@RequestMapping("/searchReginfo")

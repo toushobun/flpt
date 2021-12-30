@@ -6,7 +6,7 @@ import com.entity.Testinfo;
 
 public interface UserTestinfoService {
 
-	public String selectTestinfo(Model model); // 查询全部考试信息
+	public String selectTestinfo(Integer user_id, Model model); // 查询全部考试信息
 
 	public String searchTestinfo(Testinfo testinfo, Model model); // 模糊搜索
 
