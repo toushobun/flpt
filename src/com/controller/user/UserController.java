@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.entity.Buser;
-import com.entity.Notice;
 import com.service.user.UserService;
 
 @Controller
@@ -41,16 +40,6 @@ public class UserController {
 	@RequestMapping("/user/register")
 	public String register(Buser buser, HttpServletRequest request, Model model, HttpSession session, String code) {
 		return userService.register(buser, request, model, session, code);
-	}
-
-	@RequestMapping("/user/selectNotice")
-	public String userSelectNotice(Model model) {
-		return userService.userSelectNotice(model);
-	}
-
-	@RequestMapping("/user/selectANotice")
-	public String userSelectANotice(Notice notice, Model model) {
-		return userService.userSelectANotice(notice, model);
 	}
 
 	@RequestMapping("/user/exit")

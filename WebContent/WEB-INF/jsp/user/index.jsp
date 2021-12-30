@@ -21,7 +21,7 @@
 	<ul>
 		<li>欢迎光临中国外国语能力考试报名网</li>
 		<li><a href="userTestinfo/selectTestinfo?user_id=${sessionScope.buser.user_id }" target="center">报名考试</a></li>
-		<li><a href="user/SelectNotice" target="center">查看公告</a></li>
+		<li><a href="userNotice/selectNotice" target="center">查看公告</a></li>
 		<c:if test="${sessionScope.buser != null }">
 			<li><a>考生：${sessionScope.buser.uname }</a>
 				<ul>

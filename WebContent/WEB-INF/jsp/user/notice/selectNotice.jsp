@@ -33,9 +33,7 @@
 					<td>${notice.ntitle }</td>
 					<td>${notice.ntime }</td>
 					<td><a
-						href="adminNotice/selectANotice?notice_id=${notice.notice_id }">详情</a>&nbsp;<a
-						onclick="return confirmDel();"
-						href="adminNotice/deleteNotice?notice_id=${notice.notice_id }">删除</a>
+						href="userNotice/selectANotice?notice_id=${notice.notice_id }">详情</a>
 					</td>
 				</tr>
 			</c:forEach>

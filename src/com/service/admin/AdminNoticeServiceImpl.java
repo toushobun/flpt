@@ -20,7 +20,6 @@ public class AdminNoticeServiceImpl implements AdminNoticeService {
 	@Override
 	public String selectNotice(Model model) {
 		List<Notice> noticeList = noticeDao.selectNoticeByKwargs(null);
-		model.addAttribute("notice", new Notice());
 		model.addAttribute("noticeList", noticeList);
 		return "admin/notice/selectNotice";
 	}
