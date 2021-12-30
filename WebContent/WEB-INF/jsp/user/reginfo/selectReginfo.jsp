@@ -22,7 +22,10 @@
 	<form:form id="searchForm" action="userReginfo/searchReginfo"
 		method="post" modelAttribute="reginfo">
 		<form:input path="tname" placeholder="输入考试名" value="${reginfo.tname }" />
+		<form:input path="uname" placeholder="输入考生姓名"
+			value="${reginfo.uname }" />
 		<form:input path="rname" placeholder="输入考点名" value="${reginfo.rname }" />
+		<form:checkboxes path="statuss" items="${statuss}" />
 		<input type="submit" value="搜索" />
 		<input type="button" value="清空" onclick="emptyInput('searchForm');" />
 	</form:form>

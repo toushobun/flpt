@@ -72,16 +72,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		testinfoRoom.testinfo_id = testinfotable.testinfo_id and
 		testinfotable.test_id = testtable.test_id and ""=""
 		<if test="reginfo_id != null">
-			and concat(reginfo_id) like concat('%',#{reginfo_id},'%')
+			and reginfo_id = #{reginfo_id}
 		</if>
-		<if test="tname != null">
-			and concat(tname) like concat('%',#{tname},'%')
+		<if test="user_id != null">
+			and reginfotable.user_id = #{user_id}
 		</if>
-		<if test="uname != null">
-			and concat(uname) like concat('%',#{uname},'%')
+		<if test="testinfoRoom_id != null">
+			and reginfotable.testinfoRoom_id = #{testinfoRoom_id}
 		</if>
-		<if test="rname != null">
-			and concat(rname) like concat('%',#{rname},'%')
+		<if test="ticketnum != null">
+			and ticketnum = #{ticketnum}
+		</if>
+		<if test="status != null">
+			and reginfotable.status = #{status}
+		</if>
+		<if test="submit_time != null">
+			and reginfotable.submit_time = #{submit_time}
+		</if>
+		<if test="testinfo_id != null">
+			and testinfotable.testinfo_id = #{testinfo_id}
 		</if>
 	</select>
 </mapper>

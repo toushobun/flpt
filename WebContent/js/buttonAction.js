@@ -12,6 +12,8 @@ function emptyInput(id) {
 			myForm.elements[i].value = "";
 		} else if (myForm.elements[i].type == "select-one") {
 			myForm.elements[i].options[0].selected = true;
+		} else if (myForm.elements[i].type == "checkbox") {
+			myForm.elements[i].checked = false;
 		}
 	}
 }

@@ -25,10 +25,11 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 
 	@Override
 	public String selectReginfo(Integer user_id, Model model) {
-		// TODO Auto-generated method stub
 		Reginfo reginfoToSelect = new Reginfo();
 		reginfoToSelect.setUser_id(user_id);
 		List<Reginfo> reginfoList = reginfoDao.selectReginfoByKwargs(reginfoToSelect);
+		String[] statuss = { "未支付", "已支付", "已取消", "已超时" };
+		model.addAttribute("statuss", statuss);
 		model.addAttribute("reginfo", new Reginfo());
 		model.addAttribute("reginfoList", reginfoList);
 		return "user/reginfo/selectReginfo";
@@ -95,7 +96,6 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 
 	@Override
 	public String selectAReginfo(Reginfo reginfo, Model model) {
-		// TODO Auto-generated method stub
 		reginfo = reginfoDao.selectReginfoByKwargs(reginfo).get(0);
 		model.addAttribute("reginfo", reginfo);
 		return "user/reginfo/selectAReginfo";

@@ -1,5 +1,6 @@
 package com.service.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,9 @@ public class AdminReginfoServiceImpl implements AdminReginfoService {
 
 	@Override
 	public String selectReginfo(Model model) {
-		// TODO 对报名信息状态进行处理
 		List<Reginfo> reginfoList = reginfoDao.selectReginfoByKwargs(null);
+		String[] statuss = { "未支付", "已支付", "已取消", "已超时" };
+		model.addAttribute("statuss", statuss);
 		model.addAttribute("reginfo", new Reginfo());
 		model.addAttribute("reginfoList", reginfoList);
 		return "admin/reginfo/selectReginfo";
@@ -41,7 +43,26 @@ public class AdminReginfoServiceImpl implements AdminReginfoService {
 
 	@Override
 	public String searchReginfo(Reginfo reginfo, Model model) {
-		List<Reginfo> reginfoList = reginfoDao.selectReginfoFuzzily(reginfo);
+		List<Reginfo> reginfoList = new ArrayList<Reginfo>();
+		List<Reginfo> reginfoSelectList = new ArrayList<Reginfo>();
+		String[] statuss = reginfo.getStatuss();
+		for (int i = 0; i < statuss.length; i++) {
+			if ("未支付".equals(statuss[i])) {
+				reginfo.setStatus(0);
+			} else if ("已支付".equals(statuss[i])) {
+				reginfo.setStatus(1);
+			} else if ("已取消".equals(statuss[i])) {
+				reginfo.setStatus(2);
+			} else if ("已超时".equals(statuss[i])) {
+				reginfo.setStatus(3);
+			}
+			reginfoSelectList = reginfoDao.selectReginfoFuzzily(reginfo);
+			for (int j = 0; j < reginfoSelectList.size(); j++) {
+				reginfoList.add(reginfoSelectList.get(j));
+			}
+		}
+		String[] statussNew = { "未支付", "已支付", "已取消", "已超时" };
+		model.addAttribute("statuss", statussNew);
 		model.addAttribute("reginfo", reginfo);
 		model.addAttribute("reginfoList", reginfoList);
 		return "admin/reginfo/selectReginfo";

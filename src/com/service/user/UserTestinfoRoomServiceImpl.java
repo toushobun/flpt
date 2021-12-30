@@ -35,7 +35,6 @@ public class UserTestinfoRoomServiceImpl implements UserTestinfoRoomService {
 				date1 = sf.parse(testinfoRoom.getRegist_start_time()); // 获取报名开始时间
 				date2 = sf.parse(testinfoRoom.getRegist_end_time()); // 获取报名截止时间
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			Date date = new Date(); // 获取当前系统时间

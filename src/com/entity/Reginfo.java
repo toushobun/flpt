@@ -17,6 +17,7 @@ public class Reginfo {
 	private String test_time; // 考试时间
 	private String rname; // 考场名
 	private String raddress; // 考场地址
+	private String[] statuss; // 搜索筛选的状态列表
 	// ----------换考场用----------
 	private Integer oldTestinfoRoom_id; // 旧考场的id
 
@@ -130,6 +131,14 @@ public class Reginfo {
 
 	public void setRaddress(String raddress) {
 		this.raddress = raddress;
+	}
+
+	public String[] getStatuss() {
+		return statuss;
+	}
+
+	public void setStatuss(String[] statuss) {
+		this.statuss = statuss;
 	}
 
 	public Integer getOldTestinfoRoom_id() {
