@@ -46,7 +46,6 @@ public class AdminRoomServiceImpl implements AdminRoomService {
 
 	@Override
 	public String deleteRoom(Integer room_id, Model model) {
-		// TODO 删除考场前确认至少要留一个考场
 		try {
 			roomDao.deleteRoomByRoom_id(room_id);
 			model.addAttribute("msg", "删除成功！");

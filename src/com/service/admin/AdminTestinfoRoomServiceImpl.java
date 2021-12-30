@@ -74,6 +74,12 @@ public class AdminTestinfoRoomServiceImpl implements AdminTestinfoRoomService {
 	@Override
 	public String cancelRoom(TestinfoRoom testinfoRoom, Model model) {
 		try {
+			TestinfoRoom testinfoRoomToSelect = new TestinfoRoom();
+			testinfoRoomToSelect.setTestinfo_id(testinfoRoom.getTestinfo_id());
+			if (testinfoRoomDao.selectTestinfoRoomByKwargs(testinfoRoomToSelect).size() < 2) {
+				model.addAttribute("msg", "取消失败！至少要保留一个考场！");
+				return "forward:/adminTestinfoRoom/selectTestinfoRoom?testinfo_id=" + testinfoRoom.getTestinfo_id();
+			}
 			Reginfo reginfoToSelect = new Reginfo();
 			reginfoToSelect.setTestinfoRoom_id(testinfoRoom.getTestinfoRoom_id());
 			List<Reginfo> reginfoList = reginfoDao.selectReginfoByKwargs(reginfoToSelect);
@@ -81,7 +87,7 @@ public class AdminTestinfoRoomServiceImpl implements AdminTestinfoRoomService {
 			for (int i = 0; i < reginfoList.size(); i++) {
 				reginfoDao.deleteReginfoByReginfo_id(reginfoList.get(i).getReginfo_id());
 			}
-			// 再遍历删除所有考场
+			// 再删除考场
 			testinfoRoomDao.deleteTestinfoRoomByTestinfoRoom_id(testinfoRoom.getTestinfoRoom_id());
 			model.addAttribute("msg", "取消成功！");
 			return "forward:/adminTestinfoRoom/selectTestinfoRoom?testinfo_id=" + testinfoRoom.getTestinfo_id();
