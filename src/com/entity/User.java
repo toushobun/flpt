@@ -2,7 +2,7 @@ package com.entity;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class Buser {
+public class User {
 
 	private Integer user_id; // 考生id
 	private String uidnum; // 身份证号码

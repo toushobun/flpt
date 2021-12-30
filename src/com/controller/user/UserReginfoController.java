@@ -30,6 +30,11 @@ public class UserReginfoController extends BaseUserController {
 		return userReginfoService.deleteReginfo(reginfo_id, model);
 	}
 
+	@RequestMapping("/toChangeRoom")
+	public String toChangeRoom(Integer reginfo_id, Model model) {
+		return userReginfoService.toChangeRoom(reginfo_id, model);
+	}
+
 	@RequestMapping("/cancelReg")
 	public String cancelReg(Integer reginfo_id, Model model) {
 		return userReginfoService.cancelReg(reginfo_id, model);
@@ -43,6 +48,21 @@ public class UserReginfoController extends BaseUserController {
 	@RequestMapping("/searchReginfo")
 	public String searchReginfo(Reginfo reginfo, Model model) {
 		return userReginfoService.searchReginfo(reginfo, model);
+	}
+
+	@RequestMapping("/toPay")
+	public String toPay(Reginfo reginfo, Model model) {
+		return userReginfoService.toPay(reginfo, model);
+	}
+
+	@RequestMapping("/pay")
+	public String pay(Reginfo reginfo, Model model) {
+		return userReginfoService.pay(reginfo, model);
+	}
+
+	@RequestMapping("/createTicket")
+	public String createTicket(Integer reginfo_id, Model model) {
+		return userReginfoService.createTicket(reginfo_id, model);
 	}
 
 }

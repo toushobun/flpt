@@ -29,7 +29,7 @@
 <body>
 	<h1>考生注册</h1>
 	<form:form action="user/register" method="post"
-		onsubmit="return checkBuser(this);" modelAttribute="buser"
+		onsubmit="return checkUser(this);" modelAttribute="user"
 		enctype="multipart/form-data">
 		<table>
 			<tr>

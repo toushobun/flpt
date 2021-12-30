@@ -19,18 +19,18 @@
 <script src="js/postConfirm.js" type="text/javascript"></script>
 </head>
 <body>
-	<form:form id="searchForm" action="adminBuser/searchBuser"
-		method="post" modelAttribute="buser">
-		<form:input path="uname" placeholder="输入考生姓名" value="${buser.uname }" />
+	<form:form id="searchForm" action="adminUser/searchUser"
+		method="post" modelAttribute="user">
+		<form:input path="uname" placeholder="输入考生姓名" value="${user.uname }" />
 		<form:input path="uidnum" placeholder="输入考生证件"
-			value="${buser.uidnum }" />
+			value="${user.uidnum }" />
 		<input type="submit" value="搜索" />
 		<input type="button" value="清空" onclick="emptyInput('searchForm');" />
 	</form:form>
-	<c:if test="${buserList.size() == 0 }">
+	<c:if test="${userList.size() == 0 }">
 		未查询到结果
 	</c:if>
-	<c:if test="${buserList.size() != 0 }">
+	<c:if test="${userList.size() != 0 }">
 		<table id="table">
 			<tr>
 				<th width="30%">照片</th>
@@ -39,17 +39,17 @@
 				<th width="20%">密码</th>
 				<th width="10%">操作</th>
 			</tr>
-			<c:forEach items="${buserList }" var="buser">
+			<c:forEach items="${userList }" var="user">
 				<tr>
-					<td><c:if test="${buser.uidphoto != '' }">
+					<td><c:if test="${user.uidphoto != '' }">
 							<img alt="" width="100" height="100"
-								src="logos/${buser.uidphoto}" />
+								src="logos/${user.uidphoto}" />
 						</c:if></td>
-					<td>${buser.uname }</td>
-					<td>${buser.uidnum }</td>
-					<td>${buser.upwd }</td>
+					<td>${user.uname }</td>
+					<td>${user.uidnum }</td>
+					<td>${user.upwd }</td>
 					<td><a onclick="return confirmDel();"
-						href="adminBuser/deleteBuser?user_id=${buser.user_id }">删除</a></td>
+						href="adminUser/deleteUser?user_id=${user.user_id }">删除</a></td>
 				</tr>
 			</c:forEach>
 		</table>

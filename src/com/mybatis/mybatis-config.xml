@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<typeAliases>
 		<typeAlias alias="Auser" type="com.entity.Auser" />
-		<typeAlias alias="Buser" type="com.entity.Buser" />
+		<typeAlias alias="User" type="com.entity.User" />
 		<typeAlias alias="Notice" type="com.entity.Notice" />
 		<typeAlias alias="Reginfo" type="com.entity.Reginfo" />
 		<typeAlias alias="Room" type="com.entity.Room" />
@@ -16,8 +16,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	</typeAliases>
 	<mappers>
 		<mapper resource="com/mybatis/AdminMapper.xml" />
-		<mapper resource="com/mybatis/BuserMapper.xml" />
-		<mapper resource="com/mybatis/CenterMapper.xml" />
+		<mapper resource="com/mybatis/UserMapper.xml" />
 		<mapper resource="com/mybatis/NoticeMapper.xml" />
 		<mapper resource="com/mybatis/ReginfoMapper.xml" />
 		<mapper resource="com/mybatis/RoomMapper.xml" />

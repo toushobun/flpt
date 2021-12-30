@@ -19,24 +19,24 @@
 	<table>
 		<tr>
 			<td><img alt="" width="250" height="250"
-				src="logos/${sessionScope.buser.uidphoto}" /></td>
+				src="logos/${sessionScope.user.uidphoto}" /></td>
 		</tr>
 		<tr>
 			<th>考生姓名</th>
-			<td>${sessionScope.buser.uname }</td>
+			<td>${sessionScope.user.uname }</td>
 		</tr>
 		<tr>
 			<th>身份证号</th>
-			<td>${sessionScope.buser.uidnum }</td>
+			<td>${sessionScope.user.uidnum }</td>
 		</tr>
 		<tr>
 			<th>操作</th>
 			<td><a
-				href="userReginfo/selectReginfo?user_id=${sessionScope.buser.user_id }">查看全部报名信息</a>
-				<a href="userCenter/toUpdatePwd">修改照片</a>&nbsp;<a
-				href="userCenter/toUpdatePwd">修改密码</a>&nbsp;<a
+				href="userReginfo/selectReginfo?user_id=${sessionScope.user.user_id }">查看全部报名信息</a>&nbsp;<a
+				href="userCenter/toUpdateUidphoto?user_id=${sessionScope.user.user_id }">修改照片</a>&nbsp;<a
+				href="userCenter/toUpdateUwd?user_id=${sessionScope.user.user_id }">修改密码</a>&nbsp;<a
 				onclick="return checkDelDouble();"
-				href="userCenter/deleteUser?id=${sessionScope.buser.user_id }">销毁用户</a>
+				href="userCenter/deleteUser?id=${sessionScope.user.user_id }">销毁用户</a>
 			</td>
 		</tr>
 	</table>

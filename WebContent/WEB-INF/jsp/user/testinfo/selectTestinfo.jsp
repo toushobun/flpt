@@ -48,7 +48,7 @@
 					<td>${testinfo.tprice }</td>
 					<td>
 						<c:if test="${testinfo.status == 0 || testinfo.status == 1}">
-							已报名，<a href="userReginfo/selectAReginfo?user_id=${sessionScope.buser.user_id }&testinfo_id=${testinfo.testinfo_id }&status=${testinfo.status }">查看报名信息</a>
+							已报名，<a href="userReginfo/selectAReginfo?user_id=${sessionScope.user.user_id }&testinfo_id=${testinfo.testinfo_id }&status=${testinfo.status }">查看报名信息</a>
 						</c:if>
 						<c:if test="${testinfo.status == 2 }">
 							<a href="userTestinfoRoom/selectTestinfoRoom?testinfo_id=${testinfo.testinfo_id }">前往报名</a>

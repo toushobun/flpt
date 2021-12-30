@@ -44,7 +44,7 @@
 			</ul></li>
 		<li><label>考生用户管理</label>
 			<ul>
-				<li><a href="adminBuser/selectBuser" target="center">考生列表</a></li>
+				<li><a href="adminUser/selectUser" target="center">考生列表</a></li>
 			</ul></li>
 		<li><label>报名信息管理</label>
 			<ul>

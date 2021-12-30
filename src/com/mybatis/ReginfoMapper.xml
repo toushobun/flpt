@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectReginfoByKwargs" resultType="Reginfo"
 		parameterType="Reginfo">
 		select * from
-		reginfotable,busertable,testinfoRoom,roomtable,testinfotable,testtable
-		where reginfotable.user_id=busertable.user_id and
+		reginfotable,usertable,testinfoRoom,roomtable,testinfotable,testtable
+		where reginfotable.user_id=usertable.user_id and
 		reginfotable.testinfoRoom_id=testinfoRoom.testinfoRoom_id and
 		testinfoRoom.room_id=roomtable.room_id and
 		testinfoRoom.testinfo_id = testinfotable.testinfo_id and
@@ -65,8 +65,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectReginfoFuzzily" resultType="Reginfo"
 		parameterType="Reginfo">
 		select * from
-		reginfotable,busertable,testinfoRoom,roomtable,testinfotable,testtable
-		where reginfotable.user_id=busertable.user_id and
+		reginfotable,usertable,testinfoRoom,roomtable,testinfotable,testtable
+		where reginfotable.user_id=usertable.user_id and
 		reginfotable.testinfoRoom_id=testinfoRoom.testinfoRoom_id and
 		testinfoRoom.room_id=roomtable.room_id and
 		testinfoRoom.testinfo_id = testinfotable.testinfo_id and
@@ -75,7 +75,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			and concat(reginfotable.reginfo_id) like concat('%',#{reginfo_id},'%')
 		</if>
 		<if test="user_id != null">
-			and concat(busertable.user_id) like concat('%',#{user_id},'%')
+			and concat(usertable.user_id) like concat('%',#{user_id},'%')
 		</if>
 		<if test="testinfoRoom_id != null">
 			and concat(testinfoRoom_id) like concat('%',#{testinfoRoom_id},'%')

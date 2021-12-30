@@ -17,7 +17,7 @@ public class BaseUserController {
 	 */
 	@ModelAttribute
 	public void isLogin(HttpSession session, HttpServletRequest request) throws UserLoginNoException {
-		if (session.getAttribute("buser") == null) {
+		if (session.getAttribute("user") == null) {
 			throw new UserLoginNoException("Ã»ÓÐµÇÂ¼");
 		}
 	}

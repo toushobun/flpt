@@ -66,12 +66,12 @@
 						<td><a
 							href="userReginfo/selectAReginfo?reginfo_id=${reginfo.reginfo_id }">查看详情</a>&nbsp;
 							<a onclick="return confirmDel();"
-							href="userReginfo/deleteReginfo?reginfo_id=${reginfo.reginfo_id }&user_id=${sessionScope.buser.user_id }">删除</a></td>
+							href="userReginfo/deleteReginfo?reginfo_id=${reginfo.reginfo_id }&user_id=${sessionScope.user.user_id }">删除</a></td>
 					</c:if>
 
 					<c:if test="${reginfo.status==2 || reginfo.status==3 }">
 						<td><a onclick="return confirmDel();"
-							href="userReginfo/deleteReginfo?reginfo_id=${reginfo.reginfo_id }&user_id=${sessionScope.buser.user_id }">删除</a></td>
+							href="userReginfo/deleteReginfo?reginfo_id=${reginfo.reginfo_id }&user_id=${sessionScope.user.user_id }">删除</a></td>
 					</c:if>
 				</tr>
 			</c:forEach>

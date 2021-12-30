@@ -9,7 +9,7 @@ function checkTestinfo(f) {
 	return confirm(mssg)
 }
 
-function checkBuser(f) {
+function checkUser(f) {
 	if (f.uidnum.value == "") {
 		alert("身份证号码不能为空！");
 		return false;

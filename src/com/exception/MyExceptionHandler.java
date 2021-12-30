@@ -10,7 +10,7 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.entity.Auser;
-import com.entity.Buser;
+import com.entity.User;
 
 public class MyExceptionHandler implements HandlerExceptionResolver {
 
@@ -26,7 +26,7 @@ public class MyExceptionHandler implements HandlerExceptionResolver {
 			arg0.setAttribute("msg", "Ã»ÓÐµÇÂ¼£¬ÇëµÇÂ¼£¡");
 			return new ModelAndView("/admin/login", model);
 		} else if (arg3 instanceof UserLoginNoException) {
-			arg0.setAttribute("buser", new Buser());
+			arg0.setAttribute("user", new User());
 			arg0.setAttribute("msg", "Ã»ÓÐµÇÂ¼£¬ÇëµÇÂ¼£¡");
 			return new ModelAndView("/user/login", model);
 		} else {

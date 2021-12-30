@@ -108,6 +108,12 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 	}
 
 	@Override
+	public String toChangeRoom(Integer reginfo_id, Model model) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public String cancelReg(Integer reginfo_id, Model model) {
 		Reginfo reginfoToSelect = new Reginfo();
 		reginfoToSelect.setReginfo_id(reginfo_id);
@@ -166,6 +172,24 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 		model.addAttribute("reginfo", reginfo);
 		model.addAttribute("reginfoList", reginfoList);
 		return "user/reginfo/selectReginfo";
+	}
+
+	@Override
+	public String toPay(Reginfo reginfo, Model model) {
+		// TODO 前往付款页
+		return null;
+	}
+
+	@Override
+	public String pay(Reginfo reginfo, Model model) {
+		// TODO 付款
+		return null;
+	}
+
+	@Override
+	public String createTicket(Integer reginfo_id, Model model) {
+		// TODO 生成准考证
+		return null;
 	}
 
 }

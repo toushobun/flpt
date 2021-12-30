@@ -25,10 +25,10 @@
 			<td>${reginfo.ticketnum }</td>
 		<tr>
 			<td>考生姓名</td>
-			<td>${sessionScope.buser.uname }</td>
+			<td>${sessionScope.user.uname }</td>
 		<tr>
 			<td>证件号码</td>
-			<td>${sessionScope.buser.uidnum }</td>
+			<td>${sessionScope.user.uidnum }</td>
 		<tr>
 			<td>考试名称</td>
 			<td>${reginfo.tname }</td>
@@ -48,14 +48,14 @@
 				<td><a
 					href="userReginfo/userToPay?reginfo_id=${reginfo.reginfo_id }&tname=${reginfo.tname }">前往付款</a>&nbsp;
 					<a onclick="return confirmCancelReg();"
-					href="userReginfo/cancelReg?reginfo_id=${reginfo.reginfo_id }&user_id=${sessionScope.buser.user_id }">取消报名</a>
+					href="userReginfo/cancelReg?reginfo_id=${reginfo.reginfo_id }&user_id=${sessionScope.user.user_id }">取消报名</a>
 				</td>
 			</c:if>
 			<c:if test="${reginfo.status == 1 }">
 				<td><a
-					href="userReginfo/userToChangeRoom?testinfoRoom_id=${reginfo.testinfoRoom_id }&reginfo_id=${reginfo.reginfo_id }">修改考场</a>&nbsp;
+					href="userReginfo/toChangeRoom?reginfo_id=${reginfo.reginfo_id }">修改考场</a>&nbsp;
 					<a
-					href="userReginfo/userGetTicket?user_id=${sessionScope.buser.user_id }&testinfo_id=${reginfo.testinfo_id }">生成准考证</a>
+					href="userReginfo/createTicket?reginfo_id=${reginfo.reginfo_id }">生成准考证</a>
 				</td>
 			</c:if>
 			<c:if test="${reginfo.status == 2 }">

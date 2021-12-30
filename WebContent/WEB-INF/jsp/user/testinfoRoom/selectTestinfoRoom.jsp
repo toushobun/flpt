@@ -33,7 +33,7 @@
 				<td>${testinfoRoom.rtelnum }</td>
 				<td>
 					<c:if test="${testinfoRoom.status == 1 }">
-						<a href="userReginfo/addReginfo?testinfoRoom_id=${testinfoRoom.testinfoRoom_id }&user_id=${sessionScope.buser.user_id }&testinfo_id=${testinfoRoom.testinfo_id }">报名</a>
+						<a href="userReginfo/addReginfo?testinfoRoom_id=${testinfoRoom.testinfoRoom_id }&user_id=${sessionScope.user.user_id }&testinfo_id=${testinfoRoom.testinfo_id }">报名</a>
 					</c:if>
 					<c:if test="${testinfoRoom.status == -1 }">
 						名额已满

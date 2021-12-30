@@ -25,7 +25,7 @@
 </script>
 <body>
 	<h1>考生登录</h1>
-	<form:form action="user/login" modelAttribute="buser" method="post">
+	<form:form action="user/login" modelAttribute="user" method="post">
 		<table>
 			<tr>
 				<td>证件号：</td>
