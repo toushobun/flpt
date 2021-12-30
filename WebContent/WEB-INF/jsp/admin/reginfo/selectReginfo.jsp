@@ -38,10 +38,10 @@
 				<th width="20%">考试名称</th>
 				<th width="10%">考生姓名</th>
 				<th width="10%">准考证号</th>
-				<th width="10%">身份证号</th>
 				<th width="15%">考点名称</th>
 				<th width="15%">考试时间</th>
 				<th width="10%">报名状态</th>
+				<th width="10%">报名时间</th>
 				<th width="10%">操作</th>
 			</tr>
 			<c:forEach items="${reginfoList }" var="reginfo">
@@ -49,7 +49,6 @@
 					<td>${reginfo.tname }</td>
 					<td>${reginfo.uname }</td>
 					<td>${reginfo.ticketnum }</td>
-					<td>${reginfo.uidnum }</td>
 					<td>${reginfo.rname }</td>
 					<td>${reginfo.test_time }</td>
 					<c:if test="${reginfo.status == 0 }">
@@ -64,6 +63,7 @@
 					<c:if test="${reginfo.status == 3 }">
 						<td>已超时</td>
 					</c:if>
+					<td>${reginfo.submit_time }</td>
 					<td><a onclick="return confirmDel();"
 						href="adminReginfo/deleteReginfo?reginfo_id=${reginfo.reginfo_id }">删除</a></td>
 				</tr>

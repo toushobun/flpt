@@ -86,8 +86,17 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 	}
 
 	@Override
-	public String deleteReginfo(Reginfo reginfo, Model model) {
-		// TODO 删除时如果该报名信息可用，需要增加对应考场名额
+	public String deleteReginfo(Integer reginfo_id, Model model) {
+		Reginfo reginfoToSelect = new Reginfo();
+		reginfoToSelect.setReginfo_id(reginfo_id);
+		Reginfo reginfo = reginfoDao.selectReginfoByKwargs(reginfoToSelect).get(0);
+		if (reginfo.getStatus() == 0 || reginfo.getStatus() == 1) {
+			TestinfoRoom testinfoRoomToUpdate = new TestinfoRoom();
+			testinfoRoomToUpdate.setTestinfoRoom_id(reginfo.getTestinfoRoom_id());
+			Integer rquota = testinfoRoomDao.selectTestinfoRoomByKwargs(testinfoRoomToUpdate).get(0).getRquota();
+			testinfoRoomToUpdate.setRquota(rquota + 1);
+			testinfoRoomDao.updateTestinfoRoom(testinfoRoomToUpdate);
+		}
 		try {
 			reginfoDao.deleteReginfoByReginfo_id(reginfo.getReginfo_id());
 			model.addAttribute("msg", "删除成功！");
@@ -99,8 +108,17 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 	}
 
 	@Override
-	public String cancelReg(Reginfo reginfo, Model model) {
-		// TODO 取消报名要增加对应考场名额
+	public String cancelReg(Integer reginfo_id, Model model) {
+		Reginfo reginfoToSelect = new Reginfo();
+		reginfoToSelect.setReginfo_id(reginfo_id);
+		Reginfo reginfo = reginfoDao.selectReginfoByKwargs(reginfoToSelect).get(0);
+		if (reginfo.getStatus() == 0 || reginfo.getStatus() == 1) {
+			TestinfoRoom testinfoRoomToUpdate = new TestinfoRoom();
+			testinfoRoomToUpdate.setTestinfoRoom_id(reginfo.getTestinfoRoom_id());
+			Integer rquota = testinfoRoomDao.selectTestinfoRoomByKwargs(testinfoRoomToUpdate).get(0).getRquota();
+			testinfoRoomToUpdate.setRquota(rquota + 1);
+			testinfoRoomDao.updateTestinfoRoom(testinfoRoomToUpdate);
+		}
 		try {
 			reginfo.setStatus(2);
 			reginfoDao.updateReginfo(reginfo);

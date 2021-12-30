@@ -35,11 +35,12 @@
 	<c:if test="${reginfoList.size() != 0 }">
 		<table id="table">
 			<tr>
-				<th width="20%">考试名称</th>
-				<th width="15%">准考证号</th>
-				<th width="20%">考点名称</th>
+				<th width="10%">考试名称</th>
+				<th width="10%">准考证号</th>
+				<th width="10%">考点名称</th>
 				<th width="20%">考试时间</th>
 				<th width="10%">报名状态</th>
+				<th width="20%">报名时间</th>
 				<th width="15%">操作</th>
 			</tr>
 			<c:forEach items="${reginfoList }" var="reginfo">
@@ -60,6 +61,7 @@
 					<c:if test="${reginfo.status==3 }">
 						<td>支付超时</td>
 					</c:if>
+					<td>${reginfo.submit_time }</td>
 					<c:if test="${reginfo.status==0 || reginfo.status==1 }">
 						<td><a
 							href="userReginfo/selectAReginfo?reginfo_id=${reginfo.reginfo_id }">查看详情</a>&nbsp;

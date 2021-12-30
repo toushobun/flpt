@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import com.dao.ReginfoDao;
+import com.dao.TestinfoRoomDao;
 import com.entity.Reginfo;
+import com.entity.TestinfoRoom;
 
 @Service("adminReginfoService")
 @Transactional
@@ -17,6 +19,9 @@ public class AdminReginfoServiceImpl implements AdminReginfoService {
 
 	@Autowired
 	private ReginfoDao reginfoDao;
+
+	@Autowired
+	private TestinfoRoomDao testinfoRoomDao;
 
 	@Override
 	public String selectReginfo(Model model) {
@@ -30,8 +35,17 @@ public class AdminReginfoServiceImpl implements AdminReginfoService {
 
 	@Override
 	public String deleteReginfo(Integer reginfo_id, Model model) {
-		// TODO 如果删除的是考生取消以外状态的报名信息，则需要增加对应考场的名额
 		try {
+			Reginfo reginfoToSelect = new Reginfo();
+			reginfoToSelect.setReginfo_id(reginfo_id);
+			Reginfo reginfo = reginfoDao.selectReginfoByKwargs(reginfoToSelect).get(0);
+			if (reginfo.getStatus() == 0 || reginfo.getStatus() == 1) {
+				TestinfoRoom testinfoRoomToUpdate = new TestinfoRoom();
+				testinfoRoomToUpdate.setTestinfoRoom_id(reginfo.getTestinfoRoom_id());
+				Integer rquota = testinfoRoomDao.selectTestinfoRoomByKwargs(testinfoRoomToUpdate).get(0).getRquota();
+				testinfoRoomToUpdate.setRquota(rquota + 1);
+				testinfoRoomDao.updateTestinfoRoom(testinfoRoomToUpdate);
+			}
 			reginfoDao.deleteReginfoByReginfo_id(reginfo_id);
 			model.addAttribute("msg", "删除成功！");
 			return "forward:/adminReginfo/selectReginfo";
