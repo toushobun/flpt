@@ -13,15 +13,15 @@
 <base href="<%=basePath%>">
 <title>Insert title here</title>
 <link href="css/user.css" type="text/css" rel="stylesheet">
-<script src="js/colorControl.js" type="text/javascript"></script>
 <script src="js/buttonAction.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
 <script src="js/postConfirm.js" type="text/javascript"></script>
+<script src="js/colorControl.js" type="text/javascript"></script>
 </head>
 <body>
 	<table id="table">
 		<tr>
-			<td>考生编号</td>
+			<td>准考证号</td>
 			<td>${reginfo.ticketnum }</td>
 		<tr>
 			<td>考生姓名</td>

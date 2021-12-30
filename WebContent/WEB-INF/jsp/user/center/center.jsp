@@ -1,19 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <base href="<%=basePath%>">
 <title>Insert title here</title>
 <script src="js/formCheck.js" type="text/javascript"></script>
-<link href="css/before.css" rel="stylesheet" type="text/css">
+<script src="js/buttonAction.js" type="text/javascript"></script>
+<script src="js/formCheck.js" type="text/javascript"></script>
+<script src="js/postConfirm.js" type="text/javascript"></script>
 </head>
 <body>
 	<table>
@@ -35,8 +37,8 @@
 				href="userReginfo/selectReginfo?user_id=${sessionScope.user.user_id }">查看全部报名信息</a>&nbsp;<a
 				href="userCenter/toUpdateUidphoto?user_id=${sessionScope.user.user_id }">修改照片</a>&nbsp;<a
 				href="userCenter/toUpdateUwd?user_id=${sessionScope.user.user_id }">修改密码</a>&nbsp;<a
-				onclick="return checkDelDouble();"
-				href="userCenter/deleteUser?id=${sessionScope.user.user_id }">销毁用户</a>
+				onclick="return confirmDelDouble();"
+				href="userCenter/deleteUser?user_id=${sessionScope.user.user_id }">销毁用户</a>
 			</td>
 		</tr>
 	</table>

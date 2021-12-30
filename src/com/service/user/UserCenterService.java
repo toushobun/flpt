@@ -1,5 +1,7 @@
 package com.service.user;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.ui.Model;
 
 import com.entity.User;
@@ -14,6 +16,6 @@ public interface UserCenterService {
 
 	public String updateUpwd(User user, Model model);
 
-	public String deleteUser(Integer user_id, Model model);
+	public String deleteUser(Integer user_id, Model model, HttpSession session);
 
 }

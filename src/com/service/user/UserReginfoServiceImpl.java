@@ -109,7 +109,7 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 
 	@Override
 	public String toChangeRoom(Integer reginfo_id, Model model) {
-		// TODO Auto-generated method stub
+		// TODO ÐÞ¸Ä¿¼³¡
 		return null;
 	}
 

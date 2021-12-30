@@ -1,5 +1,7 @@
 package com.controller.user;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +23,8 @@ public class UserCenterController extends BaseUserController {
 	}
 
 	@RequestMapping("/deleteUser")
-	public String deleteUser(Integer user_id, Model model) {
-		return userCenterService.deleteUser(user_id, model);
+	public String deleteUser(Integer user_id, Model model, HttpSession session) {
+		return userCenterService.deleteUser(user_id, model, session);
 	}
 
 	@RequestMapping("/toUpdateUidphoto")
