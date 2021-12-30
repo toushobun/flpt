@@ -43,6 +43,16 @@ public class UserTestinfoServiceImpl implements UserTestinfoService {
 	@Override
 	public String searchTestinfo(Testinfo testinfo, Model model) {
 		List<Testinfo> testinfoList = testinfoDao.selectTestinfoFuzzily(testinfo);
+		Reginfo reginfoToSelect = new Reginfo();
+		for (int i = 0; i < testinfoList.size(); i++) {
+			reginfoToSelect.setTestinfo_id((testinfoList.get(i).getTestinfo_id()));
+			// 如果该考生已报名此考试，则为0，否则为1
+			if (reginfoDao.selectReginfoByKwargs(reginfoToSelect).size() > 0) {
+				testinfoList.get(i).setStatus(0);
+			} else {
+				testinfoList.get(i).setStatus(1);
+			}
+		}
 		model.addAttribute("testinfo", testinfo);
 		model.addAttribute("testinfoList", testinfoList);
 		return "user/testinfo/selectTestinfo";

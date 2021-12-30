@@ -1,5 +1,6 @@
 package com.service.user;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,7 +104,30 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 
 	@Override
 	public String searchReginfo(Reginfo reginfo, Model model) {
-		List<Reginfo> reginfoList = reginfoDao.selectReginfoFuzzily(reginfo);
+		List<Reginfo> reginfoList = new ArrayList<Reginfo>();
+		List<Reginfo> reginfoSelectList = new ArrayList<Reginfo>();
+		String[] statuss = reginfo.getStatuss();
+		if (statuss.length == 0) {
+			reginfoList = reginfoDao.selectReginfoFuzzily(reginfo);
+		} else {
+			for (int i = 0; i < statuss.length; i++) {
+				if ("未支付".equals(statuss[i])) {
+					reginfo.setStatus(0);
+				} else if ("已支付".equals(statuss[i])) {
+					reginfo.setStatus(1);
+				} else if ("已取消".equals(statuss[i])) {
+					reginfo.setStatus(2);
+				} else if ("已超时".equals(statuss[i])) {
+					reginfo.setStatus(3);
+				}
+				reginfoSelectList = reginfoDao.selectReginfoFuzzily(reginfo);
+				for (int j = 0; j < reginfoSelectList.size(); j++) {
+					reginfoList.add(reginfoSelectList.get(j));
+				}
+			}
+		}
+		String[] statussNew = { "未支付", "已支付", "已取消", "已超时" };
+		model.addAttribute("statuss", statussNew);
 		model.addAttribute("reginfo", reginfo);
 		model.addAttribute("reginfoList", reginfoList);
 		return "user/reginfo/selectReginfo";

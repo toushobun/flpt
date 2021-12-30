@@ -27,6 +27,7 @@
 		<form:input path="torganizer" placeholder="主考单位"
 			value="${test.torganizer }" />
 		<form:select path="status">
+			<form:option value="" label="是否发布"/>
 			<form:option value="1" label="是"/>
 			<form:option value="0" label="否"/>
 		</form:select>

@@ -72,25 +72,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		testinfoRoom.testinfo_id = testinfotable.testinfo_id and
 		testinfotable.test_id = testtable.test_id and ""=""
 		<if test="reginfo_id != null">
-			and reginfo_id = #{reginfo_id}
+			and concat(reginfotable.reginfo_id) like concat('%',#{reginfo_id},'%')
 		</if>
 		<if test="user_id != null">
-			and reginfotable.user_id = #{user_id}
+			and concat(busertable.user_id) like concat('%',#{user_id},'%')
 		</if>
 		<if test="testinfoRoom_id != null">
-			and reginfotable.testinfoRoom_id = #{testinfoRoom_id}
+			and concat(testinfoRoom_id) like concat('%',#{testinfoRoom_id},'%')
 		</if>
 		<if test="ticketnum != null">
-			and ticketnum = #{ticketnum}
+			and concat(ticketnum) like concat('%',#{ticketnum},'%')
 		</if>
 		<if test="status != null">
-			and reginfotable.status = #{status}
+			and concat(reginfotable.status) like concat('%',#{status},'%')
 		</if>
 		<if test="submit_time != null">
-			and reginfotable.submit_time = #{submit_time}
+			and concat(submit_time) like concat('%',#{submit_time},'%')
 		</if>
 		<if test="testinfo_id != null">
-			and testinfotable.testinfo_id = #{testinfo_id}
+			and concat(testinfotable.testinfo_id) like concat('%',#{testinfo_id},'%')
+		</if>
+		<if test="tname != null">
+			and concat(tname) like concat('%',#{tname},'%')
+		</if>
+		<if test="uname != null">
+			and concat(uname) like concat('%',#{uname},'%')
+		</if>
+		<if test="rname != null">
+			and concat(rname) like concat('%',#{rname},'%')
 		</if>
 	</select>
 </mapper>
