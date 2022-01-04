@@ -1,5 +1,6 @@
 package com.controller.user;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,8 @@ public class UserCenterController extends BaseUserController {
 	}
 
 	@RequestMapping("/updateIdphoto")
-	public String updateIdphoto(User user, Model model, HttpSession session) {
-		return userCenterService.updateIdphoto(user, model, session);
+	public String updateIdphoto(User user, HttpServletRequest request, Model model, HttpSession session) {
+		return userCenterService.updateIdphoto(user, request, model, session);
 	}
 
 	@RequestMapping("/toUpdatePwd")

@@ -32,5 +32,8 @@ function checkIdphoto(f) {
 	if (f.logoImage.value == "") {
 		alert("请上传您的照片！");
 		return false;
+	} else if (!/\.(gif|jpg|jpeg|png|GIF|JPG|PNG)$/.test(f.logoImage.value)) {
+		alert("图片类型必须是.gif,jpeg,jpg,png中的一种");
+		return false;
 	}
 }
