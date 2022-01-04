@@ -10,7 +10,7 @@ import com.service.user.UserNoticeService;
 
 @Controller
 @RequestMapping("/userNotice")
-public class UserNoticeController extends BaseUserController {
+public class UserNoticeController {
 
 	@Autowired
 	UserNoticeService userNoticeService;
