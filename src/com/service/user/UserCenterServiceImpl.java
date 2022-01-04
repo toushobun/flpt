@@ -31,27 +31,36 @@ public class UserCenterServiceImpl implements UserCenterService {
 	}
 
 	@Override
-	public String toUpdateUidphoto(Integer user_id, Model model) {
-		// TODO 前往更新照片
-		return null;
-	}
-
-	@Override
-	public String updateUidphoto(User user, Model model) {
+	public String updateIdphoto(User user, Model model, HttpSession session) {
 		// TODO 更新照片
+		User userToSelect = new User();
+		userToSelect.setUser_id(user.getUser_id());
+
+		session.setAttribute("user", userDao.selectUserByKwargs(userToSelect).get(0));
 		return null;
 	}
 
 	@Override
-	public String toUpdateUpwd(Integer user_id, Model model) {
-		// TODO 前往更新密码
-		return null;
-	}
-
-	@Override
-	public String updateUpwd(User user, Model model) {
-		// TODO 更新密码
-		return null;
+	public String updatePwd(User user, Model model, HttpSession session) {
+		try {
+			User userToSelect = new User();
+			userToSelect.setUser_id(user.getUser_id());
+			// 查找原密码
+			String oldPwd = userDao.selectUserByKwargs(userToSelect).get(0).getUpwd();
+			if (oldPwd.equals(user.getUpwd())) { // 判断该考生原密码是否与输入的考生密码相符
+				user.setUpwd(user.getNewUpwd()); // 如果相符则将输入的“新密码”覆盖原密码
+				userDao.updateUser(user); // 并写入数据库
+				model.addAttribute("msg", "密码修改成功！");
+				session.setAttribute("user", userDao.selectUserByKwargs(userToSelect).get(0));
+				return "user/center/center";
+			} else {
+				model.addAttribute("msg", "密码错误！");
+				return "user/center/center";
+			}
+		} catch (Exception e) {
+			model.addAttribute("msg", "修改失败！");
+			return "user/center/updatePwd";
+		}
 	}
 
 }

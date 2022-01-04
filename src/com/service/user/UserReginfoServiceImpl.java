@@ -175,21 +175,27 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 	}
 
 	@Override
-	public String toPay(Reginfo reginfo, Model model) {
-		// TODO 前往付款页
-		return null;
+	public String toPay(Integer reginfo_id, Model model) {
+		model.addAttribute("reginfo_id", reginfo_id);
+		return "user/reginfo/pay";
 	}
 
 	@Override
-	public String pay(Reginfo reginfo, Model model) {
-		// TODO 付款
-		return null;
+	public String pay(Integer reginfo_id, Model model) {
+		Reginfo reginfoToUpdate = new Reginfo();
+		reginfoToUpdate.setReginfo_id(reginfo_id);
+		reginfoToUpdate.setStatus(1);
+		reginfoDao.updateReginfo(reginfoToUpdate);
+		model.addAttribute("msg", "支付成功！");
+		return "forward:/userReginfo/selectReginfo";
 	}
 
 	@Override
 	public String createTicket(Integer reginfo_id, Model model) {
-		// TODO 生成准考证
-		return null;
+		Reginfo reginfoToSelect = new Reginfo();
+		reginfoToSelect.setReginfo_id(reginfo_id);
+		model.addAttribute("reginfo", reginfoDao.selectReginfoByKwargs(reginfoToSelect).get(0));
+		return "user/reginfo/ticket";
 	}
 
 }

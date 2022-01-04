@@ -27,24 +27,24 @@ public class UserCenterController extends BaseUserController {
 		return userCenterService.deleteUser(user_id, model, session);
 	}
 
-	@RequestMapping("/toUpdateUidphoto")
-	public String toUpdateUidphoto(Integer user_id, Model model) {
-		return userCenterService.toUpdateUidphoto(user_id, model);
+	@RequestMapping("/toUpdateIdphoto")
+	public String toUpdateIdphoto(User user) {
+		return "user/center/updateIdphoto";
 	}
 
-	@RequestMapping("/updateUidphoto")
-	public String updateUidphoto(User user, Model model) {
-		return userCenterService.updateUidphoto(user, model);
+	@RequestMapping("/updateIdphoto")
+	public String updateIdphoto(User user, Model model, HttpSession session) {
+		return userCenterService.updateIdphoto(user, model, session);
 	}
 
-	@RequestMapping("/toUpdateUpwd")
-	public String toUpdateUpwd(Integer user_id, Model model) {
-		return userCenterService.toUpdateUpwd(user_id, model);
+	@RequestMapping("/toUpdatePwd")
+	public String toUpdatePwd(User user) {
+		return "user/center/updatePwd";
 	}
 
-	@RequestMapping("/updateUpwd")
-	public String updateUpwd(User user, Model model) {
-		return userCenterService.updateUpwd(user, model);
+	@RequestMapping("/updatePwd")
+	public String updatePwd(User user, Model model, HttpSession session) {
+		return userCenterService.updatePwd(user, model, session);
 	}
 
 }

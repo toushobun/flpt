@@ -20,9 +20,9 @@ public interface UserReginfoService {
 
 	public String searchReginfo(Reginfo reginfo, Model model); // 模糊搜索
 
-	public String toPay(Reginfo reginfo, Model model); // 前往付款页
+	public String toPay(Integer reginfo_id, Model model); // 前往付款页
 
-	public String pay(Reginfo reginfo, Model model); // 付款
+	public String pay(Integer reginfo_id, Model model); // 付款
 
 	public String createTicket(Integer reginfo_id, Model model); // 生成准考证
 

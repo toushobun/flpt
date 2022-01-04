@@ -51,13 +51,13 @@ public class UserReginfoController extends BaseUserController {
 	}
 
 	@RequestMapping("/toPay")
-	public String toPay(Reginfo reginfo, Model model) {
-		return userReginfoService.toPay(reginfo, model);
+	public String toPay(Integer reginfo_id, Model model) {
+		return userReginfoService.toPay(reginfo_id, model);
 	}
 
 	@RequestMapping("/pay")
-	public String pay(Reginfo reginfo, Model model) {
-		return userReginfoService.pay(reginfo, model);
+	public String pay(Integer reginfo_id, Model model) {
+		return userReginfoService.pay(reginfo_id, model);
 	}
 
 	@RequestMapping("/createTicket")

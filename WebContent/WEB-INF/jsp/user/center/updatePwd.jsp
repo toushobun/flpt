@@ -18,30 +18,30 @@
 <script src="js/postConfirm.js" type="text/javascript"></script>
 </head>
 <body>
-	<table>
-		<tr>
-			<td><img alt="" width="250" height="250"
-				src="logos/${sessionScope.user.uidphoto}" /></td>
-		</tr>
-		<tr>
-			<th>考生姓名</th>
-			<td>${sessionScope.user.uname }</td>
-		</tr>
-		<tr>
-			<th>身份证号</th>
-			<td>${sessionScope.user.uidnum }</td>
-		</tr>
-		<tr>
-			<th>操作</th>
-			<td><a
-				href="userReginfo/selectReginfo?user_id=${sessionScope.user.user_id }">查看全部报名信息</a>&nbsp;<a
-				href="userCenter/toUpdateIdphoto">修改照片</a>&nbsp;<a
-				href="userCenter/toUpdatePwd">修改密码</a>&nbsp;<a
-				onclick="return confirmDelDouble();"
-				href="userCenter/deleteUser?user_id=${sessionScope.user.user_id }">销毁用户</a>
-			</td>
-		</tr>
-	</table>
+	<form:form action="userCenter/updatePwd" method="post"
+		modelAttribute="user">
+		<table>
+			<caption>修改密码</caption>
+			<form:hidden path="user_id" value="${sessionScope.user.user_id}" />
+			<tr>
+				<td>原密码<font color="red">*</font></td>
+				<td><input type="password" name="upwd" /></td>
+			</tr>
+			<tr>
+				<td>新密码<font color="red">*</font></td>
+				<td><input type="password" /></td>
+			</tr>
+			<tr>
+				<td>再次输入密码<font color="red">*</font></td>
+				<td><input type="password" name="newUpwd" /></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td style="text-align: right"><input type="submit" value="提交" />
+				</td>
+			</tr>
+		</table>
+	</form:form>
 	<c:if test="${msg != null }">
 		<script type="text/javascript">
 			alert("${msg}");
