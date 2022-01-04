@@ -35,6 +35,11 @@ public class UserReginfoController extends BaseUserController {
 		return userReginfoService.toChangeRoom(reginfo_id, model);
 	}
 
+	@RequestMapping("/changeRoom")
+	public String changeRoom(Reginfo reginfo, Model model) {
+		return userReginfoService.changeRoom(reginfo, model);
+	}
+
 	@RequestMapping("/cancelReg")
 	public String cancelReg(Integer reginfo_id, Model model) {
 		return userReginfoService.cancelReg(reginfo_id, model);

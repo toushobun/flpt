@@ -12,7 +12,9 @@ public interface UserReginfoService {
 
 	public String deleteReginfo(Integer reginfo_id, Model model); // 通过id删除准考证
 
-	public String toChangeRoom(Integer reginfo_id, Model model); // 修改考场
+	public String toChangeRoom(Integer reginfo_id, Model model); // 前往修改考场页
+
+	public String changeRoom(Reginfo reginfo, Model model); // 修改考场
 
 	public String cancelReg(Integer reginfo_id, Model model); // 取消报名
 
