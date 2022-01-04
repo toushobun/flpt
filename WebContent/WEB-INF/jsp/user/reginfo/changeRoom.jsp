@@ -31,20 +31,16 @@
 				<td>${testinfoRoom.rname }</td>
 				<td>${testinfoRoom.raddress }</td>
 				<td>${testinfoRoom.rtelnum }</td>
-				<td>
-					<c:if test="${testinfoRoom.status == 1 }">
-						<a href="userReginfo/changeRoom?testinfoRoom_id=${testinfoRoom.testinfoRoom_id }&reginfo_id=${reginfo_id }">报名</a>
-					</c:if>
-					<c:if test="${testinfoRoom.status == -1 }">
+				<td><c:if test="${testinfoRoom.status == 1 }">
+						<a onclick="return confirmChange();"
+							href="userReginfo/changeRoom?testinfoRoom_id=${testinfoRoom.testinfoRoom_id }&reginfo_id=${reginfo_id }">报名</a>
+					</c:if> <c:if test="${testinfoRoom.status == -1 }">
 						名额已满
-					</c:if>
-					<c:if test="${testinfoRoom.status == -2 }">
+					</c:if> <c:if test="${testinfoRoom.status == -2 }">
 						不在报名时间
-					</c:if>
-					<c:if test="${testinfoRoom.status == -3 }">
+					</c:if> <c:if test="${testinfoRoom.status == -3 }">
 						当前考场
-					</c:if>
-				</td>
+					</c:if></td>
 			</tr>
 		</c:forEach>
 	</table>

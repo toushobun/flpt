@@ -1,5 +1,11 @@
 // JavaScript Document
 
+function confirmChange() {
+	if (!confirm("确认要修改？")) {
+		window.event.returnValue = false;
+	}
+}
+
 function confirmCancelReg() {
 	if (!confirm("确认要取消报名？")) {
 		window.event.returnValue = false;

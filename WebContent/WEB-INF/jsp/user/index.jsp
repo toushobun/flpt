@@ -17,30 +17,36 @@
 <script src="js/formCheck.js" type="text/javascript"></script>
 <script src="js/postConfirm.js" type="text/javascript"></script>
 </head>
-<body>
-	<ul>
-		<li>欢迎光临中国外国语能力考试报名网</li>
-		<li><a href="userTestinfo/selectTestinfo?user_id=${sessionScope.user.user_id }" target="center">报名考试</a></li>
-		<li><a href="userNotice/selectNotice" target="center">查看公告</a></li>
-		<c:if test="${sessionScope.user != null }">
-			<li><a>考生：${sessionScope.user.uname }</a>
-				<ul>
-					<li><a href="userCenter/center" target="center">个人中心</a></li>
-					<li><a href="user/exit">安全退出</a></li>
-				</ul></li>
-		</c:if>
-		<c:if test="${sessionScope.user == null }">
-			<li><a href="user/toRegister">注册</a></li>
-			<li><a href="user/toLogin">登录</a></li>
-		</c:if>
-	</ul>
-	<%-- <c:if test="${sessionScope.user != null }">
-		<iframe src="userCenter/center" name="center" frameborder="0"></iframe>
-	</c:if>
-	<c:if test="${sessionScope.user == null }">
-		<iframe src="selectNotice" name="center" frameborder="0"></iframe>
-	</c:if> --%>
-	©版权属于大连外国语大学18级软件7班邓淞文
+<body id="mainBody">
+	<div id="container">
+		<div id="header"></div>
+		<div id="navigator">
+			<ul>
+				<li id="headline">欢迎光临中国外国语能力考试报名网</li>
+				<li class="l"><a
+					href="userTestinfo/selectTestinfo?user_id=${sessionScope.user.user_id }"
+					target="center">报名考试</a></li>
+				<li class="l"><a href="userNotice/selectNotice" target="center">查看公告</a></li>
+				<c:if test="${sessionScope.user != null }">
+					<li class="r"><a href="user/exit">安全退出</a></li>
+					<li class="r"><a href="userCenter/center" target="center">个人中心</a></li>
+				</c:if>
+				<c:if test="${sessionScope.user == null }">
+					<li class="r"><a href="user/toRegister">注册</a></li>
+					<li class="r"><a href="user/toLogin">登录</a></li>
+				</c:if>
+			</ul>
+		</div>
+		<div id="content">
+			<c:if test="${sessionScope.user != null }">
+				<iframe src="userCenter/center" name="center"></iframe>
+			</c:if>
+			<c:if test="${sessionScope.user == null }">
+				<iframe src="userNotice/selectNotice" name="center"></iframe>
+			</c:if>
+		</div>
+		<div id="footer">©版权属于大连外国语大学18级软件7班邓淞文</div>
+	</div>
 	<c:if test="${msg != null }">
 		<script type="text/javascript">
 			alert("${msg}");

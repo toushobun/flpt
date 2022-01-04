@@ -18,13 +18,11 @@
 <script src="js/formCheck.js" type="text/javascript"></script>
 <script src="js/postConfirm.js" type="text/javascript"></script>
 </head>
-<script type="text/javascript">
-	if (window.top.location.href != location.href) {
-		window.top.location.href = location.href;
-	}
-	function refreshCode() {
-		document.getElementById("code").src = "validateCode?" + Math.random();
-	}
+<script>
+        //登陆判断父页面是否跳转到登录页 
+       if (window.top!=null && window.top.document.URL!=document.URL){
+     		window.top.location= document.URL;
+     	}
 </script>
 <body>
 	<h1>考生注册</h1>

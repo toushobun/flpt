@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.entity.Auser;
 import com.entity.User;
 
 public class MyExceptionHandler implements HandlerExceptionResolver {
@@ -21,8 +20,6 @@ public class MyExceptionHandler implements HandlerExceptionResolver {
 		model.put("ex", arg3);
 		// 根据不同错误转向不同页面
 		if (arg3 instanceof AdminLoginNoException) {
-			// 登录页面需要auser对象
-			arg0.setAttribute("auser", new Auser());
 			arg0.setAttribute("msg", "没有登录，请登录！");
 			return new ModelAndView("/admin/login", model);
 		} else if (arg3 instanceof UserLoginNoException) {

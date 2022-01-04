@@ -17,11 +17,11 @@
 <script src="js/buttonAction.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
 <script src="js/postConfirm.js" type="text/javascript"></script>
-</head>
-<script type="text/javascript">
-	if (window.top.location.href != location.href) {
-		window.top.location.href = location.href;
-	}
+</head><script>
+        //登陆判断父页面是否跳转到登录页 
+       if (window.top!=null && window.top.document.URL!=document.URL){
+     		window.top.location= document.URL;
+     	}
 </script>
 <body>
 	<h1>考生登录</h1>
@@ -50,10 +50,6 @@
 			</tr>
 		</table>
 	</form:form>
-	<c:if test="${msg != null }">
-		<script type="text/javascript">
-			alert("${msg}");
-		</script>
-	</c:if>
+	${msg }
 </body>
 </html>
