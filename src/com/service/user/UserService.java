@@ -9,7 +9,7 @@ import com.entity.User;
 
 public interface UserService {
 
-	public String login(User user, Model model, HttpSession session);
+	public String login(User user, Model model, HttpSession session, String code);
 
 	public String register(User user, HttpServletRequest request, Model model, HttpSession session, String code);
 

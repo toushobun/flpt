@@ -28,8 +28,8 @@ public class UserController {
 	}
 
 	@RequestMapping("/user/login")
-	public String login(User user, Model model, HttpSession session) {
-		return userService.login(user, model, session);
+	public String login(User user, Model model, HttpSession session, String code) {
+		return userService.login(user, model, session, code);
 	}
 
 	@RequestMapping("/user/toRegister")

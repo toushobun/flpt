@@ -23,7 +23,11 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 
 	@Override
-	public String login(User user, Model model, HttpSession session) {
+	public String login(User user, Model model, HttpSession session, String code) {
+		if (!code.equalsIgnoreCase(session.getAttribute("code").toString())) {
+			model.addAttribute("msg", "ÑéÖ¤Âë´íÎó£¡");
+			return "user/login";
+		}
 		List<User> userList = userDao.selectUserByKwargs(user);
 		if (userList.size() > 0) {
 			session.setAttribute("user", userList.get(0));
