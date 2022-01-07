@@ -1,85 +1,128 @@
 * {
-	margin: 0px;
-	padding: 0px;
+    margin: 0px;
+    padding: 0px;
+    font-family: "Microsoft YaHei";
+    font-size: 15px;
 }
 
-html, body {
-	height: 100%;
+html,
+body {
+    height: 100%;
 }
 
 #mainBody {
-	background-image: url("../img/bg1.png");
-	background-size: 100%;
+    background-image: url("../img/bg1.png");
+    background-size: 100%;
 }
 
 #container {
-	width: 1000px;
-	margin: 0px auto;
-	display: flex;
-	flex-direction: column;
-	height: 100%;
+    width: 80%;
+    margin: 0px auto;
+    height: 100%;
 }
 
-#navigator {
-	flex: 0 0 auto;
-	background-color: #3A68BA;
-	color: #FFF;
-	text-shadow: 1px 1px 1px #053889;
-	height: 40px;
+#header {
+    background-color: #404040;
+    color: #FFF;
+    text-shadow: 1px 1px 1px #000000;
+    height: 30px;
 }
 
-#navigator ul {
-	list-style-type: none;
+#header ul {
+    list-style-type: none;
 }
 
-#navigator li {
-	float: left;
+#header li {
+    float: left;
 }
 
 #headline {
-	padding: 9px 25px;
+    padding: 5px 20px;
 }
 
-#navigator .l {
-	float: left;
+#header .l {
+    float: left;
 }
 
-#navigator .r {
-	float: right;
+#header .r {
+    float: right;
 }
 
-#navigator a {
-	padding: 9px 20px;
-	color: #FFF;
-	text-decoration: none;
-	display: block;
+#header a {
+    padding: 5px 20px;
+    color: #FFF;
+    text-decoration: none;
+    display: block;
 }
 
-#navigator a:hover {
-	background-color: #053889;
+#header a:hover {
+    background-color: #c4c4c4;
+}
+
+#navigator {
+    height: 25px;
+    width: 100%;
+    font-size: 14px;
+    background-color: #404040;
+}
+
+#navigator ul {
+    list-style-type: none;
+}
+
+#navigator li {
+    float: left;
+    position: relative;
+}
+
+#selectbar li a {
+    color: #ffffff;
+    text-decoration: none;
+    padding-top: 4px;
+    display: block;
+    width: 98px;
+    height: 22px;
+    text-align: center;
+    background-color: #404040;
+}
+
+#selectbar li a:hover {
+    background-color: #c4c4c4;
+}
+
+#selectbar ul li ul {
+    visibility: hidden;
+    position: absolute;
+}
+
+#selectbar ul li:hover ul,
+#selectbar ul a:hover ul {
+    visibility: visible;
 }
 
 #content {
-	flex: 1 0 auto;
-	background-image: url("../img/bg2.png");
-	background-size: 100%;
+    background-image: url("../img/bg2.png");
+    background-size: 100%;
+    height: 500px;
 }
 
 #content iframe {
-	width: 100%;
-	height: 100%;
+    border: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+#logo {
+    background-image: url("../img/1.png");
+    background-size: 100% 100%;
+    width: 100%;
+    height: 250px;
 }
 
 #footer {
-	flex: 0 0 auto;
-	background-color: #3A68BA;
-	color: #FFF;
-	text-shadow: 1px 1px 1px #053889;
-	padding: 8px;
-	text-align: center;
-}
-
-#content {
-	background-image: url("../img/bg2.png");
-	background-size: 100%;
+    background-color: #404040;
+    color: #FFF;
+    text-shadow: 1px 1px 1px #053889;
+    padding: 5px 20px;
+    text-align: center;
 }

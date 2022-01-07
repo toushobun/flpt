@@ -19,23 +19,74 @@
 </head>
 <body id="mainBody">
 	<div id="container">
-		<div id="header"></div>
-		<div id="navigator">
+		<div id="header">
 			<ul>
 				<li id="headline">欢迎光临中国外国语能力考试报名网</li>
-				<li class="l"><a
-					href="userTestinfo/selectTestinfo?user_id=${sessionScope.user.user_id }"
-					target="center">报名考试</a></li>
-				<li class="l"><a href="userNotice/selectNotice" target="center">查看公告</a></li>
 				<c:if test="${sessionScope.user != null }">
-					<li class="r"><a href="user/exit">安全退出</a></li>
-					<li class="r"><a href="userCenter/center" target="center">个人中心</a></li>
+					<li class="r">
+						<div id="headline">
+							<div id="selectbar">
+								<ul>
+									<li><a>考生：${sessionScope.user.uname }</a>
+										<ul>
+											<li><a href="user/exit" target="center">退出登录</a></li>
+										</ul></li>
+								</ul>
+							</div>
+						</div>
+					</li>
 				</c:if>
 				<c:if test="${sessionScope.user == null }">
 					<li class="r"><a href="user/toRegister">注册</a></li>
 					<li class="r"><a href="user/toLogin">登录</a></li>
 				</c:if>
 			</ul>
+		</div>
+		<div id="logo"></div>
+		<div id="navigator">
+			<div id="selectbar">
+				<ul>
+					<li><a>考试概况</a>
+						<ul>
+							<li><a
+								href="userTestinfo/selectTestinfo?user_id=${sessionScope.user.user_id }"
+								target="center">考试查询</a></li>
+							<li><a
+								href="userTestinfo/selectTestinfo?user_id=${sessionScope.user.user_id }"
+								target="center">考试报名</a></li>
+						</ul></li>
+				</ul>
+				<ul>
+					<li><a>报名详情</a>
+						<ul>
+							<li><a
+								href="userTestinfo/selectTestinfo?user_id=${sessionScope.user.user_id }"
+								target="center">报名步骤</a></li>
+							<li><a
+								href="userTestinfo/selectTestinfo?user_id=${sessionScope.user.user_id }"
+								target="center">考生须知</a></li>
+						</ul></li>
+				</ul>
+				<ul>
+					<li><a href="userNotice/selectNotice" target="center">查看公告</a></li>
+				</ul>
+				<ul>
+					<li><a>个人中心</a>
+						<ul>
+							<li><a
+								href="userTestinfo/selectTestinfo?user_id=${sessionScope.user.user_id }"
+								target="center">报名记录</a></li>
+							<li><a
+								href="userTestinfo/selectTestinfo?user_id=${sessionScope.user.user_id }"
+								target="center">修改照片</a></li>
+							<li><a
+								href="userTestinfo/selectTestinfo?user_id=${sessionScope.user.user_id }"
+								target="center">修改密码</a></li>
+							<li><a
+								href="userTestinfo/selectTestinfo?user_id=${sessionScope.user.user_id }">退出登录</a></li>
+						</ul></li>
+				</ul>
+			</div>
 		</div>
 		<div id="content">
 			<c:if test="${sessionScope.user != null }">

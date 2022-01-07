@@ -19,9 +19,10 @@
 <script src="js/colorControl.js" type="text/javascript"></script>
 </head>
 <body>
-	<form:form id="searchForm" action="userTestinfo/searchTestinfo" method="post"
-		modelAttribute="testinfo">
-		<form:input path="tname" placeholder="输入考试名" value="${testinfo.tname }" />
+	<form:form id="searchForm" action="userTestinfo/searchTestinfo"
+		method="post" modelAttribute="testinfo">
+		<form:input path="tname" placeholder="输入考试名"
+			value="${testinfo.tname }" />
 		<form:input path="tsubject" placeholder="输入考试科目"
 			value="${testinfo.tsubject }" />
 		<input type="submit" value="搜索" />
@@ -46,22 +47,22 @@
 					<td>${testinfo.tsubject }</td>
 					<td>${testinfo.test_time }</td>
 					<td>${testinfo.tprice }</td>
-					<td>
-						<c:if test="${testinfo.status == 0 || testinfo.status == 1}">
-							已报名，<a href="userReginfo/selectAReginfo?user_id=${sessionScope.user.user_id }&testinfo_id=${testinfo.testinfo_id }&status=${testinfo.status }">查看报名信息</a>
-						</c:if>
-						<c:if test="${testinfo.status == 2 }">
-							<a href="userTestinfoRoom/selectTestinfoRoom?testinfo_id=${testinfo.testinfo_id }">前往报名</a>
-						</c:if>
-					</td>
+					<td><c:if
+							test="${testinfo.status == 0 || testinfo.status == 1}">
+							已报名，<a
+								href="userReginfo/selectAReginfo?user_id=${sessionScope.user.user_id }&testinfo_id=${testinfo.testinfo_id }&status=${testinfo.status }">查看报名信息</a>
+						</c:if> <c:if test="${testinfo.status == 2 }">
+							<a
+								href="userTestinfoRoom/selectTestinfoRoom?testinfo_id=${testinfo.testinfo_id }">前往报名</a>
+						</c:if></td>
 				</tr>
 			</c:forEach>
 		</table>
-		<c:if test="${msg != null }">
-			<script type="text/javascript">
-				alert("${msg}");
-			</script>
-		</c:if>
+	</c:if>
+	<c:if test="${msg != null }">
+		<script type="text/javascript">
+			alert("${msg}");
+		</script>
 	</c:if>
 </body>
 </html>
