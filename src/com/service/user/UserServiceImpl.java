@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
 			User userToSelect = new User();
 			userToSelect.setUidnum(user.getUidnum());
 			if (userDao.selectUserByKwargs(userToSelect).size() > 0) {
-				model.addAttribute("msg", "注册失败！（该身份证号已被注册）");
+				model.addAttribute("msg", "注册失败！（该证件号已被注册）");
 				return "user/register";
 			}
 			/*
