@@ -24,8 +24,9 @@ body {
     border: #404040 solid 2px;
 }
 
-.login_header h1 {
-    width: 400px;
+.header h1 {
+    min-width: 400px;
+    width: 0px auto;
     text-align: center;
     font-size: 24px;
     padding: 10px;
@@ -33,21 +34,27 @@ body {
     color: white;
 }
 
-.login_body {
+.content {
     text-align: center;
     margin: 10px;
 }
 
-table {
+.content table {
     margin: 0px auto;
 }
 
-table td {
+.content table td {
     padding: 5px;
+}
+
+.content span {
+    font-size: 13px;
 }
 
 input[type=text],
 input[type=password] {
+    line-height: 30px;
+    text-indent: 10px;
     width: 100%;
     margin: 5px;
     height: 30px;
@@ -58,8 +65,14 @@ input[type=password] {
     border-radius: 10px;
 }
 
+input[type=file] {
+    
+    line-height: 30px;
+    text-indent: 10px;
+}
 input[type=submit],
 input[type=button] {
+    cursor: pointer;
     padding: 8px 25px;
     color: #ffffff;
     font-size: 12px;

@@ -26,32 +26,32 @@
 </script>
 <body>
 	<div class="container">
-		<div class="login_header">
+		<div class="header">
 			<h1>考生登录</h1>
 		</div>
-		<div class="login_body">
+		<div class="content">
 			<form:form action="user/login" modelAttribute="user" method="post">
 				<table>
 					<tr>
-						<td>证件号：</td>
+						<td>证件号</td>
 						<td colspan="2"><form:input path="uidnum" /></td>
 					</tr>
 					<tr>
-						<td>密码：</td>
+						<td>密&nbsp;&nbsp;&nbsp;码</td>
 						<td colspan="2"><input type="password" name="upwd" /></td>
 					</tr>
 					<tr>
-						<td>验证码：</td>
+						<td>验证码</td>
 						<td><input type="text" name="code" /></td>
 						<td><a href="javascript:refreshCode();"><img id="code"
 								src="validateCode" /></a></td>
 					</tr>
 					<tr>
-						<td colspan="3">${msg }</td>
+						<td colspan="3"><span>${msg }</span></td>
 					</tr>
 					<tr>
 						<td colspan="3"><input type="submit" value="登录">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-							type="submit" value="注册"></td>
+							type="button" onclick="location='user/toRegister'" value="注册"></td>
 					</tr>
 				</table>
 			</form:form>
