@@ -24,15 +24,23 @@
 				<li id="headline">欢迎光临中国外国语能力考试报名网</li>
 				<c:if test="${sessionScope.user != null }">
 					<li class="r">
-						<div id="headline">
-							<div id="selectbar">
-								<ul>
-									<li><a>考生：${sessionScope.user.uname }</a>
-										<ul>
-											<li><a href="user/exit" target="center">退出登录</a></li>
-										</ul></li>
-								</ul>
-							</div>
+						<div id="selectbar">
+							<ul>
+								<li><a>考生：${sessionScope.user.uname }</a>
+									<ul>
+										<li><a
+											href="userTestinfo/selectTestinfo?user_id=${sessionScope.user.user_id }"
+											target="center">报名记录</a></li>
+										<li><a
+											href="userTestinfo/selectTestinfo?user_id=${sessionScope.user.user_id }"
+											target="center">修改照片</a></li>
+										<li><a
+											href="userTestinfo/selectTestinfo?user_id=${sessionScope.user.user_id }"
+											target="center">修改密码</a></li>
+										<li><a
+											href="userTestinfo/selectTestinfo?user_id=${sessionScope.user.user_id }">退出登录</a></li>
+									</ul></li>
+							</ul>
 						</div>
 					</li>
 				</c:if>
@@ -45,6 +53,9 @@
 		<div id="logo"></div>
 		<div id="navigator">
 			<div id="selectbar">
+                <ul>
+                    <li><a href="#" target="center">首页</a></li>
+                </ul>
 				<ul>
 					<li><a>考试概况</a>
 						<ul>
@@ -71,20 +82,10 @@
 					<li><a href="userNotice/selectNotice" target="center">查看公告</a></li>
 				</ul>
 				<ul>
-					<li><a>个人中心</a>
-						<ul>
-							<li><a
-								href="userTestinfo/selectTestinfo?user_id=${sessionScope.user.user_id }"
-								target="center">报名记录</a></li>
-							<li><a
-								href="userTestinfo/selectTestinfo?user_id=${sessionScope.user.user_id }"
-								target="center">修改照片</a></li>
-							<li><a
-								href="userTestinfo/selectTestinfo?user_id=${sessionScope.user.user_id }"
-								target="center">修改密码</a></li>
-							<li><a
-								href="userTestinfo/selectTestinfo?user_id=${sessionScope.user.user_id }">退出登录</a></li>
-						</ul></li>
+					<li><a href="#" target="center">关于作者</a></li>
+				</ul>
+				<ul>
+					<li><a href="#" target="center">联系作者</a></li>
 				</ul>
 			</div>
 		</div>

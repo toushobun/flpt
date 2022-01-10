@@ -10,6 +10,11 @@ body {
     height: 100%;
 }
 
+#mainBody {
+    background-image: url("../img/bg1.png");
+    background-size: 100%;
+}
+
 body {
     display: flex;
     align-items: center;
@@ -19,6 +24,7 @@ body {
 }
 
 .container {
+    background-color: #d4d4d4;
     width: 0px auto;
     height: 0px auto;
     border: #404040 solid 2px;
@@ -66,10 +72,10 @@ input[type=password] {
 }
 
 input[type=file] {
-    
     line-height: 30px;
     text-indent: 10px;
 }
+
 input[type=submit],
 input[type=button] {
     cursor: pointer;

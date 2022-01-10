@@ -29,10 +29,9 @@
 		<input type="button" value="清空" onclick="emptyInput('searchForm');" />
 	</form:form>
 	<c:if test="${testinfoList.size() == 0 }">
-		未查询到结果
+        <h2 style="text-align: center;">未查询到结果</h2>
 	</c:if>
 	<c:if test="${testinfoList.size() != 0 }">
-		请选择要报名的考试
 		<table id="table">
 			<tr>
 				<th width="30%">考试名</th>

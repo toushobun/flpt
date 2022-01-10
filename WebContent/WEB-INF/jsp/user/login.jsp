@@ -24,7 +24,7 @@
 		window.top.location = document.URL;
 	}
 </script>
-<body>
+<body id="mainBody">
 	<div class="container">
 		<div class="header">
 			<h1>考生登录</h1>
