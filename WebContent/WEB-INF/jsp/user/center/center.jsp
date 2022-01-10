@@ -18,9 +18,10 @@
 <script src="js/postConfirm.js" type="text/javascript"></script>
 </head>
 <body>
-	<table>
+
+	<table style="padding-top: 30px; margin: auto; text-align: center;">
 		<tr>
-			<td><img alt="" width="250" height="250"
+			<td rowspan="4"><img alt="" width="250" height="250"
 				src="logos/${sessionScope.user.uidphoto}" /></td>
 		</tr>
 		<tr>
@@ -33,10 +34,10 @@
 		</tr>
 		<tr>
 			<th>操作</th>
-			<td><a
-				href="userReginfo/selectReginfo?user_id=${sessionScope.user.user_id }">查看全部报名信息</a>&nbsp;<a
-				href="userCenter/toUpdateIdphoto">修改照片</a>&nbsp;<a
-				href="userCenter/toUpdatePwd">修改密码</a>&nbsp;<a
+			<td>&nbsp;<a
+				href="userReginfo/selectReginfo?user_id=${sessionScope.user.user_id }">查看全部报名信息</a>
+				&nbsp;<a href="userCenter/toUpdateIdphoto">修改照片</a> &nbsp;<a
+				href="userCenter/toUpdatePwd">修改密码</a> &nbsp;<a
 				onclick="return confirmDelDouble();"
 				href="userCenter/deleteUser?user_id=${sessionScope.user.user_id }">销毁用户</a>
 			</td>

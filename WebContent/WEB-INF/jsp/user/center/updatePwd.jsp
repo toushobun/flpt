@@ -12,6 +12,7 @@
 <head>
 <base href="<%=basePath%>">
 <title>Insert title here</title>
+<link href="css/user.css" type="text/css" rel="stylesheet">
 <script src="js/formCheck.js" type="text/javascript"></script>
 <script src="js/buttonAction.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
@@ -20,9 +21,9 @@
 <body>
 	<form:form action="userCenter/updatePwd" method="post"
 		modelAttribute="user">
-		<table>
-			<caption>修改密码</caption>
-			<form:hidden path="user_id" value="${sessionScope.user.user_id}" />
+		<h2 id="selectResult">修改密码</h2>
+		<form:hidden path="user_id" value="${sessionScope.user.user_id}" />
+		<table style="margin: auto;">
 			<tr>
 				<td>原密码<font color="red">*</font></td>
 				<td><input type="password" name="upwd" /></td>

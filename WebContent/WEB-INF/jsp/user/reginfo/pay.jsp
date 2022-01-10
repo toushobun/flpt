@@ -16,16 +16,11 @@
 <script src="js/buttonAction.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
 <script src="js/postConfirm.js" type="text/javascript"></script>
-<body>
-	请选择支付方式：
-	<p>
-		<a href="userReginfo/pay?reginfo_id=${reginfo_id }">微信支付</a>
-	</p>
-	<p>
-		<a href="userReginfo/pay?reginfo_id=${reginfo_id }">支付宝支付</a>
-	</p>
-	<p>
-		<a href="userReginfo/pay?reginfo_id=${reginfo_id }">建设银行支付</a>
-	</p>
+<body style="text-align: center;">
+	<h2 id="selectResult">请选择支付方式</h2>
+	<a href="userReginfo/pay?reginfo_id=${reginfo_id }"><img
+		src="img/p1.jpg" width="150px" height="150px" alt=""> </a>&nbsp;&nbsp;&nbsp;&nbsp;
+	<a href="userReginfo/pay?reginfo_id=${reginfo_id }"><img
+		src="img/p2.jpg" width="150px" height="150px" alt=""> </a>
 </body>
 </html>

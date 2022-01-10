@@ -12,6 +12,7 @@
 <head>
 <base href="<%=basePath%>">
 <title>Insert title here</title>
+<link href="css/user.css" type="text/css" rel="stylesheet">
 <script src="js/formCheck.js" type="text/javascript"></script>
 <script src="js/buttonAction.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
@@ -21,9 +22,9 @@
 	<form:form action="userCenter/updateIdphoto" method="post"
 		onsubmit="return checkIdphoto(this);" modelAttribute="user"
 		enctype="multipart/form-data">
-		<table>
-			<caption>修改照片</caption>
-			<form:hidden path="user_id" value="${sessionScope.user.user_id}" />
+		<h2 id="selectResult">修改照片</h2>
+		<form:hidden path="user_id" value="${sessionScope.user.user_id}" />
+		<table style="margin: auto;">
 			<tr>
 				<td>上传照片</td>
 				<td><input type="file" name="logoImage" /></td>

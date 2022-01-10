@@ -43,6 +43,10 @@
 			<td>${reginfo.raddress }</td>
 		</tr>
 		<tr>
+			<td>报名时间</td>
+			<td>${reginfo.submit_time }</td>
+		</tr>
+		<tr>
 			<th width="15%">操作</th>
 			<c:if test="${reginfo.status == 0 }">
 				<td><a
