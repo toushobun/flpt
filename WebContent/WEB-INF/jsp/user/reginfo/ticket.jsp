@@ -16,41 +16,34 @@
 <script src="js/buttonAction.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
 <script src="js/postConfirm.js" type="text/javascript"></script>
-<script src="js/colorControl.js" type="text/javascript"></script>
 </head>
-<body>
-	<table id="table">
-		<tr>
-			<td><img alt="" width="250" height="250"
-				src="logos/${sessionScope.user.uidphoto}" /></td>
-		</tr>
-		<tr>
-			<td>准考证号</td>
+<body id="ticket">
+    <table border="1" style="border-collapse:collapse">
+        <caption>${reginfo.tname }准考证</caption>
+        <tr>
+            <th>准考证号</th>
 			<td>${reginfo.ticketnum }</td>
+            <td rowspan="4"><img width="120px" height="180px" src="logos/${sessionScope.user.uidphoto}" /></td>
 		</tr>
 		<tr>
-			<td>考生姓名</td>
+            <th>考生姓名</th>
 			<td>${sessionScope.user.uname }</td>
 		</tr>
 		<tr>
-			<td>证件号码</td>
+            <th>证件号码</th>
 			<td>${sessionScope.user.uidnum }</td>
 		</tr>
 		<tr>
-			<td>考试名称</td>
-			<td>${reginfo.tname }</td>
-		</tr>
-		<tr>
-			<td>考试时间</td>
-			<td>${reginfo.test_time }</td>
-		</tr>
-		<tr>
-			<td>考点名称</td>
+            <th>考点名称</th>
 			<td>${reginfo.rname }</td>
 		</tr>
 		<tr>
-			<td>详细地址</td>
-			<td>${reginfo.raddress }</td>
+            <th>考场地址</th>
+			<td colspan="2">${reginfo.raddress }</td>
+		</tr>
+		<tr>
+			<td>考试时间</td>
+			<td colspan="2">${reginfo.test_time }</td>
 		</tr>
 	</table>
 	<c:if test="${msg != null }">
