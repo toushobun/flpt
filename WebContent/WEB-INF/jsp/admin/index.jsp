@@ -51,7 +51,7 @@
 				<li><a href="adminReginfo/selectReginfo" target="center">报名信息列表</a></li>
 			</ul></li>
 	</ul>
-	<!-- <iframe src="adminExaminfo/selectExaminfo" name="center" frameborder="0"></iframe> -->
+	<iframe src="adminTestinfo/selectTestinfo" name="center"></iframe>
 	©版权属于大连外国语大学18级软件7班邓淞文
 	<c:if test="${msg != null }">
 		<script type="text/javascript">

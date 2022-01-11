@@ -42,7 +42,7 @@
 			<td colspan="2">${reginfo.raddress }</td>
 		</tr>
 		<tr>
-			<td>考试时间</td>
+			<th>考试时间</th>
 			<td colspan="2">${reginfo.test_time }</td>
 		</tr>
 	</table>

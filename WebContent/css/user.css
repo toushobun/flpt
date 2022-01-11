@@ -1,212 +1,207 @@
 * {
-    margin: 0px;
-    padding: 0px;
-    font-family: "Microsoft YaHei";
-    font-size: 15px;
+	margin: 0px;
+	padding: 0px;
+	font-family: "Microsoft YaHei";
+	font-size: 15px;
 }
 
-html,
-body {
-    height: 100%;
+html, body {
+	height: 100%;
 }
 
 #mainBody {
-    background-image: url("../img/bg1.png");
-    background-size: 100%;
+	background-image: url("../img/bg1.png");
+	background-size: 100%;
 }
 
 #container {
-    width: 80%;
-    margin: 0px auto;
-    height: 100%;
+	width: 80%;
+	margin: 0px auto;
+	height: 100%;
 }
 
 #header {
-    background-color: #404040;
-    color: #FFF;
-    text-shadow: 1px 1px 1px #000000;
-    height: 30px;
+	background-color: #404040;
+	color: #FFF;
+	text-shadow: 1px 1px 1px #000000;
+	height: 30px;
 }
 
 #header ul {
-    list-style-type: none;
+	list-style-type: none;
 }
 
 #header li {
-    float: left;
+	float: left;
 }
 
 #headline {
-    padding: 5px 20px;
+	padding: 5px 20px;
 }
 
 #header .l {
-    float: left;
+	float: left;
 }
 
 #header .r {
-    float: right;
+	float: right;
 }
 
 #header a {
-    padding: 5px 20px;
-    color: #FFF;
-    text-decoration: none;
-    display: block;
+	padding: 5px 20px;
+	color: #FFF;
+	text-decoration: none;
+	display: block;
 }
 
 #header a:hover {
-    background-color: #c4c4c4;
+	background-color: #c4c4c4;
 }
 
 #navigator {
-    height: 30px;
-    width: 100%;
-    font-size: 14px;
-    background-color: #404040;
+	height: 30px;
+	width: 100%;
+	font-size: 14px;
+	background-color: #404040;
 }
 
 #navigator ul {
-    list-style-type: none;
+	list-style-type: none;
 }
 
 #navigator li {
-    float: left;
-    position: relative;
+	float: left;
+	position: relative;
 }
 
 #selectbar li a {
-    color: #ffffff;
-    text-decoration: none;
-    padding: 5px 20px;
-    display: block;
-    min-width: 100px;
-    height: 20px;
-    text-align: center;
-    background-color: #404040;
+	color: #ffffff;
+	text-decoration: none;
+	padding: 5px 20px;
+	display: block;
+	min-width: 100px;
+	height: 20px;
+	text-align: center;
+	background-color: #404040;
 }
 
 #selectbar li a:hover {
-    background-color: #c4c4c4;
+	background-color: #c4c4c4;
 }
 
 #selectbar ul li ul {
-    visibility: hidden;
-    position: absolute;
+	visibility: hidden;
+	position: absolute;
 }
 
-#selectbar ul li:hover ul,
-#selectbar ul a:hover ul {
-    visibility: visible;
+#selectbar ul li:hover ul, #selectbar ul a:hover ul {
+	visibility: visible;
 }
 
 #content {
-    background-image: url("../img/bg2.png");
-    background-size: 100%;
-    min-height: 500px;
-    height: 100%;
+	background-image: url("../img/bg2.png");
+	background-size: 100%;
+	min-height: 500px;
+	height: 100%;
 }
 
 #content iframe {
-    border: 0px;
-    width: 100%;
-    height: 100%;
+	border: 0px;
+	width: 100%;
+	height: 100%;
 }
 
 #logo {
-    background-image: url("../img/pic2.png");
-    background-size: 100% 100%;
-    width: 100%;
-    height: 250px;
+	background-image: url("../img/pic2.png");
+	background-size: 100% 100%;
+	width: 100%;
+	height: 250px;
 }
 
 #footer {
-    background-color: #404040;
-    color: #FFF;
-    text-shadow: 1px 1px 1px #053889;
-    padding: 5px 20px;
-    text-align: center;
+	background-color: #404040;
+	color: #FFF;
+	text-shadow: 1px 1px 1px #053889;
+	padding: 5px 20px;
+	text-align: center;
 }
 
 #searchForm {
-    text-align: center;
-    padding: 20px;
+	text-align: center;
+	padding: 20px;
 }
 
 #selectResult {
-    text-align: center;
-    padding: 20px;
+	text-align: center;
+	padding: 20px;
 }
 
 #table {
-    width: 80%;
-    padding: 20px 0px 20px 0px;
-    margin: auto;
-    text-align: center;
-    font-size: 15px;
+	width: 80%;
+	padding: 20px 0px 20px 0px;
+	margin: auto;
+	text-align: center;
+	font-size: 15px;
 }
 
 #table tr {
-    height: 32px;
+	height: 32px;
 }
 
 #ticket {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 #ticket table caption {
-    font-weight: bold;
-    font-size: 24px;
+	font-weight: bold;
+	font-size: 24px;
 }
 
 #ticket table tr {
-    height: 48px;
+	height: 48px;
 }
 
 #ticket table th {
-    width: 96px;
+	width: 96px;
 }
 
 #ticket table td {
-    width: 244px;
+	width: 244px;
 }
 
-input[type=text],
-input[type=password] {
-    line-height: 30px;
-    text-indent: 10px;
-    margin: 5px;
-    height: 30px;
-    color: #404040;
-    background: white;
-    border: 1px solid;
-    border-color: #c4c4c4 #d1d1d1 #d4d4d4;
-    border-radius: 10px;
+input[type=text], input[type=password] {
+	line-height: 30px;
+	text-indent: 10px;
+	margin: 5px;
+	height: 30px;
+	color: #404040;
+	background: white;
+	border: 1px solid;
+	border-color: #c4c4c4 #d1d1d1 #d4d4d4;
+	border-radius: 10px;
 }
 
 input[type=file] {
-    line-height: 30px;
-    text-indent: 10px;
+	line-height: 30px;
+	text-indent: 10px;
 }
 
-input[type=submit],
-input[type=button] {
-    cursor: pointer;
-    padding: 8px 25px;
-    color: #ffffff;
-    font-size: 12px;
-    text-shadow: 0.5px 0.5px #ffffff;
-    background: #404040;
-    border: 1px solid;
-    border-radius: 25px;
+input[type=submit], input[type=button] {
+	cursor: pointer;
+	padding: 8px 25px;
+	color: #ffffff;
+	font-size: 12px;
+	text-shadow: 0.5px 0.5px #ffffff;
+	background: #404040;
+	border: 1px solid;
+	border-radius: 25px;
 }
 
-input[type=submit]:active,
-input[type=button]:active {
-    background: #c4c4c4;
-    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
-    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+input[type=submit]:active, input[type=button]:active {
+	background: #c4c4c4;
+	-webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
 }
