@@ -21,12 +21,12 @@
 <body>
 	<table id="table">
 		<tr>
-			<th width="19%">考场名</th>
-			<th width="39%">考场地址</th>
-			<th width="19%">考场联系电话</th>
-			<th width="6%">邮编</th>
-			<th width="5%">名额</th>
-			<th width="12%">操作</th>
+			<th width="20%">考场名</th>
+			<th width="30%">考场地址</th>
+			<th width="20%">考场联系电话</th>
+			<th width="8%">邮编</th>
+			<th width="7%">名额</th>
+			<th width="15%">操作</th>
 		</tr>
 		<c:forEach items="${testinfoRoomList }" var="testinfoRoom">
 			<tr>
@@ -49,7 +49,7 @@
 	<c:if test="${notSelectedRoom.size() != 0 }">
 		<form:form action="adminTestinfoRoom/toAddTestinfoRoom" method="post"
 			modelAttribute="testinfoRoom">
-			<table id="table">
+			<table id="roomSelect">
 				<caption>额外添加考场</caption>
 				<tr>
 					<td><input type="hidden" name="testinfo_id"

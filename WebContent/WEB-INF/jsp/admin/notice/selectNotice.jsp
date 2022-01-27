@@ -16,10 +16,11 @@
 <script src="js/buttonAction.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
 <script src="js/postConfirm.js" type="text/javascript"></script>
+<script src="js/colorControl.js" type="text/javascript"></script>
 </head>
 <body>
 	<c:if test="${noticeList.size() == 0 }">
-		未查询到结果
+        <h2 id="selectResult">未查询到结果</h2>
 	</c:if>
 	<c:if test="${noticeList.size() != 0 }">
 		<table id="table">

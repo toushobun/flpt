@@ -35,16 +35,16 @@
 		<input type="button" value="清空" onclick="emptyInput('searchForm');" />
 	</form:form>
 	<c:if test="${testList.size() == 0 }">
-		未查询到结果
+        <h2 id="selectResult">未查询到结果</h2>
 	</c:if>
 	<c:if test="${testList.size() != 0 }">
 		<table id="table">
 			<tr>
-				<th width="25%">考试名</th>
-				<th width="10%">考试科目</th>
-				<th width="25%">主考单位</th>
-				<th width="10%">是否已发布</th>
-				<th width="20%">操作</th>
+				<th width="35%">考试名</th>
+				<th width="8%">考试科目</th>
+				<th width="39%">主考单位</th>
+				<th width="8%">是否发布</th>
+				<th width="10%">操作</th>
 			</tr>
 			<c:forEach items="${testList }" var="test">
 				<tr>

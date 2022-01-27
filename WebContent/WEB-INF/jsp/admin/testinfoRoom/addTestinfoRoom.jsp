@@ -12,7 +12,7 @@
 <head>
 <base href="<%=basePath%>">
 <title>Insert title here</title>
-<link href="css/admin.css" type="text/css" rel="stylesheet">
+<link href="css/box.css" type="text/css" rel="stylesheet">
 <script src="js/buttonAction.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
 <script src="js/postConfirm.js" type="text/javascript"></script>
@@ -41,7 +41,7 @@
 							<form:hidden path="room_ids" value="${room.room_id }" />
 							<td>${room.rname }<font color="red">*</font></td>
 							<td><form:input path="room_rquotas"
-									placeholder="请输入该考场可报名名额" /></td>
+									placeholder="请输入名额" /></td>
 						</tr>
 					</c:forEach></td>
 			</tr>

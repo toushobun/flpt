@@ -30,7 +30,7 @@
 		<input type="button" value="清空" onclick="emptyInput('searchForm');" />
 	</form:form>
 	<c:if test="${reginfoList.size() == 0 }">
-		未查询到结果
+        <h2 id="selectResult">未查询到结果</h2>
 	</c:if>
 	<c:if test="${reginfoList.size() != 0 }">
 		<table id="table">

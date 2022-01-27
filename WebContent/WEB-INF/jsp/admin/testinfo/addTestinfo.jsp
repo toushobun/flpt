@@ -95,12 +95,16 @@
 			</tr>
 			<tr>
 				<td colspan="2">请选择考场<font color="red">*</font></td>
-				<td><c:forEach items="${roomList }" var="room">
-						<tr>
-							<td><form:checkbox path="room_ids" value="${room.room_id }" /></td>
-							<td>${room.rname }</td>
-						</tr>
-					</c:forEach></td>
+				<td>
+					<table id="roomSelect">
+						<c:forEach items="${roomList }" var="room">
+							<tr>
+								<td><form:checkbox path="room_ids" value="${room.room_id }" /></td>
+								<td>${room.rname }</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2">&nbsp;</td>

@@ -9,82 +9,41 @@ html, body {
 	height: 100%;
 }
 
-#container {
-	position: relative;
-	width: 100%;
-	height: 100%;
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-#navigator, #content {
-	height: 100%;
-	position: absolute;
+.container {
+	background-color: #d4d4d4;
+	width: 0px auto;
+	height: 0px auto;
+	border: #404040 solid 2px;
 }
 
-#navigator {
-	width: 15%;
-	background-color: #404040;
-}
-
-#content {
-	left: 15%;
-	width: 85%;
-	background-image: url("../img/bg2.png");
-	background-size: 100%;
-}
-
-#content iframe {
-	border: 0px;
-	width: 100%;
-	height: 100%;
-}
-
-#searchForm {
+.content {
 	text-align: center;
-	padding: 10px;
+	margin: 10px;
 }
 
-#navigator li a {
-	color: #ffffff;
-	text-decoration: none;
-	padding: 5px 20px;
-	display: block;
-	height: 20px;
-	text-align: center;
-	background-color: #2c2c2c;
-}
-
-#navigator li ul li a:hover {
-	background-color: #c4c4c4;
-}
-
-#navigator li ul li a {
-	background-color: #404040;
-}
-
-#table {
+.content table {
 	width: 80%;
-	padding: 20px 0px 20px 0px;
-	margin: auto;
-	text-align: center;
-	font-size: 15px;
+	margin: 0px auto;
 }
 
-#table tr {
-	height: 32px;
+.content table td {
+	padding: 5px;
 }
 
-#roomSelect {
-	
-}
-
-#selectResult {
-	text-align: center;
-	padding: 20px;
+.content span {
+	font-size: 13px;
 }
 
 input[type=text], input[type=password] {
 	line-height: 30px;
 	text-indent: 10px;
+	width: 100%;
 	margin: 5px;
 	height: 30px;
 	color: #404040;
@@ -114,4 +73,14 @@ input[type=submit]:active, input[type=button]:active {
 	background: #c4c4c4;
 	-webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
 	box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+select {
+	border-radius: 25px;
+}
+
+textarea {
+	width: 500px;
+	height: 200px;
+	border-radius: 25px;
 }

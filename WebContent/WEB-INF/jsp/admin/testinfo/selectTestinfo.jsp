@@ -31,19 +31,19 @@
 		<input type="button" value="清空" onclick="emptyInput('searchForm');" />
 	</form:form>
 	<c:if test="${testinfoList.size() == 0 }">
-		未查询到结果
+        <h2 id="selectResult">未查询到结果</h2>
 	</c:if>
 	<c:if test="${testinfoList.size() != 0 }">
 		<table id="table">
 			<tr>
-				<th width="20%">考试名</th>
+				<th width="18%">考试名</th>
 				<th width="5%">科目</th>
-				<th width="28%">主考单位</th>
-				<th width="9%">考试时间</th>
-				<th width="9%">报名开始时间</th>
-				<th width="9%">报名截止时间</th>
-				<th width="5%">报名费</th>
-				<th width="15%">操作</th>
+				<th width="20%">主考单位</th>
+				<th width="10%">考试时间</th>
+				<th width="11%">报名开始时间</th>
+				<th width="11%">报名截止时间</th>
+				<th width="7%">报名费</th>
+				<th width="18%">操作</th>
 			</tr>
 			<c:forEach items="${testinfoList }" var="testinfo">
 				<tr>
@@ -53,7 +53,7 @@
 					<td>${testinfo.test_time }</td>
 					<td>${testinfo.regist_start_time }</td>
 					<td>${testinfo.regist_end_time }</td>
-					<td>${testinfo.tprice }</td>
+					<td>${testinfo.tprice }元</td>
 					<td><a
 						href="adminTestinfoRoom/selectTestinfoRoom?testinfo_id=${testinfo.testinfo_id }">考场详情</a>
 						<a
