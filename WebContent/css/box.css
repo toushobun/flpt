@@ -1,86 +1,72 @@
 * {
-	margin: 0px;
-	padding: 0px;
-	font-family: "Microsoft YaHei";
+    margin: 0px;
+    padding: 0px;
+    font-family: "Microsoft YaHei";
 }
 
-html, body {
-	width: 100%;
-	height: 100%;
+html,
+body {
+    width: 100%;
+    height: 100%;
 }
 
 body {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.container {
-	background-color: #d4d4d4;
-	width: 0px auto;
-	height: 0px auto;
-	border: #404040 solid 2px;
+#roomSelect {
+    background-color: #c4c4c4;
+    display: block;
+    height: 100px;
+    overflow-y: auto;
 }
 
-.content {
-	text-align: center;
-	margin: 10px;
-}
-
-.content table {
-	width: 80%;
-	margin: 0px auto;
-}
-
-.content table td {
-	padding: 5px;
-}
-
-.content span {
-	font-size: 13px;
-}
-
-input[type=text], input[type=password] {
-	line-height: 30px;
-	text-indent: 10px;
-	width: 100%;
-	margin: 5px;
-	height: 30px;
-	color: #404040;
-	background: white;
-	border: 1px solid;
-	border-color: #c4c4c4 #d1d1d1 #d4d4d4;
-	border-radius: 10px;
+input[type=text],
+input[type=password] {
+    line-height: 30px;
+    text-indent: 10px;
+    width: 100%;
+    margin: 5px;
+    height: 30px;
+    color: #404040;
+    background: white;
+    border: 1px solid;
+    border-color: #c4c4c4 #d1d1d1 #d4d4d4;
+    border-radius: 10px;
 }
 
 input[type=file] {
-	line-height: 30px;
-	text-indent: 10px;
+    line-height: 30px;
+    text-indent: 10px;
 }
 
-input[type=submit], input[type=button] {
-	cursor: pointer;
-	padding: 8px 25px;
-	color: #ffffff;
-	font-size: 12px;
-	text-shadow: 0.5px 0.5px #ffffff;
-	background: #404040;
-	border: 1px solid;
-	border-radius: 25px;
+input[type=submit],
+input[type=button] {
+    cursor: pointer;
+    padding: 8px 25px;
+    color: #ffffff;
+    font-size: 12px;
+    text-shadow: 0.5px 0.5px #ffffff;
+    background: #404040;
+    border: 1px solid;
+    border-radius: 25px;
 }
 
-input[type=submit]:active, input[type=button]:active {
-	background: #c4c4c4;
-	-webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
-	box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+input[type=submit]:active,
+input[type=button]:active {
+    background: #c4c4c4;
+    -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
 select {
-	border-radius: 25px;
+    border-radius: 25px;
 }
 
 textarea {
-	width: 500px;
-	height: 200px;
-	border-radius: 25px;
+    width: 500px;
+    height: 200px;
+    border-radius: 25px;
 }

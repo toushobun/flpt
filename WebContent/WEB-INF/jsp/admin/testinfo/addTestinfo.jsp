@@ -12,7 +12,7 @@
 <head>
 <base href="<%=basePath%>">
 <title>Insert title here</title>
-<link href="css/admin.css" type="text/css" rel="stylesheet">
+<link href="css/box.css" type="text/css" rel="stylesheet">
 <script src="js/buttonAction.js" type="text/javascript"></script>
 <script src="js/formCheck.js" type="text/javascript"></script>
 <script src="js/postConfirm.js" type="text/javascript"></script>
@@ -59,7 +59,7 @@
 		<table>
 			<caption>发布考试</caption>
 			<tr>
-				<td colspan="2">请选择您要发布的考试<font color="red">*</font></td>
+				<td>请选择您要发布的考试<font color="red">*</font></td>
 				<td><form:select path="test_id" onchange="showDetail()">
 						<!-- 前台选择的内容，会给test_id变量传到后台，itemLabel控制展示数据，itemValue控制传输数据 -->
 						<form:options items="${testList }" itemLabel="tname"
@@ -67,34 +67,35 @@
 					</form:select></td>
 			</tr>
 			<tr>
-				<td colspan="2">考试科目</td>
-				<td><input name="tsubject" id="tsubject" readonly="readonly" /></td>
-			</tr>
-			<tr>
-				<td colspan="2">主考单位</td>
-				<td><input name="torganizer" id="torganizer"
+				<td>考试科目</td>
+				<td><input type="text" name="tsubject" id="tsubject"
 					readonly="readonly" /></td>
 			</tr>
 			<tr>
-				<td colspan="2">考试时间<font color="red">*</font></td>
+				<td>主考单位</td>
+				<td><input type="text" name="torganizer" id="torganizer"
+					readonly="readonly" /></td>
+			</tr>
+			<tr>
+				<td>考试时间<font color="red">*</font></td>
 				<td><form:input path="test_time" placeholder="请输入考试时间" /></td>
 			</tr>
 			<tr>
-				<td colspan="2">报名开始时间<font color="red">*</font></td>
+				<td>报名开始时间<font color="red">*</font></td>
 				<td><form:input path="regist_start_time"
 						placeholder="请输入报名开始时间" /></td>
 			</tr>
 			<tr>
-				<td colspan="2">报名截止时间<font color="red">*</font></td>
+				<td>报名截止时间<font color="red">*</font></td>
 				<td><form:input path="regist_end_time" placeholder="请输入报名截止时间" />
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2">报名费用<font color="red">*</font></td>
+				<td>报名费用<font color="red">*</font></td>
 				<td><form:input path="tprice" placeholder="请输入报名费用" /></td>
 			</tr>
 			<tr>
-				<td colspan="2">请选择考场<font color="red">*</font></td>
+				<td>请选择考场<font color="red">*</font></td>
 				<td>
 					<table id="roomSelect">
 						<c:forEach items="${roomList }" var="room">
@@ -107,7 +108,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2">&nbsp;</td>
+				<td>&nbsp;</td>
 				<td style="text-align: right"><input type="submit"
 					value="前往为考场配置名额" /></td>
 			</tr>
