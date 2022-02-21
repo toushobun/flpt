@@ -29,6 +29,7 @@ input[type=password] {
     text-indent: 10px;
     width: 100%;
     margin: 5px;
+    padding-right: 20px;
     height: 30px;
     color: #404040;
     background: white;

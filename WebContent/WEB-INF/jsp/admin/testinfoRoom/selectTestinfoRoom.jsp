@@ -50,11 +50,10 @@
 		<form:form action="adminTestinfoRoom/toAddTestinfoRoom" method="post"
 			modelAttribute="testinfoRoom">
 			<table>
+				<caption>额外添加考场</caption>
 				<tr>
-					<td>请选择考场<font color="red">*</font></td>
 					<td>
 						<table id="roomSelect">
-							<caption>额外添加考场</caption>
 							<tr>
 								<td><input type="hidden" name="testinfo_id"
 									value="${testinfoRoomList.get(0).testinfo_id }"></td>
@@ -83,13 +82,13 @@
 									</c:forEach></td>
 							</tr>
 						</table>
+					</td>
 				</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td><input type="submit" value="前往为新考场配置名额" /></td>
-			</tr>
-		</table>
-			</form:form>
+				<tr>
+					<td><input type="submit" value="前往为新考场配置名额" /></td>
+				</tr>
+			</table>
+		</form:form>
 	</c:if>
 	<c:if test="${msg != null }">
 		<script type="text/javascript">
