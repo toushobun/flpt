@@ -47,7 +47,7 @@
 			</tr>
 			<tr>
 				<td style="text-align: left"><input type="button"
-					onclick="window.history.back()" value="返回" /></td>
+					onclick="window.history.back();" value="返回" /></td>
 				<td style="text-align: right"><input type="submit" value="提交" />
 				</td>
 			</tr>

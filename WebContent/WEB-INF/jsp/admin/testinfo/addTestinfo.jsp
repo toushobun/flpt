@@ -78,17 +78,15 @@
 			</tr>
 			<tr>
 				<td>考试时间<font color="red">*</font></td>
-				<td><form:input path="test_time" placeholder="请输入考试时间" /></td>
+				<td id="datetime-local"><input type="datetime-local" name="test_time" /></td>
 			</tr>
 			<tr>
 				<td>报名开始时间<font color="red">*</font></td>
-				<td><form:input path="regist_start_time"
-						placeholder="请输入报名开始时间" /></td>
+				<td id="datetime-local"><input type="datetime-local" name="regist_start_time" /></td>
 			</tr>
 			<tr>
 				<td>报名截止时间<font color="red">*</font></td>
-				<td><form:input path="regist_end_time" placeholder="请输入报名截止时间" />
-				</td>
+				<td id="datetime-local"><input type="datetime-local" name="regist_end_time" /></td>
 			</tr>
 			<tr>
 				<td>报名费用<font color="red">*</font></td>

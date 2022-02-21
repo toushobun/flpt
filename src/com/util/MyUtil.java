@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.entity.Testinfo;
+
 public class MyUtil {
 
 	public static boolean isEffectiveDate(Date nowTime, Date startTime, Date endTime) {
@@ -58,6 +60,26 @@ public class MyUtil {
 		} else {
 			return false;
 		}
+	}
+
+	public static Testinfo FormatTestinfoTime(Testinfo testinfo) {
+		String temp;
+		if ("".equals(testinfo.getRegist_end_time()) == false && testinfo.getRegist_end_time() != null) {
+			temp = testinfo.getRegist_end_time();
+			temp = temp.substring(0, 10) + "T" + temp.substring(11, temp.length());
+			testinfo.setRegist_end_time(temp);
+		}
+		if ("".equals(testinfo.getRegist_start_time()) == false && testinfo.getRegist_start_time() != null) {
+			temp = testinfo.getRegist_start_time();
+			temp = temp.substring(0, 10) + "T" + temp.substring(11, temp.length());
+			testinfo.setRegist_start_time(temp);
+		}
+		if ("".equals(testinfo.getTest_time()) == false && testinfo.getTest_time() != null) {
+			temp = testinfo.getTest_time();
+			temp = temp.substring(0, 10) + "T" + temp.substring(11, temp.length());
+			testinfo.setTest_time(temp);
+		}
+		return testinfo;
 	}
 
 }

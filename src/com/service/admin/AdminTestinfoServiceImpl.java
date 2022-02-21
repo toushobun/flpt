@@ -18,6 +18,7 @@ import com.entity.Room;
 import com.entity.Test;
 import com.entity.Testinfo;
 import com.entity.TestinfoRoom;
+import com.util.MyUtil;
 
 @Service("adminTestinfoService")
 @Transactional
@@ -48,7 +49,6 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 
 	@Override
 	public String toAddTestinfo(TestinfoRoom testinfoRoom, Model model) {
-		// TODO Auto-generated method stub
 		model.addAttribute("testinfoRoom", testinfoRoom);
 		model.addAttribute("testList", testDao.selectTestByKwargs(null));
 		model.addAttribute("roomList", roomDao.selectRoomByKwargs(null));
@@ -159,6 +159,8 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 		Testinfo testinfoToSelect = new Testinfo();
 		testinfoToSelect.setTestinfo_id(testinfo_id);
 		Testinfo testinfo = testinfoDao.selectTestinfoByKwargs(testinfoToSelect).get(0);
+		// 格式化时间字符串
+		testinfo = MyUtil.FormatTestinfoTime(testinfo);
 		model.addAttribute("testList", testList);
 		model.addAttribute("testinfo", testinfo);
 		return "admin/testinfo/updateTestinfo";

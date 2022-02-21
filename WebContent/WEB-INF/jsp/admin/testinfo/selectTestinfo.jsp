@@ -38,12 +38,12 @@
 			<tr>
 				<th width="18%">考试名</th>
 				<th width="5%">科目</th>
-				<th width="20%">主考单位</th>
+				<th width="22%">主考单位</th>
 				<th width="10%">考试时间</th>
 				<th width="11%">报名开始时间</th>
 				<th width="11%">报名截止时间</th>
 				<th width="7%">报名费</th>
-				<th width="18%">操作</th>
+				<th width="16%">操作</th>
 			</tr>
 			<c:forEach items="${testinfoList }" var="testinfo">
 				<tr>

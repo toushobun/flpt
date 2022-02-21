@@ -42,54 +42,49 @@
 				</td>
 			</tr>
 		</c:forEach>
-	</table>
-	<c:if test="${notSelectedRoom.size() == 0 }">
+		<tr>
+			<td><c:if test="${notSelectedRoom.size() == 0 }">
 			已配置全部考场
-		</c:if>
-	<c:if test="${notSelectedRoom.size() != 0 }">
-		<form:form action="adminTestinfoRoom/toAddTestinfoRoom" method="post"
-			modelAttribute="testinfoRoom">
-			<table>
-				<caption>额外添加考场</caption>
-				<tr>
-					<td>
-						<table id="roomSelect">
+		</c:if> <c:if test="${notSelectedRoom.size() != 0 }">
+					<form:form action="adminTestinfoRoom/toAddTestinfoRoom"
+						method="post" onsubmit="return checkSelectRoom(this);"
+						modelAttribute="testinfoRoom">
+						<div style="display: none">
+							<form:input path="testinfo_id"
+								value="${testinfoRoomList.get(0).testinfo_id }"></form:input>
+							<form:input path="tname" value="${testinfoRoom.tname }"></form:input>
+							<form:input path="tsubject" value="${testinfoRoom.tsubject }"></form:input>
+							<form:input path="torganizer" value="${testinfoRoom.torganizer }"></form:input>
+							<form:input path="test_time" value="${testinfoRoom.test_time }"></form:input>
+							<form:input path="regist_start_time"
+								value="${testinfoRoom.regist_start_time }"></form:input>
+							<form:input path="regist_end_time"
+								value="${testinfoRoom.regist_end_time }"></form:input>
+							<form:input path="tprice" value="${testinfoRoom.tprice }"></form:input>
+						</div>
+						<table>
+							<caption>额外添加考场</caption>
 							<tr>
-								<td><input type="hidden" name="testinfo_id"
-									value="${testinfoRoomList.get(0).testinfo_id }"></td>
-								<td><input type="hidden" name="tname"
-									value="${testinfoRoomList.get(0).tname }"></td>
-								<td><input type="hidden" name="tsubject"
-									value="${testinfoRoomList.get(0).tsubject }"></td>
-								<td><input type="hidden" name="torganizer"
-									value="${testinfoRoomList.get(0).torganizer }"></td>
-								<td><input type="hidden" name="test_time"
-									value="${testinfoRoomList.get(0).test_time }"></td>
-								<td><input type="hidden" name="regist_start_time"
-									value="${testinfoRoomList.get(0).regist_start_time }"></td>
-								<td><input type="hidden" name="regist_end_time"
-									value="${testinfoRoomList.get(0).regist_end_time }"></td>
-								<td><input type="hidden" name="tprice"
-									value="${testinfoRoomList.get(0).tprice }"></td>
+								<td>
+									<table id="roomSelect">
+										<c:forEach items="${notSelectedRoom }" var="room">
+											<tr>
+												<td><form:checkbox path="room_ids"
+														value="${room.room_id }" /></td>
+												<td>${room.rname }</td>
+											</tr>
+										</c:forEach>
+									</table>
+								</td>
 							</tr>
 							<tr>
-								<td><c:forEach items="${notSelectedRoom }" var="room">
-										<tr>
-											<td><form:checkbox path="room_ids"
-													value="${room.room_id }" /></td>
-											<td>${room.rname }</td>
-										</tr>
-									</c:forEach></td>
+								<td><input type="submit" value="前往为新考场配置名额" /></td>
 							</tr>
 						</table>
-					</td>
-				</tr>
-				<tr>
-					<td><input type="submit" value="前往为新考场配置名额" /></td>
-				</tr>
-			</table>
-		</form:form>
-	</c:if>
+					</form:form>
+				</c:if></td>
+		</tr>
+	</table>
 	<c:if test="${msg != null }">
 		<script type="text/javascript">
 			alert("${msg}");
