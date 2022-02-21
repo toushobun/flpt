@@ -49,4 +49,28 @@ public class UserController {
 		return "user/index";
 	}
 
+	// 报名步骤静态页面
+	@RequestMapping("/user/registrationSteps")
+	public String registrationSteps() {
+		return "user/static/registrationSteps";
+	}
+
+	// 考生须知静态页面
+	@RequestMapping("/user/notesToCandidates")
+	public String notesToCandidates() {
+		return "user/static/notesToCandidates";
+	}
+
+	// 关于作者静态页面
+	@RequestMapping("/user/aboutTheAuthor")
+	public String aboutTheAuthor() {
+		return "user/static/aboutTheAuthor";
+	}
+
+	// 联系作者静态页面
+	@RequestMapping("/user/contactAuthor")
+	public String contactAuthor() {
+		return "user/static/contactAuthor";
+	}
+
 }

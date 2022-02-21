@@ -33,8 +33,7 @@
 											target="center">报名记录</a></li>
 										<li><a href="userCenter/toUpdateIdphoto" target="center">修改照片</a></li>
 										<li><a href="userCenter/toUpdatePwd" target="center">修改密码</a></li>
-										<li><a
-											href="user/exit">退出登录</a></li>
+										<li><a href="user/exit">退出登录</a></li>
 									</ul></li>
 							</ul>
 						</div>
@@ -51,10 +50,10 @@
 			<div id="selectbar">
 				<ul>
 					<c:if test="${sessionScope.user != null }">
-					<li><a href="userCenter/center" target="center">首页</a></li>
+						<li><a href="userCenter/center" target="center">首页</a></li>
 					</c:if>
 					<c:if test="${sessionScope.user == null }">
-					<li><a href="userNotice/selectNotice" target="center">首页</a></li>
+						<li><a href="userNotice/selectNotice" target="center">首页</a></li>
 					</c:if>
 				</ul>
 				<ul>
@@ -71,12 +70,8 @@
 				<ul>
 					<li><a>报名详情</a>
 						<ul>
-							<li><a
-								href="userReginfo/selectReginfo?user_id=${sessionScope.user.user_id }"
-								target="center">报名步骤</a></li>
-							<li><a
-								href="userReginfo/selectReginfo?user_id=${sessionScope.user.user_id }"
-								target="center">考生须知</a></li>
+							<li><a href="user/registrationSteps" target="center">报名步骤</a></li>
+							<li><a href="user/notesToCandidates" target="center">考生须知</a></li>
 							<li><a
 								href="userReginfo/selectReginfo?user_id=${sessionScope.user.user_id }"
 								target="center">我的报名</a></li>
@@ -86,10 +81,10 @@
 					<li><a href="userNotice/selectNotice" target="center">查看公告</a></li>
 				</ul>
 				<ul>
-					<li><a href="userNotice/selectNotice" target="center">关于作者</a></li>
+					<li><a href="user/aboutTheAuthor" target="center">关于作者</a></li>
 				</ul>
 				<ul>
-					<li><a href="userNotice/selectNotice" target="center">联系作者</a></li>
+					<li><a href="user/contactAuthor" target="center">联系作者</a></li>
 				</ul>
 			</div>
 		</div>

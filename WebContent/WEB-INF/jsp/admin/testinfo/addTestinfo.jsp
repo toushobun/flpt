@@ -78,15 +78,18 @@
 			</tr>
 			<tr>
 				<td>考试时间<font color="red">*</font></td>
-				<td id="datetime-local"><input type="datetime-local" name="test_time" /></td>
+				<td id="datetime-local"><input type="datetime-local"
+					name="test_time" value="${testinfoRoom.test_time }" /></td>
 			</tr>
 			<tr>
 				<td>报名开始时间<font color="red">*</font></td>
-				<td id="datetime-local"><input type="datetime-local" name="regist_start_time" /></td>
+				<td id="datetime-local"><input type="datetime-local"
+					name="regist_start_time" value="${testinfoRoom.regist_start_time }" /></td>
 			</tr>
 			<tr>
 				<td>报名截止时间<font color="red">*</font></td>
-				<td id="datetime-local"><input type="datetime-local" name="regist_end_time" /></td>
+				<td id="datetime-local"><input type="datetime-local"
+					name="regist_end_time" value="${testinfoRoom.regist_end_time }" /></td>
 			</tr>
 			<tr>
 				<td>报名费用<font color="red">*</font></td>

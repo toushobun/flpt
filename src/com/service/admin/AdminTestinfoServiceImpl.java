@@ -62,6 +62,7 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 		Test test = testDao.selectTestByKwargs(testToSelect).get(0);
 		if (test.getStatus() != 0) {
 			model.addAttribute("msg", "该考试已发布！");
+			model.addAttribute("testinfoRoom", testinfoRoom);
 			return "forward:/adminTestinfo/toAddTestinfo";
 		}
 		List<Room> selectedRoomList = new ArrayList<Room>();

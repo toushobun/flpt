@@ -20,6 +20,10 @@
 <body>
 	<div id="container">
 		<div id="navigator">
+			<div id="headImg">
+				<img src="../FLPT/img/head.png" alt="">
+				<p>管理员：${auser.aname}</p>
+			</div>
 			<ul>
 				<li><a>考试管理</a>
 					<ul>

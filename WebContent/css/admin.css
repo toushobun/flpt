@@ -46,6 +46,16 @@ html, body {
 	padding: 10px;
 }
 
+#headImg {
+	text-align: center;
+}
+
+#headImg p {
+	font-size: 20px;
+	padding: 0px 0px 10px 0px;
+	color: #ffffff;
+}
+
 #navigator li a {
 	color: #ffffff;
 	text-decoration: none;
