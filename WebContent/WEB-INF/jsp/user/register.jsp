@@ -35,7 +35,7 @@
 				enctype="multipart/form-data">
 				<table>
 					<tr>
-						<td>证件号</td>
+						<td id="fields">证件号</td>
 						<td colspan="2"><form:input path="uidnum" /></td>
 					</tr>
 					<tr>

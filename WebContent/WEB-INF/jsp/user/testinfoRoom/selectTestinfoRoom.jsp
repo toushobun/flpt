@@ -38,7 +38,7 @@
 					<c:if test="${testinfoRoom.status == -1 }">
 						名额已满
 					</c:if>
-					<c:if test="${testinfoRoom.status == -2 }">
+					<c:if test="${testinfoRoom.status == -2 || testinfoRoom.status == 0 }">
 						不在报名时间
 					</c:if>
 				</td>
