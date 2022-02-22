@@ -1,85 +1,82 @@
 // JavaScript Document
 
-window.onload=function() {
-    var tbl = document.getElementById("table"); // 先获取table
-    var rows = tbl.getElementsByTagName("tr"); // 获取里面的行tr
-    rows[0].style.backgroundColor="rgba(68,114,196,0.90)";
-    rows[0].style.color="#FFF";
-    for(i=1;i<rows.length;i++) { // 遍历里面的行
-       if(i%2==0){ // 再通过取模来设置每行显示不同的两种颜色
-        rows[i].style.backgroundColor="rgba(255,255,255,0.6)";
-       }else{
-        rows[i].style.backgroundColor="rgba(217,226,243,0.6)";
-       } 
-    }
-}
-
-function testinfoConfirm(){
-	var info="请最后确认信息：\n1.aaa\n2.bbb\n3.ccc"
-	if(!confirm(info)){
-		window.event.returnValue = false;
+function checkSelectRoom(f) {
+	var flag = true;
+	for (var i = 0; i < f.room_ids.length; i++) {
+		if (f.room_ids[i].checked) {
+			flag = false;
+		}
 	}
-	else{
-		
-	}
-	document.forms[0].submit();
-}
-
-function checkDel(){
-	if(!confirm("确认要删除？")){
-	  	window.event.returnValue = false;
+	if (flag && !f.room_ids[0].checked) {
+		alert("请至少选择一个考场！");
+		return false;
 	}
 }
 
-function checkDelDouble(){
-	if(!confirm("确认要彻底删除？")){
-		window.event.returnValue = false;
+function checkTestinfo(f) {
+	if (f.test_time.value == "") {
+		alert("考试时间不能为空！");
+		return false;
 	}
-	else{
-		checkDel();
+	if (f.regist_start_time.value == "") {
+		alert("考试报名开始时间不能为空！");
+		return false;
+	}
+	if (f.regist_end_time.value == "") {
+		alert("考试报名截止时间不能为空！");
+		return false;
+	}
+	if (f.tprice.value == "") {
+		alert("报名费用不能为空！");
+		return false;
+	}
+	if (f.tprice.value < 0) {
+		alert("请输入一个正数报名费！");
+		return false;
+	}
+	var flag = true;
+	for (var i = 0; i < f.room_ids.length; i++) {
+		if (f.room_ids[i].checked) {
+			flag = false;
+		}
+	}
+	if (flag) {
+		alert("请至少选择一个考场！");
+		return false;
+	}
+	var mssg = "请确认您要新增考场的考试\n考试名：" + f.tname.value + "\n考试科目："
+			+ f.tsubject.value + "\n主考单位：" + f.torganizer.value + "\n考试时间："
+			+ f.test_time.value + "\n报名开始时间：" + f.regist_start_time.value
+			+ "\n报名截止时间：" + f.regist_end_time.value + "\n报名费用："
+			+ f.tprice.value + "元\n";
+	return confirm(mssg)
+}
+
+function checkUser(f) {
+	if (f.uidnum.value == "") {
+		alert("身份证号码不能为空！");
+		return false;
+	} else if (f.uname.value == "") {
+		alert("考生姓名不能为空！");
+		return false;
+	} else if (f.upwd.value == "" || f.upwd2.value == "") {
+		alert("密码不能为空！");
+		return false;
+	} else if (f.logoImage.value == "") {
+		alert("请上传您的照片！");
+		return false;
+	} else if (!/\.(gif|jpg|jpeg|png|GIF|JPG|PNG)$/.test(f.logoImage.value)) {
+		alert("图片类型必须是.gif,jpeg,jpg,png中的一种");
+		return false;
 	}
 }
 
-//function doInputTest(){
-//	var rname = document.getElementById("rname").value;
-//	var location = document.getElementById("location").value;
-//	var itime = document.getElementById("itime").value;
-//	var istime = document.getElementById("istime").value;
-//	var ietime = document.getElementById("ietime").value;
-//	var quota = document.getElementById("quota").value;
-//	var rphonenumber = document.getElementById("rphonenumber").value;
-//	var postcode = document.getElementById("postcode").value;
-//	if(rname == "" || location == "" || itime == "" || istime == "" || ietime == "" || quota == "" || rphonenumber == "" || postcode == ""){
-//		alert("带有*的内容不能为空");
-//		return false;
-//	}
-//	else if(!isDate(itime) || !isDate(istime) || !isDate(ietime)){
-//		alert("请输入正确的时间格式（如 2020-07-05 10:00:01）");
-//		return false;
-//	}
-//	else if(!isInteger(quota)){
-//		alert("请输入一个正整数名额");
-//		return false;
-//	}
-//	return true;
-//}
-
-//function doInputBuser(){
-//	var uphonenumber = document.getElementById("uphonenumber").value;
-//	var uname = document.getElementById("uname").value;
-//	var upwd = document.getElementById("upwd").value;
-//	var upwd2 = document.getElementById("upwd2").value;
-//	if(upwd!=upwd2){
-//		alert("两次输入的密码不一致");
-//		return false;
-//	}
-//	else if(uphonenumber == "" || uname == "" || upwd == "" || upwd2 == ""){
-//		alert("带有*的内容不能为空");
-//		return false;
-//	}
-//	else if(uphonenumber.length!=11){
-//		alert("请输入正确的11位手机号");
-//		return false;
-//	}
-//	return true;
-//}
+function checkIdphoto(f) {
+	if (f.logoImage.value == "") {
+		alert("请上传您的照片！");
+		return false;
+	} else if (!/\.(gif|jpg|jpeg|png|GIF|JPG|PNG)$/.test(f.logoImage.value)) {
+		alert("图片类型必须是.gif,jpeg,jpg,png中的一种");
+		return false;
+	}
+}

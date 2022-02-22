@@ -10,12 +10,12 @@ public interface AdminTestService {
 
 	public String addTest(Test test, Model model); // Ìí¼Ó¿¼ÊÔ
 
-	public String deleteTestByTest_id(Integer test_id, Model model); // Í¨¹ıidÉ¾³ı¿¼ÊÔ
+	public String deleteTest(Integer test_id, Model model); // Í¨¹ıidÉ¾³ı¿¼ÊÔ
 
 	public String toUpdateTest(Integer test_id, Model model); // Ç°ÍùĞŞ¸Ä¿¼ÊÔÒ³
 
 	public String updateTest(Test test, Model model); // ĞŞ¸Ä¿¼ÊÔ
 
-	public String searchTest(String keyWord, Model model); // Ä£ºıËÑË÷
+	public String searchTest(Test test, Model model); // Ä£ºıËÑË÷
 
 }

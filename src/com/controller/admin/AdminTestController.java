@@ -3,7 +3,6 @@ package com.controller.admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.entity.Test;
@@ -11,7 +10,7 @@ import com.service.admin.AdminTestService;
 
 @Controller
 @RequestMapping("/adminTest")
-public class AdminTestController extends BaseController {
+public class AdminTestController extends BaseAdminController {
 
 	@Autowired
 	AdminTestService adminTestService;
@@ -22,9 +21,8 @@ public class AdminTestController extends BaseController {
 	}
 
 	@RequestMapping("/toAddTest")
-	// 需要传一个空的Test对象，不然前端显示的时候会报错
-	public String toAddTest(@ModelAttribute Test test) {
-		return "admin/addTest";
+	public String toAddTest(Test test) {
+		return "admin/test/addTest";
 	}
 
 	@RequestMapping("/addTest")
@@ -34,7 +32,7 @@ public class AdminTestController extends BaseController {
 
 	@RequestMapping("/deleteTest")
 	public String deleteTest(Integer test_id, Model model) {
-		return adminTestService.deleteTestByTest_id(test_id, model);
+		return adminTestService.deleteTest(test_id, model);
 	}
 
 	@RequestMapping("/toUpdateTest")
@@ -48,8 +46,8 @@ public class AdminTestController extends BaseController {
 	}
 
 	@RequestMapping("/searchTest")
-	public String searchTest(String keyWord, Model model) {
-		return adminTestService.searchTest(keyWord, model);
+	public String searchTest(Test test, Model model) {
+		return adminTestService.searchTest(test, model);
 	}
-	
+
 }

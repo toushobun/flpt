@@ -1,7 +1,7 @@
 package com.entity;
 
 public class Auser {
-	
+
 	private String aname;
 	private String apwd;
 

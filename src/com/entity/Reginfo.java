@@ -5,18 +5,21 @@ public class Reginfo {
 	private Integer reginfo_id; // 报名信息id
 	private Integer user_id; // 用户id
 	private Integer room_id; // 考场id
-	private Integer testinfo__room_id; // 关联id
+	private Integer testinfoRoom_id; // 关联id
 	private String ticketnum; // 准考证号
 	private Integer status; // 状态（0为未支付，1为已支付，2为考生主动取消，3为支付超时取消）
 	private String submit_time; // 提交时间
 	// ----------查询用----------
+	private String uname; // 考生名
+	private String uidnum; // 考生身份证号
 	private Integer testinfo_id; // 已发布考试id
 	private String tname; // 考试名
 	private String test_time; // 考试时间
 	private String rname; // 考场名
 	private String raddress; // 考场地址
+	private String[] statuss; // 搜索筛选的状态列表
 	// ----------换考场用----------
-	private Integer oldTestinfo__room_id; // 旧考场的id
+	private Integer oldTestinfoRoom_id; // 旧考场的id
 
 	public Integer getReginfo_id() {
 		return reginfo_id;
@@ -42,12 +45,12 @@ public class Reginfo {
 		this.room_id = room_id;
 	}
 
-	public Integer getTestinfo__room_id() {
-		return testinfo__room_id;
+	public Integer getTestinfoRoom_id() {
+		return testinfoRoom_id;
 	}
 
-	public void setTestinfo__room_id(Integer testinfo__room_id) {
-		this.testinfo__room_id = testinfo__room_id;
+	public void setTestinfoRoom_id(Integer testinfoRoom_id) {
+		this.testinfoRoom_id = testinfoRoom_id;
 	}
 
 	public String getTicketnum() {
@@ -72,6 +75,22 @@ public class Reginfo {
 
 	public void setSubmit_time(String submit_time) {
 		this.submit_time = submit_time;
+	}
+
+	public String getUname() {
+		return uname;
+	}
+
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+
+	public String getUidnum() {
+		return uidnum;
+	}
+
+	public void setUidnum(String uidnum) {
+		this.uidnum = uidnum;
 	}
 
 	public Integer getTestinfo_id() {
@@ -114,12 +133,20 @@ public class Reginfo {
 		this.raddress = raddress;
 	}
 
-	public Integer getOldTestinfo__room_id() {
-		return oldTestinfo__room_id;
+	public String[] getStatuss() {
+		return statuss;
 	}
 
-	public void setOldTestinfo__room_id(Integer oldTestinfo__room_id) {
-		this.oldTestinfo__room_id = oldTestinfo__room_id;
+	public void setStatuss(String[] statuss) {
+		this.statuss = statuss;
+	}
+
+	public Integer getOldTestinfoRoom_id() {
+		return oldTestinfoRoom_id;
+	}
+
+	public void setOldTestinfoRoom_id(Integer oldTestinfoRoom_id) {
+		this.oldTestinfoRoom_id = oldTestinfoRoom_id;
 	}
 
 }

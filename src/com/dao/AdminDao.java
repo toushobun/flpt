@@ -10,6 +10,6 @@ import com.entity.Auser;
 @Mapper
 public interface AdminDao {
 
-	public List<Auser> login(Auser auser); // 验证管理员登录信息
+	public List<Auser> selectAuserByKwargs(Auser auser);
 
 }

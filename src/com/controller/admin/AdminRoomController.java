@@ -3,7 +3,6 @@ package com.controller.admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.entity.Room;
@@ -11,10 +10,10 @@ import com.service.admin.AdminRoomService;
 
 @Controller
 @RequestMapping("/adminRoom")
-public class AdminRoomController extends BaseController {
+public class AdminRoomController extends BaseAdminController {
 
 	@Autowired
-	private AdminRoomService adminRoomService;
+	AdminRoomService adminRoomService;
 
 	@RequestMapping("/selectRoom")
 	public String selectRoom(Model model) {
@@ -22,9 +21,8 @@ public class AdminRoomController extends BaseController {
 	}
 
 	@RequestMapping("/toAddRoom")
-	// 需要传一个空的Room对象，不然前端显示的时候会报错
-	public String toAddRoom(@ModelAttribute Room room) {
-		return "admin/addRoom";
+	public String toAddRoom(Room room) {
+		return "admin/room/addRoom";
 	}
 
 	@RequestMapping("/addRoom")
@@ -34,7 +32,7 @@ public class AdminRoomController extends BaseController {
 
 	@RequestMapping("/deleteRoom")
 	public String deleteRoom(Integer room_id, Model model) {
-		return adminRoomService.deleteRoomByRoom_id(room_id, model);
+		return adminRoomService.deleteRoom(room_id, model);
 	}
 
 	@RequestMapping("/toUpdateRoom")
@@ -48,8 +46,8 @@ public class AdminRoomController extends BaseController {
 	}
 
 	@RequestMapping("/searchRoom")
-	public String searchRoom(String keyWord, Model model) {
-		return adminRoomService.searchRoom(keyWord, model);
+	public String searchRoom(Room room, Model model) {
+		return adminRoomService.searchRoom(room, model);
 	}
 
 }

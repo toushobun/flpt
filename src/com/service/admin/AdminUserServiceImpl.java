@@ -1,44 +1,48 @@
 package com.service.admin;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
-import com.dao.AdminUserDao;
+import com.dao.UserDao;
+import com.entity.User;
 
 @Service("adminUserService")
 @Transactional
 public class AdminUserServiceImpl implements AdminUserService {
 
 	@Autowired
-	private AdminUserDao adminUserDao;
+	private UserDao userDao;
 
 	@Override
 	public String selectUser(Model model) {
-		// TODO Auto-generated method stub
-		model.addAttribute("allUser", adminUserDao.selectUser());
-		// 这个指令将转到本地文件层验证
-		return "admin/selectUser";
+		List<User> userList = userDao.selectUserByKwargs(null);
+		model.addAttribute("user", new User());
+		model.addAttribute("userList", userList);
+		return "admin/user/selectUser";
 	}
 
 	@Override
-	public String deleteUserByUser_id(Integer user_id, Model model) {
-		// TODO Auto-generated method stub
-		if (adminUserDao.selectReginfoByUser_id(user_id).size() > 0) {
-			model.addAttribute("msg", "该考生已报名考试，不允许删除！");
+	public String deleteUser(Integer user_id, Model model) {
+		try {
+			userDao.deleteUserByUser_id(user_id);
+			model.addAttribute("msg", "删除成功！");
+			return "forward:/adminUser/selectUser";
+		} catch (Exception e) {
+			model.addAttribute("msg", "删除失败！该考生已报名！请先删除对应报名信息！");
 			return "forward:/adminUser/selectUser";
 		}
-		if (adminUserDao.deleteUserByUser_id(user_id) > 0) {
-			model.addAttribute("msg", "删除成功！");
-		}
-		return "forward:/adminUser/selectUser";
 	}
 
 	@Override
-	public String searchUser(String keyWord, Model model) {
-		// TODO Auto-generated method stub
-		model.addAttribute("allUser", adminUserDao.searchUser(keyWord));
-		return "admin/selectUser";
+	public String searchUser(User user, Model model) {
+		List<User> userList = userDao.selectUserFuzzily(user);
+		model.addAttribute("user", user);
+		model.addAttribute("userList", userList);
+		return "admin/user/selectUser";
 	}
+
 }

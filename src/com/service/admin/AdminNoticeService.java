@@ -6,12 +6,12 @@ import com.entity.Notice;
 
 public interface AdminNoticeService {
 
-	public String addNotice(Model model, Notice notice); // 添加新公告
-
-	public String deleteNoticeByNotice_id(Model model, Integer notice_id); // 通过id删除一个公告
-
-	public String selectANoticeByNotice_id(Model model, Integer notice_id); // 查询某个公告的详细信息
-
 	public String selectNotice(Model model); // 查询全部公告
+
+	public String addNotice(Notice notice, Model model); // 添加公告
+
+	public String deleteNotice(Integer notice_id, Model model); // 通过id删除公告
+
+	public String selectANotice(Notice notice, Model model); // 查询一个公告
 
 }

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserDao">
+	<select id="selectUserByKwargs" resultType="User"
+		parameterType="User">
+		select * from usertable where ""=""
+		<if test="user_id != null">
+			and user_id = #{user_id}
+		</if>
+		<if test="uidnum != null">
+			and uidnum = #{uidnum}
+		</if>
+		<if test="upwd != null">
+			and upwd = #{upwd}
+		</if>
+		<if test="uname != null">
+			and uname = #{uname}
+		</if>
+		<if test="uidphoto != null">
+			and uidphoto = #{uidphoto}
+		</if>
+	</select>
+	<insert id="register" parameterType="User">
+		insert into usertable
+		(user_id,uidnum,uname,upwd,uidphoto)
+		values
+		(null,#{uidnum},#{uname},#{upwd},#{uidphoto})
+	</insert>
+	<delete id="deleteUserByUser_id" parameterType="Integer">
+		delete from
+		usertable where user_id = #{user_id}
+	</delete>
+	<update id="updateUser" parameterType="User">
+		update usertable
+		<set>
+			<if test="uidnum != null">
+				uidnum = #{uidnum},
+			</if>
+			<if test="upwd != null">
+				upwd = #{upwd},
+			</if>
+			<if test="uname != null">
+				uname = #{uname},
+			</if>
+			<if test="uidphoto != null">
+				uidphoto = #{uidphoto},
+			</if>
+		</set>
+		where user_id = #{user_id}
+	</update>
+	<select id="selectUserFuzzily" resultType="User"
+		parameterType="User">
+		select * from usertable where ""=""
+		<if test="user_id != null">
+			and concat(user_id) like concat('%',#{user_id},'%')
+		</if>
+		<if test="uidnum != null">
+			and concat(uidnum) like concat('%',#{uidnum},'%')
+		</if>
+		<if test="upwd != null">
+			and concat(upwd) like concat('%',#{upwd},'%')
+		</if>
+		<if test="uname != null">
+			and concat(uname) like concat('%',#{uname},'%')
+		</if>
+		<if test="uidphoto != null">
+			and concat(uidphoto) like concat('%',#{uidphoto},'%')
+		</if>
+	</select>
+</mapper>

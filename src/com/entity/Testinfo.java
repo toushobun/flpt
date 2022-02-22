@@ -12,9 +12,7 @@ public class Testinfo {
 	private String tname; // 考试名
 	private String tsubject; // 考试科目
 	private String torganizer; // 主考单位
-	private String[] rooms; // 考场名列表
-	private Integer[] room_ids; // 考场id列表
-	private Integer[] room_rquotas; // 考场名额列表
+	private Integer user_id; // 考生id
 	// ----------报名用----------
 	private Integer status; // 考生选择考场时判断是否已报名该考试
 
@@ -91,28 +89,12 @@ public class Testinfo {
 		this.torganizer = torganizer;
 	}
 
-	public String[] getRooms() {
-		return rooms;
+	public Integer getUser_id() {
+		return user_id;
 	}
 
-	public void setRooms(String[] rooms) {
-		this.rooms = rooms;
-	}
-
-	public Integer[] getRoom_ids() {
-		return room_ids;
-	}
-
-	public void setRoom_ids(Integer[] room_ids) {
-		this.room_ids = room_ids;
-	}
-
-	public Integer[] getRoom_rquotas() {
-		return room_rquotas;
-	}
-
-	public void setRoom_rquotas(Integer[] room_rquotas) {
-		this.room_rquotas = room_rquotas;
+	public void setUser_id(Integer user_id) {
+		this.user_id = user_id;
 	}
 
 	public Integer getStatus() {

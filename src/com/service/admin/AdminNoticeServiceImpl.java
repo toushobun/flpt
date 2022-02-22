@@ -1,11 +1,13 @@
 package com.service.admin;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
-import com.dao.AdminNoticeDao;
+import com.dao.NoticeDao;
 import com.entity.Notice;
 
 @Service("adminNoticeService")
@@ -13,36 +15,44 @@ import com.entity.Notice;
 public class AdminNoticeServiceImpl implements AdminNoticeService {
 
 	@Autowired
-	private AdminNoticeDao adminNoticeDao;
-
-	@Override
-	public String addNotice(Model model, Notice notice) {
-		// TODO Auto-generated method stub
-		adminNoticeDao.addNotice(notice);
-		model.addAttribute("msg", "Ìí¼Ó³É¹¦£¡");
-		return "forward:/adminNotice/selectNotice";
-	}
-
-	@Override
-	public String selectANoticeByNotice_id(Model model, Integer notice_id) {
-		// TODO Auto-generated method stub
-		model.addAttribute("notice", adminNoticeDao.selectANoticeByNotice_id(notice_id));
-		return "admin/noticeDetail";
-	}
-
-	@Override
-	public String deleteNoticeByNotice_id(Model model, Integer notice_id) {
-		// TODO Auto-generated method stub
-		adminNoticeDao.deleteNoticeByNotice_id(notice_id);
-		model.addAttribute("msg", "É¾³ý³É¹¦£¡");
-		return "forward:/adminNotice/selectNotice";
-	}
+	private NoticeDao noticeDao;
 
 	@Override
 	public String selectNotice(Model model) {
-		// TODO Auto-generated method stub
-		model.addAttribute("allNotices", adminNoticeDao.selectNotice());
-		return "admin/selectNotice";
+		List<Notice> noticeList = noticeDao.selectNoticeByKwargs(null);
+		model.addAttribute("noticeList", noticeList);
+		return "admin/notice/selectNotice";
+	}
+
+	@Override
+	public String addNotice(Notice notice, Model model) {
+		try {
+			noticeDao.addNotice(notice);
+			model.addAttribute("msg", "Ìí¼Ó³É¹¦£¡");
+			return "forward:/adminNotice/selectNotice";
+		} catch (Exception e) {
+			model.addAttribute("msg", "Ìí¼ÓÊ§°Ü£¡");
+			return "admin/notice/addNotice";
+		}
+	}
+
+	@Override
+	public String deleteNotice(Integer notice_id, Model model) {
+		try {
+			noticeDao.deleteNoticeByNotice_id(notice_id);
+			model.addAttribute("msg", "É¾³ý³É¹¦£¡");
+			return "forward:/adminNotice/selectNotice";
+		} catch (Exception e) {
+			model.addAttribute("msg", "É¾³ýÊ§°Ü£¡");
+			return "forward:/adminNotice/selectNotice";
+		}
+	}
+
+	@Override
+	public String selectANotice(Notice notice, Model model) {
+		notice = noticeDao.selectNoticeByKwargs(notice).get(0);
+		model.addAttribute("notice", notice);
+		return "admin/notice/noticeDetail";
 	}
 
 }

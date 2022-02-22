@@ -5,14 +5,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.entity.User;
 import com.service.admin.AdminUserService;
 
 @Controller
 @RequestMapping("/adminUser")
-public class AdminUserController extends BaseController {
+public class AdminUserController extends BaseAdminController {
 
 	@Autowired
-	private AdminUserService adminUserService;
+	AdminUserService adminUserService;
 
 	@RequestMapping("/selectUser")
 	public String selectUser(Model model) {
@@ -21,12 +22,12 @@ public class AdminUserController extends BaseController {
 
 	@RequestMapping("/deleteUser")
 	public String deleteUser(Integer user_id, Model model) {
-		return adminUserService.deleteUserByUser_id(user_id, model);
+		return adminUserService.deleteUser(user_id, model);
 	}
 
 	@RequestMapping("/searchUser")
-	public String searchUser(String keyWord, Model model) {
-		return adminUserService.searchUser(keyWord, model);
+	public String searchUser(User user, Model model) {
+		return adminUserService.searchUser(user, model);
 	}
 
 }

@@ -8,225 +8,191 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
-import com.dao.AdminRoomDao;
-import com.dao.AdminTestDao;
-import com.dao.AdminTestinfoDao;
+import com.dao.ReginfoDao;
+import com.dao.RoomDao;
+import com.dao.TestDao;
+import com.dao.TestinfoDao;
+import com.dao.TestinfoRoomDao;
+import com.entity.Reginfo;
 import com.entity.Room;
 import com.entity.Test;
 import com.entity.Testinfo;
-import com.entity.Testinfo__room;
+import com.entity.TestinfoRoom;
+import com.util.MyUtil;
 
 @Service("adminTestinfoService")
 @Transactional
 public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 
 	@Autowired
-	private AdminTestinfoDao adminTestinfoDao;
+	private TestinfoDao testinfoDao;
+
 	@Autowired
-	private AdminTestDao adminTestDao;
+	private TestinfoRoomDao testinfoRoomDao;
+
 	@Autowired
-	private AdminRoomDao adminRoomDao;
+	private TestDao testDao;
+
+	@Autowired
+	private RoomDao roomDao;
+
+	@Autowired
+	private ReginfoDao reginfoDao;
 
 	@Override
 	public String selectTestinfo(Model model) {
-		// TODO 转到selectTestinfo页，展示所有已发布考试
-		model.addAttribute("allTestinfo", adminTestinfoDao.selectTestinfo());
-		// 这个指令将转到本地文件层验证
-		return "admin/selectTestinfo";
-	}
-
-	@Override
-	public String toAddTestinfo(Model model) {
-		// TODO 前往addTestinfo，将空考试发送给发布考试页
+		List<Testinfo> testinfoList = testinfoDao.selectTestinfoByKwargs(null);
 		model.addAttribute("testinfo", new Testinfo());
-		model.addAttribute("allTest", adminTestDao.selectTest());
-		model.addAttribute("allRoom", adminRoomDao.selectRoom());
-
-		return "admin/addTestinfo";
+		model.addAttribute("testinfoList", testinfoList);
+		return "admin/testinfo/selectTestinfo";
 	}
 
 	@Override
-	public String toAddTestinfoRoom(Testinfo testinfo, Model model) {
-		// TODO 前往addTestinfoRoom，为选中的考场配置考试名额
-		if (adminTestDao.selectATestByTest_id(testinfo.getTest_id()).getStatus() != 0) {
-			model.addAttribute("msg", "发布失败！该考试已发布！");
-			model.addAttribute("allTest", adminTestDao.selectTest());
-			model.addAttribute("allRoom", adminRoomDao.selectRoom());
-			return "admin/addTestinfo";
+	public String toAddTestinfo(TestinfoRoom testinfoRoom, Model model) {
+		model.addAttribute("testinfoRoom", testinfoRoom);
+		model.addAttribute("testList", testDao.selectTestByKwargs(null));
+		model.addAttribute("roomList", roomDao.selectRoomByKwargs(null));
+		return "admin/testinfo/addTestinfo";
+	}
+
+	@Override
+	public String toAddTestinfoRoom(TestinfoRoom testinfoRoom, Model model) {
+		Test testToSelect = new Test();
+		testToSelect.setTest_id(testinfoRoom.getTest_id());
+		Test test = testDao.selectTestByKwargs(testToSelect).get(0);
+		if (test.getStatus() != 0) {
+			model.addAttribute("msg", "该考试已发布！");
+			model.addAttribute("testinfoRoom", testinfoRoom);
+			return "forward:/adminTestinfo/toAddTestinfo";
 		}
-		model.addAttribute("testinfo", testinfo);
-		model.addAttribute("allTest", adminTestDao.selectTest());
-		List<Room> selectedRoom = new ArrayList<Room>();
-		for (int i = 0; i < testinfo.getRoom_ids().length; i++) {
+		List<Room> selectedRoomList = new ArrayList<Room>();
+		Room roomToSelect = new Room();
+		for (int i = 0; i < testinfoRoom.getRoom_ids().length; i++) {
 			// 设置关联表里的room_id
-			selectedRoom.add(adminRoomDao.selectARoomByRoom_id(testinfo.getRoom_ids()[i]));
+			roomToSelect.setRoom_id(testinfoRoom.getRoom_ids()[i]);
+			selectedRoomList.add(roomDao.selectRoomByKwargs(roomToSelect).get(0));
 		}
-		model.addAttribute("selectedRoom", selectedRoom);
-		return "admin/addTestinfoRoom";
+		model.addAttribute("testinfoRoom", testinfoRoom);
+		model.addAttribute("selectedRoomList", selectedRoomList);
+		return "admin/testinfo/addTestinfoRoom";
 	}
 
 	@Override
-	public String toAddTestinfoNewRoom(Testinfo testinfo, Model model) {
-		// TODO 前往为已经发布的考试添加额外考场
-		// 查询考试发布出来的信息
-		Testinfo testinfoDetail = adminTestinfoDao.selectATestinfoByTestinfo_id(testinfo.getTestinfo_id());
-		// 查询考试详细信息
-		Test testDetail = adminTestDao.selectATestByTest_id(testinfoDetail.getTest_id());
-		testinfoDetail.setTname(testDetail.getTname());
-		testinfoDetail.setTname(testDetail.getTsubject());
-		testinfoDetail.setTname(testDetail.getTorganizer());
-		// 将完整的考试信息发出去
-		model.addAttribute("testinfo", testinfoDetail);
-		List<Room> selectedRoom = new ArrayList<Room>();
-		for (int i = 0; i < testinfo.getRoom_ids().length; i++) {
-			// 设置关联表里的room_id
-			selectedRoom.add(adminRoomDao.selectARoomByRoom_id(testinfo.getRoom_ids()[i]));
-		}
-		model.addAttribute("allTest", adminTestDao.selectTest());
-		model.addAttribute("selectedRoom", selectedRoom);
-		return "admin/addTestinfoNewRoom";
-	}
-
-	@Override
-	public String addTestinfo(Testinfo testinfo, Model model) {
-		// TODO 发布新考试，并将新发布的考试更新到session
-		if (adminTestinfoDao.addTestinfo(testinfo) > 0) {
-			// 将该考试的status更改为1
-			Test test = new Test();
-			test.setTest_id(testinfo.getTest_id());
-			test.setStatus(1);
-			adminTestDao.updateTest(test);
-			// 要在testinfo表里，通过test_id获取testinfo_id
-			Integer testinfo_id = adminTestinfoDao.selectATestinfoByTest_id(testinfo.getTest_id()).getTestinfo_id();
-			// 新建一个空对象
-			Testinfo__room testinfo__room = new Testinfo__room();
-			// 设置关联表里的testinfo_id
-			testinfo__room.setTestinfo_id(testinfo_id);
-			// 遍历传过来的room_ids，并将其逐个添加到关联表里
-			for (int i = 0; i < testinfo.getRoom_ids().length; i++) {
-				// 设置关联表里的room_id
-				testinfo__room.setRoom_id(testinfo.getRoom_ids()[i]);
-				testinfo__room.setRquota(testinfo.getRoom_rquotas()[i]);
-				adminTestinfoDao.addTestinfo__room(testinfo__room);
+	public String addTestinfo(TestinfoRoom testinfoRoom, Model model) {
+		try {
+			// 先循环看是否都正确填入了考场名
+			for (int i = 0; i < testinfoRoom.getRoom_ids().length; i++) {
+				if (testinfoRoom.getRoom_rquotas()[i] == null || testinfoRoom.getRoom_rquotas()[i] < 0) {
+					model.addAttribute("testinfoRoom", testinfoRoom);
+					model.addAttribute("msg", "请输入一个正确的名额！");
+					return "forward:/adminTestinfo/toAddTestinfoRoom";
+				}
 			}
-			model.addAttribute("allTest", adminTestDao.selectTest());
-			model.addAttribute("allTestinfo", adminTestinfoDao.selectTestinfo());
-			model.addAttribute("msg", "发布成功！");
-		}
-		// 这个指令将转到controller层验证
-		return "forward:/adminTestinfo/selectTestinfo";
-	}
+			// 将此考试添加到发布考试
+			Testinfo testinfo = new Testinfo();
+			testinfo.setTest_id(testinfoRoom.getTest_id());
+			testinfo.setTest_time(testinfoRoom.getTest_time());
+			testinfo.setRegist_start_time(testinfoRoom.getRegist_start_time());
+			testinfo.setRegist_end_time(testinfoRoom.getRegist_end_time());
+			testinfo.setTprice(testinfoRoom.getTprice());
+			testinfoDao.addTestinfo(testinfo);
 
-	@Override
-	public String addTestinfoRoom(Testinfo testinfo, Model model) {
-		// TODO 为已经发布的考试添加新考场，并将新考场更新到session
-		// 要在testinfo表里，通过test_id获取testinfo_id
-		Integer testinfo_id = adminTestinfoDao.selectATestinfoByTest_id(testinfo.getTest_id()).getTestinfo_id();
-		// 新建一个空对象
-		Testinfo__room testinfo__room = new Testinfo__room();
-		// 设置关联表里的testinfo_id
-		testinfo__room.setTestinfo_id(testinfo_id);
-		// 遍历传过来的room_ids，并将其逐个添加到关联表里
-		for (int i = 0; i < testinfo.getRoom_ids().length; i++) {
-			// 设置关联表里的room_id
-			testinfo__room.setRoom_id(testinfo.getRoom_ids()[i]);
-			testinfo__room.setRquota(testinfo.getRoom_rquotas()[i]);
-			adminTestinfoDao.addTestinfo__room(testinfo__room);
-		}
-		model.addAttribute("msg", "添加成功！");
-		model.addAttribute("notSelectedRoom", adminRoomDao.selectRoomByTestinfo_id(testinfo_id));
-		model.addAttribute("allTestinfo__room",
-				adminTestinfoDao.selectTestinfo__roomByTestinfo_id(testinfo__room.getTestinfo_id()));
-		return "admin/selectTestinfoRoom";
-	}
+			// 再将此考试的status设为1
+			Test testToUpdate = new Test();
+			testToUpdate.setTest_id(testinfoRoom.getTest_id());
+			testToUpdate.setStatus(1);
+			testDao.updateTest(testToUpdate);
 
-	@Override
-	public String deleteTestinfoByTestinfo_id(Integer testinfo_id, Model model) {
-		// TODO 通过id删除考试信息，删除前确认是否有学生报名，删除后更新到session
-		if (adminTestinfoDao.selectAReginfoByTestinfo_id(testinfo_id).size() > 0) {
-			model.addAttribute("msg", "该考试已有考生报名，若要删除，请先删除对应准考证！");
+			// 再取得刚发布的testinfo_id，将此和考场绑定加入关联表
+			Testinfo testinfoToSelect = new Testinfo();
+			testinfoToSelect.setTest_id(testinfoRoom.getTest_id());
+			Integer testinfo_id = testinfoDao.selectTestinfoByKwargs(testinfoToSelect).get(0).getTestinfo_id();
+			testinfoRoom.setTestinfo_id(testinfo_id);
+			for (int i = 0; i < testinfoRoom.getRoom_ids().length; i++) {
+				// 设置关联表里的room_id
+				testinfoRoom.setRoom_id(testinfoRoom.getRoom_ids()[i]);
+				testinfoRoom.setRquota(testinfoRoom.getRoom_rquotas()[i]);
+				testinfoRoomDao.addTestinfoRoom(testinfoRoom);
+			}
+			model.addAttribute("msg", "添加成功！");
+			return "forward:/adminTestinfo/selectTestinfo";
+		} catch (Exception e) {
+			model.addAttribute("msg", "添加失败！");
 			return "forward:/adminTestinfo/selectTestinfo";
 		}
-		Integer test_id = adminTestinfoDao.selectATestinfoByTestinfo_id(testinfo_id).getTest_id();
-		List<Testinfo__room> toDeleteList = adminTestinfoDao.selectTestinfo__roomByTestinfo_id(testinfo_id);
-		for (int i = 0; i < toDeleteList.size(); i++) {
-			adminTestinfoDao.deleteTestinfo__roomByTestinfo__room_id(toDeleteList.get(i).getTestinfo__room_id());
-		}
-		if (adminTestinfoDao.deleteTestinfoByTestinfo_id(testinfo_id) > 0) {
-			// 将该考试的status更改为0
-			Test test = new Test();
-			test.setTest_id(test_id);
-			test.setStatus(0);
-			adminTestDao.updateTest(test);
+	}
+
+	@Override
+	public String deleteTestinfo(Integer testinfo_id, Model model) {
+		try {
+			// 先取出所有该考试即将要删除的绑定的考场
+			TestinfoRoom testinfoRoomToSelect = new TestinfoRoom();
+			testinfoRoomToSelect.setTestinfo_id(testinfo_id);
+			List<TestinfoRoom> testinfoRoomList = testinfoRoomDao.selectTestinfoRoomByKwargs(testinfoRoomToSelect);
+			// 遍历查看该绑定信息是否被考生报名绑定
+			Reginfo reginfoToSelect = new Reginfo();
+			List<Reginfo> reginfoList = new ArrayList<Reginfo>();
+			// 遍历绑定的所有考场
+			for (int i = 0; i < testinfoRoomList.size(); i++) {
+				reginfoToSelect.setTestinfoRoom_id(testinfoRoomList.get(i).getTestinfoRoom_id());
+				reginfoList = reginfoDao.selectReginfoByKwargs(reginfoToSelect);
+				// 先遍历删除所有准考证
+				for (int j = 0; j < reginfoList.size(); j++) {
+					reginfoDao.deleteReginfoByReginfo_id(reginfoList.get(j).getReginfo_id());
+				}
+				// 再删除对应考场
+				testinfoRoomDao.deleteTestinfoRoomByTestinfoRoom_id(testinfoRoomList.get(i).getTestinfoRoom_id());
+			}
+			// 先得到该考试的id
+			Testinfo testinfoToSelect = new Testinfo();
+			testinfoToSelect.setTestinfo_id(testinfo_id);
+			Integer test_id = testinfoDao.selectTestinfoByKwargs(testinfoToSelect).get(0).getTest_id();
+			// 设置该考试的status为0
+			Test testToUpdate = new Test();
+			testToUpdate.setTest_id(test_id);
+			testToUpdate.setStatus(0);
+			testDao.updateTest(testToUpdate);
+			// 最后删除考试信息
+			testinfoDao.deleteTestinfoByTestinfo_id(testinfo_id);
 			model.addAttribute("msg", "删除成功！");
+			return "forward:/adminTestinfo/selectTestinfo";
+		} catch (Exception e) {
+			model.addAttribute("msg", "删除失败！");
+			return "forward:/adminTestinfo/selectTestinfo";
 		}
-		return "forward:/adminTestinfo/selectTestinfo";
 	}
 
 	@Override
 	public String toUpdateTestinfo(Integer testinfo_id, Model model) {
-		// TODO 前往更新考试信息页
-		Testinfo testinfo = adminTestinfoDao.selectATestinfoByTestinfo_id(testinfo_id);
+		List<Test> testList = testDao.selectTestByKwargs(null);
+		Testinfo testinfoToSelect = new Testinfo();
+		testinfoToSelect.setTestinfo_id(testinfo_id);
+		Testinfo testinfo = testinfoDao.selectTestinfoByKwargs(testinfoToSelect).get(0);
+		// 格式化时间字符串
+		testinfo = MyUtil.FormatTestinfoTime(testinfo);
+		model.addAttribute("testList", testList);
 		model.addAttribute("testinfo", testinfo);
-		model.addAttribute("allTest", adminTestDao.selectTest());
-		model.addAttribute("allRoom", adminRoomDao.selectRoom());
-		return "admin/updateTestinfo";
+		return "admin/testinfo/updateTestinfo";
 	}
 
 	@Override
 	public String updateTestinfo(Testinfo testinfo, Model model) {
-		// TODO 更新考试信息
-		if (adminTestinfoDao.updateTestinfo(testinfo) > 0) {
+		try {
+			testinfoDao.updateTestinfo(testinfo);
 			model.addAttribute("msg", "修改成功！");
+			return "forward:/adminTestinfo/selectTestinfo";
+		} catch (Exception e) {
+			model.addAttribute("msg", "修改失败！");
+			return "admin/testinfo/updateTestinfo";
 		}
-		return "forward:/adminTestinfo/selectTestinfo";
 	}
 
 	@Override
-	public String selectTestinfoRoom(Integer testinfo_id, Model model) {
-		// TODO 查询某个已发布考试的具体考场
-		model.addAttribute("allTestinfo__room", adminTestinfoDao.selectTestinfo__roomByTestinfo_id(testinfo_id));
-		model.addAttribute("notSelectedRoom", adminRoomDao.selectRoomByTestinfo_id(testinfo_id));
-		model.addAttribute("testinfo", adminTestinfoDao.selectATestinfoByTestinfo_id(testinfo_id));
-		return "admin/selectTestinfoRoom";
-	}
-
-	@Override
-	public String updateRoomQuota(Testinfo__room testinfo__room, Model model) {
-		// TODO 更新某个已发布考试的考场名额，并将数据更新到session
-		if (adminTestinfoDao.updateTestinfo__room(testinfo__room) > 0) {
-			model.addAttribute("msg", "修改成功！");
-		}
-		model.addAttribute("notSelectedRoom", adminRoomDao.selectRoomByTestinfo_id(testinfo__room.getTestinfo_id()));
-		model.addAttribute("allTestinfo__room",
-				adminTestinfoDao.selectTestinfo__roomByTestinfo_id(testinfo__room.getTestinfo_id()));
-		model.addAttribute("testinfo", adminTestinfoDao.selectATestinfoByTestinfo_id(testinfo__room.getTestinfo_id()));
-		return "admin/selectTestinfoRoom";
-	}
-
-	@Override
-	public String cancelRoom(Testinfo__room testinfo__room, Model model) {
-		// TODO 取消某个已发布考试的考场，并将数据更新到session
-		if (adminTestinfoDao.selectTestinfo__roomByTestinfo_id(testinfo__room.getTestinfo_id()).size() == 1) {
-			model.addAttribute("msg", "至少要留一个考场！");
-		} else if (adminTestinfoDao.selectAReginfoByRoom_id(testinfo__room.getRoom_id()).size() > 0) {
-			model.addAttribute("msg", "该考场已有学生报名！请先取消对应学生的考试资格（删除准考证）！");
-		} else if (adminTestinfoDao
-				.deleteTestinfo__roomByTestinfo__room_id(testinfo__room.getTestinfo__room_id()) > 0) {
-			model.addAttribute("msg", "取消成功！");
-		}
-		model.addAttribute("notSelectedRoom", adminRoomDao.selectRoomByTestinfo_id(testinfo__room.getTestinfo_id()));
-		model.addAttribute("allTestinfo__room",
-				adminTestinfoDao.selectTestinfo__roomByTestinfo_id(testinfo__room.getTestinfo_id()));
-		model.addAttribute("testinfo", adminTestinfoDao.selectATestinfoByTestinfo_id(testinfo__room.getTestinfo_id()));
-		return "admin/selectTestinfoRoom";
-	}
-
-	@Override
-	public String searchTestinfo(String keyWord, Model model) {
-		// TODO 模糊查询考试信息
-		model.addAttribute("allTestinfo", adminTestinfoDao.searchTestinfo(keyWord));
-		return "admin/selectTestinfo";
+	public String searchTestinfo(Testinfo testinfo, Model model) {
+		List<Testinfo> testinfoList = testinfoDao.selectTestinfoFuzzily(testinfo);
+		model.addAttribute("testinfo", testinfo);
+		model.addAttribute("testinfoList", testinfoList);
+		return "admin/testinfo/selectTestinfo";
 	}
 
 }

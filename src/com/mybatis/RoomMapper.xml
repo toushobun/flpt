@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.RoomDao">
+	<select id="selectRoomByKwargs" resultType="Room"
+		parameterType="Room">
+		select * from roomtable where ""=""
+		<if test="room_id != null">
+			and room_id = #{room_id}
+		</if>
+		<if test="rname != null">
+			and rname = #{rname}
+		</if>
+		<if test="raddress != null">
+			and raddress = #{raddress}
+		</if>
+		<if test="rtelnum != null">
+			and rtelnum = #{rtelnum}
+		</if>
+		<if test="rpostcode != null">
+			and rpostcode = #{rpostcode}
+		</if>
+	</select>
+	<insert id="addRoom" parameterType="Room">
+		insert into roomtable
+		(room_id,rname,raddress,rtelnum,rpostcode)
+		values
+		(null,#{rname},#{raddress},#{rtelnum},#{rpostcode})
+	</insert>
+	<delete id="deleteRoomByRoom_id" parameterType="Integer">
+		delete from
+		roomtable where room_id = #{room_id}
+	</delete>
+	<update id="updateRoom" parameterType="Room">
+		update roomtable
+		<set>
+			<if test="rname != null">
+				rname = #{rname},
+			</if>
+			<if test="raddress != null">
+				raddress = #{raddress},
+			</if>
+			<if test="rtelnum != null">
+				rtelnum = #{rtelnum},
+			</if>
+			<if test="rpostcode != null">
+				rpostcode = #{rpostcode},
+			</if>
+		</set>
+		where room_id = #{room_id}
+	</update>
+	<select id="selectRepeatedRoom" resultType="Room"
+		parameterType="Room">
+		select * from roomtable where rname = #{rname}
+		<if test="room_id != null">
+			and room_id != #{room_id}
+		</if>
+	</select>
+	<select id="selectRoomFuzzily" resultType="Room"
+		parameterType="Room">
+		select * from roomtable where ""=""
+		<if test="room_id != null">
+			and concat(room_id) like concat('%',#{room_id},'%')
+		</if>
+		<if test="rname != null">
+			and concat(rname) like concat('%',#{rname},'%')
+		</if>
+		<if test="raddress != null">
+			and concat(raddress) like concat('%',#{raddress},'%')
+		</if>
+		<if test="rtelnum != null">
+			and concat(rtelnum) like concat('%',#{rtelnum},'%')
+		</if>
+		<if test="rpostcode != null">
+			and concat(rpostcode) like concat('%',#{rpostcode},'%')
+		</if>
+	</select>
+	<select id="selectNotSelectedRoom" resultType="Room" parameterType="Integer">
+		select * from roomtable where roomtable.room_id not in (select room_id from testinfoRoom where testinfo_id=#{testinfo_id})
+	</select>
+</mapper>
