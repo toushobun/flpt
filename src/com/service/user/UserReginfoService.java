@@ -1,12 +1,14 @@
 package com.service.user;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.ui.Model;
 
 import com.entity.Reginfo;
 
 public interface UserReginfoService {
 
-	public String selectReginfo(Integer user_id, Model model); // 查询全部报名信息
+	public String selectReginfo(Model model, HttpSession session); // 查询全部报名信息
 
 	public String addReginfo(Reginfo reginfo, Model model); // 查询全部考试信息
 

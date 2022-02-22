@@ -57,6 +57,13 @@ public class AdminTestinfoRoomServiceImpl implements AdminTestinfoRoomService {
 	@Override
 	public String addTestinfoRoom(TestinfoRoom testinfoRoom, Model model) {
 		try {
+			// 先循环看是否都正确填入了考场名
+			for (int i = 0; i < testinfoRoom.getRoom_ids().length; i++) {
+				if (testinfoRoom.getRoom_rquotas()[i] == null || testinfoRoom.getRoom_rquotas()[i] < 0) {
+					model.addAttribute("msg", "请输入一个正确的名额！");
+					return "forward:/adminTestinfoRoom/selectTestinfoRoom?testinfo_id=" + testinfoRoom.getTestinfo_id();
+				}
+			}
 			for (int i = 0; i < testinfoRoom.getRoom_ids().length; i++) {
 				// 设置关联表里的room_id
 				testinfoRoom.setRoom_id(testinfoRoom.getRoom_ids()[i]);

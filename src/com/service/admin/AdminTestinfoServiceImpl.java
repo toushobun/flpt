@@ -80,7 +80,15 @@ public class AdminTestinfoServiceImpl implements AdminTestinfoService {
 	@Override
 	public String addTestinfo(TestinfoRoom testinfoRoom, Model model) {
 		try {
-			// 先将此考试添加到发布考试
+			// 先循环看是否都正确填入了考场名
+			for (int i = 0; i < testinfoRoom.getRoom_ids().length; i++) {
+				if (testinfoRoom.getRoom_rquotas()[i] == null || testinfoRoom.getRoom_rquotas()[i] < 0) {
+					model.addAttribute("testinfoRoom", testinfoRoom);
+					model.addAttribute("msg", "请输入一个正确的名额！");
+					return "forward:/adminTestinfo/toAddTestinfoRoom";
+				}
+			}
+			// 将此考试添加到发布考试
 			Testinfo testinfo = new Testinfo();
 			testinfo.setTest_id(testinfoRoom.getTest_id());
 			testinfo.setTest_time(testinfoRoom.getTest_time());

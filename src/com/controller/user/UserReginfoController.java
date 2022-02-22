@@ -1,5 +1,7 @@
 package com.controller.user;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +18,8 @@ public class UserReginfoController extends BaseUserController {
 	UserReginfoService userReginfoService;
 
 	@RequestMapping("/selectReginfo")
-	public String selectReginfo(Integer user_id, Model model) {
-		return userReginfoService.selectReginfo(user_id, model);
+	public String selectReginfo(Model model, HttpSession session) {
+		return userReginfoService.selectReginfo(model, session);
 	}
 
 	@RequestMapping("/addReginfo")

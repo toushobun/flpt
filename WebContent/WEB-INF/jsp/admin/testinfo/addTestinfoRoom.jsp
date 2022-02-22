@@ -18,7 +18,7 @@
 <script src="js/postConfirm.js" type="text/javascript"></script>
 <body>
 	<form:form action="adminTestinfo/addTestinfo" method="post"
-		modelAttribute="testinfoRoom">
+		onsubmit="return checkTestinfoRoom(this);" modelAttribute="testinfoRoom">
 		<div style="display: none">
 			<form:input path="test_id" value="${testinfoRoom.test_id }"></form:input>
 			<form:input path="tname" value="${testinfoRoom.tname }"></form:input>
@@ -34,14 +34,20 @@
 		<table>
 			<caption>考场名额配置</caption>
 			<tr>
-				<td><c:forEach items="${selectedRoomList }" var="room">
+				<td>
+					<table id="roomAddSelect">
 						<tr>
-							<form:hidden path="room_ids" value="${room.room_id }" />
-							<td>${room.rname }<font color="red">*</font></td>
-							<td><form:input path="room_rquotas"
-									placeholder="请输入该考场可报名名额" /></td>
+							<td><c:forEach items="${selectedRoomList }" var="room">
+									<tr>
+										<form:hidden path="room_ids" value="${room.room_id }" />
+										<td>${room.rname }<font color="red">*</font></td>
+										<td><form:input path="room_rquotas"
+												placeholder="请输入该考场可报名名额" value="300" /></td>
+									</tr>
+								</c:forEach></td>
 						</tr>
-					</c:forEach></td>
+					</table>
+				</td>
 			</tr>
 			<tr>
 				<td style="text-align: left"><input type="button"
@@ -51,5 +57,10 @@
 			</tr>
 		</table>
 	</form:form>
+	<c:if test="${msg != null }">
+		<script type="text/javascript">
+			alert("${msg}");
+		</script>
+	</c:if>
 </body>
 </html>

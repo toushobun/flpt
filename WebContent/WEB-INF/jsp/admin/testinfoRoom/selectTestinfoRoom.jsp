@@ -43,12 +43,11 @@
 			</tr>
 		</c:forEach>
 		<tr>
-			<td><c:if test="${notSelectedRoom.size() == 0 }">
+			<td colspan="6"><c:if test="${notSelectedRoom.size() == 0 }">
 			已配置全部考场
 		</c:if> <c:if test="${notSelectedRoom.size() != 0 }">
 					<form:form action="adminTestinfoRoom/toAddTestinfoRoom"
-						method="post" onsubmit="return checkSelectRoom(this);"
-						modelAttribute="testinfoRoom">
+						method="post" modelAttribute="testinfoRoom">
 						<div style="display: none">
 							<form:input path="testinfo_id"
 								value="${testinfoRoomList.get(0).testinfo_id }"></form:input>
@@ -62,16 +61,18 @@
 								value="${testinfoRoom.regist_end_time }"></form:input>
 							<form:input path="tprice" value="${testinfoRoom.tprice }"></form:input>
 						</div>
-						<table>
-							<caption>额外添加考场</caption>
+						<table style="width: 100%;">
+							<caption>
+								<b>额外添加考场</b>
+							</caption>
 							<tr>
 								<td>
 									<table id="roomSelect">
 										<c:forEach items="${notSelectedRoom }" var="room">
 											<tr>
-												<td><form:checkbox path="room_ids"
+												<td width="200px"><form:checkbox path="room_ids"
 														value="${room.room_id }" /></td>
-												<td>${room.rname }</td>
+												<td width="1000px">${room.rname }</td>
 											</tr>
 										</c:forEach>
 									</table>

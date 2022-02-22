@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,7 @@ import com.dao.ReginfoDao;
 import com.dao.TestinfoRoomDao;
 import com.entity.Reginfo;
 import com.entity.TestinfoRoom;
+import com.entity.User;
 import com.util.MyUtil;
 
 @Service("userReginfoService")
@@ -28,9 +31,10 @@ public class UserReginfoServiceImpl implements UserReginfoService {
 	private TestinfoRoomDao testinfoRoomDao;
 
 	@Override
-	public String selectReginfo(Integer user_id, Model model) {
+	public String selectReginfo(Model model, HttpSession session) {
+		User u = (User) session.getAttribute("user");
 		Reginfo reginfoToSelect = new Reginfo();
-		reginfoToSelect.setUser_id(user_id);
+		reginfoToSelect.setUser_id(u.getUser_id());
 		List<Reginfo> reginfoList = reginfoDao.selectReginfoByKwargs(reginfoToSelect);
 		String[] statuss = { "未支付", "已支付", "已取消", "已超时" };
 		model.addAttribute("statuss", statuss);

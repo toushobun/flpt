@@ -7,7 +7,7 @@ function checkSelectRoom(f) {
 			flag = false;
 		}
 	}
-	if (flag) {
+	if (flag && !f.room_ids[0].checked) {
 		alert("请至少选择一个考场！");
 		return false;
 	}
